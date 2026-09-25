@@ -1,0 +1,67 @@
+site_name: Docència · Fabio Saz
+site_url: https://fabiosaz.github.io/docencia/
+site_author: Fabio Saz Pérez
+site_description: Materials de Digitalització i Programació i Tractament de Dades (Illes Balears)
+repo_url: https://github.com/Fabiosaz/docencia
+edit_uri: ""
+copyright: >
+  © 2026 Fabio Saz Pérez · Llicència <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ca">CC BY-NC-SA 4.0</a><br>
+  Adaptació al català i al currículum de les Illes Balears dels materials de
+  <a href="https://lopegonzalez.es/eso-y-bachillerato/">Lope González Vázquez</a> (CC BY-NC-SA 4.0).
+
+theme:
+  name: material
+  language: ca
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.indexes
+    - navigation.top
+    - navigation.footer
+    - toc.follow
+    - search.highlight
+    - content.code.copy
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: teal
+      toggle: {icon: material/weather-night, name: Mode fosc}
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: teal
+      toggle: {icon: material/weather-sunny, name: Mode clar}
+  icon:
+    logo: material/school
+
+plugins:
+  - search
+  - offline:
+      enabled: !ENV [OFFLINE, false]
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc: {permalink: true}
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight: {anchor_linenums: true, line_spans: __span}
+  - pymdownx.inlinehilite
+  - pymdownx.tabbed: {alternate_style: true}
+  - pymdownx.tasklist: {custom_checkbox: true}
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+nav:
+  - Inici: index.md
+  - Digitalització 4t ESO:
+      - digitalitzacio/index.md
+  - PTD I:
+      - ptd1/index.md
+  - PTD II:
+      - ptd2/index.md
+  - Sobre aquesta web: sobre.md
