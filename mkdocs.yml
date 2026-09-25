@@ -51,6 +51,7 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.highlight: {anchor_linenums: true, line_spans: __span}
   - pymdownx.inlinehilite
+  - pymdownx.keys
   - pymdownx.tabbed: {alternate_style: true}
   - pymdownx.tasklist: {custom_checkbox: true}
   - pymdownx.emoji:
@@ -61,6 +62,7 @@ nav:
   - Inici: index.md
   - Digitalització 4t ESO:
       - digitalitzacio/index.md
+      - "Unitat 1. Dispositius digitals, sistemes operatius i de comunicació": digitalitzacio/u1-dispositius-digitals.md
       - "Unitat 4. Publicació i difusió de continguts": digitalitzacio/u4-publicacio-i-difusio.md
       - "Unitat 5. Seguretat i benestar digital": digitalitzacio/u5-seguretat-i-benestar.md
   - PTD I:
