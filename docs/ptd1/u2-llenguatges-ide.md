@@ -141,13 +141,20 @@ Alguns dels IDE més habituals per a Python són:
 
 | IDE | Per a qui és | Observacions |
 | --- | --- | --- |
-| [Thonny](https://thonny.org/) | Principiants | Molt senzill; els instal·ladors de Windows i macOS ja inclouen Python, i té un depurador que mostra pas a pas què passa. **Recomanat per començar.** |
-| [Visual Studio Code](https://code.visualstudio.com/) | Nivell mitjà i avançat | Editor molt popular i ampliable amb extensions per a molts de llenguatges. |
+| [Visual Studio Code](https://code.visualstudio.com/) | Qualsevol nivell | Editor gratuït molt popular i ampliable amb extensions per a molts de llenguatges. **És el que farem servir a classe.** |
+| [Thonny](https://thonny.org/) | Principiants | Molt senzill; els instal·ladors de Windows i macOS ja inclouen Python. Una bona alternativa per començar a casa. |
 | [PyCharm](https://www.jetbrains.com/pycharm/) | Professionals | Un dels entorns més utilitzats professionalment per programar en Python. |
 | [Google Colab](https://colab.research.google.com/) | Qualsevol, des del navegador | No cal instal·lar res; funciona amb un compte de Google. Molt utilitzat en ciència de dades. |
 
-!!! tip "Instal·lar Thonny a casa"
-    Descarrega Thonny des de [thonny.org](https://thonny.org/) (hi ha versions per a Windows, macOS i Linux) i instal·la'l amb les opcions per defecte. A Windows i macOS no cal instal·lar Python a part, perquè l'instal·lador de Thonny ja l'inclou. Quan l'obris, escriu `print("Hola, món!")` a l'editor, desa l'arxiu i prem el botó verd **Run** (o la tecla ++f5++). Si a la part inferior (la consola, o *Shell*) apareix `Hola, món!`, ja tens l'entorn a punt.
+!!! tip "Preparar l'entorn a casa"
+    Per programar en Python amb Visual Studio Code necessites dues coses: Python i el mateix VS Code.
+
+    1. **Instal·la Python** des de [python.org](https://www.python.org/downloads/). A Windows, a la primera pantalla de l'instal·lador, marca la casella **Add python.exe to PATH** abans de prémer *Install Now*.
+    2. **Instal·la Visual Studio Code** des de [code.visualstudio.com](https://code.visualstudio.com/).
+    3. Obre VS Code, ves a la secció d'**extensions** (la icona dels quatre quadrats de la barra lateral), cerca **Python** i instal·la l'extensió de Microsoft. Juntament amb ella s'instal·len les eines per completar codi i depurar.
+    4. Crea un arxiu nou, desa'l amb l'extensió `.py` (per exemple, `hola.py`), escriu-hi `print("Hola, món!")` i prem el botó ▷ (**Run Python File**) de la part superior dreta. Si al terminal de la part inferior apareix `Hola, món!`, ja tens l'entorn a punt.
+
+    Si VS Code no troba Python, prem ++ctrl+shift+p++, escriu **Python: Select Interpreter** i tria la versió que has instal·lat.
 
 ## 2.6. Estructura d'un programa en Python
 
@@ -241,7 +248,7 @@ if __name__ == "__main__":
 La darrera línia, `if __name__ == "__main__":`, indica que la funció `main()` s'ha d'executar quan executam directament aquest arxiu. De moment, basta que sàpigues que és una manera habitual de marcar on comença el programa.
 
 !!! example "Exercici 2.2. El meu primer programa"
-    1. Instal·la Thonny (o fes servir l'entorn que tengueu a l'aula) i executa el programa `print("Hola, món!")`.
+    1. Prepara l'entorn (Python i VS Code amb l'extensió de Python) i executa el programa `print("Hola, món!")`.
     2. Copia l'exemple complet d'aquesta unitat, executa'l i prova-lo amb diferents valors del radi.
     3. Canvia el nom i l'edat de la persona per les teves dades i torna'l a executar.
     4. Esborra els quatre espais d'una línia del cos d'una funció i torna a executar el programa. Quin missatge d'error apareix? Què vol dir?
@@ -252,4 +259,4 @@ La darrera línia, `if __name__ == "__main__":`, indica que la funció `main()` 
 ---
 
 !!! quote "Font"
-    Unitat elaborada a partir de materials de Lope González Vázquez ([CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ca)): [«Tema 11. Fundamentos de programación»](https://lopegonzalez.es/eso-y-bachillerato/tic-i-1o-bachillerato/tema-11-fundamentos-de-programacion/) (TIC I), [«Tema 2. Introducción a la programación»](https://lopegonzalez.es/eso-y-bachillerato/programacion-y-computacion-2o-bachillerato/tema-2-introduccion-a-la-programacion/) i [«Tema 1. Ingeniería del software»](https://lopegonzalez.es/eso-y-bachillerato/programacion-y-computacion-2o-bachillerato/tema-1-ingenieria-del-software/) (Programación y computación). Canvis: traducció al català, adaptació al currículum de Programació i Tractament de Dades I de les Illes Balears, combinació de les fonts, exemples de Java passats a Python i canvi de l'entorn de treball (PyCharm) per Thonny. Són propis la taula comparativa entre llenguatges compilats i interpretats, la nota sobre el *bytecode* de Python, les instruccions d'instal·lació de Thonny i els exercicis 2.1 i 2.2.
+    Unitat elaborada a partir de materials de Lope González Vázquez ([CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ca)): [«Tema 11. Fundamentos de programación»](https://lopegonzalez.es/eso-y-bachillerato/tic-i-1o-bachillerato/tema-11-fundamentos-de-programacion/) (TIC I), [«Tema 2. Introducción a la programación»](https://lopegonzalez.es/eso-y-bachillerato/programacion-y-computacion-2o-bachillerato/tema-2-introduccion-a-la-programacion/) i [«Tema 1. Ingeniería del software»](https://lopegonzalez.es/eso-y-bachillerato/programacion-y-computacion-2o-bachillerato/tema-1-ingenieria-del-software/) (Programación y computación). Canvis: traducció al català, adaptació al currículum de Programació i Tractament de Dades I de les Illes Balears, combinació de les fonts, exemples de Java passats a Python i canvi de l'entorn de treball (PyCharm) per Visual Studio Code. Són propis la taula comparativa entre llenguatges compilats i interpretats, la nota sobre el *bytecode* de Python, les instruccions d'instal·lació de l'entorn i els exercicis 2.1 i 2.2.

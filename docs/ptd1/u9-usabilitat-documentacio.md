@@ -170,14 +170,12 @@ for i in range(1, 5):
 
 ### 9.3.3. El depurador
 
-Gairebé tots els IDE tenen un **depurador** (*debugger*), una eina que permet executar el programa **pas a pas** i veure en tot moment el valor de les variables. A Thonny:
+Gairebé tots els IDE tenen un **depurador** (*debugger*), una eina que permet executar el programa **pas a pas** i veure en tot moment el valor de les variables. A Visual Studio Code:
 
-1. Activa el panell de variables des del menú **View → Variables**.
-2. Prem el botó de l'insecte (**Debug current script**) en lloc del de **Run**.
-3. Avança amb els botons **Step over** (executa la línia sencera i passa a la següent) o **Step into** (entra dins la línia i mostra com s'avalua cada part de l'expressió).
-4. Observa com canvien els valors al panell de variables. Quan un valor no és el que esperaves, has trobat on és l'error.
-
-En programes llargs és útil posar un **punt de ruptura** (*breakpoint*): una marca en una línia on vols que l'execució s'aturi. A Thonny es posa fent clic al número de línia; l'execució en mode depuració arriba directament fins allà.
+1. Posa un **punt de ruptura** (*breakpoint*) a la línia on vols que s'aturi l'execució: fes clic just a l'esquerra del número de línia i hi apareixerà un punt vermell. Si vols seguir el programa des del principi, posa'l a la primera línia.
+2. Prem ++f5++ (o el menú **Run → Start Debugging**). La primera vegada, si t'ho demana, tria **Python Debugger** i l'opció del fitxer actual.
+3. El programa s'atura al punt de ruptura. Avança amb els botons de la barra de depuració: **Step Over** (++f10++) executa la línia sencera i passa a la següent; **Step Into** (++f11++) entra dins la línia si crida una funció; **Continue** (++f5++) continua fins al punt de ruptura següent, i **Stop** (++shift+f5++) atura la depuració.
+4. Observa el panell **Variables** de la barra lateral: mostra el valor de cada variable en aquell moment. Quan un valor no és el que esperaves, has trobat on és l'error.
 
 El depurador no només serveix per trobar errors: també és una manera excel·lent d'**entendre com funciona** un algorisme que no acabes d'entendre. Executa'l pas a pas i mira què passa.
 
@@ -185,7 +183,7 @@ El depurador no només serveix per trobar errors: també és una manera excel·l
     Els errors més difícils de trobar són els que no apareixen a totes les execucions, sinó només en certes condicions: amb unes dades concretes, un cas límit… Per això és tan important la taula de proves de la unitat 8, amb casos normals, casos límit i dades incorrectes.
 
 !!! example "Exercici 9.2. Caça l'error amb el depurador"
-    Aquest programa hauria de calcular la mitjana de les notes, però dona un resultat incorrecte. Executa'l pas a pas amb el depurador de Thonny, observa el valor de les variables i troba l'error.
+    Aquest programa hauria de calcular la mitjana de les notes, però dona un resultat incorrecte. Executa'l pas a pas amb el depurador de VS Code, observa el valor de les variables i troba l'error.
 
     ```python
     notes = [6, 8, 7, 9]
@@ -350,4 +348,4 @@ El **manual d'usuari** (o guia d'ús) explica a la persona usuària com fer serv
 ---
 
 !!! quote "Font"
-    Unitat elaborada en bona part amb material propi, a partir de la base de Lope González Vázquez ([CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ca)). De [«Tema 11. Fundamentos de programación»](https://lopegonzalez.es/eso-y-bachillerato/tic-i-1o-bachillerato/tema-11-fundamentos-de-programacion/) (TIC I) provenen la idea de la depuració com a feina de detectiu, el depurador amb punts de ruptura, l'inspector de variables i els errors intermitents (adaptats de PyCharm a Thonny) i la importància de la documentació. De [«Tema 1. Introducción a la programación»](https://lopegonzalez.es/eso-y-bachillerato/creacion-digital-y-pensamiento-computacional-1o-bachillerato/tema-1-introduccion-a-la-programacion/) (Creación digital y pensamiento computacional) prové l'explicació dels comentaris. Són propis els apartats 9.1 (llegibilitat), 9.3.1-9.3.2, 9.4 (usabilitat i UX), 9.5 (documentació), els exercicis i les solucions. Els principis de l'apartat 9.4.1 són una selecció adaptada de les deu heurístiques d'usabilitat de Jakob Nielsen.
+    Unitat elaborada en bona part amb material propi, a partir de la base de Lope González Vázquez ([CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ca)). De [«Tema 11. Fundamentos de programación»](https://lopegonzalez.es/eso-y-bachillerato/tic-i-1o-bachillerato/tema-11-fundamentos-de-programacion/) (TIC I) provenen la idea de la depuració com a feina de detectiu, el depurador amb punts de ruptura, l'inspector de variables i els errors intermitents (adaptats de PyCharm a Visual Studio Code) i la importància de la documentació. De [«Tema 1. Introducción a la programación»](https://lopegonzalez.es/eso-y-bachillerato/creacion-digital-y-pensamiento-computacional-1o-bachillerato/tema-1-introduccion-a-la-programacion/) (Creación digital y pensamiento computacional) prové l'explicació dels comentaris. Són propis els apartats 9.1 (llegibilitat), 9.3.1-9.3.2, 9.4 (usabilitat i UX), 9.5 (documentació), els exercicis i les solucions. Els principis de l'apartat 9.4.1 són una selecció adaptada de les deu heurístiques d'usabilitat de Jakob Nielsen.

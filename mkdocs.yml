@@ -85,6 +85,9 @@ nav:
       - "Unitat 8. Cicle de vida d'un projecte": ptd1/u8-cicle-de-vida.md
       - "Unitat 9. Usabilitat, llegibilitat del codi i documentació": ptd1/u9-usabilitat-documentacio.md
       - "Projecte final": ptd1/projecte-final.md
+      - "Pràctiques amb micro:bit i mBot2":
+          - ptd1/practiques/index.md
+          - "Pràctica 1. El dau electrònic": ptd1/practiques/microbit-1-dau.md
   - PTD II:
       - ptd2/index.md
   - Sobre aquesta web: sobre.md

@@ -19,3 +19,7 @@ Primer contacte amb la programació. Treballarem amb **Python**.
 | 8 | [Cicle de vida d'un projecte](u8-cicle-de-vida.md) |
 | 9 | [Usabilitat, llegibilitat del codi i documentació](u9-usabilitat-documentacio.md) |
 | P | [Projecte final: una aplicació de terminal documentada](projecte-final.md) |
+
+## Pràctiques amb dispositius
+
+A més de les unitats, hi ha [pràctiques amb micro:bit i mBot2](practiques/index.md) per aplicar el que aprens programant dispositius reals, amb blocs o en Python, segons el teu nivell.
