@@ -78,6 +78,10 @@ nav:
       - "Unitat 1. Pensament computacional i algorísmia": ptd1/u1-algorismia.md
       - "Unitat 2. Llenguatges de programació i entorns de desenvolupament": ptd1/u2-llenguatges-ide.md
       - "Unitat 3. Variables, tipus de dades i operadors": ptd1/u3-variables-tipus-operadors.md
+      - "Unitat 4. Estructures condicionals": ptd1/u4-condicionals.md
+      - "Unitat 5. Estructures iteratives": ptd1/u5-iteratives.md
+      - "Unitat 6. Cadenes de caràcters": ptd1/u6-cadenes.md
+      - "Unitat 7. Arrays: llistes i taules": ptd1/u7-arrays.md
   - PTD II:
       - ptd2/index.md
   - Sobre aquesta web: sobre.md
