@@ -18,6 +18,14 @@ Benvinguts i benvingudes. Aquí trobareu els materials de les matèries que impa
 
     [:octicons-arrow-right-24: Accedeix](digitalitzacio/index.md)
 
+-   :material-cog:{ .lg .middle } **Tecnologia · 4t ESO**
+
+    ---
+
+    Projectes, electrònica analògica i digital, pneumàtica, control i robòtica, i tecnologia sostenible.
+
+    [:octicons-arrow-right-24: Accedeix](tecnologia/index.md)
+
 -   :material-language-python:{ .lg .middle } **Programació i Tractament de Dades I · 1r Batx.**
 
     ---
