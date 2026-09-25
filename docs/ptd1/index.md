@@ -11,6 +11,6 @@ Primer contacte amb la programació. Treballarem amb **Python**.
 | 5 | [Estructures iteratives](u5-iteratives.md) |
 | 6 | [Cadenes de caràcters](u6-cadenes.md) |
 | 7 | [Arrays: llistes i taules](u7-arrays.md) |
-| 8 | Cicle de vida d'un projecte *(en preparació)* |
-| 9 | Usabilitat, llegibilitat del codi i documentació *(en preparació)* |
-| P | Projecte final *(en preparació)* |
+| 8 | [Cicle de vida d'un projecte](u8-cicle-de-vida.md) |
+| 9 | [Usabilitat, llegibilitat del codi i documentació](u9-usabilitat-documentacio.md) |
+| P | [Projecte final: una aplicació de terminal documentada](projecte-final.md) |
