@@ -61,7 +61,8 @@ nav:
   - Inici: index.md
   - Digitalització 4t ESO:
       - digitalitzacio/index.md
-      - Unitat 4. Publicació i difusió: digitalitzacio/u4-publicacio-i-difusio.md
+      - "Unitat 4. Publicació i difusió de continguts": digitalitzacio/u4-publicacio-i-difusio.md
+      - "Unitat 5. Seguretat i benestar digital": digitalitzacio/u5-seguretat-i-benestar.md
   - PTD I:
       - ptd1/index.md
   - PTD II:
