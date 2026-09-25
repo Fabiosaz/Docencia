@@ -35,6 +35,9 @@ theme:
   icon:
     logo: material/school
 
+extra_css:
+  - stylesheets/extra.css
+
 plugins:
   - search
 
@@ -58,6 +61,7 @@ nav:
   - Inici: index.md
   - Digitalització 4t ESO:
       - digitalitzacio/index.md
+      - Unitat 4. Publicació i difusió: digitalitzacio/u4-publicacio-i-difusio.md
   - PTD I:
       - ptd1/index.md
   - PTD II:
