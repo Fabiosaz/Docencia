@@ -37,8 +37,6 @@ theme:
 
 plugins:
   - search
-  - offline:
-      enabled: !ENV [OFFLINE, false]
 
 markdown_extensions:
   - admonition
