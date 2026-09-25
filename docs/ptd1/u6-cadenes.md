@@ -57,6 +57,29 @@ print('L\'ordinador')
 
 Per escriure un text de diverses línies també es poden fer servir **cometes triples** (`"""` o `'''`).
 
+!!! example "Exercici 6.1. Índexs"
+    Amb `text = "Menorca"`, quin és el resultat de cada expressió?
+
+    `text[0]` · `text[-1]` · `text[3]` · `len(text)` · `text[len(text) - 1]` · `text[7]`
+
+    ??? success "Solució"
+        `"M"`, `"a"`, `"o"`, `7`, `"a"` i un error `IndexError`: la cadena té 7 caràcters, però els índexs van del 0 al 6.
+
+!!! example "Exercici 6.2. Caràcters especials"
+    Amb **una sola** instrucció `print()`, mostra exactament aquest text, amb un tabulador després dels dos punts:
+
+    ```text
+    Nom:	Anna
+    Ciutat:	"Maó"
+    ```
+
+    ??? success "Solució"
+        ```python
+        print("Nom:\tAnna\nCiutat:\t\"Maó\"")
+        ```
+
+        També podries delimitar la cadena amb cometes simples i així no caldria escapar les dobles: `print('Nom:\tAnna\nCiutat:\t"Maó"')`.
+
 ## 6.2. Llesques (*slicing*)
 
 Una **llesca** és un tros d'una cadena. S'escriu amb la sintaxi `cadena[inici:fi:pas]`, que funciona igual que `range()`: el caràcter de la posició `fi` **no s'inclou**.
@@ -73,6 +96,31 @@ print(text[::-1])   # óicamargorP (al revés)
 
 !!! tip "Girar una cadena"
     `text[::-1]` és la manera més curta de girar una cadena en Python: recorre tota la cadena amb pas -1, és a dir, de darrere cap endavant.
+
+!!! example "Exercici 6.3. Llesques"
+    Amb `p = "Tramuntana"`, quin és el resultat de cada llesca?
+
+    `p[:4]` · `p[4:]` · `p[-4:]` · `p[::3]` · `p[2:6]`
+
+    ??? success "Solució"
+        `"Tram"`, `"untana"`, `"tana"`, `"Tmta"` (posicions 0, 3, 6 i 9) i `"amun"` (posicions 2 a 5).
+
+!!! example "Exercici 6.4. Paraula al revés"
+    Demana una paraula i mostra-la al revés. Resol-ho de dues maneres: amb una llesca i amb un bucle.
+
+    ??? success "Solució"
+        ```python
+        paraula = input("Escriu una paraula: ")
+
+        # Amb una llesca
+        print(paraula[::-1])
+
+        # Amb un bucle: afegim cada lletra davant de les anteriors
+        reves = ""
+        for lletra in paraula:
+            reves = lletra + reves
+        print(reves)
+        ```
 
 ## 6.3. Recórrer una cadena
 
@@ -105,6 +153,37 @@ lletra = "e"
 if lletra in vocals:
     print("És una vocal")
 ```
+
+!!! example "Exercici 6.5. Comptar vocals"
+    Demana una frase i compta quantes vocals té, incloses les accentuades.
+
+    ??? success "Solució"
+        ```python
+        frase = input("Escriu una frase: ")
+        vocals = "aeiouàèéíòóúïü"
+        comptador = 0
+        for lletra in frase.lower():
+            if lletra in vocals:
+                comptador += 1
+        print(f"La frase té {comptador} vocals")
+        ```
+
+!!! example "Exercici 6.6. On apareix la lletra?"
+    Demana una frase i una lletra. Mostra quantes vegades apareix la lletra a la frase i en quines posicions, sense fer servir el mètode `count()`.
+
+    ??? success "Solució"
+        ```python
+        frase = input("Frase: ")
+        lletra = input("Lletra: ")
+        vegades = 0
+        for i in range(len(frase)):
+            if frase[i] == lletra:
+                vegades += 1
+                print("Posició", i)
+        print(f"La lletra '{lletra}' apareix {vegades} vegades")
+        ```
+
+        Com que necessitam la posició, recorrem els índexs amb `range(len(frase))` en lloc de recórrer directament els caràcters.
 
 ## 6.4. Mètodes de les cadenes
 
@@ -156,26 +235,20 @@ print(len(paraules))   # 5
         print("Això no és un nombre enter positiu")
     ```
 
-## 6.5. Exercicis
+!!! example "Exercici 6.7. Mètodes"
+    Amb `s = "  Ciutadella de Menorca  "` (fixa't en els espais del principi i del final), quin és el resultat de cada expressió?
 
-!!! example "Exercici 6.1. Paraula al revés"
-    Demana una paraula i mostra-la al revés. Resol-ho de dues maneres: amb una llesca i amb un bucle.
+    `s.strip()` · `s.strip().upper()` · `s.count("a")` · `s.strip().split()` · `s.strip().replace(" de ", "-")` · `s.find("x")`
 
     ??? success "Solució"
-        ```python
-        paraula = input("Escriu una paraula: ")
+        - `"Ciutadella de Menorca"`
+        - `"CIUTADELLA DE MENORCA"`: els mètodes es poden encadenar, i cada un s'aplica al resultat de l'anterior.
+        - `3`: `count()` distingeix majúscules i minúscules.
+        - `["Ciutadella", "de", "Menorca"]`
+        - `"Ciutadella-Menorca"`
+        - `-1`, perquè no hi ha cap `x`.
 
-        # Amb una llesca
-        print(paraula[::-1])
-
-        # Amb un bucle: afegim cada lletra davant de les anteriors
-        reves = ""
-        for lletra in paraula:
-            reves = lletra + reves
-        print(reves)
-        ```
-
-!!! example "Exercici 6.2. Palíndroms"
+!!! example "Exercici 6.8. Palíndroms"
     Un **palíndrom** és una paraula o frase que es llegeix igual d'esquerra a dreta que de dreta a esquerra, com «Anna» o «radar». Demana una paraula i digues si és un palíndrom, sense tenir en compte les majúscules. Ampliació: fes que funcioni també amb frases, sense tenir en compte els espais, com «Català a l'atac».
 
     ??? success "Solució"
@@ -190,21 +263,7 @@ print(len(paraules))   # 5
 
         Per a l'ampliació amb «Català a l'atac» cal eliminar també els apòstrofs i els accents. Una manera és quedar-se només amb les lletres (`isalpha()`) i substituir cada vocal accentuada per la vocal sense accent amb `replace()`.
 
-!!! example "Exercici 6.3. Comptar vocals"
-    Demana una frase i compta quantes vocals té, incloses les accentuades.
-
-    ??? success "Solució"
-        ```python
-        frase = input("Escriu una frase: ")
-        vocals = "aeiouàèéíòóúïü"
-        comptador = 0
-        for lletra in frase.lower():
-            if lletra in vocals:
-                comptador += 1
-        print(f"La frase té {comptador} vocals")
-        ```
-
-!!! example "Exercici 6.4. Sigles"
+!!! example "Exercici 6.9. Sigles"
     Demana el nom d'una organització i mostra'n les sigles amb les inicials en majúscula de cada paraula. Per exemple, «institut d'educació secundària» → «IDS». Pista: `split()`.
 
     ??? success "Solució"
@@ -216,7 +275,7 @@ print(len(paraules))   # 5
         print(sigles)
         ```
 
-!!! example "Exercici 6.5. Adreça electrònica"
+!!! example "Exercici 6.10. Adreça electrònica"
     Demana una adreça electrònica i comprova que té exactament una `@`, que hi ha text abans i després de l'`@`, i que després de l'`@` hi ha almenys un punt. Si és correcta, mostra el nom d'usuari (la part anterior a l'`@`) i el domini (la part posterior).
 
     ??? success "Solució"
@@ -237,7 +296,7 @@ print(len(paraules))   # 5
 
         Aquesta validació és molt bàsica: comprovar de debò que una adreça és vàlida és força més complicat.
 
-!!! example "Exercici 6.6. Contrasenya segura"
+!!! example "Exercici 6.11. Contrasenya segura"
     Demana una contrasenya i comprova que té almenys 8 caràcters, alguna majúscula, alguna minúscula i alguna xifra. Si no compleix alguna condició, digues quina.
 
     ??? success "Solució"
@@ -271,7 +330,7 @@ print(len(paraules))   # 5
             print("Contrasenya segura")
         ```
 
-## 6.6. Miniprojecte: el xifratge de Cèsar
+## 6.5. Repte: el xifratge de Cèsar
 
 El **xifratge de Cèsar** és un dels mètodes de xifratge més antics i senzills que existeixen. S'atribueix a **Juli Cèsar**, que l'hauria utilitzat per enviar missatges secrets als seus generals. Consisteix a **desplaçar cada lletra del missatge un nombre fix de posicions a l'alfabet**.
 
@@ -318,7 +377,7 @@ Resultat: Krod Prq
 
 El xifratge de Cèsar és **molt insegur**: com que només hi ha 25 claus possibles, es pot trencar per **força bruta** provant-les totes en un instant. A més, no amaga els patrons de la llengua: la lletra més freqüent del missatge original continua sent la més freqüent del missatge xifrat. Tot i això, és una eina excel·lent per entendre els conceptes de clau, xifratge, desxifratge i vulnerabilitat.
 
-!!! example "Exercici 6.7. Trencar el xifratge per força bruta"
+!!! example "Repte 6.1. Trencar el xifratge per força bruta"
     Fes un programa que demani un missatge xifrat amb el xifratge de Cèsar i mostri el resultat de desxifrar-lo amb **totes** les claus possibles (de l'1 al 25). Llegeix-los i descobreix quin és el missatge original d'aquest text: `Vxumxgsgx éy jobkxzoz`.
 
     ??? success "Solució"
@@ -340,7 +399,7 @@ El xifratge de Cèsar és **molt insegur**: com que només hi ha 25 claus possib
 
         El missatge es llegeix amb la clau 6.
 
-!!! example "Exercici 6.8. Ampliació: xifratge de Vigenère"
+!!! example "Repte 6.2. Xifratge de Vigenère"
     El **xifratge de Vigenère** millora el de Cèsar fent servir una **paraula clau**: cada lletra del missatge es desplaça segons la lletra corresponent de la paraula clau (A = 0, B = 1, C = 2…), que es repeteix tantes vegades com calgui. Per exemple, amb la paraula clau `LLUM`, la primera lletra del missatge es desplaça 11 posicions (L), la segona 11 (L), la tercera 20 (U), la quarta 12 (M), la cinquena torna a desplaçar-se 11, etc. Programa'l per a missatges en majúscules i sense espais.
 
     ??? success "Solució"
@@ -362,4 +421,4 @@ El xifratge de Cèsar és **molt insegur**: com que només hi ha 25 claus possib
 ---
 
 !!! quote "Font"
-    Unitat elaborada en bona part amb material propi, a partir de la base de Lope González Vázquez ([CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ca)). De [«Tema 11. Fundamentos de programación»](https://lopegonzalez.es/eso-y-bachillerato/tic-i-1o-bachillerato/tema-11-fundamentos-de-programacion/) (TIC I) provenen els enunciats dels exercicis 6.1 a 6.3. De [«Tema 8. Criptografía»](https://lopegonzalez.es/eso-y-bachillerato/creacion-digital-y-pensamiento-computacional-1o-bachillerato/tema-8-criptografia/) (Creación digital y pensamiento computacional) provenen l'explicació del xifratge de Cèsar, les seves limitacions i la imatge. El codi de Lope, que utilitza funcions, s'ha reescrit sense funcions perquè aquestes no es treballen fins a PTD II. Són propis els apartats 6.1 a 6.4, els exercicis 6.4 a 6.8 i totes les solucions.
+    Unitat elaborada en bona part amb material propi, a partir de la base de Lope González Vázquez ([CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ca)). De [«Tema 11. Fundamentos de programación»](https://lopegonzalez.es/eso-y-bachillerato/tic-i-1o-bachillerato/tema-11-fundamentos-de-programacion/) (TIC I) provenen els enunciats dels exercicis 6.4, 6.5 i 6.8. De [«Tema 8. Criptografía»](https://lopegonzalez.es/eso-y-bachillerato/creacion-digital-y-pensamiento-computacional-1o-bachillerato/tema-8-criptografia/) (Creación digital y pensamiento computacional) provenen l'explicació del xifratge de Cèsar, les seves limitacions i la imatge. El codi de Lope, que utilitza funcions, s'ha reescrit sense funcions perquè aquestes no es treballen fins a PTD II. Són propis els apartats 6.1 a 6.4, la resta d'exercicis i reptes i totes les solucions.

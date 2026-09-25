@@ -87,6 +87,22 @@ La resposta són els **compiladors** i els **intèrprets**, programes que fan de
 !!! info "Un matís"
     Internament, Python també tradueix el codi a un *bytecode* abans d'executar-lo, però aquest procés és automàtic i invisible per a nosaltres. Per això, a efectes pràctics, el consideram un llenguatge interpretat.
 
+!!! example "Exercici 2.1. Compilat o interpretat?"
+    Cerca informació sobre aquests llenguatges i classifica'ls en una taula segons si són de baix nivell, de nivell mitjà o d'alt nivell, i segons si normalment es compilen o s'interpreten: C, Python, JavaScript, assemblador, C++, PHP, Java.
+
+    ??? success "Solució orientativa"
+        | Llenguatge | Nivell | Com s'executa normalment |
+        | --- | --- | --- |
+        | Assemblador | Baix | Un assemblador el tradueix directament a codi màquina |
+        | C | Mitjà | Compilat |
+        | C++ | Mitjà-alt | Compilat |
+        | Java | Alt | Es compila a *bytecode*, que interpreta (i optimitza) la màquina virtual de Java |
+        | Python | Alt | Interpretat (internament, passa per *bytecode*) |
+        | JavaScript | Alt | Interpretat pel navegador (els navegadors actuals el compilen mentre l'executen) |
+        | PHP | Alt | Interpretat al servidor |
+
+        Com veus, la frontera entre compilat i interpretat no sempre és neta: molts de llenguatges moderns combinen les dues estratègies.
+
 ## 2.4. Per què Python?
 
 Python és un llenguatge d'alt nivell i un dels més fàcils d'aprendre. Té una sintaxi molt clara i concisa, que elimina molts de detalls difícils de recordar i en fa l'aprenentatge més àgil.
@@ -224,14 +240,14 @@ if __name__ == "__main__":
 
 La darrera línia, `if __name__ == "__main__":`, indica que la funció `main()` s'ha d'executar quan executam directament aquest arxiu. De moment, basta que sàpigues que és una manera habitual de marcar on comença el programa.
 
-!!! example "Exercici 2.1. El meu primer programa"
+!!! example "Exercici 2.2. El meu primer programa"
     1. Instal·la Thonny (o fes servir l'entorn que tengueu a l'aula) i executa el programa `print("Hola, món!")`.
     2. Copia l'exemple complet d'aquesta unitat, executa'l i prova-lo amb diferents valors del radi.
     3. Canvia el nom i l'edat de la persona per les teves dades i torna'l a executar.
     4. Esborra els quatre espais d'una línia del cos d'una funció i torna a executar el programa. Quin missatge d'error apareix? Què vol dir?
 
-!!! example "Exercici 2.2. Compilat o interpretat?"
-    Cerca informació sobre aquests llenguatges i classifica'ls en una taula segons si són de baix nivell, de nivell mitjà o d'alt nivell, i segons si normalment es compilen o s'interpreten: C, Python, JavaScript, assemblador, C++, PHP, Java.
+    ??? success "Resposta a l'apartat 4"
+        Apareix un error `IndentationError`: Python esperava un bloc sagnat després de la línia que acaba amb dos punts i no l'ha trobat. En Python, el sagnat forma part de la sintaxi: no és només una qüestió d'estètica.
 
 ---
 

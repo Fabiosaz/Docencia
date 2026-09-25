@@ -94,6 +94,42 @@ Descripció: Permet afegir, eliminar i mostrar productes d'una llista
 !!! warning "Codi i comentaris han d'anar d'acord"
     Quan modifiquis el codi, revisa'n els comentaris. Un comentari desactualitzat, que diu una cosa diferent del que fa el codi, és pitjor que no tenir-ne cap.
 
+!!! example "Exercici 9.1. Fes-lo llegible"
+    Reescriu aquest programa perquè sigui llegible: noms descriptius, constants amb nom, capçalera, comentaris útils i missatges clars. Primer esbrina què fa.
+
+    ```python
+    n=int(input())
+    t=0
+    for i in range(n):
+     x=float(input())
+     if x>=5:t=t+1
+    print(t,t/n*100)
+    ```
+
+    ??? success "Solució"
+        ```python
+        """
+        Programa: Percentatge d'aprovats
+        Descripció: Demana les notes d'un grup i mostra quants alumnes han
+                    aprovat i quin percentatge representen.
+        """
+
+        NOTA_APROVAT = 5
+
+        alumnes = int(input("Nombre d'alumnes del grup: "))
+        aprovats = 0
+
+        for i in range(alumnes):
+            nota = float(input(f"Nota de l'alumne {i + 1}: "))
+            if nota >= NOTA_APROVAT:
+                aprovats += 1
+
+        percentatge = aprovats / alumnes * 100
+        print(f"Aprovats: {aprovats} de {alumnes} ({percentatge:.1f} %)")
+        ```
+
+        Encara es podria millorar: què passa si l'usuari escriu 0 alumnes? I si escriu una nota com «7,5» amb coma?
+
 ## 9.3. Depuració
 
 Com vam veure a la unitat 8, els errors poden ser de sintaxi, d'execució o de lògica. La **depuració** (en anglès *debugging*, literalment «treure insectes») és el procés de trobar i corregir aquests errors. És com fer de detectiu: se cerquen pistes (els errors), s'analitzen les causes i es resol el problema.
@@ -148,6 +184,20 @@ El depurador no només serveix per trobar errors: també és una manera excel·l
 !!! tip "Els errors intermitents"
     Els errors més difícils de trobar són els que no apareixen a totes les execucions, sinó només en certes condicions: amb unes dades concretes, un cas límit… Per això és tan important la taula de proves de la unitat 8, amb casos normals, casos límit i dades incorrectes.
 
+!!! example "Exercici 9.2. Caça l'error amb el depurador"
+    Aquest programa hauria de calcular la mitjana de les notes, però dona un resultat incorrecte. Executa'l pas a pas amb el depurador de Thonny, observa el valor de les variables i troba l'error.
+
+    ```python
+    notes = [6, 8, 7, 9]
+    suma = 0
+    for i in range(1, len(notes)):
+        suma += notes[i]
+    print("Mitjana:", suma / len(notes))
+    ```
+
+    ??? success "Solució"
+        El bucle comença a l'índex 1, de manera que se salta la primera nota (el 6). La suma dona 24 en lloc de 30, i la mitjana 6.0 en lloc de 7.5. S'ha de fer `range(len(notes))` o, millor encara, `for nota in notes:`.
+
 ## 9.4. Usabilitat i experiència d'usuari
 
 La **usabilitat** és la facilitat amb què una persona pot fer servir un programa per aconseguir el que vol: que n'aprengui a fer-lo servir ràpidament, que el faci servir sense errors i que no s'hi perdi. L'**experiència d'usuari** (UX, de l'anglès *user experience*) és un concepte més ampli: inclou tot el que la persona sent i percep quan fa servir el programa, també si li resulta agradable i útil.
@@ -186,7 +236,7 @@ print("1. Afegir l'IVA a un preu")
 print("2. Sortir")
 
 opcio = input("Tria una opció (1-2): ").strip()
-while opcio not in ("1", "2"):
+while opcio not in ["1", "2"]:
     opcio = input("Opció no vàlida. Escriu 1 o 2: ").strip()
 
 if opcio == "1":
@@ -244,6 +294,16 @@ Aigua          1.00€
 Croissant      1.80€
 ```
 
+!!! example "Exercici 9.3. Millora la usabilitat"
+    Tria un dels programes amb menú que has fet (per exemple, la llista de la compra de l'exercici 7.6) i millora'n la usabilitat aplicant els principis de l'apartat 9.4: títol, missatges clars, validació de totes les entrades, confirmació de les accions, demanar confirmació abans d'esborrar i sortida ben formatada. Fes una llista dels canvis que has fet i del principi que aplica cada un.
+
+!!! example "Exercici 9.4. Avaluació d'usabilitat"
+    Intercanvia el programa de l'exercici anterior amb un company o una companya. Fes-lo servir **sense mirar el codi** i sense que ningú t'expliqui res, i apunta:
+
+    1. Les vegades que no has sabut què havies de fer.
+    2. Els errors que has comès i si el programa t'ha ajudat a corregir-los.
+    3. Tres propostes de millora.
+
 ## 9.5. Documentació
 
 Un programa sense documentació és molt difícil de fer servir i de mantenir. Hi ha dos tipus de documentació, adreçats a dos públics diferents:
@@ -283,68 +343,6 @@ El **manual d'usuari** (o guia d'ús) explica a la persona usuària com fer serv
 - **Completa**: cobreix totes les funcions i els casos d'error.
 - **Ben estructurada**: amb títols, llistes numerades per als passos i un índex si és llarga.
 - **Amb exemples**: un exemple sovint s'entén millor que un paràgraf d'explicació.
-
-## 9.6. Exercicis
-
-!!! example "Exercici 9.1. Fes-lo llegible"
-    Reescriu aquest programa perquè sigui llegible: noms descriptius, constants amb nom, capçalera, comentaris útils i missatges clars. Primer esbrina què fa.
-
-    ```python
-    n=int(input())
-    t=0
-    for i in range(n):
-     x=float(input())
-     if x>=5:t=t+1
-    print(t,t/n*100)
-    ```
-
-    ??? success "Solució"
-        ```python
-        """
-        Programa: Percentatge d'aprovats
-        Descripció: Demana les notes d'un grup i mostra quants alumnes han
-                    aprovat i quin percentatge representen.
-        """
-
-        NOTA_APROVAT = 5
-
-        alumnes = int(input("Nombre d'alumnes del grup: "))
-        aprovats = 0
-
-        for i in range(alumnes):
-            nota = float(input(f"Nota de l'alumne {i + 1}: "))
-            if nota >= NOTA_APROVAT:
-                aprovats += 1
-
-        percentatge = aprovats / alumnes * 100
-        print(f"Aprovats: {aprovats} de {alumnes} ({percentatge:.1f} %)")
-        ```
-
-        Encara es podria millorar: què passa si l'usuari escriu 0 alumnes? I si escriu una nota com «7,5» amb coma?
-
-!!! example "Exercici 9.2. Caça l'error amb el depurador"
-    Aquest programa hauria de calcular la mitjana de les notes, però dona un resultat incorrecte. Executa'l pas a pas amb el depurador de Thonny, observa el valor de les variables i troba l'error.
-
-    ```python
-    notes = [6, 8, 7, 9]
-    suma = 0
-    for i in range(1, len(notes)):
-        suma += notes[i]
-    print("Mitjana:", suma / len(notes))
-    ```
-
-    ??? success "Solució"
-        El bucle comença a l'índex 1, de manera que se salta la primera nota (el 6). La suma dona 24 en lloc de 30, i la mitjana 6.0 en lloc de 7.5. S'ha de fer `range(len(notes))` o, millor encara, `for nota in notes:`.
-
-!!! example "Exercici 9.3. Millora la usabilitat"
-    Tria un dels programes amb menú que has fet (per exemple, la llista de la compra de l'exercici 7.3) i millora'n la usabilitat aplicant els principis de l'apartat 9.4: títol, missatges clars, validació de totes les entrades, confirmació de les accions, demanar confirmació abans d'esborrar i sortida ben formatada. Fes una llista dels canvis que has fet i del principi que aplica cada un.
-
-!!! example "Exercici 9.4. Avaluació d'usabilitat"
-    Intercanvia el programa de l'exercici anterior amb un company o una companya. Fes-lo servir **sense mirar el codi** i sense que ningú t'expliqui res, i apunta:
-
-    1. Les vegades que no has sabut què havies de fer.
-    2. Els errors que has comès i si el programa t'ha ajudat a corregir-los.
-    3. Tres propostes de millora.
 
 !!! example "Exercici 9.5. README i manual d'usuari"
     Escriu el `README.md` i un manual d'usuari breu (una o dues pàgines) del programa que has millorat a l'exercici 9.3, seguint les estructures dels apartats 9.5.1 i 9.5.2.

@@ -29,6 +29,44 @@ A cada iteració, la variable `numero` pren el valor següent de la seqüència 
 !!! warning "El darrer valor no s'inclou"
     L'error més habitual amb `range()` és oblidar que el valor final no s'inclou. Per recórrer de l'1 al 10, has d'escriure `range(1, 11)`.
 
+!!! example "Exercici 5.1. Quins valors genera?"
+    Escriu els valors que genera cada `range()`. Després comprova-ho amb un bucle `for` que els mostri.
+
+    `range(3)` · `range(2, 6)` · `range(0, 10, 3)` · `range(10, 0, -3)` · `range(5, 2)`
+
+    ??? success "Solució"
+        - `range(3)`: 0, 1, 2
+        - `range(2, 6)`: 2, 3, 4, 5
+        - `range(0, 10, 3)`: 0, 3, 6, 9
+        - `range(10, 0, -3)`: 10, 7, 4, 1
+        - `range(5, 2)`: cap valor. Per anar de 5 a 2 cap enrere cal un pas negatiu, `range(5, 2, -1)`; sense pas, el bucle no s'executa cap vegada.
+
+!!! example "Exercici 5.2. Taula de multiplicar"
+    Demana un nombre i mostra la seva taula de multiplicar de l'1 al 10.
+
+    ??? success "Solució"
+        ```python
+        n = int(input("Quina taula vols? "))
+        for i in range(1, 11):
+            print(f"{n} x {i} = {n * i}")
+        ```
+
+!!! example "Exercici 5.3. Senars i parells"
+    Demana un nombre i mostra, primer, tots els nombres senars des de l'1 fins a aquest nombre i, després, tots els parells.
+
+    ??? success "Solució"
+        ```python
+        n = int(input("Escriu un nombre: "))
+        print("Senars:")
+        for i in range(1, n + 1, 2):
+            print(i, end=" ")
+        print()
+        print("Parells:")
+        for i in range(2, n + 1, 2):
+            print(i, end=" ")
+        print()
+        ```
+
 ### 5.1.2. Recórrer una cadena
 
 El `for` també pot recórrer directament els caràcters d'una cadena. Ho aprofitarem molt a la unitat 6.
@@ -37,6 +75,24 @@ El `for` també pot recórrer directament els caràcters d'una cadena. Ho aprofi
 for lletra in "Python":
     print(lletra)   # P y t h o n, una lletra a cada línia
 ```
+
+!!! example "Exercici 5.4. Lletra a lletra"
+    Demana una paraula i mostra-la en vertical, amb cada lletra en majúscula i repetida dues vegades. Per exemple, amb `sol`:
+
+    ```text
+    SS
+    OO
+    LL
+    ```
+
+    ??? success "Solució"
+        ```python
+        paraula = input("Escriu una paraula: ")
+        for lletra in paraula:
+            print(lletra.upper() * 2)
+        ```
+
+        `upper()` converteix una cadena en majúscules. A la unitat 6 veurem molts més mètodes com aquest.
 
 ## 5.2. El bucle `while`
 
@@ -79,6 +135,53 @@ print("Nota desada:", nota)
     - Saps quantes vegades s'ha de repetir, o has de recórrer una seqüència? → `for`.
     - Depèn d'una condició que no saps quan es complirà (l'usuari, un càlcul, un sensor…)? → `while`.
 
+!!! example "Exercici 5.5. Validar l'edat"
+    Demana l'edat de l'usuari i, mentre no sigui un nombre entre 0 i 120, torna-la a demanar amb un missatge que expliqui el problema. Al final, mostra «Edat desada: X».
+
+    ??? success "Solució"
+        ```python
+        edat = int(input("Edat: "))
+        while edat < 0 or edat > 120:
+            print("L'edat ha de ser un nombre entre 0 i 120.")
+            edat = int(input("Edat: "))
+        print("Edat desada:", edat)
+        ```
+
+!!! example "Exercici 5.6. Endevina el nombre"
+    El programa pensa un nombre a l'atzar entre 1 i 100 i l'usuari l'ha d'endevinar. Després de cada intent, el programa diu si el nombre secret és més gran o més petit. Quan l'encerta, mostra quants d'intents ha necessitat. Per generar el nombre, fes servir `random.randint(1, 100)` després d'escriure `import random`.
+
+    ??? success "Solució"
+        ```python
+        import random
+
+        secret = random.randint(1, 100)
+        intents = 0
+        intent = 0
+        while intent != secret:
+            intent = int(input("Quin nombre és? "))
+            intents = intents + 1
+            if intent < secret:
+                print("És més gran")
+            elif intent > secret:
+                print("És més petit")
+        print(f"Encertat en {intents} intents!")
+        ```
+
+!!! example "Exercici 5.7. Màxim comú divisor"
+    Demana dos nombres enters positius i calcula'n el màxim comú divisor (MCD) amb l'**algorisme d'Euclides**: mentre el segon nombre no sigui 0, substitueix el primer pel segon i el segon pel residu de dividir el primer entre el segon. Quan el segon és 0, el primer és el MCD.
+
+    ??? success "Solució"
+        ```python
+        a = int(input("Primer nombre: "))
+        b = int(input("Segon nombre: "))
+        x, y = a, b
+        while y != 0:
+            x, y = y, x % y
+        print(f"El MCD de {a} i {b} és {x}")
+        ```
+
+        La línia `x, y = y, x % y` és una **assignació múltiple**: calcula primer els dos valors de la dreta i després els assigna a la vegada.
+
 ## 5.3. Comptadors i acumuladors
 
 Dins els bucles, hi ha dos patrons que apareixen constantment:
@@ -104,6 +207,43 @@ print(f"Aprovats: {aprovats}")
 
 !!! info "Operadors d'assignació abreujats"
     `suma = suma + nota` es pot escriure més curt com `suma += nota`. Igualment existeixen `-=`, `*=`, `/=`, `//=` i `%=`.
+
+!!! example "Exercici 5.8. Suma fins a n"
+    Demana un nombre i calcula la suma de tots els nombres des de l'1 fins a aquest nombre.
+
+    ??? success "Solució"
+        ```python
+        n = int(input("Escriu un nombre: "))
+        suma = 0
+        for i in range(1, n + 1):
+            suma += i
+        print(f"La suma de l'1 al {n} és {suma}")
+        ```
+
+!!! example "Exercici 5.9. Factorial"
+    El factorial d'un nombre n (s'escriu n!) és el producte de tots els enters des de l'1 fins a n. Per exemple, 5! = 5 × 4 × 3 × 2 × 1 = 120, i per definició 0! = 1. Demana un nombre i calcula'n el factorial.
+
+    ??? success "Solució"
+        ```python
+        n = int(input("Escriu un nombre: "))
+        factorial = 1   # acumulador de productes: comença a 1
+        for i in range(2, n + 1):
+            factorial *= i
+        print(f"{n}! = {factorial}")
+        ```
+
+!!! example "Exercici 5.10. Successió de Fibonacci"
+    La successió de Fibonacci comença amb 0 i 1, i cada terme és la suma dels dos anteriors: 0, 1, 1, 2, 3, 5, 8, 13… Demana un nombre i mostra tots els termes de la successió que no el superin.
+
+    ??? success "Solució"
+        ```python
+        limit = int(input("Fins a quin nombre? "))
+        a, b = 0, 1
+        while a <= limit:
+            print(a, end=" ")
+            a, b = b, a + b
+        print()
+        ```
 
 ## 5.4. Instruccions de salt: `break` i `continue`
 
@@ -141,100 +281,52 @@ print("Adéu!")
 !!! tip "Amb moderació"
     `break` i `continue` són útils, però si n'abuses el flux del programa es fa difícil de seguir. Sovint es pot escriure una condició del `while` més clara.
 
-## 5.5. Bucles niats
-
-Un bucle pot contenir un altre bucle. Per cada iteració del bucle exterior, el bucle interior es fa **complet**.
-
-```python
-for fila in range(1, 4):
-    for columna in range(1, 4):
-        print(fila * columna, end="\t")
-    print()   # salt de línia en acabar cada fila
-```
-
-```text title="Sortida"
-1	2	3
-2	4	6
-3	6	9
-```
-
-Els bucles niats seran imprescindibles a la unitat 7 per recórrer taules (llistes de llistes).
-
-## 5.6. Exercicis
-
-Intenta resoldre cada problema tu tot sol i consulta la solució només quan ja no sàpigues com continuar.
-
-!!! example "Exercici 5.1. Taula de multiplicar"
-    Demana un nombre i mostra la seva taula de multiplicar de l'1 al 10.
+!!! example "Exercici 5.11. Recompte de vots"
+    En una votació de delegat hi ha dos candidats, l'A i la B. Demana els vots un a un (`A`, `B` o `blanc`) fins que l'usuari escrigui `fi`. Els vots que no siguin cap d'aquests tres són nuls: no es compten i s'ha d'avisar l'usuari (fes servir `continue`). Al final, mostra el recompte i el guanyador.
 
     ??? success "Solució"
         ```python
-        n = int(input("Quina taula vols? "))
-        for i in range(1, 11):
-            print(f"{n} x {i} = {n * i}")
+        vots_a = 0
+        vots_b = 0
+        blancs = 0
+
+        while True:
+            vot = input("Vot (A, B, blanc o fi): ").strip().upper()
+            if vot == "FI":
+                break
+            if vot != "A" and vot != "B" and vot != "BLANC":
+                print("Vot nul, no es compta")
+                continue
+            if vot == "A":
+                vots_a += 1
+            elif vot == "B":
+                vots_b += 1
+            else:
+                blancs += 1
+
+        print(f"A: {vots_a}  B: {vots_b}  Blancs: {blancs}")
+        if vots_a > vots_b:
+            print("Guanya l'A")
+        elif vots_b > vots_a:
+            print("Guanya la B")
+        else:
+            print("Empat")
         ```
 
-!!! example "Exercici 5.2. Suma fins a n"
-    Demana un nombre i calcula la suma de tots els nombres des de l'1 fins a aquest nombre.
+!!! example "Exercici 5.12. El primer múltiple"
+    Troba el primer nombre més gran que 100 que és múltiple de 7 i de 13 alhora. Fes servir un bucle `while True` i `break`.
 
     ??? success "Solució"
         ```python
-        n = int(input("Escriu un nombre: "))
-        suma = 0
-        for i in range(1, n + 1):
-            suma += i
-        print(f"La suma de l'1 al {n} és {suma}")
+        n = 101
+        while True:
+            if n % 7 == 0 and n % 13 == 0:
+                break
+            n += 1
+        print(n)   # 182
         ```
 
-!!! example "Exercici 5.3. Senars i parells"
-    Demana un nombre i mostra, primer, tots els nombres senars des de l'1 fins a aquest nombre i, després, tots els parells.
-
-    ??? success "Solució"
-        ```python
-        n = int(input("Escriu un nombre: "))
-        print("Senars:")
-        for i in range(1, n + 1, 2):
-            print(i, end=" ")
-        print()
-        print("Parells:")
-        for i in range(2, n + 1, 2):
-            print(i, end=" ")
-        print()
-        ```
-
-!!! example "Exercici 5.4. Factorial"
-    El factorial d'un nombre n (s'escriu n!) és el producte de tots els enters des de l'1 fins a n. Per exemple, 5! = 5 × 4 × 3 × 2 × 1 = 120, i per definició 0! = 1. Demana un nombre i calcula'n el factorial.
-
-    ??? success "Solució"
-        ```python
-        n = int(input("Escriu un nombre: "))
-        factorial = 1   # acumulador de productes: comença a 1
-        for i in range(2, n + 1):
-            factorial *= i
-        print(f"{n}! = {factorial}")
-        ```
-
-!!! example "Exercici 5.5. Endevina el nombre"
-    El programa pensa un nombre a l'atzar entre 1 i 100 i l'usuari l'ha d'endevinar. Després de cada intent, el programa diu si el nombre secret és més gran o més petit. Quan l'encerta, mostra quants d'intents ha necessitat. Per generar el nombre, fes servir `random.randint(1, 100)` després d'escriure `import random`.
-
-    ??? success "Solució"
-        ```python
-        import random
-
-        secret = random.randint(1, 100)
-        intents = 0
-        intent = 0
-        while intent != secret:
-            intent = int(input("Quin nombre és? "))
-            intents += 1
-            if intent < secret:
-                print("És més gran")
-            elif intent > secret:
-                print("És més petit")
-        print(f"Encertat en {intents} intents!")
-        ```
-
-!!! example "Exercici 5.6. Nombre primer"
+!!! example "Exercici 5.13. Nombre primer"
     Un nombre és **primer** si és major que 1 i només és divisible per ell mateix i per l'1. Demana un nombre i digues si és primer.
 
     ??? success "Solució"
@@ -254,35 +346,49 @@ Intenta resoldre cada problema tu tot sol i consulta la solució només quan ja 
 
         No cal provar tots els divisors fins a n: si n té algun divisor, n'ha de tenir un que sigui menor o igual que la seva arrel quadrada. Per això el bucle s'atura quan `divisor * divisor` supera n.
 
-!!! example "Exercici 5.7. Màxim comú divisor"
-    Demana dos nombres enters positius i calcula'n el màxim comú divisor (MCD) amb l'**algorisme d'Euclides**: mentre el segon nombre no sigui 0, substitueix el primer pel segon i el segon pel residu de dividir el primer entre el segon. Quan el segon és 0, el primer és el MCD.
+## 5.5. Bucles niats
+
+Un bucle pot contenir un altre bucle. Per cada iteració del bucle exterior, el bucle interior es fa **complet**.
+
+```python
+for fila in range(1, 4):
+    for columna in range(1, 4):
+        print(fila * columna, end="\t")
+    print()   # salt de línia en acabar cada fila
+```
+
+```text title="Sortida"
+1	2	3
+2	4	6
+3	6	9
+```
+
+Els bucles niats seran imprescindibles a la unitat 7 per recórrer taules (llistes de llistes).
+
+!!! example "Exercici 5.14. Triangle d'asteriscs"
+    Demana un nombre `n` i dibuixa un triangle de `n` files, amb un asterisc a la primera fila, dos a la segona, etc. Fes-ho amb **dos bucles niats**, sense fer servir `"*" * i`.
+
+    ```text
+    *
+    **
+    ***
+    ****
+    ```
 
     ??? success "Solució"
         ```python
-        a = int(input("Primer nombre: "))
-        b = int(input("Segon nombre: "))
-        x, y = a, b
-        while y != 0:
-            x, y = y, x % y
-        print(f"El MCD de {a} i {b} és {x}")
+        n = int(input("Nombre de files: "))
+        for fila in range(1, n + 1):
+            for columna in range(fila):
+                print("*", end="")
+            print()
         ```
 
-        La línia `x, y = y, x % y` és una **assignació múltiple**: calcula primer els dos valors de la dreta i després els assigna a la vegada.
+        El bucle interior es repeteix tantes vegades com indica el número de fila. Ampliació: aconsegueix que el triangle quedi alineat a la dreta.
 
-!!! example "Exercici 5.8. Successió de Fibonacci"
-    La successió de Fibonacci comença amb 0 i 1, i cada terme és la suma dels dos anteriors: 0, 1, 1, 2, 3, 5, 8, 13… Demana un nombre i mostra tots els termes de la successió que no el superin.
+## 5.6. Reptes
 
-    ??? success "Solució"
-        ```python
-        limit = int(input("Fins a quin nombre? "))
-        a, b = 0, 1
-        while a <= limit:
-            print(a, end=" ")
-            a, b = b, a + b
-        print()
-        ```
-
-!!! example "Exercici 5.9. Nombres d'Armstrong"
+!!! example "Repte 5.1. Nombres d'Armstrong"
     Un nombre d'Armstrong és igual a la suma de cadascuna de les seves xifres elevada al nombre total de xifres. Per exemple, 153 té 3 xifres i 1³ + 5³ + 3³ = 153. Demana un nombre i digues si és d'Armstrong. Pista: `n % 10` dona la darrera xifra i `n // 10` l'elimina.
 
     ??? success "Solució"
@@ -313,7 +419,7 @@ Intenta resoldre cada problema tu tot sol i consulta la solució només quan ja 
 
         A la unitat 6 veurem que, convertint el nombre en cadena amb `str(n)`, les xifres es poden comptar amb `len()`.
 
-!!! example "Exercici 5.10. Estadístiques de notes"
+!!! example "Repte 5.2. Estadístiques de notes"
     Demana notes a l'usuari fins que escrigui `-1`. En acabar, mostra quantes notes ha introduït, la mitjana, la nota més alta i la més baixa. No acceptis notes fora de l'interval 0-10.
 
     ??? success "Solució"
@@ -350,4 +456,4 @@ Intenta resoldre cada problema tu tot sol i consulta la solució només quan ja 
 ---
 
 !!! quote "Font"
-    Unitat elaborada a partir de materials de Lope González Vázquez ([CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ca)): [«Tema 11. Fundamentos de programación»](https://lopegonzalez.es/eso-y-bachillerato/tic-i-1o-bachillerato/tema-11-fundamentos-de-programacion/) (TIC I) i [«Tema 1. Introducción a la programación»](https://lopegonzalez.es/eso-y-bachillerato/creacion-digital-y-pensamiento-computacional-1o-bachillerato/tema-1-introduccion-a-la-programacion/) (Creación digital y pensamiento computacional). Canvis: traducció al català, adaptació al currículum de Programació i Tractament de Dades I de les Illes Balears i explicació de `range()` en taula. Els enunciats dels exercicis 5.1 a 5.4 i 5.6 a 5.9 provenen dels exercicis resolts de Lope (el 5.3 uneix dos exercicis i el 5.7 hi afegeix l'algorisme d'Euclides). Són propis els apartats 5.1.2, 5.3 i 5.5, la validació amb `while`, el patró `while True`, el diagrama de flux, els requadres, els exercicis 5.5 i 5.10 i totes les solucions.
+    Unitat elaborada a partir de materials de Lope González Vázquez ([CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ca)): [«Tema 11. Fundamentos de programación»](https://lopegonzalez.es/eso-y-bachillerato/tic-i-1o-bachillerato/tema-11-fundamentos-de-programacion/) (TIC I) i [«Tema 1. Introducción a la programación»](https://lopegonzalez.es/eso-y-bachillerato/creacion-digital-y-pensamiento-computacional-1o-bachillerato/tema-1-introduccion-a-la-programacion/) (Creación digital y pensamiento computacional). Canvis: traducció al català, adaptació al currículum de Programació i Tractament de Dades I de les Illes Balears i explicació de `range()` en taula. Els enunciats dels exercicis 5.2, 5.3, 5.7 a 5.10 i 5.13 i del repte 5.1 provenen dels exercicis resolts de Lope (el 5.3 uneix dos exercicis i el 5.7 hi afegeix l'algorisme d'Euclides). Són propis els apartats 5.1.2, 5.3 i 5.5, la validació amb `while`, el patró `while True`, el diagrama de flux, els requadres, la resta d'exercicis i reptes i totes les solucions.

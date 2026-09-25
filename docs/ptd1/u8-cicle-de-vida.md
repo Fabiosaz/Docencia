@@ -144,7 +144,7 @@ Els errors de lògica són els més difícils de detectar, perquè Python no avi
 
 ### 8.5.2. Taula de proves
 
-Una **taula de proves** recull els casos que es provaran. És important no provar només els casos «normals», sinó també els **casos límit** (els valors just a la frontera entre dues respostes) i les **dades incorrectes**. Per exemple, per al programa de qualificacions de l'exercici 4.6:
+Una **taula de proves** recull els casos que es provaran. És important no provar només els casos «normals», sinó també els **casos límit** (els valors just a la frontera entre dues respostes) i les **dades incorrectes**. Per exemple, per al programa de qualificacions de l'exercici 4.7:
 
 | Cas | Entrada | Resultat esperat | Resultat obtingut | Correcte? |
 | --- | --- | --- | --- | --- |
@@ -223,7 +223,7 @@ El control de versions també permet que **diverses persones treballin sobre el 
     Descompon amb un diagrama en arbre, com el de l'apartat 8.4, un programa que gestioni la biblioteca d'aula: donar d'alta llibres, prestar-los, tornar-los i consultar quins llibres té cada alumne. Arriba fins a un nivell en què cada tasca sigui prou petita per programar-la directament.
 
 !!! example "Exercici 8.5. Taula de proves"
-    Fes la taula de proves de l'exercici 4.8 (tarifa del bus). Inclou casos normals, casos límit i dades incorrectes. Executa el programa amb cada cas, completa les columnes «Resultat obtingut» i «Correcte?» i, si trobes algun error, corregeix-lo.
+    Fes la taula de proves de l'exercici 4.9 (tarifa del bus). Inclou casos normals, casos límit i dades incorrectes. Executa el programa amb cada cas, completa les columnes «Resultat obtingut» i «Correcte?» i, si trobes algun error, corregeix-lo.
 
 ---
 
