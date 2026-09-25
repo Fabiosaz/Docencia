@@ -48,7 +48,11 @@ markdown_extensions:
   - tables
   - toc: {permalink: true}
   - pymdownx.details
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.highlight: {anchor_linenums: true, line_spans: __span}
   - pymdownx.inlinehilite
   - pymdownx.keys
@@ -71,6 +75,9 @@ nav:
       - "Unitat 7. Ciutadania digital crítica": digitalitzacio/u7-ciutadania-digital-critica.md
   - PTD I:
       - ptd1/index.md
+      - "Unitat 1. Pensament computacional i algorísmia": ptd1/u1-algorismia.md
+      - "Unitat 2. Llenguatges de programació i entorns de desenvolupament": ptd1/u2-llenguatges-ide.md
+      - "Unitat 3. Variables, tipus de dades i operadors": ptd1/u3-variables-tipus-operadors.md
   - PTD II:
       - ptd2/index.md
   - Sobre aquesta web: sobre.md
