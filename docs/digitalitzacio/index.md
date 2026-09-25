@@ -17,4 +17,4 @@ Aquests blocs es desenvolupen en set unitats:
 | 4 | [Publicació i difusió de continguts](u4-publicacio-i-difusio.md) | 2 |
 | 5 | [Seguretat i benestar digital](u5-seguretat-i-benestar.md) | 3 |
 | 6 | [Comerç electrònic](u6-comerc-electronic.md) | 4 |
-| 7 | Ciutadania digital crítica *(en preparació)* | 4 |
+| 7 | [Ciutadania digital crítica](u7-ciutadania-digital-critica.md) | 4 |
