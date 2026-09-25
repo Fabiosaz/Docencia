@@ -12,7 +12,7 @@ Aquests blocs es desenvolupen en set unitats:
 | Unitat | Títol | Bloc |
 | --- | --- | --- |
 | 1 | [Dispositius digitals, sistemes operatius i de comunicació](u1-dispositius-digitals.md) | 1 |
-| 2 | Gestió de la informació *(en preparació)* | 2 |
+| 2 | [Gestió de la informació](u2-gestio-informacio.md) | 2 |
 | 3 | Edició i creació de continguts *(en preparació)* | 2 |
 | 4 | [Publicació i difusió de continguts](u4-publicacio-i-difusio.md) | 2 |
 | 5 | [Seguretat i benestar digital](u5-seguretat-i-benestar.md) | 3 |
