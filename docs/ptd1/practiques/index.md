@@ -43,9 +43,12 @@ El Python que fas servir en aquests entorns s'assembla molt al que programes a V
 | Pràctica | Dispositiu | Unitats relacionades |
 | --- | --- | --- |
 | [1. El dau electrònic](microbit-1-dau.md) | micro:bit | 1, 3, 4 i 7 |
-| 2. Detector de dia i nit *(en preparació)* | micro:bit | 4 |
-| 3. Esquivar obstacles *(en preparació)* | mBot2 | 4 i 5 |
-| 4. Seguidor de línia *(en preparació)* | mBot2 | 5 |
-| 5. Missatges xifrats per ràdio *(en preparació)* | micro:bit | 6 |
-| 6. Registre de temperatures *(en preparació)* | micro:bit | 7 |
-| 7. El robot gravadora *(en preparació)* | mBot2 | 7 |
+| [2. Detector de dia i nit](microbit-2-dia-nit.md) | micro:bit | 4 i 5 |
+| [3. Esquivar obstacles](mbot2-3-obstacles.md) | mBot2 | 4 i 5 |
+| [4. Seguidor de línia](mbot2-4-seguidor-linia.md) | mBot2 | 4 i 5 |
+| [5. Missatges xifrats per ràdio](microbit-5-missatges-xifrats.md) | Dues micro:bit | 6 i 7 |
+| [6. Registre de temperatures](microbit-6-temperatures.md) | micro:bit | 5 i 7 |
+| [7. El robot gravadora](mbot2-7-gravadora.md) | mBot2 | 5 i 7 |
+
+!!! warning "Codi provat en simulació"
+    Les solucions s'han comprovat amb simulacions de les llibreries de la micro:bit i de l'mBot2, no amb els dispositius reals. Si alguna instrucció no funciona a la vostra versió de l'editor, compara-la amb el Python que genera l'editor a partir dels blocs.

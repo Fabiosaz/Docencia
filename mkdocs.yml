@@ -88,6 +88,12 @@ nav:
       - "Pràctiques amb micro:bit i mBot2":
           - ptd1/practiques/index.md
           - "Pràctica 1. El dau electrònic": ptd1/practiques/microbit-1-dau.md
+          - "Pràctica 2. Detector de dia i nit": ptd1/practiques/microbit-2-dia-nit.md
+          - "Pràctica 3. Esquivar obstacles": ptd1/practiques/mbot2-3-obstacles.md
+          - "Pràctica 4. Seguidor de línia": ptd1/practiques/mbot2-4-seguidor-linia.md
+          - "Pràctica 5. Missatges xifrats per ràdio": ptd1/practiques/microbit-5-missatges-xifrats.md
+          - "Pràctica 6. Registre de temperatures": ptd1/practiques/microbit-6-temperatures.md
+          - "Pràctica 7. El robot gravadora": ptd1/practiques/mbot2-7-gravadora.md
   - PTD II:
       - ptd2/index.md
   - Sobre aquesta web: sobre.md
