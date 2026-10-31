@@ -13,6 +13,21 @@ Les aplicacions que fas servir cada dia (la xarxa social, la plataforma de l'ins
 !!! tip "Com fer servir el vídeo"
     Cada apartat indica quina lliçó del vídeo li correspon i hi enllaça al minut exacte. Pots mirar el vídeo abans de llegir l'apartat, per tenir-ne una primera idea, o després, per repassar-lo. El vídeo és en castellà i fa servir MySQL.
 
+## El curs en vídeo
+
+Aquest mòdul i els tres següents ([SQL: consultar i modificar dades](sql.md), [SQL: taules i dades relacionades](sql-taules.md) i [SQL avançat i accés des de Python](sql-avancat.md)) segueixen el curs «Hello SQL» de Brais Moure (MoureDev), un curs des de zero d'unes set hores. Les primeres lliçons, fins al minut 45 aproximadament, corresponen a aquest mòdul.
+
+<div class="video">
+<iframe src="https://www.youtube-nocookie.com/embed/OuJerKzV5T0" title="Curs «Hello SQL» de MoureDev" loading="lazy" allowfullscreen></iframe>
+</div>
+
+| Mòdul | Lliçons del vídeo |
+| --- | --- |
+| Fonaments i disseny (aquest) | 1 a 3 i 14 |
+| [SQL: consultar i modificar dades](sql.md) | 4 a 11 |
+| [SQL: taules i dades relacionades](sql-taules.md) | 12 a 17 |
+| [SQL avançat i accés des de Python](sql-avancat.md) | 18 a 22 |
+
 ## 1. Dades, informació i bases de dades
 
 > **Vídeo:** [lliçó 1, «Bases de datos SQL»](https://youtu.be/OuJerKzV5T0?t=234)
