@@ -151,6 +151,11 @@ flowchart TD
     D --> E([Fi])
 ```
 
+!!! tip "Vídeo recomanat: curs de PSeInt"
+    [PSeInt](https://pseint.sourceforge.net/) és un programa gratuït per escriure pseudocodi i **executar-lo**: comprova si l'algorisme funciona i també en dibuixa el diagrama de flux. El curs en vídeo [«Curso PseInt»](https://www.youtube.com/playlist?list=PLAzlSdU-KYwXllXcUCW-BylQZemcDV798), del canal Danisable, l'explica pas a pas en 38 vídeos curts. Mira'n els primers per fer l'exercici 1.2 amb PSeInt.
+
+    PSeInt fa servir pseudocodi en castellà (`Algoritmo`, `Leer`, `Escribir`, `Si … Entonces … FinSi`). La idea és la mateixa que la del nostre pseudocodi en català; només canvien les paraules.
+
 !!! example "Exercici 1.2. Del diagrama al pseudocodi"
     Escriu en pseudocodi els cinc algorismes que has representat amb diagrames de flux a l'exercici 1.1.
 
