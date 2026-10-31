@@ -1,0 +1,72 @@
+[
+  {
+    "tipus": "serie",
+    "titol": "Els guardians de Cabrera",
+    "any": 2023,
+    "generes": ["aventura", "misteri"],
+    "edat": 12,
+    "disponible": true,
+    "temporades": [
+      { "numero": 1, "episodis": 8 },
+      { "numero": 2, "episodis": 6 }
+    ],
+    "valoracio": { "mitjana": 8.4, "vots": 5200 }
+  },
+  {
+    "tipus": "pellicula",
+    "titol": "Tramuntana",
+    "any": 2019,
+    "generes": ["drama"],
+    "durada": 104,
+    "edat": 16,
+    "disponible": true,
+    "idiomes": ["ca", "es"],
+    "valoracio": { "mitjana": 7.1, "vots": 3100 }
+  },
+  {
+    "tipus": "documental",
+    "titol": "La Mediterrània submergida",
+    "any": 2021,
+    "generes": ["natura", "ciencia"],
+    "edat": 0,
+    "disponible": true,
+    "temporades": [
+      { "numero": 1, "episodis": 5 }
+    ],
+    "narradora": "Joana Vidal",
+    "valoracio": { "mitjana": 9.0, "vots": 1800 }
+  },
+  {
+    "tipus": "pellicula",
+    "titol": "Codi vermell",
+    "any": 2024,
+    "generes": ["accio", "ciencia-ficcio"],
+    "durada": 118,
+    "edat": 16,
+    "disponible": false,
+    "idiomes": ["ca", "es", "en"],
+    "valoracio": { "mitjana": 6.3, "vots": 8900 }
+  },
+  {
+    "tipus": "serie",
+    "titol": "Institut Son Robot",
+    "any": 2025,
+    "generes": ["comedia", "ciencia-ficcio"],
+    "edat": 7,
+    "disponible": true,
+    "temporades": [
+      { "numero": 1, "episodis": 10 }
+    ],
+    "valoracio": { "mitjana": 7.8, "vots": 2400 }
+  },
+  {
+    "tipus": "pellicula",
+    "titol": "El darrer far",
+    "any": 2016,
+    "generes": ["misteri", "drama"],
+    "durada": 97,
+    "edat": 12,
+    "disponible": true,
+    "idiomes": ["ca"]
+  }
+]
