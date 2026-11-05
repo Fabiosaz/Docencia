@@ -5,8 +5,8 @@ Projectes tecnològics, electrònica analògica i digital, pneumàtica, control 
 | Unitat | Títol |
 | --- | --- |
 | 0 | Repàs d'electricitat *(en preparació)* |
-| 1 | Procés de resolució de problemes i projectes *(en preparació)* |
-| 2 | Disseny i fabricació digital *(en preparació)* |
+| 1 | [Procés de resolució de problemes i projectes](u1-resolucio-problemes.md) |
+| 2 | [Disseny i fabricació digital](u2-disseny-fabricacio-digital.md) |
 | 3 | Electrònica analògica *(en preparació)* |
 | 4 | Electrònica digital *(en preparació)* |
 | 5 | Pneumàtica i hidràulica *(en preparació)* |
