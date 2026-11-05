@@ -75,8 +75,10 @@ nav:
       - "Unitat 7. Ciutadania digital crítica": digitalitzacio/u7-ciutadania-digital-critica.md
   - Tecnologia 4t ESO:
       - tecnologia/index.md
+      - "Unitat 0. Repàs d'electricitat": tecnologia/u0-repas-electricitat.md
       - "Unitat 1. Procés de resolució de problemes i projectes": tecnologia/u1-resolucio-problemes.md
       - "Unitat 2. Disseny i fabricació digital": tecnologia/u2-disseny-fabricacio-digital.md
+      - "Unitat 3. Electrònica analògica": tecnologia/u3-electronica-analogica.md
   - PTD I:
       - ptd1/index.md
       - "Unitat 1. Pensament computacional i algorísmia": ptd1/u1-algorismia.md
