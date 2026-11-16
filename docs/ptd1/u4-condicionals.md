@@ -38,6 +38,11 @@ Fixa't en tres detalls de sintaxi imprescindibles:
 2. Les instruccions que depenen de la condició van **sagnades** (4 espais). El sagnat no és decoratiu: és el que indica a Python on comença i on acaba el bloc.
 3. La primera línia que torna al marge esquerre ja **no** forma part del bloc.
 
+<figure markdown="span">
+  ![Un if anotat: els dos punts, el bloc sagnat i la línia que queda fora del bloc](img/u4-sagnat.svg){ width="720" }
+  <figcaption>Els tres detalls de sintaxi, sobre el codi de l'exemple.</figcaption>
+</figure>
+
 ```mermaid
 flowchart TD
     A([Inici]) --> B[/Llegir temperatura/]
