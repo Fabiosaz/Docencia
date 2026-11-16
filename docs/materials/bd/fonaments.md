@@ -487,6 +487,130 @@ El tutor no depèn de l'alumne, sinó del **grup**: `alumne_id` → `grup` → `
 
         **La regla que el disseny no garanteix**: «màxim tres llibres alhora». Les restriccions d'una taula comproven cada fila per separat, però aquesta regla depèn de quantes files pendents té l'usuari. S'ha de controlar des de l'aplicació o amb un *trigger*, que s'estudia al mòdul d'SQL avançat.
 
+## 8. Exercicis de repàs
+
+Deu exercicis més per repassar el vocabulari, el disseny i la normalització.
+
+!!! example "Repàs 1. Vocabulari"
+    En aquesta taula `llibres`, indica quants camps i quants registres hi ha, quin camp pot fer de clau primària i quin tipus de dada triaries per a cada camp.
+
+    | llibre_id | titol | any | preu |
+    | --- | --- | --- | --- |
+    | 1 | La plaça del Diamant | 1962 | 12.50 |
+    | 2 | Mort de dama | 1931 | 9.95 |
+    | 3 | Bearn | 1961 | 11.00 |
+
+    ??? success "Solució"
+        Quatre camps i tres registres. La clau primària és `llibre_id`. Tipus: `llibre_id`, `INT`; `titol`, `VARCHAR`; `any`, `INT` (o `YEAR`); `preu`, `DECIMAL(5,2)`, perquè un preu ha de ser exacte.
+
+!!! example "Repàs 2. Bona o mala clau primària?"
+    Raona si cada camp seria una bona clau primària per a una taula d'alumnes.
+
+    1. El nom.
+    2. El correu electrònic.
+    3. La data de naixement.
+    4. Un número d'expedient que assigna el centre.
+
+    ??? success "Solució"
+        1: no, es repeteix. 2: és únic, però pot canviar i hi ha alumnes que no en tenen; no és recomanable. 3: no, es pot repetir. 4: sí; és únic, no canvia i no és cap dada personal sensible. És una clau artificial.
+
+!!! example "Repàs 3. Clau primària o clau forana?"
+    En aquest esquema, indica les claus primàries i les claus foranes, i a quina taula apunta cada clau forana.
+
+    - **equips** (equip_id, nom, ciutat)
+    - **jugadors** (jugador_id, nom, dorsal, equip_id)
+    - **partits** (partit_id, data, equip_local_id, equip_visitant_id)
+
+    ??? success "Solució"
+        Claus primàries: `equip_id`, `jugador_id` i `partit_id`. Claus foranes: `jugadors.equip_id`, `partits.equip_local_id` i `partits.equip_visitant_id`, totes tres cap a `equips`. Una taula pot tenir dues claus foranes cap a la mateixa taula.
+
+!!! example "Repàs 4. Quina cardinalitat?"
+    Indica si cada relació és 1:1, 1:N o N:M.
+
+    1. Un equip té molts jugadors; cada jugador juga en un sol equip.
+    2. Un pacient pot visitar molts metges, i cada metge atén molts pacients.
+    3. Cada cotxe té una sola matrícula, i cada matrícula és d'un sol cotxe.
+    4. Una cançó pot ser a moltes llistes de reproducció, i una llista té moltes cançons.
+    5. Una mare pot tenir diversos fills; cada persona té una sola mare biològica.
+
+    ??? success "Solució"
+        1: 1:N. 2: N:M. 3: 1:1. 4: N:M. 5: 1:N (i reflexiva, si mares i fills són a la mateixa taula de persones).
+
+!!! example "Repàs 5. De la relació a les taules"
+    Passa al model relacional les relacions 1, 2 i 4 de l'exercici anterior: escriu les taules amb les seves claus primàries i foranes.
+
+    ??? success "Solució"
+        - Relació 1: **equips** (<u>equip_id</u>, nom) i **jugadors** (<u>jugador_id</u>, nom, *equip_id* → equips). La clau forana va a la taula del costat N.
+        - Relació 2: **pacients** (<u>pacient_id</u>, nom), **metges** (<u>metge_id</u>, nom) i **visites** (<u>visita_id</u>, *pacient_id* → pacients, *metge_id* → metges, data). Com que un pacient pot visitar el mateix metge moltes vegades, la taula intermèdia té una clau pròpia.
+        - Relació 4: **cancons** (<u>canco_id</u>, titol), **llistes** (<u>llista_id</u>, nom) i **llistes_cancons** (<u>*llista_id* → llistes, *canco_id* → cancons</u>, posicio).
+
+!!! example "Repàs 6. Dissenya: una clínica veterinària"
+    Una clínica veterinària vol guardar els propietaris (nom, telèfon), les seves mascotes (nom, espècie, data de naixement) i les visites que fa cada mascota (data, motiu, preu), cada una atesa per un veterinari (nom, número de col·legiat). Fes el diagrama E-R i el model relacional.
+
+    ??? success "Solució"
+        ```mermaid
+        erDiagram
+            PROPIETARI ||--o{ MASCOTA : "té"
+            MASCOTA ||--o{ VISITA : "fa"
+            VETERINARI ||--o{ VISITA : "atén"
+        ```
+
+        - **propietaris** (<u>propietari_id</u>, nom, telefon)
+        - **mascotes** (<u>mascota_id</u>, nom, especie, data_naixement, *propietari_id* → propietaris)
+        - **veterinaris** (<u>veterinari_id</u>, nom, num_collegiat `UNIQUE`)
+        - **visites** (<u>visita_id</u>, data, motiu, preu, *mascota_id* → mascotes, *veterinari_id* → veterinaris)
+
+        La visita és, en realitat, una relació N:M entre mascotes i veterinaris amb atributs propis (data, motiu i preu).
+
+!!! example "Repàs 7. Quina integritat es trenca?"
+    Indica quin tipus d'integritat (d'entitat, referencial o de domini) incompleix cada operació sobre la base de dades `institut`.
+
+    1. Inserir una nota de 14.
+    2. Inserir un alumne amb `grup_id = 30`.
+    3. Inserir un segon grup amb `grup_id = 1`.
+    4. Esborrar el professor 1, que imparteix una assignatura.
+    5. Inserir un alumne sense nom.
+
+    ??? success "Solució"
+        1: de domini (`CHECK`). 2: referencial (no existeix el grup 30). 3: d'entitat (clau primària repetida). 4: referencial (l'assignatura quedaria apuntant a un professor inexistent). 5: de domini (`NOT NULL`).
+
+!!! example "Repàs 8. Quina forma normal incompleix?"
+    Indica quina forma normal incompleix cada taula i per què.
+
+    1. **clients** (<u>client_id</u>, nom, telefons), on `telefons` conté valors com «971111111, 600222333».
+    2. **notes** (<u>alumne_id, assignatura_id</u>, nota, nom_alumne).
+    3. **empleats** (<u>empleat_id</u>, nom, departament_id, nom_departament).
+
+    ??? success "Solució"
+        1. La **1FN**: una cel·la conté una llista de valors.
+        2. La **2FN**: `nom_alumne` depèn només d'una part de la clau (`alumne_id`), no de la clau sencera.
+        3. La **3FN**: `nom_departament` no depèn de l'empleat, sinó de `departament_id`, que no és la clau.
+
+!!! example "Repàs 9. Normalitza"
+    Un videoclub guarda els lloguers en aquesta taula. Normalitza-la fins a la tercera forma normal.
+
+    | lloguer_id | data | soci | telefon_soci | pellicules |
+    | --- | --- | --- | --- | --- |
+    | 1 | 2026-11-02 | Pau Mir | 600111222 | Up (animació), Alien (ciència-ficció) |
+    | 2 | 2026-11-05 | Neus Sard | 600333444 | Up (animació) |
+
+    ??? success "Solució"
+        - **socis** (<u>soci_id</u>, nom, telefon)
+        - **generes** (<u>genere_id</u>, nom)
+        - **pellicules** (<u>pellicula_id</u>, titol, *genere_id* → generes)
+        - **lloguers** (<u>lloguer_id</u>, data, *soci_id* → socis)
+        - **lloguers_pellicules** (<u>*lloguer_id* → lloguers, *pellicula_id* → pellicules</u>)
+
+        La columna `pellicules` trencava la 1FN (una llista, i a més barrejava títol i gènere). El telèfon depèn del soci, no del lloguer (3FN), i el gènere depèn de la pel·lícula. La taula de gèneres evita escriure el mateix gènere de maneres diferents.
+
+!!! example "Repàs 10. Anomalies"
+    Amb la taula original del videoclub de l'exercici anterior, posa un exemple d'anomalia d'actualització, un d'inserció i un d'eliminació.
+
+    ??? success "Solució"
+        - **Actualització**: si en Pau canvia de telèfon, s'ha de canviar a tots els seus lloguers; si se n'oblida un, hi haurà dos telèfons diferents.
+        - **Inserció**: no es pot donar d'alta un soci nou fins que no llogui alguna pel·lícula.
+        - **Eliminació**: si s'esborra el lloguer 2, es perden totes les dades de la Neus.
+
 ---
 
 !!! quote "Fonts"

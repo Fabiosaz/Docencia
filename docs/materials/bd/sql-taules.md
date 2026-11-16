@@ -549,6 +549,466 @@ SELECT nom, llinatges, 'Professor' FROM professors WHERE departament = 'Tecnolog
 
         A les consultes 3 i 4, la condició `p.data_retorn IS NULL` va dins l'`ON` i no al `WHERE`. La diferència es nota amb un usuari que **ha retornat tots els seus llibres**: amb la condició a l'`ON`, surt amb 0 pendents; amb la condició al `WHERE`, desapareix del resultat, perquè el `WHERE` s'aplica després del `LEFT JOIN` i descarta totes les seves files, que tenen data de retorn. Prova-ho: insereix un usuari nou amb un sol préstec ja retornat i compara les dues versions.
 
+## 8. Exercicis de repàs
+
+Disset exercicis més sobre la base de dades `institut`: consultes amb `JOIN`, agrupacions sobre diverses taules i creació de taules relacionades. Parteix de les dades originals de `institut.sql`.
+
+!!! example "Repàs 1. Alumnes amb el seu grup"
+    Mostra el nom i els llinatges de cada alumne amb el nom i el curs del seu grup, ordenats pel nom del grup i pels llinatges.
+
+    ??? success "Solució"
+        ```sql
+        SELECT a.nom, a.llinatges, g.nom AS grup, g.curs
+        FROM alumnes a
+        JOIN grups g ON a.grup_id = g.grup_id
+        ORDER BY g.nom, a.llinatges;
+        ```
+
+        Resultat:
+
+        | nom | llinatges | grup | curs |
+        | --- | --- | --- | --- |
+        | Aina | Ferrer Pons | 1BA | 1r de Batxillerat |
+        | Biel | Mas Riera | 1BA | 1r de Batxillerat |
+        | Carla | Vidal Bauzà | 1BA | 1r de Batxillerat |
+        | Elena | Garcia Ramis | 1BB | 1r de Batxillerat |
+        | Dani | Oliver Serra | 1BB | 1r de Batxillerat |
+        | Fèlix | Roig Coll | 2BA | 2n de Batxillerat |
+        | Gemma | Sastre Pujol | 2BA | 2n de Batxillerat |
+        | Hug | Bennàssar Vich | 4EA | 4t d'ESO |
+        | Irene | Fiol Torres | 4EA | 4t d'ESO |
+
+        Hi surten nou alumnes: en Joan no té grup i l'`INNER JOIN` el descarta.
+
+!!! example "Repàs 2. Tots els alumnes, tenguin grup o no"
+    Repeteix la consulta anterior de manera que hi surtin tots els alumnes. Per als que no tenen grup, ha de sortir el text «Sense grup».
+
+    ??? success "Solució"
+        ```sql
+        SELECT a.nom, a.llinatges, IFNULL(g.nom, 'Sense grup') AS grup
+        FROM alumnes a
+        LEFT JOIN grups g ON a.grup_id = g.grup_id
+        ORDER BY a.llinatges;
+        ```
+
+        Resultat:
+
+        | nom | llinatges | grup |
+        | --- | --- | --- |
+        | Joan | Amengual Mir | Sense grup |
+        | Hug | Bennàssar Vich | 4EA |
+        | Aina | Ferrer Pons | 1BA |
+        | Irene | Fiol Torres | 4EA |
+        | Elena | Garcia Ramis | 1BB |
+        | Biel | Mas Riera | 1BA |
+        | Dani | Oliver Serra | 1BB |
+        | Fèlix | Roig Coll | 2BA |
+        | Gemma | Sastre Pujol | 2BA |
+        | Carla | Vidal Bauzà | 1BA |
+
+!!! example "Repàs 3. Qui imparteix cada assignatura?"
+    Mostra el nom de cada assignatura amb el nom complet i el departament del professor que la imparteix. Han de sortir totes les assignatures.
+
+    ??? success "Solució"
+        ```sql
+        SELECT s.nom AS assignatura,
+               CONCAT(p.nom, ' ', p.llinatges) AS professor,
+               p.departament
+        FROM assignatures s
+        LEFT JOIN professors p ON s.professor_id = p.professor_id;
+        ```
+
+        Resultat:
+
+        | assignatura | professor | departament |
+        | --- | --- | --- |
+        | Programació i Tractament de Dades I | Marta Coll Ripoll | Tecnologia |
+        | Matemàtiques I | Pere Llull Sureda | Matemàtiques |
+        | Llengua Catalana i Literatura I | Laura Bonnín Font | Llengua catalana |
+        | Programació i Tractament de Dades II | Xavier Ramon Alzina | Tecnologia |
+        | Tecnologia | NULL | NULL |
+
+        `CONCAT` retorna `NULL` si algun dels seus trossos és `NULL`; per això el professor de Tecnologia surt nul.
+
+!!! example "Repàs 4. Les cinc millors notes"
+    Mostra les cinc notes més altes, amb el nom complet de l'alumne i el nom de l'assignatura.
+
+    ??? success "Solució"
+        ```sql
+        SELECT CONCAT(a.nom, ' ', a.llinatges) AS alumne, s.nom AS assignatura, n.nota
+        FROM notes n
+        JOIN alumnes a ON n.alumne_id = a.alumne_id
+        JOIN assignatures s ON n.assignatura_id = s.assignatura_id
+        ORDER BY n.nota DESC
+        LIMIT 5;
+        ```
+
+        Resultat:
+
+        | alumne | assignatura | nota |
+        | --- | --- | --- |
+        | Carla Vidal Bauzà | Programació i Tractament de Dades I | 9.75 |
+        | Aina Ferrer Pons | Llengua Catalana i Literatura I | 9.25 |
+        | Fèlix Roig Coll | Programació i Tractament de Dades II | 9.00 |
+        | Elena Garcia Ramis | Llengua Catalana i Literatura I | 8.75 |
+        | Aina Ferrer Pons | Programació i Tractament de Dades I | 8.50 |
+
+!!! example "Repàs 5. Les notes de l'Aina"
+    Mostra les notes de l'alumna Aina Ferrer Pons, amb el nom de cada assignatura. Filtra pel nom i els llinatges, no per l'identificador.
+
+    ??? success "Solució"
+        ```sql
+        SELECT s.nom AS assignatura, n.nota
+        FROM notes n
+        JOIN alumnes a ON n.alumne_id = a.alumne_id
+        JOIN assignatures s ON n.assignatura_id = s.assignatura_id
+        WHERE a.nom = 'Aina' AND a.llinatges = 'Ferrer Pons';
+        ```
+
+        Resultat:
+
+        | assignatura | nota |
+        | --- | --- |
+        | Programació i Tractament de Dades I | 8.50 |
+        | Matemàtiques I | 7.00 |
+        | Llengua Catalana i Literatura I | 9.25 |
+
+!!! example "Repàs 6. Assignatures suspeses"
+    Mostra el nom complet de l'alumne, el nom de l'assignatura i la nota de totes les notes inferiors a 5.
+
+    ??? success "Solució"
+        ```sql
+        SELECT CONCAT(a.nom, ' ', a.llinatges) AS alumne, s.nom AS assignatura, n.nota
+        FROM notes n
+        JOIN alumnes a ON n.alumne_id = a.alumne_id
+        JOIN assignatures s ON n.assignatura_id = s.assignatura_id
+        WHERE n.nota < 5
+        ORDER BY n.nota;
+        ```
+
+        Resultat:
+
+        | alumne | assignatura | nota |
+        | --- | --- | --- |
+        | Dani Oliver Serra | Matemàtiques I | 3.50 |
+        | Gemma Sastre Pujol | Programació i Tractament de Dades II | 4.25 |
+        | Biel Mas Riera | Programació i Tractament de Dades I | 4.75 |
+
+!!! example "Repàs 7. La mitjana de cada alumne"
+    Mostra el nom complet de **tots** els alumnes amb el nombre de notes que tenen i la seva mitjana amb dos decimals, de la més alta a la més baixa.
+
+    ??? success "Solució"
+        ```sql
+        SELECT CONCAT(a.nom, ' ', a.llinatges) AS alumne,
+               COUNT(n.nota) AS notes,
+               ROUND(AVG(n.nota), 2) AS mitjana
+        FROM alumnes a
+        LEFT JOIN notes n ON n.alumne_id = a.alumne_id
+        GROUP BY a.alumne_id, a.nom, a.llinatges
+        ORDER BY mitjana DESC;
+        ```
+
+        Resultat:
+
+        | alumne | notes | mitjana |
+        | --- | --- | --- |
+        | Fèlix Roig Coll | 1 | 9.00 |
+        | Carla Vidal Bauzà | 2 | 8.88 |
+        | Aina Ferrer Pons | 3 | 8.25 |
+        | Irene Fiol Torres | 1 | 8.25 |
+        | Elena Garcia Ramis | 2 | 8.13 |
+        | Hug Bennàssar Vich | 1 | 6.50 |
+        | Biel Mas Riera | 3 | 5.42 |
+        | Dani Oliver Serra | 3 | 4.92 |
+        | Gemma Sastre Pujol | 1 | 4.25 |
+        | Joan Amengual Mir | 0 | NULL |
+
+        En Joan no té notes: `COUNT(n.nota)` dona 0 i `AVG` dona `NULL`. Si s'hagués escrit `COUNT(*)`, li comptaria una nota, perquè el `LEFT JOIN` li crea una fila.
+
+!!! example "Repàs 8. La mitjana de cada assignatura"
+    Mostra el nom de cada assignatura, quants alumnes hi tenen nota i la mitjana amb dos decimals, de la més alta a la més baixa.
+
+    ??? success "Solució"
+        ```sql
+        SELECT s.nom AS assignatura,
+               COUNT(*) AS alumnes,
+               ROUND(AVG(n.nota), 2) AS mitjana
+        FROM notes n
+        JOIN assignatures s ON n.assignatura_id = s.assignatura_id
+        GROUP BY s.assignatura_id, s.nom
+        ORDER BY mitjana DESC;
+        ```
+
+        Resultat:
+
+        | assignatura | alumnes | mitjana |
+        | --- | --- | --- |
+        | Tecnologia | 2 | 7.38 |
+        | Programació i Tractament de Dades I | 5 | 7.35 |
+        | Llengua Catalana i Literatura I | 4 | 7.25 |
+        | Programació i Tractament de Dades II | 2 | 6.63 |
+        | Matemàtiques I | 4 | 6.00 |
+
+!!! example "Repàs 9. Alumnes per curs"
+    Mostra quants alumnes hi ha a cada curs (no a cada grup).
+
+    ??? success "Solució"
+        ```sql
+        SELECT g.curs, COUNT(*) AS alumnes
+        FROM alumnes a
+        JOIN grups g ON a.grup_id = g.grup_id
+        GROUP BY g.curs;
+        ```
+
+        Resultat:
+
+        | curs | alumnes |
+        | --- | --- |
+        | 1r de Batxillerat | 5 |
+        | 2n de Batxillerat | 2 |
+        | 4t d'ESO | 2 |
+
+!!! example "Repàs 10. Notes posades per cada professor"
+    Mostra el nom complet de cada professor, quantes notes ha posat i la mitjana d'aquestes notes amb dos decimals.
+
+    ??? success "Solució"
+        ```sql
+        SELECT CONCAT(p.nom, ' ', p.llinatges) AS professor,
+               COUNT(*) AS notes,
+               ROUND(AVG(n.nota), 2) AS mitjana
+        FROM notes n
+        JOIN assignatures s ON n.assignatura_id = s.assignatura_id
+        JOIN professors p ON s.professor_id = p.professor_id
+        GROUP BY p.professor_id, p.nom, p.llinatges;
+        ```
+
+        Resultat:
+
+        | professor | notes | mitjana |
+        | --- | --- | --- |
+        | Marta Coll Ripoll | 5 | 7.35 |
+        | Pere Llull Sureda | 4 | 6.00 |
+        | Laura Bonnín Font | 4 | 7.25 |
+        | Xavier Ramon Alzina | 2 | 6.63 |
+
+!!! example "Repàs 11. Els millors de 1r de Batxillerat"
+    Mostra el nom complet i la mitjana dels alumnes de 1r de Batxillerat que tenen una mitjana de 7 o més.
+
+    ??? success "Solució"
+        ```sql
+        SELECT CONCAT(a.nom, ' ', a.llinatges) AS alumne, ROUND(AVG(n.nota), 2) AS mitjana
+        FROM notes n
+        JOIN alumnes a ON n.alumne_id = a.alumne_id
+        JOIN grups g ON a.grup_id = g.grup_id
+        WHERE g.curs = '1r de Batxillerat'
+        GROUP BY a.alumne_id, a.nom, a.llinatges
+        HAVING AVG(n.nota) >= 7
+        ORDER BY mitjana DESC;
+        ```
+
+        Resultat:
+
+        | alumne | mitjana |
+        | --- | --- |
+        | Carla Vidal Bauzà | 8.88 |
+        | Aina Ferrer Pons | 8.25 |
+        | Elena Garcia Ramis | 8.13 |
+
+        El curs es filtra amb `WHERE` (és una condició sobre les files) i la mitjana, amb `HAVING` (és una condició sobre els grups).
+
+!!! example "Repàs 12. El resum de cada grup"
+    Per a cada grup, mostra'n el nom, la nota mitjana amb dos decimals, la nota més alta i el nombre de notes suspeses.
+
+    ??? success "Solució"
+        ```sql
+        SELECT g.nom AS grup,
+               ROUND(AVG(n.nota), 2) AS mitjana,
+               MAX(n.nota) AS maxima,
+               SUM(CASE WHEN n.nota < 5 THEN 1 ELSE 0 END) AS suspeses
+        FROM notes n
+        JOIN alumnes a ON n.alumne_id = a.alumne_id
+        JOIN grups g ON a.grup_id = g.grup_id
+        GROUP BY g.grup_id, g.nom;
+        ```
+
+        Resultat:
+
+        | grup | mitjana | maxima | suspeses |
+        | --- | --- | --- | --- |
+        | 1BA | 7.34 | 9.75 | 1 |
+        | 1BB | 6.20 | 8.75 | 1 |
+        | 2BA | 6.63 | 9.00 | 1 |
+        | 4EA | 7.38 | 8.25 | 0 |
+
+!!! example "Repàs 13. Notables del departament de Tecnologia"
+    Mostra el nom de l'alumne, el de l'assignatura i la nota de les notes de 8 o més posades per professors del departament de Tecnologia.
+
+    ??? success "Solució"
+        ```sql
+        SELECT a.nom AS alumne, s.nom AS assignatura, n.nota
+        FROM notes n
+        JOIN alumnes a ON n.alumne_id = a.alumne_id
+        JOIN assignatures s ON n.assignatura_id = s.assignatura_id
+        JOIN professors p ON s.professor_id = p.professor_id
+        WHERE p.departament = 'Tecnologia' AND n.nota >= 8
+        ORDER BY n.nota DESC;
+        ```
+
+        Resultat:
+
+        | alumne | assignatura | nota |
+        | --- | --- | --- |
+        | Carla | Programació i Tractament de Dades I | 9.75 |
+        | Fèlix | Programació i Tractament de Dades II | 9.00 |
+        | Aina | Programació i Tractament de Dades I | 8.50 |
+
+        La nota de la Irene a l'assignatura Tecnologia (8,25) no hi surt: aquesta assignatura no té professor assignat.
+
+!!! example "Repàs 14. El directori del centre"
+    Amb `UNION`, fes una llista única de totes les persones del centre amb el nom, els llinatges i una columna `rol` que digui «Alumne» o «Professor», ordenada pels llinatges.
+
+    ??? success "Solució"
+        ```sql
+        SELECT nom, llinatges, 'Alumne' AS rol FROM alumnes
+        UNION
+        SELECT nom, llinatges, 'Professor' FROM professors
+        ORDER BY llinatges;
+        ```
+
+        Resultat:
+
+        | nom | llinatges | rol |
+        | --- | --- | --- |
+        | Joan | Amengual Mir | Alumne |
+        | Hug | Bennàssar Vich | Alumne |
+        | Laura | Bonnín Font | Professor |
+        | Marta | Coll Ripoll | Professor |
+        | Aina | Ferrer Pons | Alumne |
+        | Irene | Fiol Torres | Alumne |
+        | Elena | Garcia Ramis | Alumne |
+        | Pere | Llull Sureda | Professor |
+        | Biel | Mas Riera | Alumne |
+        | Dani | Oliver Serra | Alumne |
+
+        En total, 14 files; se'n mostren les 10 primeres.
+
+        L'`ORDER BY` final ordena el resultat de tota la unió.
+
+!!! example "Repàs 15. Troba l'error"
+    Explica què falla en cada consulta i corregeix-la.
+
+    ```sql
+    -- 1. Retorna 40 files en lloc de 9
+    SELECT a.nom, g.nom FROM alumnes a JOIN grups g;
+
+    -- 2. Dona l'error «Column 'nom' in field list is ambiguous»
+    SELECT nom, curs FROM alumnes a JOIN grups g ON a.grup_id = g.grup_id;
+
+    -- 3. Hauria de mostrar tots els alumnes, però en Joan no hi surt
+    SELECT a.nom, g.nom AS grup
+    FROM alumnes a LEFT JOIN grups g ON a.grup_id = g.grup_id
+    WHERE g.curs <> '4t d''ESO';
+    ```
+
+    ??? success "Solució"
+        ```sql
+        SELECT a.nom, g.nom FROM alumnes a JOIN grups g ON a.grup_id = g.grup_id;
+
+        SELECT a.nom, g.curs FROM alumnes a JOIN grups g ON a.grup_id = g.grup_id;
+
+        SELECT a.nom, g.nom AS grup
+        FROM alumnes a LEFT JOIN grups g ON a.grup_id = g.grup_id
+        WHERE g.curs <> '4t d''ESO' OR g.curs IS NULL;
+        ```
+
+        1. Falta la condició `ON`: sense ella, cada alumne es combina amb tots els grups (10 × 4 = 40 files).
+        2. Les dues taules tenen una columna `nom`: s'ha d'indicar de quina taula és, `a.nom` o `g.nom`.
+        3. Per a en Joan, `g.curs` és `NULL`, i la comparació `NULL <> '4t d''ESO'` no és vertadera: el `WHERE` desfà l'efecte del `LEFT JOIN`. S'hi ha d'afegir `OR g.curs IS NULL`. Fixa't també que, dins un text, l'apòstrof s'escriu dues vegades: `'4t d''ESO'`.
+
+!!! example "Repàs 16. Una taula nova: les aules"
+    L'institut vol guardar a quina aula fa classe cada grup.
+
+    1. Crea la taula `aules`, amb un identificador automàtic, un nom obligatori i que no es pugui repetir, una capacitat que ha de ser positiva i que per defecte és 30, i la planta.
+    2. Insereix-hi les aules `A12` (planta 1, capacitat per defecte) i `B03` (planta 0, capacitat 24).
+    3. Afegeix a `grups` una columna `aula_id` que sigui clau forana cap a `aules`.
+    4. Assigna l'aula `A12` al grup 1BA i la `B03` al 4EA.
+    5. Mostra tots els grups amb el nom i la capacitat de la seva aula.
+
+    ??? success "Solució"
+        ```sql
+        CREATE TABLE aules (
+            aula_id INT AUTO_INCREMENT PRIMARY KEY,
+            nom VARCHAR(10) NOT NULL UNIQUE,
+            capacitat INT DEFAULT 30 CHECK (capacitat > 0),
+            planta INT
+        );
+
+        INSERT INTO aules (nom, planta) VALUES ('A12', 1);
+        INSERT INTO aules (nom, planta, capacitat) VALUES ('B03', 0, 24);
+
+        ALTER TABLE grups ADD aula_id INT;
+        ALTER TABLE grups
+        ADD CONSTRAINT fk_grups_aula FOREIGN KEY (aula_id) REFERENCES aules(aula_id);
+
+        UPDATE grups SET aula_id = 1 WHERE nom = '1BA';
+        UPDATE grups SET aula_id = 2 WHERE nom = '4EA';
+
+        SELECT g.nom AS grup, a.nom AS aula, a.capacitat
+        FROM grups g
+        LEFT JOIN aules a ON g.aula_id = a.aula_id;
+        ```
+
+        Resultat:
+
+        | grup | aula | capacitat |
+        | --- | --- | --- |
+        | 1BA | A12 | 30 |
+        | 1BB | NULL | NULL |
+        | 2BA | NULL | NULL |
+        | 4EA | B03 | 24 |
+
+        Com que diversos grups podrien compartir aula en hores diferents, la relació és 1:N i la clau forana no du `UNIQUE`. Torna a carregar `institut.sql` abans de continuar.
+
+!!! example "Repàs 17. Una relació N:M: les activitats extraescolars"
+    Els alumnes es poden apuntar a diverses activitats extraescolars, i cada activitat té molts alumnes.
+
+    1. Crea la taula `activitats` (identificador automàtic i nom obligatori) i la taula intermèdia `inscripcions`, amb les claus foranes i una clau primària que impedeixi apuntar dues vegades el mateix alumne a la mateixa activitat.
+    2. Insereix les activitats Robòtica i Escacs. Apunta els alumnes 1, 2 i 3 a Robòtica, i els alumnes 1 i 9 a Escacs.
+    3. Mostra el nom de cada activitat i quants alumnes hi ha apuntats.
+
+    ??? success "Solució"
+        ```sql
+        CREATE TABLE activitats (
+            activitat_id INT AUTO_INCREMENT PRIMARY KEY,
+            nom VARCHAR(50) NOT NULL
+        );
+
+        CREATE TABLE inscripcions (
+            alumne_id INT,
+            activitat_id INT,
+            PRIMARY KEY (alumne_id, activitat_id),
+            FOREIGN KEY (alumne_id) REFERENCES alumnes(alumne_id),
+            FOREIGN KEY (activitat_id) REFERENCES activitats(activitat_id)
+        );
+
+        INSERT INTO activitats (nom) VALUES ('Robòtica'), ('Escacs');
+        INSERT INTO inscripcions VALUES (1, 1), (2, 1), (3, 1), (1, 2), (9, 2);
+
+        SELECT ac.nom AS activitat, COUNT(*) AS alumnes
+        FROM inscripcions i
+        JOIN activitats ac ON i.activitat_id = ac.activitat_id
+        GROUP BY ac.activitat_id, ac.nom;
+        ```
+
+        Resultat:
+
+        | activitat | alumnes |
+        | --- | --- |
+        | Robòtica | 3 |
+        | Escacs | 2 |
+
+        Si intentes tornar a inserir `(1, 1)`, la clau primària composta ho impedeix. Torna a carregar `institut.sql` en acabar.
+
 ---
 
 !!! quote "Fonts"

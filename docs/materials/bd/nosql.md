@@ -599,6 +599,165 @@ Les referències són adequades quan les dades relacionades tenen sentit per si 
 
         Per als usuaris (correu únic, rol, grup) es podria defensar una base de dades relacional: són dades estructurades i interessa que el gestor garanteixi, per exemple, que no hi ha dos comptes amb el mateix correu.
 
+## 8. Exercicis de repàs
+
+Vuit exercicis més per repassar JSON, els models NoSQL i les consultes de MongoDB. Els filtres s'han provat amb una simulació de MongoDB en Python.
+
+!!! example "Repàs 1. Vàlid o no vàlid?"
+    Indica quins d'aquests textos són JSON vàlid. Corregeix els que no ho siguin.
+
+    1. `{"nom": "Biel", "edat": 17}`
+    2. `{"aprovat": True}`
+    3. `["poma", "pera", ]`
+    4. `{"adreca": {"carrer": "Major", "numero": 4}}`
+    5. `{'ciutat': 'Inca'}`
+    6. `{"telefon": null}`
+
+    ??? success "Solució"
+        Són vàlids l'1, el 4 i el 6. El 2 ha de dur `true` en minúscula; al 3 hi sobra la coma final; al 5, les cometes han de ser dobles.
+
+!!! example "Repàs 2. Del diccionari al JSON"
+    Quin text JSON genera `json.dumps()` a partir d'aquest diccionari de Python? Fixa't en què canvia.
+
+    ```python
+    alumne = {"nom": "Aina", "aprovada": True, "tutor": None, "notes": [7.5, 9]}
+    ```
+
+    ??? success "Solució"
+        `{"nom": "Aina", "aprovada": true, "tutor": null, "notes": [7.5, 9]}`. `True` passa a `true` i `None`, a `null`; les llistes i els nombres queden igual.
+
+!!! example "Repàs 3. Escriu el JSON d'una recepta"
+    Escriu un document JSON per a una recepta de cuina amb el nom, el temps en minuts, si és vegetariana, una llista d'ingredients (cada un amb el nom, la quantitat i la unitat) i una llista de passes.
+
+    ??? success "Solució"
+        ```json
+        {
+          "nom": "Pa amb oli",
+          "minuts": 5,
+          "vegetariana": true,
+          "ingredients": [
+            {"nom": "pa moreno", "quantitat": 2, "unitat": "llesques"},
+            {"nom": "tomàtiga de ramellet", "quantitat": 1, "unitat": "unitat"},
+            {"nom": "oli d'oliva", "quantitat": 15, "unitat": "ml"}
+          ],
+          "passes": ["Torrar el pa", "Fregar-hi la tomàtiga", "Afegir-hi oli i sal"]
+        }
+        ```
+
+        Els ingredients són una **llista d'objectes** perquè cada un té diverses dades; les passes són una llista de textos.
+
+!!! example "Repàs 4. Estadístiques del catàleg"
+    Amb Python, llegeix `titols.json` i mostra: quants títols hi ha de cada tipus, el títol més antic i la mitjana de les valoracions dels títols que en tenen.
+
+    ??? success "Solució"
+        ```python
+        import json
+
+        with open("titols.json", encoding="utf-8") as fitxer:
+            titols = json.load(fitxer)
+
+        # Quants de cada tipus
+        recompte = {}
+        for t in titols:
+            tipus = t["tipus"]
+            if tipus in recompte:
+                recompte[tipus] = recompte[tipus] + 1
+            else:
+                recompte[tipus] = 1
+        print(recompte)
+
+        # El més antic
+        mes_antic = titols[0]
+        for t in titols:
+            if t["any"] < mes_antic["any"]:
+                mes_antic = t
+        print("El més antic:", mes_antic["titol"], mes_antic["any"])
+
+        # Mitjana de les valoracions
+        valoracions = []
+        for t in titols:
+            if "valoracio" in t:
+                valoracions.append(t["valoracio"]["mitjana"])
+        print(f"Valoració mitjana: {sum(valoracions) / len(valoracions):.2f}")
+        ```
+
+!!! example "Repàs 5. Afegir un títol"
+    Amb Python, afegeix al catàleg una pel·lícula nova inventada per tu i desa el resultat en un fitxer nou, `titols2.json`, amb sagnat i amb els accents llegibles. Comprova que el fitxer nou té set títols.
+
+    ??? success "Solució"
+        ```python
+        import json
+
+        with open("titols.json", encoding="utf-8") as fitxer:
+            titols = json.load(fitxer)
+
+        titols.append({
+            "tipus": "pellicula",
+            "titol": "La nit de Sant Joan",
+            "any": 2026,
+            "generes": ["comedia"],
+            "durada": 92,
+            "edat": 7,
+            "disponible": True,
+            "idiomes": ["ca"],
+        })
+
+        with open("titols2.json", "w", encoding="utf-8") as fitxer:
+            json.dump(titols, fitxer, ensure_ascii=False, indent=2)
+
+        with open("titols2.json", encoding="utf-8") as fitxer:
+            print(len(json.load(fitxer)), "títols")
+        ```
+
+        A Python s'escriu `True`; `json.dump` el converteix en `true` en desar-lo.
+
+!!! example "Repàs 6. Quin model NoSQL?"
+    Tria el model (documental, clau-valor, orientat a columnes o de grafs) més adequat per a cada cas.
+
+    1. Calcular la ruta més curta entre dues estacions de metro.
+    2. Guardar la darrera posició de cada repartidor, que es consulta milers de vegades per segon.
+    3. Els articles d'un blog, cada un amb les seves etiquetes i imatges.
+    4. Analitzar milers de milions de lectures de sensors.
+
+    ??? success "Solució"
+        1: de grafs. 2: clau-valor. 3: documental. 4: orientat a columnes.
+
+!!! example "Repàs 7. Filtres de MongoDB"
+    Escriu el filtre de cada consulta sobre la col·lecció `titols` i indica quins títols retorna.
+
+    1. Sèries i documentals (tot el que no és una pel·lícula).
+    2. Títols estrenats abans del 2020.
+    3. Pel·lícules de més de 100 minuts.
+    4. Títols que són de drama o de comèdia.
+    5. Títols amb més de 3.000 vots.
+    6. Títols disponibles, aptes per a menors de 12 anys.
+    7. Títols que tenen el camp `idiomes` i es poden veure en castellà (`"es"`).
+    8. Sèries amb alguna temporada de menys de 8 episodis.
+
+    ??? success "Solució"
+        | # | Filtre | Resultat |
+        | --- | --- | --- |
+        | 1 | `{ tipus: { $ne: "pellicula" } }` | Els guardians de Cabrera, La Mediterrània submergida, Institut Son Robot |
+        | 2 | `{ any: { $lt: 2020 } }` | Tramuntana, El darrer far |
+        | 3 | `{ tipus: "pellicula", durada: { $gt: 100 } }` | Tramuntana, Codi vermell |
+        | 4 | `{ generes: { $in: ["drama", "comedia"] } }` | Tramuntana, Institut Son Robot, El darrer far |
+        | 5 | `{ "valoracio.vots": { $gt: 3000 } }` | Els guardians de Cabrera, Tramuntana, Codi vermell |
+        | 6 | `{ disponible: true, edat: { $lt: 12 } }` | La Mediterrània submergida, Institut Son Robot |
+        | 7 | `{ idiomes: "es" }` | Tramuntana, Codi vermell |
+        | 8 | `{ tipus: "serie", "temporades.episodis": { $lt: 8 } }` | Els guardians de Cabrera |
+
+        A la consulta 7 no cal `$exists`: els documents que no tenen el camp `idiomes` simplement no compleixen la condició.
+
+!!! example "Repàs 8. Niuar o referenciar?"
+    Per a una aplicació de l'institut feta amb MongoDB, decideix si niuaries o referenciaries:
+
+    1. Les faltes d'assistència de cada alumne (en pot tenir centenars al llarg dels anys).
+    2. Els dos telèfons de contacte de cada família.
+    3. Els alumnes de cada grup.
+
+    ??? success "Solució"
+        1: referenciar, en una col·lecció `faltes`, perquè creixen sense límit. 2: niuar, perquè són poques dades que pertanyen a l'alumne i es consulten amb ell. 3: referenciar: l'alumne és una entitat amb sentit propi; el més habitual és guardar l'`_id` del grup dins el document de cada alumne.
+
 ---
 
 !!! quote "Fonts"

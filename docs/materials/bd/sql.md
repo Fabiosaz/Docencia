@@ -289,7 +289,7 @@ ORDER BY data_naixement;
 Les dates s'escriuen entre cometes i en format **any-mes-dia**: `'2009-12-31'`.
 
 !!! tip "Algunes funcions útils"
-    MySQL té moltes funcions per treballar amb els valors. Aquestes són de les més útils: `UPPER(text)` i `LOWER(text)` (majúscules i minúscules), `LENGTH(text)` (longitud), `ROUND(nombre, decimals)` (arrodonir), `YEAR(data)` i `MONTH(data)` (any i mes d'una data) i `CURDATE()` (la data d'avui).
+    MySQL té moltes funcions per treballar amb els valors. Aquestes són de les més útils: `UPPER(text)` i `LOWER(text)` (majúscules i minúscules), `CHAR_LENGTH(text)` (nombre de caràcters; `LENGTH` compta bytes i dona un resultat més gran amb lletres accentuades), `ROUND(nombre, decimals)` (arrodonir), `YEAR(data)` i `MONTH(data)` (any i mes d'una data) i `CURDATE()` (la data d'avui).
 
 !!! example "Exercici 4"
     1. Mostra en una sola columna, anomenada `alumne`, el nom i els llinatges dels alumnes d'Inca, Llucmajor o Calvià, i en una altra el seu municipi.
@@ -604,6 +604,553 @@ DELETE FROM alumnes WHERE alumne_id = 11;
         | 3 | 2 | 8.88 | 9.75 | 8.00 | Sí |
 
         A les consultes 3, 4 i 5 hem escrit a mà els identificadors 1, 2 i 3 perquè sabíem quins alumnes són del grup 1. Si el grup canviàs, la consulta deixaria de ser correcta. Al mòdul següent ho resoldràs combinant les taules `alumnes` i `notes`.
+
+## 10. Exercicis de repàs
+
+Vint-i-sis exercicis més sobre la base de dades `institut`, ordenats de menys a més dificultat. Escriu cada consulta abans de mirar la solució i compara el teu resultat amb el que s'hi mostra. Tots es resolen amb una sola taula.
+
+!!! example "Repàs 1. Els grups"
+    Mostra el nom i el curs de tots els grups, ordenats pel nom.
+
+    ??? success "Solució"
+        ```sql
+        SELECT nom, curs FROM grups ORDER BY nom;
+        ```
+
+        Resultat:
+
+        | nom | curs |
+        | --- | --- |
+        | 1BA | 1r de Batxillerat |
+        | 1BB | 1r de Batxillerat |
+        | 2BA | 2n de Batxillerat |
+        | 4EA | 4t d'ESO |
+
+!!! example "Repàs 2. Del més gran al més jove"
+    Mostra el nom, els llinatges i la data de naixement dels alumnes, del més gran al més jove.
+
+    ??? success "Solució"
+        ```sql
+        SELECT nom, llinatges, data_naixement
+        FROM alumnes
+        ORDER BY data_naixement;
+        ```
+
+        Resultat:
+
+        | nom | llinatges | data_naixement |
+        | --- | --- | --- |
+        | Fèlix | Roig Coll | 2008-02-17 |
+        | Gemma | Sastre Pujol | 2008-09-04 |
+        | Dani | Oliver Serra | 2008-12-30 |
+        | Aina | Ferrer Pons | 2009-03-14 |
+        | Joan | Amengual Mir | 2009-04-29 |
+        | Elena | Garcia Ramis | 2009-05-08 |
+        | Biel | Mas Riera | 2009-07-02 |
+        | Carla | Vidal Bauzà | 2009-11-23 |
+        | Hug | Bennàssar Vich | 2010-01-21 |
+        | Irene | Fiol Torres | 2010-06-11 |
+
+        El més gran és el que va néixer **abans**: per això l'ordre és ascendent.
+
+!!! example "Repàs 3. Fora de Palma"
+    Mostra el nom i el municipi dels alumnes que no són de Palma, ordenats per municipi i, dins cada municipi, per nom.
+
+    ??? success "Solució"
+        ```sql
+        SELECT nom, municipi
+        FROM alumnes
+        WHERE municipi <> 'Palma'
+        ORDER BY municipi, nom;
+        ```
+
+        Resultat:
+
+        | nom | municipi |
+        | --- | --- |
+        | Joan | Calvià |
+        | Dani | Inca |
+        | Fèlix | Llucmajor |
+        | Biel | Marratxí |
+        | Hug | Marratxí |
+
+!!! example "Repàs 4. Llinatges que comencen per F o per B"
+    Mostra el nom i els llinatges dels alumnes el primer llinatge dels quals comença per F o per B.
+
+    ??? success "Solució"
+        ```sql
+        SELECT nom, llinatges
+        FROM alumnes
+        WHERE llinatges LIKE 'F%' OR llinatges LIKE 'B%';
+        ```
+
+        Resultat:
+
+        | nom | llinatges |
+        | --- | --- |
+        | Aina | Ferrer Pons |
+        | Hug | Bennàssar Vich |
+        | Irene | Fiol Torres |
+
+!!! example "Repàs 5. Noms de quatre lletres"
+    Mostra els noms d'alumne que tenen exactament quatre lletres. Resol-ho amb `LIKE`.
+
+    ??? success "Solució"
+        ```sql
+        SELECT nom FROM alumnes WHERE nom LIKE '____';
+        ```
+
+        Resultat:
+
+        | nom |
+        | --- |
+        | Aina |
+        | Biel |
+        | Dani |
+        | Joan |
+
+        Cada guió baix representa exactament un caràcter. També es pot fer amb `WHERE CHAR_LENGTH(nom) = 4`.
+
+!!! example "Repàs 6. Assignatures de quatre hores"
+    Mostra, per ordre alfabètic, el nom de les assignatures que tenen 4 hores setmanals.
+
+    ??? success "Solució"
+        ```sql
+        SELECT nom FROM assignatures WHERE hores_setmana = 4 ORDER BY nom;
+        ```
+
+        Resultat:
+
+        | nom |
+        | --- |
+        | Matemàtiques I |
+        | Programació i Tractament de Dades I |
+        | Programació i Tractament de Dades II |
+
+!!! example "Repàs 7. L'alumne més jove"
+    Mostra el nom, els llinatges i la data de naixement de l'alumne més jove, amb `ORDER BY` i `LIMIT`.
+
+    ??? success "Solució"
+        ```sql
+        SELECT nom, llinatges, data_naixement
+        FROM alumnes
+        ORDER BY data_naixement DESC
+        LIMIT 1;
+        ```
+
+        Resultat:
+
+        | nom | llinatges | data_naixement |
+        | --- | --- | --- |
+        | Irene | Fiol Torres | 2010-06-11 |
+
+!!! example "Repàs 8. Les cinc notes més baixes"
+    Mostra les cinc notes més baixes de la taula `notes`, de la més baixa a la més alta.
+
+    ??? success "Solució"
+        ```sql
+        SELECT * FROM notes ORDER BY nota LIMIT 5;
+        ```
+
+        Resultat:
+
+        | alumne_id | assignatura_id | nota |
+        | --- | --- | --- |
+        | 4 | 2 | 3.50 |
+        | 7 | 4 | 4.25 |
+        | 2 | 1 | 4.75 |
+        | 4 | 3 | 5.00 |
+        | 2 | 2 | 5.50 |
+
+!!! example "Repàs 9. Nascuts a partir del juliol"
+    Mostra el nom i la data de naixement dels alumnes nascuts entre el juliol i el desembre, de qualsevol any.
+
+    ??? success "Solució"
+        ```sql
+        SELECT nom, data_naixement
+        FROM alumnes
+        WHERE MONTH(data_naixement) >= 7
+        ORDER BY MONTH(data_naixement);
+        ```
+
+        Resultat:
+
+        | nom | data_naixement |
+        | --- | --- |
+        | Biel | 2009-07-02 |
+        | Gemma | 2008-09-04 |
+        | Carla | 2009-11-23 |
+        | Dani | 2008-12-30 |
+
+!!! example "Repàs 10. Dues condicions"
+    Mostra el nom, la data de naixement i el `grup_id` dels alumnes dels grups 1 o 2 que varen néixer el 2009.
+
+    ??? success "Solució"
+        ```sql
+        SELECT nom, data_naixement, grup_id
+        FROM alumnes
+        WHERE grup_id IN (1, 2) AND YEAR(data_naixement) = 2009;
+        ```
+
+        Resultat:
+
+        | nom | data_naixement | grup_id |
+        | --- | --- | --- |
+        | Aina | 2009-03-14 | 1 |
+        | Biel | 2009-07-02 | 1 |
+        | Carla | 2009-11-23 | 1 |
+        | Elena | 2009-05-08 | 2 |
+
+        Si ho escrius amb `OR`, calen parèntesis: `(grup_id = 1 OR grup_id = 2) AND …`.
+
+!!! example "Repàs 11. Quants tenen correu?"
+    Amb una sola consulta, mostra quants alumnes hi ha, quants tenen correu i quants no en tenen.
+
+    ??? success "Solució"
+        ```sql
+        SELECT COUNT(*) AS alumnes,
+               COUNT(correu) AS amb_correu,
+               COUNT(*) - COUNT(correu) AS sense_correu
+        FROM alumnes;
+        ```
+
+        Resultat:
+
+        | alumnes | amb_correu | sense_correu |
+        | --- | --- | --- |
+        | 10 | 8 | 2 |
+
+!!! example "Repàs 12. Quants municipis diferents?"
+    Mostra de quants municipis diferents són els alumnes. Pista: `DISTINCT` també es pot posar dins `COUNT()`.
+
+    ??? success "Solució"
+        ```sql
+        SELECT COUNT(DISTINCT municipi) AS municipis FROM alumnes;
+        ```
+
+        Resultat:
+
+        | municipis |
+        | --- |
+        | 5 |
+
+!!! example "Repàs 13. Les notes de PTD I"
+    Mostra quantes notes hi ha de l'assignatura 1 i quina n'és la mitjana (amb dos decimals), la més alta i la més baixa.
+
+    ??? success "Solució"
+        ```sql
+        SELECT COUNT(*) AS notes,
+               ROUND(AVG(nota), 2) AS mitjana,
+               MAX(nota) AS maxima,
+               MIN(nota) AS minima
+        FROM notes
+        WHERE assignatura_id = 1;
+        ```
+
+        Resultat:
+
+        | notes | mitjana | maxima | minima |
+        | --- | --- | --- | --- |
+        | 5 | 7.35 | 9.75 | 4.75 |
+
+!!! example "Repàs 14. LLINATGES, Nom"
+    Mostra una sola columna, anomenada `alumne`, amb el format `FERRER PONS, Aina`, ordenada alfabèticament.
+
+    ??? success "Solució"
+        ```sql
+        SELECT CONCAT(UPPER(llinatges), ', ', nom) AS alumne
+        FROM alumnes
+        ORDER BY alumne;
+        ```
+
+        Resultat:
+
+        | alumne |
+        | --- |
+        | AMENGUAL MIR, Joan |
+        | BENNÀSSAR VICH, Hug |
+        | FERRER PONS, Aina |
+        | FIOL TORRES, Irene |
+        | GARCIA RAMIS, Elena |
+        | MAS RIERA, Biel |
+        | OLIVER SERRA, Dani |
+        | ROIG COLL, Fèlix |
+        | SASTRE PUJOL, Gemma |
+        | VIDAL BAUZÀ, Carla |
+
+!!! example "Repàs 15. Quants d'anys fan el 2026?"
+    Mostra el nom de cada alumne i els anys que compleix durant el 2026, del més jove al més gran.
+
+    ??? success "Solució"
+        ```sql
+        SELECT nom, 2026 - YEAR(data_naixement) AS anys
+        FROM alumnes
+        ORDER BY anys, nom;
+        ```
+
+        Resultat:
+
+        | nom | anys |
+        | --- | --- |
+        | Hug | 16 |
+        | Irene | 16 |
+        | Aina | 17 |
+        | Biel | 17 |
+        | Carla | 17 |
+        | Elena | 17 |
+        | Joan | 17 |
+        | Dani | 18 |
+        | Fèlix | 18 |
+        | Gemma | 18 |
+
+!!! example "Repàs 16. Notes per alumne"
+    Mostra, per a cada `alumne_id`, quantes notes té, de més a menys.
+
+    ??? success "Solució"
+        ```sql
+        SELECT alumne_id, COUNT(*) AS notes
+        FROM notes
+        GROUP BY alumne_id
+        ORDER BY notes DESC, alumne_id;
+        ```
+
+        Resultat:
+
+        | alumne_id | notes |
+        | --- | --- |
+        | 1 | 3 |
+        | 2 | 3 |
+        | 4 | 3 |
+        | 3 | 2 |
+        | 5 | 2 |
+        | 6 | 1 |
+        | 7 | 1 |
+        | 8 | 1 |
+        | 9 | 1 |
+
+        L'alumne 10 no hi surt perquè no té cap fila a la taula `notes`.
+
+!!! example "Repàs 17. Alumnes per grup"
+    Mostra quants alumnes té cada `grup_id`. Què passa amb l'alumne que no té grup?
+
+    ??? success "Solució"
+        ```sql
+        SELECT grup_id, COUNT(*) AS alumnes
+        FROM alumnes
+        GROUP BY grup_id;
+        ```
+
+        Resultat:
+
+        | grup_id | alumnes |
+        | --- | --- |
+        | NULL | 1 |
+        | 1 | 3 |
+        | 2 | 2 |
+        | 3 | 2 |
+        | 4 | 2 |
+
+        `GROUP BY` forma un grup amb totes les files que tenen `NULL`: per això apareix una fila amb `grup_id` nul i un alumne.
+
+!!! example "Repàs 18. La diferència de notes"
+    Per a cada assignatura (`assignatura_id`), mostra la nota més alta, la més baixa i la diferència entre totes dues.
+
+    ??? success "Solució"
+        ```sql
+        SELECT assignatura_id,
+               MAX(nota) AS maxima,
+               MIN(nota) AS minima,
+               MAX(nota) - MIN(nota) AS diferencia
+        FROM notes
+        GROUP BY assignatura_id;
+        ```
+
+        Resultat:
+
+        | assignatura_id | maxima | minima | diferencia |
+        | --- | --- | --- | --- |
+        | 1 | 9.75 | 4.75 | 5.00 |
+        | 2 | 8.00 | 3.50 | 4.50 |
+        | 3 | 9.25 | 5.00 | 4.25 |
+        | 4 | 9.00 | 4.25 | 4.75 |
+        | 5 | 8.25 | 6.50 | 1.75 |
+
+!!! example "Repàs 19. Assignatures amb més de tres notes"
+    Mostra el `assignatura_id` i el nombre de notes de les assignatures que en tenen més de tres.
+
+    ??? success "Solució"
+        ```sql
+        SELECT assignatura_id, COUNT(*) AS notes
+        FROM notes
+        GROUP BY assignatura_id
+        HAVING COUNT(*) > 3;
+        ```
+
+        Resultat:
+
+        | assignatura_id | notes |
+        | --- | --- |
+        | 1 | 5 |
+        | 2 | 4 |
+        | 3 | 4 |
+
+!!! example "Repàs 20. Departaments amb més d'un professor"
+    Mostra els departaments que tenen més d'un professor, i quants en tenen.
+
+    ??? success "Solució"
+        ```sql
+        SELECT departament, COUNT(*) AS professors
+        FROM professors
+        GROUP BY departament
+        HAVING COUNT(*) > 1;
+        ```
+
+        Resultat:
+
+        | departament | professors |
+        | --- | --- |
+        | Tecnologia | 2 |
+
+!!! example "Repàs 21. Mitjana dels aprovats"
+    Per a cada assignatura, calcula la mitjana (amb dos decimals) **només de les notes aprovades**.
+
+    ??? success "Solució"
+        ```sql
+        SELECT assignatura_id, ROUND(AVG(nota), 2) AS mitjana_aprovats
+        FROM notes
+        WHERE nota >= 5
+        GROUP BY assignatura_id;
+        ```
+
+        Resultat:
+
+        | assignatura_id | mitjana_aprovats |
+        | --- | --- |
+        | 1 | 8.00 |
+        | 2 | 6.83 |
+        | 3 | 7.25 |
+        | 4 | 9.00 |
+        | 5 | 7.38 |
+
+        La condició filtra **files** abans d'agrupar: per això va a `WHERE` i no a `HAVING`.
+
+!!! example "Repàs 22. Assignatures llargues i curtes"
+    Mostra el nom de cada assignatura i una columna `tipus` que digui «Llarga» si té 4 hores setmanals o més i «Curta» si en té menys.
+
+    ??? success "Solució"
+        ```sql
+        SELECT nom,
+               CASE WHEN hores_setmana >= 4 THEN 'Llarga' ELSE 'Curta' END AS tipus
+        FROM assignatures;
+        ```
+
+        Resultat:
+
+        | nom | tipus |
+        | --- | --- |
+        | Programació i Tractament de Dades I | Llarga |
+        | Matemàtiques I | Llarga |
+        | Llengua Catalana i Literatura I | Curta |
+        | Programació i Tractament de Dades II | Llarga |
+        | Tecnologia | Curta |
+
+!!! example "Repàs 23. Quantes notes de cada qualificació?"
+    Mostra quantes notes hi ha de cada qualificació: Insuficient (menys de 5), Aprovat (de 5 a menys de 7), Notable (de 7 a menys de 9) i Excel·lent (9 o més).
+
+    ??? success "Solució"
+        ```sql
+        SELECT CASE
+                   WHEN nota < 5 THEN 'Insuficient'
+                   WHEN nota < 7 THEN 'Aprovat'
+                   WHEN nota < 9 THEN 'Notable'
+                   ELSE 'Excel·lent'
+               END AS qualificacio,
+               COUNT(*) AS notes
+        FROM notes
+        GROUP BY qualificacio
+        ORDER BY MIN(nota);
+        ```
+
+        Resultat:
+
+        | qualificacio | notes |
+        | --- | --- |
+        | Insuficient | 3 |
+        | Aprovat | 5 |
+        | Notable | 6 |
+        | Excel·lent | 3 |
+
+        MySQL i MariaDB permeten agrupar per l'àlies d'una columna calculada. L'`ORDER BY MIN(nota)` ordena les qualificacions de la més baixa a la més alta.
+
+!!! example "Repàs 24. Sense professor"
+    Mostra el nom de cada assignatura i el `professor_id`. Si no té professor assignat, ha de sortir un 0.
+
+    ??? success "Solució"
+        ```sql
+        SELECT nom, IFNULL(professor_id, 0) AS professor_id FROM assignatures;
+        ```
+
+        Resultat:
+
+        | nom | professor_id |
+        | --- | --- |
+        | Programació i Tractament de Dades I | 1 |
+        | Matemàtiques I | 2 |
+        | Llengua Catalana i Literatura I | 3 |
+        | Programació i Tractament de Dades II | 4 |
+        | Tecnologia | 0 |
+
+!!! example "Repàs 25. Troba l'error"
+    Aquestes tres consultes estan malament: una no retorna el que s'espera i les altres dues donen error. Explica per què i corregeix-les.
+
+    ```sql
+    SELECT nom FROM alumnes WHERE grup_id = NULL;
+
+    SELECT municipi, COUNT(*) FROM alumnes WHERE COUNT(*) > 1 GROUP BY municipi;
+
+    SELECT nom FROM alumnes ORDER BY nom WHERE grup_id = 1;
+    ```
+
+    ??? success "Solució"
+        ```sql
+        SELECT nom FROM alumnes WHERE grup_id IS NULL;
+
+        SELECT municipi, COUNT(*) FROM alumnes GROUP BY municipi HAVING COUNT(*) > 1;
+
+        SELECT nom FROM alumnes WHERE grup_id = 1 ORDER BY nom;
+        ```
+
+        1. Amb `= NULL` no es troba mai cap fila: s'ha de fer servir `IS NULL`.
+        2. Les funcions d'agregació no es poden fer servir a `WHERE`; els grups es filtren amb `HAVING`.
+        3. L'ordre de les clàusules és fix: `WHERE` va abans d'`ORDER BY`.
+
+!!! example "Repàs 26. Altes, canvis i baixes"
+    Fes aquestes operacions, en ordre, i comprova'n el resultat. Després, torna a carregar `institut.sql`.
+
+    1. Afegeix el grup `2BB`, de 2n de Batxillerat.
+    2. Assigna a aquest grup l'alumne que no en té cap.
+    3. L'assignatura Tecnologia passa a tenir 2 hores setmanals.
+    4. Puja mig punt totes les notes de l'assignatura 2 que siguin inferiors a 5.
+    5. Esborra les notes de l'assignatura 5.
+
+    ??? success "Solució"
+        ```sql
+        INSERT INTO grups (nom, curs) VALUES ('2BB', '2n de Batxillerat');
+
+        UPDATE alumnes SET grup_id = 5 WHERE grup_id IS NULL;
+
+        UPDATE assignatures SET hores_setmana = 2 WHERE nom = 'Tecnologia';
+
+        UPDATE notes SET nota = nota + 0.5 WHERE assignatura_id = 2 AND nota < 5;
+
+        DELETE FROM notes WHERE assignatura_id = 5;
+        ```
+
+        - El grup nou rep el `grup_id` 5, perquè n'hi havia quatre. El `UPDATE` de l'alumne modifica una sola fila (en Joan).
+        - La nota d'en Dani a Matemàtiques I passa de 3,50 a 4,00.
+        - S'esborren dues notes, i a la taula en queden 15.
+
+        Abans de cada `UPDATE` o `DELETE`, executa un `SELECT` amb el mateix `WHERE` per veure quines files canviaran.
 
 ---
 
