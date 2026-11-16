@@ -225,6 +225,169 @@ El control de versions també permet que **diverses persones treballin sobre el 
 !!! example "Exercici 8.5. Taula de proves"
     Fes la taula de proves de l'exercici 4.9 (tarifa del bus). Inclou casos normals, casos límit i dades incorrectes. Executa el programa amb cada cas, completa les columnes «Resultat obtingut» i «Correcte?» i, si trobes algun error, corregeix-lo.
 
+## 8.8. Exercicis de repàs
+
+Més exercicis per repassar els conceptes de la unitat. A molts d'ells no hi ha una única resposta correcta: el que compta és que la sàpigues justificar.
+
+!!! example "Repàs 8.1. A quina fase pertany?"
+    Indica a quina fase del cicle de vida (anàlisi de requisits, disseny, implementació, proves, desplegament o manteniment) correspon cada activitat d'un equip que fa una aplicació per reservar pistes esportives.
+
+    1. Decidir com es guardaran les reserves i com seran els menús.
+    2. Publicar l'aplicació perquè la facin servir els socis.
+    3. Entrevistar el personal del poliesportiu per saber què necessiten.
+    4. Corregir, mesos després, un error que ha trobat un usuari.
+    5. Escriure el codi en Python.
+    6. Comprovar que no es pot reservar una pista ja ocupada.
+
+    ??? success "Solució"
+        1: disseny. 2: desplegament. 3: anàlisi de requisits. 4: manteniment. 5: implementació. 6: proves.
+
+!!! example "Repàs 8.2. Funcional o no funcional?"
+    Classifica aquests requisits d'una aplicació de reserves de pistes esportives en funcionals i no funcionals.
+
+    1. El soci pot anul·lar una reserva fins a dues hores abans.
+    2. L'aplicació ha de funcionar al navegador del mòbil.
+    3. El sistema envia un correu de confirmació de cada reserva.
+    4. La llista de pistes lliures s'ha de mostrar en menys de 2 segons.
+    5. Només els socis amb la quota pagada poden reservar.
+    6. Les contrasenyes s'han de guardar xifrades.
+
+    ??? success "Solució"
+        Funcionals (què fa): 1, 3 i 5. No funcionals (com ho fa: rendiment, compatibilitat, seguretat): 2, 4 i 6.
+
+!!! example "Repàs 8.3. Requisits que es puguin comprovar"
+    Aquests requisits són massa vagues. Reescriu-los perquè siguin concrets i comprovables.
+
+    1. «L'aplicació ha de ser ràpida.»
+    2. «Ha de ser fàcil de fer servir.»
+    3. «Ha de suportar molts d'usuaris.»
+
+    ??? success "Solució"
+        Resposta orientativa:
+
+        1. «Cada pantalla s'ha de carregar en menys de 2 segons.»
+        2. «Un usuari nou ha de poder fer una reserva en menys d'un minut sense llegir cap manual.»
+        3. «Ha de funcionar correctament amb 200 usuaris connectats alhora.»
+
+        La clau és que hi hagi una **xifra o una condició** que es pugui comprovar amb una prova.
+
+!!! example "Repàs 8.4. Escriu un cas d'ús"
+    Escriu el cas d'ús «Anul·lar una reserva» de l'aplicació de pistes esportives, amb el títol, l'actor, l'objectiu, el flux d'esdeveniments, les precondicions i les postcondicions.
+
+    ??? success "Solució"
+        Resposta orientativa:
+
+        - **Títol**: anul·lar una reserva.
+        - **Actor**: soci del poliesportiu.
+        - **Objectiu**: el soci vol deixar lliure una pista que tenia reservada.
+        - **Flux d'esdeveniments**:
+            1. El soci accedeix al sistema amb el seu usuari.
+            2. Obre la llista de les seves reserves.
+            3. Selecciona una reserva i tria «Anul·lar».
+            4. El sistema comprova que falten més de dues hores per a la reserva.
+            5. Si és així, demana confirmació i anul·la la reserva. Si no, informa que ja no es pot anul·lar.
+            6. El soci rep la confirmació de l'anul·lació.
+        - **Precondicions**: el soci està registrat i té, com a mínim, una reserva futura.
+        - **Postcondicions**: la pista torna a estar disponible per a altres socis.
+
+!!! example "Repàs 8.5. Cascada o àgil?"
+    Per a cada projecte, digues si triaries una metodologia tradicional (en cascada) o una d'àgil, i per què.
+
+    1. El programari d'un aparell mèdic, amb uns requisits fixats per una normativa que no canviarà.
+    2. Una aplicació mòbil nova per a una empresa emergent que encara no sap exactament què volen els seus clients.
+    3. El treball de fi de curs d'un grup de quatre alumnes, que vol anar ensenyant versions al professor cada dues setmanes.
+
+    ??? success "Solució"
+        1: cascada, perquè els requisits són clars i estables i tot s'ha de planificar i documentar des del principi. 2: àgil, perquè els requisits són incerts i convé lliurar versions sovint per rebre l'opinió dels clients. 3: àgil; de fet, lliurar una versió que funciona cada dues setmanes i revisar-la és treballar amb *sprints*.
+
+!!! example "Repàs 8.6. El tauler Kanban"
+    Has de fer, amb un company, un programa que gestioni la llista de la compra. Escriu sis tasques del projecte i reparteix-les en un tauler Kanban amb les columnes «Per fer», «Fent» i «Fet», imaginant que sou a la meitat del projecte.
+
+    ??? success "Solució"
+        Resposta orientativa:
+
+        | Per fer | Fent | Fet |
+        | --- | --- | --- |
+        | Escriure el manual d'usuari | Programar l'opció d'esborrar un producte | Escriure els requisits |
+        | Fer la taula de proves | Programar l'opció de mostrar la llista | Dissenyar el menú |
+
+        Convé que cada tasca sigui petita i concreta, i que a la columna «Fent» n'hi hagi poques alhora.
+
+!!! example "Repàs 8.7. Disseny descendent"
+    Aplica el disseny descendent al problema «programa que gestiona les notes d'una classe»: escriu les tasques principals i descompon-ne dues en tasques més simples.
+
+    ??? success "Solució"
+        Resposta orientativa:
+
+        ```mermaid
+        flowchart TD
+            A[Gestionar les notes] --> B[Introduir les notes]
+            A --> C[Calcular estadístiques]
+            A --> D[Mostrar un informe]
+            B --> B1[Demanar el nom de l'alumne]
+            B --> B2[Demanar la nota i validar-la]
+            B --> B3[Guardar-la a la llista]
+            C --> C1[Calcular la mitjana]
+            C --> C2[Trobar la nota més alta i la més baixa]
+            C --> C3[Comptar els aprovats]
+        ```
+
+        Quan cada tasca és prou petita per programar-la en poques línies, ja no cal descompondre més.
+
+!!! example "Repàs 8.8. Quin tipus d'error és?"
+    Classifica cada error en error de sintaxi, d'execució o de lògica.
+
+    1. `print("Hola"`
+    2. Un programa calcula l'àrea d'un triangle amb `base * altura`, sense dividir entre 2.
+    3. `nombre = int("deu")`
+    4. `for i in range(5)` sense els dos punts.
+    5. Un bucle que hauria de mostrar els nombres de l'1 al 10 només arriba al 9.
+    6. `llista = [1, 2, 3]` i després `print(llista[3])`.
+
+    ??? success "Solució"
+        1 i 4: de sintaxi (Python no arriba a executar res). 3 i 6: d'execució (`ValueError` i `IndexError`). 2 i 5: de lògica: el programa funciona, però el resultat no és el que s'esperava.
+
+!!! example "Repàs 8.9. Una taula de proves"
+    Un programa demana l'edat i mostra el preu de l'entrada d'un museu: gratis per als menors de 6 anys, 4 € de 6 a 17 anys, 8 € de 18 a 64 i 5 € a partir de 65. Escriu una taula de proves amb casos normals, casos límit i casos fora de rang, indicant el resultat esperat.
+
+    ??? success "Solució"
+        ```python
+        edat = int(input("Edat: "))
+
+        if edat < 0 or edat > 120:
+            print("Edat incorrecta")
+        elif edat < 6:
+            print("Gratis")
+        elif edat < 18:
+            print("4 €")
+        elif edat < 65:
+            print("8 €")
+        else:
+            print("5 €")
+        ```
+
+        | Cas | Entrada | Resultat esperat |
+        | --- | --- | --- |
+        | Normal | 3 | Gratis |
+        | Normal | 30 | 8 € |
+        | Límit | 0 | Gratis |
+        | Límit | 5 | Gratis |
+        | Límit | 6 | 4 € |
+        | Límit | 17 | 4 € |
+        | Límit | 18 | 8 € |
+        | Límit | 64 | 8 € |
+        | Límit | 65 | 5 € |
+        | Fora de rang | -1 | Missatge d'error |
+        | Dada incorrecta | vint | Missatge d'error (o, si no es controla, un `ValueError`) |
+
+        Els casos límit són els més importants: els errors solen aparèixer just a les fronteres, per haver escrit `<` en lloc de `<=`. El programa de dalt és una possible implementació que supera totes aquestes proves, excepte la darrera.
+
+!!! example "Repàs 8.10. Per què control de versions?"
+    Explica amb dos exemples concrets quins problemes resol un sistema de control de versions quan dues persones fan juntes un programa.
+
+    ??? success "Solució"
+        Resposta oberta. Exemples: es pot recuperar la versió que funcionava ahir si un canvi ho ha espatllat tot; es pot saber qui ha canviat cada línia i per què; dues persones poden treballar alhora en parts diferents sense trepitjar-se ni enviar-se fitxers com `programa_final_v3_bo.py`; queda un historial de tot el projecte.
+
 ---
 
 !!! quote "Font"

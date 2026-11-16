@@ -183,6 +183,223 @@ A la unitat següent veurem com instal·lar l'entorn per programar en Python. Me
     - **Recomanable**: [Silent Teacher](https://silentteacher.toxicode.fr/hour_of_code.html?theme=basic_python)
     - **Només si ets molt PRO**: [CodeCombat](https://codecombat.com/play/dungeon?hour_of_code=true)
 
+## 1.5. Exercicis de repàs
+
+Més exercicis per practicar tota la unitat. Fes els diagrames de flux amb [draw.io](https://www.drawio.com/) o en paper, i el pseudocodi, si vols, amb PSeInt.
+
+!!! example "Repàs 1.1. Posa-les en ordre"
+    Aquestes instruccions per enviar un missatge amb el mòbil estan desordenades. Escriu-les en l'ordre correcte.
+
+    - Prémer el botó d'enviar.
+    - Obrir l'aplicació de missatgeria.
+    - Escriure el missatge.
+    - Desbloquejar el mòbil.
+    - Triar el contacte.
+
+    ??? success "Solució"
+        1. Desbloquejar el mòbil.
+        2. Obrir l'aplicació de missatgeria.
+        3. Triar el contacte.
+        4. Escriure el missatge.
+        5. Prémer el botó d'enviar.
+
+        Les instruccions són les mateixes, però només un ordre porta al resultat: això és la **seqüenciació**.
+
+!!! example "Repàs 1.2. On és l'error?"
+    Aquest algorisme per fer una truita té dos problemes: una passa és en un lloc equivocat i en falta una d'imprescindible. Troba'ls.
+
+    1. Posar oli a la paella.
+    2. Abocar els ous batuts a la paella.
+    3. Rompre els ous dins un plat i batre'ls.
+    4. Esperar que la truita qualli i girar-la.
+    5. Servir la truita.
+
+    ??? success "Solució"
+        Les passes 2 i 3 estan intercanviades: no es poden abocar els ous batuts abans de batre'ls. I falta **encendre el foc** (i esperar que l'oli estigui calent) després de posar l'oli. Una persona ho donaria per fet; un ordinador, no: només fa el que diuen les instruccions.
+
+!!! example "Repàs 1.3. Instruccions ambigües"
+    Un algorisme ha de ser **precís**: cada instrucció s'ha de poder executar sense haver d'interpretar res. Explica per què aquestes instruccions no ho són i reescriu-les.
+
+    1. «Afegeix-hi una mica de sal.»
+    2. «Cou la pasta fins que estigui feta.»
+    3. «Si fa mal temps, agafa roba adequada.»
+
+    ??? success "Solució"
+        Totes depenen de la interpretació de qui les llegeix. Versions precises, per exemple:
+
+        1. «Afegeix-hi 5 grams de sal.»
+        2. «Cou la pasta durant 9 minuts en aigua bullent.»
+        3. «Si la temperatura és inferior a 15 °C, agafa una jaqueta. Si plou, agafa un paraigua.»
+
+        Fixa't que la tercera s'ha convertit en dues **condicions** que es poden comprovar.
+
+!!! example "Repàs 1.4. Quin símbol li correspon?"
+    Indica quin símbol d'un diagrama de flux (terminal, procés, decisió o entrada/sortida) faries servir per a cada passa.
+
+    1. Inici
+    2. Llegir l'edat
+    3. L'edat és igual o superior a 18?
+    4. preu ← preu × 0,9
+    5. Escriure «Pots entrar»
+    6. Fi
+
+    ??? success "Solució"
+        1 i 6: **terminal** (oval). 2 i 5: **entrada/sortida** (paral·lelogram). 3: **decisió** (rombe), perquè és una pregunta amb dues respostes possibles. 4: **procés** (rectangle), perquè és un càlcul.
+
+!!! example "Repàs 1.5. Llegeix el diagrama"
+    Què escriu aquest algorisme si es llegeixen els valors 3 i 8? I amb 9 i 2? I amb 5 i 5?
+
+    ```mermaid
+    flowchart TD
+        A([Inici]) --> B[/Llegir a i b/]
+        B --> C{a > b?}
+        C -- Sí --> D[/Escriure a/]
+        C -- No --> E[/Escriure b/]
+        D --> F([Fi])
+        E --> F
+    ```
+
+    Explica amb una frase què fa l'algorisme.
+
+    ??? success "Solució"
+        Escriu 8, 9 i 5. L'algorisme mostra **el més gran** de dos nombres. Quan són iguals, la condició `a > b` és falsa i s'escriu `b`, que val el mateix.
+
+!!! example "Repàs 1.6. Segueix el pseudocodi"
+    Què escriu aquest algorisme? Fes una taula amb el valor de `x` i de `y` després de cada instrucció.
+
+    ```text title="Pseudocodi"
+    Inici
+        x ← 4
+        y ← x × 3
+        x ← y − x
+        y ← y + 1
+        Escriure x, y
+    Fi
+    ```
+
+    ??? success "Solució"
+        | Instrucció | x | y |
+        | --- | --- | --- |
+        | `x ← 4` | 4 | |
+        | `y ← x × 3` | 4 | 12 |
+        | `x ← y − x` | 8 | 12 |
+        | `y ← y + 1` | 8 | 13 |
+
+        Escriu 8 i 13. La fletxa `←` vol dir «guarda aquest valor»: primer es calcula el que hi ha a la dreta, amb els valors que hi ha en aquell moment, i després es guarda a la variable de l'esquerra.
+
+!!! example "Repàs 1.7. El perímetre d'un rectangle"
+    Escriu, com una llista de passes numerades i després en pseudocodi, un algorisme que calculi el perímetre d'un rectangle a partir de la base i l'altura.
+
+    ??? success "Solució"
+        1. Obtenir la base.
+        2. Obtenir l'altura.
+        3. Sumar la base i l'altura.
+        4. Multiplicar el resultat per 2.
+        5. Mostrar el resultat.
+
+        ```text title="Pseudocodi"
+        Inici
+            Llegir base
+            Llegir altura
+            perimetre ← 2 × (base + altura)
+            Escriure perimetre
+        Fi
+        ```
+
+!!! example "Repàs 1.8. Aprovat o suspès"
+    Escriu en pseudocodi un algorisme que llegeixi dues notes, en calculi la mitjana i escrigui «Aprovat» si és igual o superior a 5 i «Suspès» en cas contrari.
+
+    ??? success "Solució"
+        ```text title="Pseudocodi"
+        Inici
+            Llegir nota1
+            Llegir nota2
+            mitjana ← (nota1 + nota2) / 2
+            Si mitjana ≥ 5 llavors
+                Escriure "Aprovat"
+            Sinó
+                Escriure "Suspès"
+            FiSi
+        Fi
+        ```
+
+!!! example "Repàs 1.9. Positiu, negatiu o zero"
+    Dibuixa el diagrama de flux d'un algorisme que llegeixi un nombre i digui si és positiu, negatiu o zero. Necessitaràs dues decisions.
+
+    ??? success "Solució"
+        ```mermaid
+        flowchart TD
+            A([Inici]) --> B[/Llegir n/]
+            B --> C{n > 0?}
+            C -- Sí --> D[/Escriure 'Positiu'/]
+            C -- No --> E{n < 0?}
+            E -- Sí --> F[/Escriure 'Negatiu'/]
+            E -- No --> G[/Escriure 'Zero'/]
+            D --> H([Fi])
+            F --> H
+            G --> H
+        ```
+
+        Cada decisió només té dues sortides. Per distingir tres casos, calen dues decisions encadenades.
+
+!!! example "Repàs 1.10. El descompte"
+    Una botiga fa un 10 % de descompte a les compres de més de 100 €. Escriu en pseudocodi l'algorisme que llegeix l'import d'una compra i escriu el que s'ha de pagar.
+
+    ??? success "Solució"
+        ```text title="Pseudocodi"
+        Inici
+            Llegir import
+            Si import > 100 llavors
+                import ← import − import × 0,10
+            FiSi
+            Escriure import
+        Fi
+        ```
+
+        Aquí no cal el `Sinó`: si la compra no supera els 100 €, simplement no es fa res. Comprovació: amb 80 € s'escriu 80, i amb 200 €, 180.
+
+!!! example "Repàs 1.11. Fins que l'encertis"
+    Dibuixa el diagrama de flux d'un algorisme que demani una contrasenya i la torni a demanar tantes vegades com calgui fins que sigui correcta. Quan ho és, escriu «Benvingut».
+
+    ??? success "Solució"
+        ```mermaid
+        flowchart TD
+            A([Inici]) --> B[/Llegir contrasenya/]
+            B --> C{És correcta?}
+            C -- No --> D[/Escriure 'Torna-ho a provar'/]
+            D --> B
+            C -- Sí --> E[/Escriure 'Benvingut'/]
+            E --> F([Fi])
+        ```
+
+        La fletxa que torna enrere crea una **repetició** (un bucle). L'algorisme acaba perquè hi ha un camí de sortida: quan la contrasenya és correcta.
+
+!!! example "Repàs 1.12. Del pseudocodi a Python"
+    Fixa't en el programa de l'apartat 1.4, que calcula l'àrea d'un triangle, i tradueix a Python aquest pseudocodi. Fes servir una base de 6 i una altura de 4.
+
+    ```text title="Pseudocodi"
+    Inici
+        base ← 6
+        altura ← 4
+        area ← base × altura
+        perimetre ← 2 × (base + altura)
+        Escriure area
+        Escriure perimetre
+    Fi
+    ```
+
+    ??? success "Solució"
+        ```python
+        base = 6
+        altura = 4
+        area = base * altura
+        perimetre = 2 * (base + altura)
+        print("L'àrea del rectangle és:", area)
+        print("El perímetre del rectangle és:", perimetre)
+        ```
+
+        Cada línia del pseudocodi es converteix en una línia de Python: la fletxa `←` s'escriu `=`, el signe `×` s'escriu `*` i `Escriure` és `print()`.
+
 ---
 
 !!! quote "Font"

@@ -269,6 +269,142 @@ La darrera línia, `if __name__ == "__main__":`, indica que la funció `main()` 
     ??? success "Resposta a l'apartat 4"
         Apareix un error `IndentationError`: Python esperava un bloc sagnat després de la línia que acaba amb dos punts i no l'ha trobat. En Python, el sagnat forma part de la sintaxi: no és només una qüestió d'estètica.
 
+## 2.7. Exercicis de repàs
+
+Més exercicis per repassar els conceptes de la unitat.
+
+!!! example "Repàs 2.1. Vertader o fals?"
+    Indica si cada afirmació és vertadera o falsa, i corregeix les falses.
+
+    1. El llenguatge màquina està format per zeros i uns.
+    2. Els llenguatges d'alt nivell són més difícils d'aprendre que els de baix nivell.
+    3. Un programa escrit en assemblador funciona igual en qualsevol processador.
+    4. Un compilador tradueix tot el programa abans d'executar-lo.
+    5. Python és un llenguatge compilat que genera un arxiu `.exe`.
+    6. Un mateix programa en Java pot funcionar a Windows, macOS i Linux sense canvis.
+    7. SQL i HTML són llenguatges declaratius.
+    8. En un llenguatge interpretat, un error de la línia 50 es detecta abans d'executar la línia 1.
+
+    ??? success "Solució"
+        1. Vertader.
+        2. Fals: són més fàcils, perquè s'assemblen més al llenguatge humà.
+        3. Fals: l'assemblador depèn del tipus de processador.
+        4. Vertader.
+        5. Fals: Python és interpretat i no genera cap executable; cal tenir l'intèrpret instal·lat.
+        6. Vertader: es compila a *bytecode*, que executa la Màquina Virtual de Java de cada sistema.
+        7. Vertader: descriuen **què** es vol, no **com** s'ha de fer.
+        8. Fals: l'intèrpret tradueix i executa línia a línia, de manera que l'error apareix quan s'arriba a la línia 50.
+
+!!! example "Repàs 2.2. Ordena'ls per nivell"
+    Ordena aquests llenguatges del més proper a la màquina al més proper a les persones: Python, llenguatge màquina, C, assemblador.
+
+    ??? success "Solució"
+        Llenguatge màquina → assemblador → C → Python. Els dos primers són de baix nivell; C és de nivell mitjà i Python, d'alt nivell.
+
+!!! example "Repàs 2.3. Quin llenguatge triaries?"
+    Relaciona cada necessitat amb el tipus de llenguatge més adequat: de baix nivell, d'alt nivell de propòsit general, declaratiu, d'script o de propòsit específic.
+
+    1. Consultar les dades d'una base de dades.
+    2. Fer una anàlisi estadística amb R.
+    3. Programar el controlador d'un dispositiu aprofitant al màxim el maquinari.
+    4. Afegir interactivitat a una pàgina web amb JavaScript.
+    5. Aprendre a programar i fer aplicacions de tot tipus.
+
+    ??? success "Solució"
+        1: declaratiu (SQL). 2: de propòsit específic. 3: de baix nivell (o de nivell mitjà, com C). 4: d'script. 5: d'alt nivell de propòsit general, com Python.
+
+!!! example "Repàs 2.4. Compilador o intèrpret?"
+    Digues si cada característica correspon a un llenguatge compilat o a un d'interpretat.
+
+    1. Per executar el programa en un altre ordinador, hi ha d'haver instal·lat el traductor.
+    2. Els errors de sintaxi es detecten tots abans d'executar res.
+    3. L'execució sol ser més ràpida.
+    4. Es pot provar un canvi immediatament, sense cap passa intermèdia.
+    5. El resultat de la traducció és un arxiu executable.
+
+    ??? success "Solució"
+        1: interpretat. 2: compilat. 3: compilat. 4: interpretat. 5: compilat.
+
+!!! example "Repàs 2.5. Les parts d'un IDE"
+    Quina part d'un IDE (editor de codi, intèrpret, depurador, gestor d'arxius o consola de sortida) fas servir en cada situació?
+
+    1. Vols executar el programa línia a línia per veure quan canvia una variable.
+    2. Veus el resultat d'un `print()`.
+    3. Escrius el codi i les paraules clau surten de colors.
+    4. Obres un altre fitxer del mateix projecte.
+    5. Prems el botó ▷ i el programa s'executa.
+
+    ??? success "Solució"
+        1: depurador. 2: consola de sortida. 3: editor de codi. 4: gestor d'arxius. 5: intèrpret.
+
+!!! example "Repàs 2.6. Per què Python?"
+    Escriu tres raons per les quals Python és un bon llenguatge per aprendre a programar i tres àmbits professionals en què es fa servir.
+
+    ??? success "Solució"
+        Resposta oberta. Raons possibles: és d'alt nivell i la seva sintaxi és senzilla i llegible; és interpretat, i per tant es poden provar els canvis de seguida; és gratuït i funciona en tots els sistemes; té moltíssimes biblioteques. Àmbits: desenvolupament web, ciència de dades, intel·ligència artificial, automatització de tasques i programari d'escriptori.
+
+!!! example "Repàs 2.7. Identifica les parts"
+    En aquest programa, indica quines línies són una importació, un comentari, la definició d'una funció i un bloc sagnat.
+
+    ```python
+    import math                                   # línia 1
+
+    # Calcula la hipotenusa d'un triangle         # línia 3
+    def hipotenusa(a, b):                         # línia 4
+        return math.sqrt(a ** 2 + b ** 2)         # línia 5
+
+    print(hipotenusa(3, 4))                       # línia 7
+    ```
+
+    Què mostra el programa?
+
+    ??? success "Solució"
+        Línia 1: importació del mòdul `math`. Línia 3: comentari (també ho són els textos `# línia …`). Línia 4: definició de la funció `hipotenusa`. Línia 5: bloc sagnat, que és el cos de la funció. El programa mostra `5.0`.
+
+!!! example "Repàs 2.8. Comentaris"
+    Què mostra aquest programa? Quines línies no s'executen?
+
+    ```python
+    # print("Primera")
+    print("Segona")   # print("Tercera")
+    # Mostram la darrera
+    print("Quarta")
+    ```
+
+    ??? success "Solució"
+        Mostra `Segona` i `Quarta`. Tot el que hi ha després d'un `#` és un comentari i Python l'ignora, encara que sembli codi. Posar un `#` davant una línia és una manera habitual de desactivar-la temporalment.
+
+!!! example "Repàs 2.9. Errors de sagnat"
+    Un d'aquests dos programes dona un error `IndentationError`. Quin, i per què?
+
+    ```python
+    # Programa A
+    print("Hola")
+        print("Adeu")
+
+    # Programa B
+    print("Hola")
+    print("Adeu")
+    ```
+
+    ??? success "Solució"
+        El programa A: la segona línia està sagnada sense que la línia anterior obri cap bloc. En Python, el sagnat no és decoratiu: només se sagna el contingut d'un bloc, després d'una línia que acaba amb dos punts.
+
+!!! example "Repàs 2.10. El primer programa propi"
+    Escriu un programa que mostri tres línies: el teu nom, el teu curs i la matèria que més t'agrada. Afegeix-hi, al principi, un comentari amb el teu nom i la data. Executa'l a VS Code.
+
+    ??? success "Solució"
+        ```python
+        # Autora: Aina Ferrer
+        # Data: 16 de novembre de 2026
+
+        print("Nom: Aina Ferrer")
+        print("Curs: 1r de Batxillerat")
+        print("Matèria preferida: Programació i Tractament de Dades")
+        ```
+
+        Les dades són un exemple: hi has de posar les teves.
+
 ---
 
 !!! quote "Font"

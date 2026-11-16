@@ -345,6 +345,215 @@ El **manual d'usuari** (o guia d'ús) explica a la persona usuària com fer serv
 !!! example "Exercici 9.5. README i manual d'usuari"
     Escriu el `README.md` i un manual d'usuari breu (una o dues pàgines) del programa que has millorat a l'exercici 9.3, seguint les estructures dels apartats 9.5.1 i 9.5.2.
 
+## 9.6. Exercicis de repàs
+
+Més exercicis per practicar tota la unitat: llegir i millorar codi, interpretar errors i pensar en qui farà servir el programa.
+
+!!! example "Repàs 9.1. Bon nom o mal nom?"
+    Quins d'aquests noms són adequats segons les recomanacions de la unitat? Proposa una alternativa per als que no ho són.
+
+    `x1` · `preu_total` · `PreuTotal` · `IVA` (una constant) · `la_variable_on_guard_el_nom_de_l_alumne` · `n` (comptador d'un bucle curt) · `dada`
+
+    ??? success "Solució"
+        - Adequats: `preu_total`, `IVA` (les constants, en majúscules) i `n` com a comptador d'un bucle curt.
+        - `x1`: no diu què conté. Millor `nota_examen`, per exemple.
+        - `PreuTotal`: en Python, les variables s'escriuen en minúscules i amb guions baixos: `preu_total`.
+        - `la_variable_on_guard_el_nom_de_l_alumne`: massa llarg. N'hi ha prou amb `nom_alumne`.
+        - `dada`: massa genèric. Quina dada? `temperatura`, `edat`…
+
+!!! example "Repàs 9.2. Comentaris útils i inútils"
+    Quins d'aquests comentaris aporten informació i quins sobren?
+
+    ```python
+    i = i + 1                    # suma 1 a i
+    PES_MAXIM = 23               # en kg, límit de la companyia aèria
+    total = total * 1.21         # multiplica el total per 1.21
+    if edat >= 16:               # edat mínima legal per treballar
+        print("Pots treballar")  # mostra un missatge
+    ```
+
+    ??? success "Solució"
+        Són útils el segon (indica les unitats i d'on surt el valor) i el quart (explica **per què** es compara amb 16). Els altres tres repeteixen el que ja diu el codi. El tercer seria útil si digués el que el codi no diu: `# afegim el 21 % d'IVA`; i encara millor amb una constant `IVA = 0.21`.
+
+!!! example "Repàs 9.3. Fes-lo llegible"
+    Aquest programa funciona, però costa d'entendre. Reescriu-lo amb noms descriptius, constants, espais i comentaris, sense canviar el que fa.
+
+    ```python
+    h=float(input())
+    p=float(input())
+    s=h*p
+    if h>40:s=s+(h-40)*p*0.5
+    print(s)
+    ```
+
+    ??? success "Solució"
+        ```python
+        # Calcula el sou setmanal, amb un plus per les hores extres
+
+        HORES_NORMALS = 40    # hores setmanals sense plus
+        PLUS_EXTRA = 0.5      # les hores extres es paguen un 50 % més
+
+        hores = float(input("Hores treballades aquesta setmana: "))
+        preu_hora = float(input("Preu per hora (€): "))
+
+        sou = hores * preu_hora
+        if hores > HORES_NORMALS:
+            hores_extres = hores - HORES_NORMALS
+            sou = sou + hores_extres * preu_hora * PLUS_EXTRA
+
+        print(f"Sou setmanal: {sou:.2f} €")
+        ```
+
+        Per saber què feia el programa original, primer s'ha hagut de desxifrar. Amb la versió nova, es llegeix.
+
+!!! example "Repàs 9.4. Què diu el missatge d'error?"
+    Per a cada fragment, digues quin error dona Python i com es corregeix.
+
+    1. `print(resultat)` sense haver creat abans la variable `resultat`.
+    2. `edat = input("Edat: ")` i després `print(edat + 1)`.
+    3. `nombre = int("3.7")`
+    4. `paraula = "sol"` i després `print(paraula[3])`.
+    5. `print(10 / (5 - 5))`
+
+    ??? success "Solució"
+        1. `NameError`: la variable no existeix. S'ha de crear abans o revisar si el nom està ben escrit.
+        2. `TypeError`: `input()` retorna un text i no es pot sumar amb un enter. Solució: `int(input("Edat: "))`.
+        3. `ValueError`: `int()` no pot convertir un text amb decimals. Solució: `float("3.7")`.
+        4. `IndexError`: `"sol"` té les posicions 0, 1 i 2.
+        5. `ZeroDivisionError`: el divisor val 0. S'ha de comprovar abans de dividir.
+
+!!! example "Repàs 9.5. Llegeix el traceback"
+    Un programa s'atura amb aquest missatge. A quina línia és l'error, de quin tipus és i quina en pot ser la causa?
+
+    ```text
+    Traceback (most recent call last):
+      File "compra.py", line 7, in <module>
+        total = total + preus[i]
+    IndexError: list index out of range
+    ```
+
+    ??? success "Solució"
+        L'error és a la **línia 7** del fitxer `compra.py` i és un `IndexError`: s'intenta accedir a una posició de la llista `preus` que no existeix. La causa més probable és un bucle en què `i` arriba a un valor igual o superior a `len(preus)`, per exemple `range(len(preus) + 1)` o `range(1, len(preus) + 1)`.
+
+!!! example "Repàs 9.6. Error de lògica: la mitjana"
+    Aquest programa no dona cap error, però el resultat és incorrecte: amb les notes 6, 8 i 10 mostra 17.33 en lloc de 8.00. Troba l'error afegint un `print()` de depuració i corregeix-lo.
+
+    ```python
+    nota1 = float(input("Nota 1: "))
+    nota2 = float(input("Nota 2: "))
+    nota3 = float(input("Nota 3: "))
+
+    mitjana = nota1 + nota2 + nota3 / 3
+    print(f"Mitjana: {mitjana:.2f}")
+    ```
+
+    ??? success "Solució"
+        ```python
+        nota1 = float(input("Nota 1: "))
+        nota2 = float(input("Nota 2: "))
+        nota3 = float(input("Nota 3: "))
+
+        mitjana = (nota1 + nota2 + nota3) / 3
+        print(f"Mitjana: {mitjana:.2f}")
+        ```
+
+        Faltaven els parèntesis: la divisió té més prioritat que la suma, i només es dividia entre 3 la darrera nota. És un error de **lògica**: Python no avisa, i només es detecta comparant el resultat amb el que s'esperava.
+
+!!! example "Repàs 9.7. Error de lògica: el comptador"
+    Aquest programa hauria de comptar quants nombres parells hi ha entre l'1 i el 20 (n'hi ha 10), però mostra 1. Per què? Corregeix-lo.
+
+    ```python
+    for n in range(1, 21):
+        parells = 0
+        if n % 2 == 0:
+            parells = parells + 1
+    print("Parells:", parells)
+    ```
+
+    ??? success "Solució"
+        ```python
+        parells = 0
+        for n in range(1, 21):
+            if n % 2 == 0:
+                parells = parells + 1
+        print("Parells:", parells)
+        ```
+
+        El comptador es posa a zero **dins** el bucle, a cada volta. S'ha d'inicialitzar abans. Amb el depurador o amb un `print(n, parells)` dins el bucle es veu de seguida que `parells` no passa mai d'1.
+
+!!! example "Repàs 9.8. Un programa que no s'atura mai amb un error"
+    Aquest programa s'atura amb un *traceback* si l'usuari escriu lletres o deixa la resposta en blanc. Millora'l perquè torni a demanar la dada fins que sigui un nombre enter entre 1 i 10, amb missatges que expliquin què s'espera.
+
+    ```python
+    n = int(input())
+    print(n * 2)
+    ```
+
+    ??? success "Solució"
+        ```python
+        resposta = input("Escriu un nombre enter de l'1 al 10: ")
+        while not resposta.isdigit() or int(resposta) < 1 or int(resposta) > 10:
+            print("Això no és vàlid. Ha de ser un nombre enter entre 1 i 10, per exemple 7.")
+            resposta = input("Escriu un nombre enter de l'1 al 10: ")
+
+        n = int(resposta)
+        print(f"El doble de {n} és {n * 2}")
+        ```
+
+        La dada es llegeix com a text i no es converteix fins que s'ha comprovat amb `isdigit()` que només té xifres. L'ordre de les condicions importa: si `resposta.isdigit()` és fals, Python ja no avalua `int(resposta)`, que donaria error. S'apliquen tres principis d'usabilitat: prevenir errors (el missatge indica el format), ajudar a recuperar-se'n i parlar el llenguatge de l'usuari.
+
+!!! example "Repàs 9.9. Quin principi s'incompleix?"
+    Indica quin principi d'usabilitat incompleix cada situació i com ho arreglaries.
+
+    1. Després d'escriure un producte, el programa no mostra res i torna al menú.
+    2. Si l'usuari s'equivoca, apareix `ValueError: invalid literal for int() with base 10`.
+    3. En un menú se surt amb la `S`, i en un altre, amb el `0`.
+    4. El programa esborra totes les dades en triar l'opció 5, sense demanar res.
+    5. El programa demana `Data:` i només accepta el format `2026-11-16`.
+
+    ??? success "Solució"
+        1. **Visibilitat de l'estat del sistema**: cal confirmar l'acció («Producte afegit»).
+        2. **Ajudar a recuperar-se dels errors** i **parlar el llenguatge de l'usuari**: s'ha de controlar l'error, explicar-lo amb paraules clares i tornar a demanar la dada.
+        3. **Coherència**: la mateixa tecla per sortir a tot arreu.
+        4. **Control i llibertat**: s'ha de demanar confirmació abans d'una acció que no es pot desfer.
+        5. **Prevenció d'errors**: s'ha d'indicar el format esperat, `Data (aaaa-mm-dd):`.
+
+!!! example "Repàs 9.10. Escriu un README"
+    Escriu el fitxer `README` del programa de l'exercici «Fes-lo llegible» (el càlcul del sou setmanal), seguint l'estructura de la unitat.
+
+    ??? success "Solució"
+        Resposta orientativa:
+
+        ```markdown
+        # Sou setmanal
+
+        Calcula el sou d'una setmana a partir de les hores treballades i del preu
+        per hora, amb un plus del 50 % per a les hores que passen de 40.
+
+        ## Requisits
+
+        Python 3.10 o superior.
+
+        ## Execució
+
+            python sou.py
+
+        ## Ús
+
+            Hores treballades aquesta setmana: 45
+            Preu per hora (€): 10
+            Sou setmanal: 475.00 €
+
+        ## Estructura
+
+        - `sou.py`: el programa.
+        - `README.md`: aquest document.
+
+        ## Autoria
+
+        Aina Ferrer, novembre de 2026. Llicència CC BY-SA 4.0.
+        ```
+
 ---
 
 !!! quote "Font"
