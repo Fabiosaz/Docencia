@@ -36,6 +36,7 @@ theme:
       primary: custom
       accent: custom
       toggle: {icon: material/weather-sunny, name: Mode clar}
+  favicon: img/favicon.svg
   icon:
     logo: material/school
     admonition:

@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 292" role="img" aria-label="El sensor d'ultrasons del robot envia un so que rebota en un obstacle i torna. A sota, tres zones: menys de 15 centímetres, aturar-se i girar; entre 15 i 40, avançar a poc a poc; més de 40, avançar">
+<defs>
+<marker id="f_1d4ed8" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9 Z" fill="#1d4ed8"/></marker>
+<marker id="f_ea580c" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9 Z" fill="#ea580c"/></marker>
+</defs>
+<rect width="720" height="292" rx="16" fill="#f8fafc"/>
+<text x="360" y="30" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#1e293b" text-anchor="middle" >El sensor d'ultrasons mesura la distància amb l'eco</text>
+<rect x="60" y="86" width="96" height="50" rx="10" fill="#3b82f6" stroke="#1d4ed8" stroke-width="2.5" />
+<rect x="150" y="94" width="16" height="34" rx="4" fill="#1e3a8a" stroke="#1e3a8a" stroke-width="1.5" />
+<circle cx="84" cy="140" r="15" fill="#0f172a"/><circle cx="84" cy="140" r="5" fill="#93c5fd"/>
+<circle cx="134" cy="140" r="15" fill="#0f172a"/><circle cx="134" cy="140" r="5" fill="#93c5fd"/>
+<rect x="78" y="70" width="54" height="20" rx="5" fill="#0f172a" stroke="#0f172a" stroke-width="1.5" />
+<rect x="560" y="60" width="22" height="98" rx="3" fill="#a8a29e" stroke="#57534e" stroke-width="2" />
+<text x="571" y="52" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#64748b" text-anchor="middle" >obstacle</text>
+<line x1="40" y1="156" x2="680" y2="156" stroke="#78716c" stroke-width="2" stroke-linecap="round" />
+<line x1="176" y1="98" x2="552" y2="98" stroke="#1d4ed8" stroke-width="2.5" stroke-linecap="round" marker-end="url(#f_1d4ed8)" />
+<line x1="552" y1="124" x2="176" y2="124" stroke="#ea580c" stroke-width="2.5" stroke-linecap="round" marker-end="url(#f_ea580c)" stroke-dasharray="7 6"/>
+<path d="M200 86 Q209 98 200 110" stroke="#93b4f8" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M216 86 Q225 98 216 110" stroke="#93b4f8" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M232 86 Q241 98 232 110" stroke="#93b4f8" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+<text x="364" y="90" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#1d4ed8" text-anchor="middle" >1. El sensor envia un ultrasò</text>
+<text x="364" y="142" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#c2410c" text-anchor="middle" >2. El so rebota i torna: com més tarda, més lluny és l'obstacle</text>
+<text x="360" y="196" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#1e293b" text-anchor="middle" >Les zones del semàfor de distància (ampliació 2.1)</text>
+<rect x="60.0" y="214" width="150.0" height="26" fill="#ef4444"/>
+<text x="135.0" y="232" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="middle" >Aturar-se i girar</text>
+<text x="135.0" y="276" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#64748b" text-anchor="middle" >menys de 15 cm</text>
+<rect x="210.0" y="214" width="250.0" height="26" fill="#facc15"/>
+<text x="335.0" y="232" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="middle" >Avançar a poc a poc</text>
+<text x="335.0" y="276" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#64748b" text-anchor="middle" >entre 15 i 40 cm</text>
+<rect x="460.0" y="214" width="200.0" height="26" fill="#22c55e"/>
+<text x="560.0" y="232" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="middle" >Avançar</text>
+<text x="560.0" y="276" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#64748b" text-anchor="middle" >més de 40 cm</text>
+<line x1="60.0" y1="210" x2="60.0" y2="246" stroke="#1e293b" stroke-width="1.5" stroke-linecap="round" />
+<text x="60.0" y="260" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="11.5" font-weight="700" fill="#1e293b" text-anchor="middle" >0 cm</text>
+<line x1="210.0" y1="210" x2="210.0" y2="246" stroke="#1e293b" stroke-width="1.5" stroke-linecap="round" />
+<text x="210.0" y="260" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="11.5" font-weight="700" fill="#1e293b" text-anchor="middle" >15 cm</text>
+<line x1="460.0" y1="210" x2="460.0" y2="246" stroke="#1e293b" stroke-width="1.5" stroke-linecap="round" />
+<text x="460.0" y="260" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="11.5" font-weight="700" fill="#1e293b" text-anchor="middle" >40 cm</text>
+<path d="M660 214 l10 13 l-10 13" stroke="#22c55e" fill="#22c55e" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" />
+</svg>

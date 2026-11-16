@@ -64,5 +64,27 @@ Materials de classe de **Fabio Saz** per a l'ESO i el Batxillerat: teoria, exerc
 
 </div>
 
+## Què hi trobaràs
+
+<div class="grid cards trets" markdown>
+
+-   :material-book-open-page-variant-outline:{ .lg } **Teoria clara**
+
+    Explicacions curtes, amb esquemes i exemples.
+
+-   :material-pencil-ruler:{ .lg } **Exercicis amb solució**
+
+    Al final de cada apartat, amb la solució amagada darrere un clic.
+
+-   :material-robot-outline:{ .lg } **Pràctiques amb dispositius**
+
+    Programes per a la micro:bit i el robot mBot2, amb blocs o en Python.
+
+-   :material-play-circle-outline:{ .lg } **Vídeos recomanats**
+
+    Cursos en vídeo enllaçats al minut exacte de cada tema.
+
+</div>
+
 !!! info "Web en construcció"
     Les unitats es van publicant a mesura que estan preparades.

@@ -20,6 +20,12 @@ El sensor d'ultrasons (els dos «ulls» de la part davantera) envia un so que le
 
 En Python, la distància es llegeix amb `mbuild.ultrasonic2.get()`.
 
+
+<figure markdown="span">
+  ![Funcionament del sensor d'ultrasons i zones de distància](img/ultrasons.svg){ width="720" }
+  <figcaption>A dalt, com mesura la distància el sensor. A baix, les tres zones que faràs servir a l'ampliació 2.1.</figcaption>
+</figure>
+
 ## Pas 0. L'algorisme
 
 Dibuixa el diagrama de flux: el robot espera que es premi el botó A; després, repeteix contínuament: llegir la distància; si és menor que 15 cm, aturar-se i girar; si no, avançar.

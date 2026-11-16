@@ -300,6 +300,11 @@ No hi ha un model millor que l'altre en tots els casos. Cada un respon a problem
 | **Document**: un element, amb estructura semblant a JSON | Fila |
 | **Camp**: una parella clau-valor d'un document | Columna |
 
+<figure markdown="span">
+  ![Una sèrie guardada en tres taules relacionals i en un sol document](img/taules-vs-document.svg){ width="720" }
+  <figcaption>Una base de dades relacional reparteix la sèrie en taules; una de documental la guarda sencera en un document.</figcaption>
+</figure>
+
 La diferència fonamental és que **una col·lecció no obliga que tots els seus documents tenguin la mateixa estructura**. En una base de dades relacional, l'estructura es defineix abans d'inserir les dades; a MongoDB, cada document defineix la seva estructura en el moment de guardar-se.
 
 Cada document té un camp `_id` que l'identifica, com una clau primària. Si no l'indiques, MongoDB el crea automàticament amb un valor de tipus `ObjectId`, per exemple `ObjectId("6720f1a2c3b4d5e6f7a8b9c0")`.

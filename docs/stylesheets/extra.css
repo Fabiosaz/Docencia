@@ -157,7 +157,7 @@ body[data-md-color-scheme="slate"] .md-typeset .grid.cards.materies > ul > li:nt
 body[data-md-color-scheme="slate"] .md-typeset .grid.cards.materies > ul > li:nth-child(4) { --targeta: #b39dfa; }
 
 /* Targetes d'unitat: número gran + títol */
-.md-typeset .grid.cards.unitats > ul { grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); }
+.md-typeset .grid.cards.unitats { grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); }
 .md-typeset .grid.cards.unitats > ul > li { border-top-width: 1px; border-left: 4px solid var(--md-typeset-a-color); padding: .8rem .9rem; position: relative; }
 .md-typeset .grid.cards.unitats > ul > li > p { margin: .25em 0; }
 .md-typeset .grid.cards.unitats > ul > li > p:first-child { display: flex; align-items: center; gap: .5rem; font-size: .66rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--md-typeset-a-color); }
@@ -180,3 +180,15 @@ body[data-md-color-scheme="slate"] .md-typeset .grid.cards.materies > ul > li:nt
 /* Figures amb peu */
 .md-typeset figure > p { margin: 0; }
 .md-typeset figure figcaption { margin: .6em auto 0; }
+
+/* Portada: fila de trets */
+.md-typeset .grid.cards.trets { grid-template-columns: repeat(auto-fit, minmax(min(100%, 11.5rem), 1fr)); }
+.md-typeset .grid.cards.trets > ul > li { border: 0; border-radius: 14px; background: var(--mat-suau); padding: .9rem 1rem; }
+.md-typeset .grid.cards.trets > ul > li:hover { transform: none; box-shadow: none; }
+.md-typeset .grid.cards.trets > ul > li > p { margin: .2em 0; font-size: .72rem; }
+.md-typeset .grid.cards.trets > ul > li > p:first-child { font-size: .8rem; display: flex; flex-direction: column; gap: .35rem; }
+
+.md-typeset .grid.cards.materies { grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr)); }
+/* Xips de la portada en fila */
+.md-typeset .hero ul.hero__xips { display: flex; flex-wrap: wrap; gap: .45rem; margin: 0; padding: 0; list-style: none; }
+.md-typeset .hero ul.hero__xips li { margin: 0; padding: 0; list-style: none; }
