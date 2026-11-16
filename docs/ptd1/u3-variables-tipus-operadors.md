@@ -465,6 +465,253 @@ Aquests reptes combinen tot el que has après a la unitat.
 
         Si et sembla que hi ha massa línies repetides, tens raó: a la unitat 7 veurem com fer-ho amb una llista i un bucle.
 
+## 3.8. Exercicis de repàs
+
+Més exercicis per practicar tota la unitat, ordenats de menys a més dificultat. Els quatre primers es resolen sense ordinador; a la resta has d'escriure un programa. Encara no pots fer servir condicionals ni bucles: tots es resolen amb operadors.
+
+!!! example "Repàs 3.1. Quin tipus en resulta?"
+    Sense executar-les, digues de quin tipus és el resultat de cada expressió. Després comprova-ho amb `type()`.
+
+    `7 / 2` · `7 // 2` · `"7" + "2"` · `7 > 2` · `3 * 1.0` · `str(5)` · `int("8") + 1`
+
+    ??? success "Solució"
+        `float`, `int`, `str`, `bool`, `float`, `str` i `int`. La divisió `/` dona sempre un `float`, encara que el resultat sigui exacte; una operació entre un `int` i un `float` dona un `float`.
+
+!!! example "Repàs 3.2. Calcula mentalment"
+    Quin és el valor de cada expressió?
+
+    1. `2 + 3 * 4 ** 2 // 5 - 1`
+    2. `(2 + 3) * 4`
+    3. `17 % 5 * 2`
+    4. `7 // 2 + 7 % 2 == 4`
+    5. `not True or False and True`
+
+    ??? success "Solució"
+        1. `10`: primer la potència (16), després `3 * 16 = 48`, `48 // 5 = 9`, i finalment `2 + 9 - 1`.
+        2. `20`.
+        3. `4`: `%` i `*` tenen la mateixa prioritat i es fan d'esquerra a dreta: `17 % 5 = 2` i `2 * 2 = 4`.
+        4. `True`: `3 + 1 == 4`.
+        5. `False`: primer `not True` (`False`), després `False and True` (`False`) i, al final, `False or False`.
+
+!!! example "Repàs 3.3. Què dona cada conversió?"
+    Indica el resultat de cada expressió, o si dona error.
+
+    `int("12") + 3` · `"12" + str(3)` · `int(7.9)` · `float("3")` · `str(4) * 3` · `int("3.5")` · `round(7.5 + 0.2)`
+
+    ??? success "Solució"
+        `15`, `"123"`, `7` (`int()` talla els decimals, no arrodoneix), `3.0`, `"444"`, error (`int()` no pot convertir directament un text amb decimals: caldria `int(float("3.5"))`) i `8`.
+
+!!! example "Repàs 3.4. Escriu la condició"
+    Escriu una expressió booleana per a cada cas. Les variables `n` i `a` són enters; `a` representa un any.
+
+    1. `n` està entre 1 i 10, tots dos inclosos.
+    2. `n` és múltiple de 3 i de 5 alhora.
+    3. `n` és negatiu o més gran que 100.
+    4. L'any `a` no és múltiple de 4.
+    5. `n` és senar i té dues xifres (és positiu).
+
+    ??? success "Solució"
+        ```python
+        1 <= n <= 10                    # o bé: n >= 1 and n <= 10
+        n % 3 == 0 and n % 5 == 0
+        n < 0 or n > 100
+        a % 4 != 0                      # o bé: not a % 4 == 0
+        n % 2 == 1 and 10 <= n <= 99
+        ```
+
+!!! example "Repàs 3.5. Àrea i perímetre d'un rectangle"
+    Demana la base i l'altura d'un rectangle (poden tenir decimals) i mostra'n l'àrea i el perímetre.
+
+    ??? success "Solució"
+        ```python
+        base = float(input("Base: "))
+        altura = float(input("Altura: "))
+
+        area = base * altura
+        perimetre = 2 * (base + altura)
+
+        print("Àrea:", area)
+        print("Perímetre:", perimetre)
+        ```
+
+!!! example "Repàs 3.6. Mitjana de tres notes"
+    Demana tres notes i mostra'n la mitjana amb dues xifres decimals.
+
+    ??? success "Solució"
+        ```python
+        nota1 = float(input("Primera nota: "))
+        nota2 = float(input("Segona nota: "))
+        nota3 = float(input("Tercera nota: "))
+
+        mitjana = (nota1 + nota2 + nota3) / 3
+        print(f"Mitjana: {mitjana:.2f}")
+        ```
+
+        Els parèntesis són imprescindibles: sense ells, només es dividiria entre 3 la darrera nota.
+
+!!! example "Repàs 3.7. Setmanes i dies"
+    Demana un nombre de dies i expressa'l en setmanes i dies. Per exemple, 45 dies són 6 setmanes i 3 dies.
+
+    ??? success "Solució"
+        ```python
+        dies = int(input("Nombre de dies: "))
+
+        setmanes = dies // 7
+        resta = dies % 7
+
+        print(f"{dies} dies són {setmanes} setmanes i {resta} dies")
+        ```
+
+!!! example "Repàs 3.8. La durada d'una pel·lícula"
+    Demana la durada d'una pel·lícula en minuts i mostra-la en hores i minuts, amb el format `2 h 15 min`.
+
+    ??? success "Solució"
+        ```python
+        minuts = int(input("Durada en minuts: "))
+        print(f"{minuts // 60} h {minuts % 60} min")
+        ```
+
+!!! example "Repàs 3.9. La darrera xifra"
+    Demana un nombre enter positiu i mostra, per separat, la seva darrera xifra i el nombre sense aquesta xifra. Per exemple, amb 4827 ha de mostrar 7 i 482.
+
+    ??? success "Solució"
+        ```python
+        n = int(input("Nombre: "))
+        print("Darrera xifra:", n % 10)
+        print("La resta:", n // 10)
+        ```
+
+        El residu de dividir entre 10 és sempre la xifra de les unitats, i la divisió entera entre 10 l'elimina. Aquest truc et servirà molt a la unitat 5.
+
+!!! example "Repàs 3.10. Suma de les xifres"
+    Demana un nombre de tres xifres i mostra la suma de les seves xifres. Per exemple, amb 472 el resultat és 13. No pots convertir el nombre a text.
+
+    ??? success "Solució"
+        ```python
+        n = int(input("Nombre de tres xifres: "))
+
+        centenes = n // 100
+        desenes = n // 10 % 10
+        unitats = n % 10
+
+        print("Suma de les xifres:", centenes + desenes + unitats)
+        ```
+
+!!! example "Repàs 3.11. Repartir caramels"
+    Tens una bossa de caramels per repartir entre uns quants amics a parts iguals. Demana els dos nombres i digues quants caramels toquen a cadascú i quants en sobren.
+
+    ??? success "Solució"
+        ```python
+        caramels = int(input("Caramels: "))
+        amics = int(input("Amics: "))
+
+        print("A cadascú n'hi toquen", caramels // amics)
+        print("En sobren", caramels % amics)
+        ```
+
+!!! example "Repàs 3.12. Preu amb descompte"
+    Demana el preu d'un producte i el percentatge de descompte, i mostra el preu final amb dues xifres decimals.
+
+    ??? success "Solució"
+        ```python
+        preu = float(input("Preu: "))
+        descompte = float(input("Descompte (%): "))
+
+        preu_final = preu - preu * descompte / 100
+        print(f"Preu final: {preu_final:.2f} €")
+        ```
+
+!!! example "Repàs 3.13. Desglossar l'IVA"
+    El preu que marca una etiqueta ja inclou el 21 % d'IVA. Demana aquest preu i mostra quina part és el preu sense IVA i quina part és l'IVA. Defineix l'IVA com una constant.
+
+    ??? success "Solució"
+        ```python
+        IVA = 0.21
+
+        preu = float(input("Preu amb IVA: "))
+
+        base = preu / (1 + IVA)
+        import_iva = preu - base
+
+        print(f"Preu sense IVA: {base:.2f} €")
+        print(f"IVA: {import_iva:.2f} €")
+        ```
+
+        Un error habitual és calcular el 21 % del preu final (`121 * 0.21`), però l'IVA s'aplica sobre el preu **sense** IVA. Per això es divideix entre 1,21.
+
+!!! example "Repàs 3.14. Velocitat mitjana"
+    Demana la distància recorreguda en quilòmetres i el temps en minuts, i mostra la velocitat mitjana en km/h.
+
+    ??? success "Solució"
+        ```python
+        km = float(input("Distància (km): "))
+        minuts = float(input("Temps (min): "))
+
+        velocitat = km / (minuts / 60)
+        print("Velocitat mitjana:", velocitat, "km/h")
+        ```
+
+!!! example "Repàs 3.15. Índex de massa corporal"
+    L'índex de massa corporal (IMC) es calcula dividint el pes en quilograms entre el quadrat de l'altura en metres. Demana les dues dades i mostra l'IMC amb una xifra decimal.
+
+    ??? success "Solució"
+        ```python
+        pes = float(input("Pes (kg): "))
+        altura = float(input("Altura (m): "))
+
+        imc = pes / altura ** 2
+        print(f"IMC: {imc:.1f}")
+        ```
+
+        La potència té més prioritat que la divisió, de manera que no calen parèntesis.
+
+!!! example "Repàs 3.16. Quants d'anys tendràs?"
+    Demana l'any de naixement d'una persona i mostra quants d'anys farà l'any 2050. Guarda l'any 2050 en una constant.
+
+    ??? success "Solució"
+        ```python
+        ANY_FUTUR = 2050
+
+        naixement = int(input("Any de naixement: "))
+        print(f"L'any {ANY_FUTUR} faràs {ANY_FUTUR - naixement} anys")
+        ```
+
+!!! example "Repàs 3.17. Una data amb barres"
+    Demana el dia, el mes i l'any per separat i mostra la data amb el format `5/3/2026`, fent servir el paràmetre `sep` de `print()`.
+
+    ??? success "Solució"
+        ```python
+        dia = input("Dia: ")
+        mes = input("Mes: ")
+        any_actual = input("Any: ")
+
+        print(dia, mes, any_actual, sep="/")
+        ```
+
+        Com que només es mostren, no cal convertir les dades a `int`.
+
+!!! example "Repàs 3.18. Targeta de presentació"
+    Demana el nom i l'edat d'una persona i mostra una targeta com aquesta, amb línies de 24 signes `=` fetes amb l'operador `*`:
+
+    ```text
+    ========================
+    Nom: Aina
+    Edat: 16 anys
+    ========================
+    ```
+
+    ??? success "Solució"
+        ```python
+        nom = input("Nom: ")
+        edat = int(input("Edat: "))
+
+        linia = "=" * 24
+        print(linia)
+        print(f"Nom: {nom}")
+        print(f"Edat: {edat} anys")
+        print(linia)
+        ```
+
 ---
 
 !!! quote "Font"

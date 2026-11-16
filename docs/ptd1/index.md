@@ -3,7 +3,7 @@
 Primer contacte amb la programació. Treballarem amb **Python**.
 
 !!! tip "Com funcionen els exercicis"
-    Al final de cada apartat trobaràs exercicis curts per practicar el que acabes de llegir. La solució està amagada: fes clic a **Solució** per desplegar-la. Al final de cada unitat hi ha uns quants **reptes** que combinen tot el que has après.
+    Al final de cada apartat trobaràs exercicis curts per practicar el que acabes de llegir. La solució està amagada: fes clic a **Solució** per desplegar-la. Al final de cada unitat hi ha uns quants **reptes** que combinen tot el que has après. Després dels reptes, les unitats tenen un apartat d'**exercicis de repàs**, amb una vintena d'exercicis més per practicar abans d'un examen.
 
     Intenta resoldre cada exercici tot sol i obre la solució només per comprovar-la o quan ja no sàpigues com continuar. Abans de programar, sovint ajuda fer el diagrama de flux o el pseudocodi. **Aprendre a programar no és ràpid ni senzill: s'aconsegueix amb paciència i constància.**
 

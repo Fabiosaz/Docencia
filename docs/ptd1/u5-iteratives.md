@@ -459,6 +459,430 @@ Els bucles niats seran imprescindibles a la unitat 7 per recórrer taules (llist
 
         `None` és un valor especial de Python que vol dir «cap valor». L'utilitzam perquè, abans de la primera nota, encara no hi ha ni màxim ni mínim.
 
+## 5.7. Exercicis de repàs
+
+Més exercicis per practicar tota la unitat, ordenats de menys a més dificultat. Els dos primers es resolen sense ordinador. Abans d'escriure cada programa, decideix si necessites un `for` (saps quantes voltes farà) o un `while` (depèn d'una condició).
+
+!!! example "Repàs 5.1. Segueix els bucles"
+    Sense executar-los, digues què mostra cada fragment.
+
+    ```python
+    # Fragment 1
+    for i in range(2, 11, 3):
+        print(i, end=" ")
+
+    # Fragment 2
+    n = 20
+    while n > 3:
+        n = n // 2
+        print(n, end=" ")
+
+    # Fragment 3
+    total = 0
+    for i in range(1, 5):
+        total = total + i * i
+    print(total)
+    ```
+
+    ??? success "Solució"
+        1. `2 5 8`
+        2. `10 5 2`: el bucle comprova la condició **abans** de cada volta. Amb `n = 5` encara hi entra i mostra 2; amb `n = 2` ja no.
+        3. `30`, que és 1 + 4 + 9 + 16.
+
+!!! example "Repàs 5.2. Quantes vegades?"
+    Quantes vegades s'executa el `print` en cada cas?
+
+    ```python
+    # A
+    for i in range(10):
+        print("Hola")
+
+    # B
+    for i in range(3, 9):
+        print("Hola")
+
+    # C
+    for i in range(4):
+        for j in range(3):
+            print("Hola")
+
+    # D
+    n = 100
+    while n > 1:
+        print("Hola")
+        n = n // 3
+    ```
+
+    ??? success "Solució"
+        A: 10. B: 6 (del 3 al 8). C: 12 (4 voltes del bucle exterior per 3 de l'interior). D: 4 (quan s'executa el `print`, `n` val 100, 33, 11 i 3; després passa a valer 1 i el bucle acaba).
+
+!!! example "Repàs 5.3. Caça d'errors"
+    Aquest programa hauria de mostrar la suma dels nombres de l'1 al 10, però té tres errors. Un d'ells fa que no acabi mai. Troba'ls i corregeix-los.
+
+    ```python
+    i = 1
+    while i <= 10:
+        suma = 0
+        suma = suma + i
+    print(suma)
+    ```
+
+    ??? success "Solució"
+        ```python
+        suma = 0
+        i = 1
+        while i <= 10:
+            suma = suma + i
+            i = i + 1
+        print(suma)
+        ```
+
+        1. `suma = 0` és dins el bucle: a cada volta, l'acumulador torna a zero. S'ha d'inicialitzar **abans** del bucle.
+        2. Falta incrementar `i`: com que sempre val 1, la condició no deixa de complir-se mai (bucle infinit).
+        3. Conseqüència dels anteriors: tal com estava, el `print` no arribava a executar-se.
+
+        Si un programa es queda penjat, atura'l amb ++ctrl+c++.
+
+!!! example "Repàs 5.4. Compte enrere"
+    Mostra un compte enrere del 10 a l'1, amb un nombre a cada línia, i al final el missatge «Enlairament!».
+
+    ??? success "Solució"
+        ```python
+        for i in range(10, 0, -1):
+            print(i)
+        print("Enlairament!")
+        ```
+
+!!! example "Repàs 5.5. Suma dels parells"
+    Calcula i mostra la suma de tots els nombres parells de l'1 al 100.
+
+    ??? success "Solució"
+        ```python
+        suma = 0
+        for n in range(2, 101, 2):
+            suma = suma + n
+        print("Suma dels parells:", suma)
+        ```
+
+        També es pot recórrer `range(1, 101)` i sumar només els nombres que compleixin `n % 2 == 0`.
+
+!!! example "Repàs 5.6. Múltiples de 7"
+    Mostra en una sola línia tots els múltiples de 7 menors de 100 i, a sota, quants n'hi ha.
+
+    ??? success "Solució"
+        ```python
+        comptador = 0
+        for n in range(7, 100, 7):
+            print(n, end=" ")
+            comptador = comptador + 1
+        print()
+        print("N'hi ha", comptador)
+        ```
+
+!!! example "Repàs 5.7. Potència sense **"
+    Demana una base i un exponent enter no negatiu i calcula la potència **sense** fer servir l'operador `**`: només amb un bucle i multiplicacions.
+
+    ??? success "Solució"
+        ```python
+        base = int(input("Base: "))
+        exponent = int(input("Exponent: "))
+
+        resultat = 1
+        for i in range(exponent):
+            resultat = resultat * base
+
+        print(f"{base} elevat a {exponent} és {resultat}")
+        ```
+
+        L'acumulador d'un producte comença en 1, no en 0. Així, a més, l'exponent 0 dona 1 sense haver de tractar-lo com un cas especial.
+
+!!! example "Repàs 5.8. Mitjana de n notes"
+    Demana quantes notes s'han d'introduir, llegeix-les una a una i mostra'n la mitjana amb dues xifres decimals.
+
+    ??? success "Solució"
+        ```python
+        quantes = int(input("Quantes notes? "))
+
+        suma = 0
+        for i in range(quantes):
+            nota = float(input(f"Nota {i + 1}: "))
+            suma = suma + nota
+
+        print(f"Mitjana: {suma / quantes:.2f}")
+        ```
+
+!!! example "Repàs 5.9. Sumar fins a zero"
+    Llegeix nombres enters fins que l'usuari escrigui un 0. Aleshores mostra quants nombres ha introduït (sense comptar el 0) i quina n'és la suma.
+
+    ??? success "Solució"
+        ```python
+        suma = 0
+        quants = 0
+
+        n = int(input("Nombre (0 per acabar): "))
+        while n != 0:
+            suma = suma + n
+            quants = quants + 1
+            n = int(input("Nombre (0 per acabar): "))
+
+        print("Nombres introduïts:", quants)
+        print("Suma:", suma)
+        ```
+
+        Quan no se sap quantes voltes farà el bucle, es fa servir `while`. El valor que el fa acabar (aquí, el 0) s'anomena **sentinella**.
+
+!!! example "Repàs 5.10. El més gran i el més petit"
+    Demana quants nombres s'introduiran, llegeix-los i mostra el més gran i el més petit. No pots fer servir llistes.
+
+    ??? success "Solució"
+        ```python
+        quants = int(input("Quants nombres? "))
+
+        n = float(input("Nombre: "))
+        maxim = n
+        minim = n
+
+        for i in range(quants - 1):
+            n = float(input("Nombre: "))
+            if n > maxim:
+                maxim = n
+            if n < minim:
+                minim = n
+
+        print("El més gran:", maxim)
+        print("El més petit:", minim)
+        ```
+
+        El màxim i el mínim s'inicialitzen amb el **primer nombre** llegit. Si s'inicialitzassin amb 0, el programa fallaria quan tots els nombres fossin negatius.
+
+!!! example "Repàs 5.11. Quantes xifres té?"
+    Demana un nombre enter positiu i mostra quantes xifres té, sense convertir-lo a text.
+
+    ??? success "Solució"
+        ```python
+        n = int(input("Nombre: "))
+
+        xifres = 0
+        while n > 0:
+            n = n // 10
+            xifres = xifres + 1
+
+        print("Té", xifres, "xifres")
+        ```
+
+        Cada divisió entera entre 10 elimina la darrera xifra: es compten les voltes fins que no en queda cap.
+
+!!! example "Repàs 5.12. Suma de les xifres"
+    Demana un nombre enter positiu de qualsevol longitud i mostra la suma de les seves xifres, sense convertir-lo a text.
+
+    ??? success "Solució"
+        ```python
+        n = int(input("Nombre: "))
+
+        suma = 0
+        while n > 0:
+            suma = suma + n % 10
+            n = n // 10
+
+        print("Suma de les xifres:", suma)
+        ```
+
+!!! example "Repàs 5.13. El nombre al revés"
+    Demana un nombre enter positiu i mostra'l amb les xifres en ordre invers (1234 → 4321), fent servir només operacions aritmètiques.
+
+    ??? success "Solució"
+        ```python
+        n = int(input("Nombre: "))
+
+        invers = 0
+        while n > 0:
+            invers = invers * 10 + n % 10
+            n = n // 10
+
+        print("Al revés:", invers)
+        ```
+
+        A cada volta, les xifres que ja tenim es desplacen una posició a l'esquerra (`invers * 10`) i s'hi afegeix la darrera xifra de `n`.
+
+!!! example "Repàs 5.14. Els divisors"
+    Demana un nombre enter positiu i mostra tots els seus divisors en una línia i, a sota, quants en té.
+
+    ??? success "Solució"
+        ```python
+        n = int(input("Nombre: "))
+
+        quants = 0
+        for d in range(1, n + 1):
+            if n % d == 0:
+                print(d, end=" ")
+                quants = quants + 1
+        print()
+        print("Té", quants, "divisors")
+        ```
+
+!!! example "Repàs 5.15. Nombres perfectes"
+    Un nombre és **perfecte** si és igual a la suma dels seus divisors, sense comptar-se ell mateix. Per exemple, 6 = 1 + 2 + 3. Demana un nombre i digues si és perfecte.
+
+    ??? success "Solució"
+        ```python
+        n = int(input("Nombre: "))
+
+        suma = 0
+        for d in range(1, n):
+            if n % d == 0:
+                suma = suma + d
+
+        if suma == n:
+            print(n, "és perfecte")
+        else:
+            print(n, "no és perfecte")
+        ```
+
+!!! example "Repàs 5.16. Tres intents"
+    Programa un control d'accés: la contrasenya correcta és `python`. L'usuari té tres intents. Si l'encerta, mostra «Accés permès» i no demanis res més; si esgota els intents, mostra «Compte bloquejat».
+
+    ??? success "Solució"
+        ```python
+        CONTRASENYA = "python"
+        INTENTS = 3
+
+        encertada = False
+        for i in range(INTENTS):
+            intent = input("Contrasenya: ")
+            if intent == CONTRASENYA:
+                encertada = True
+                break
+            print("Incorrecta")
+
+        if encertada:
+            print("Accés permès")
+        else:
+            print("Compte bloquejat")
+        ```
+
+        La variable booleana `encertada` fa de **bandera**: recorda, en sortir del bucle, si s'ha sortit per haver encertat o per haver esgotat els intents.
+
+!!! example "Repàs 5.17. Doblar els estalvis"
+    Demana un capital inicial i un interès anual en percentatge. Cada any, els interessos se sumen al capital. Calcula quants d'anys han de passar perquè el capital sigui, com a mínim, el doble de l'inicial.
+
+    ??? success "Solució"
+        ```python
+        capital = float(input("Capital inicial: "))
+        interes = float(input("Interès anual (%): "))
+
+        objectiu = capital * 2
+        anys = 0
+        while capital < objectiu:
+            capital = capital + capital * interes / 100
+            anys = anys + 1
+
+        print("Anys necessaris:", anys)
+        ```
+
+        L'objectiu es calcula **abans** del bucle, perquè dins el bucle el capital va canviant.
+
+!!! example "Repàs 5.18. La conjectura de Collatz"
+    Partint d'un nombre enter positiu, repeteix aquesta regla fins a arribar a 1: si el nombre és parell, divideix-lo entre 2; si és senar, multiplica'l per 3 i suma-hi 1. Mostra tots els nombres de la seqüència i quantes passes han fet falta. Amb el 6, la seqüència és 6, 3, 10, 5, 16, 8, 4, 2, 1 (8 passes).
+
+    ??? success "Solució"
+        ```python
+        n = int(input("Nombre inicial: "))
+
+        passes = 0
+        print(n, end=" ")
+        while n != 1:
+            if n % 2 == 0:
+                n = n // 2
+            else:
+                n = 3 * n + 1
+            print(n, end=" ")
+            passes = passes + 1
+
+        print()
+        print("Passes:", passes)
+        ```
+
+        Ningú no ha pogut demostrar encara que aquesta seqüència acabi sempre en 1, però s'ha comprovat amb nombres enormes.
+
+!!! example "Repàs 5.19. Un rectangle d'asteriscs"
+    Demana un nombre de files i un de columnes i dibuixa un rectangle d'asteriscs, separats per un espai. Amb 3 files i 5 columnes:
+
+    ```text
+    * * * * *
+    * * * * *
+    * * * * *
+    ```
+
+    ??? success "Solució"
+        ```python
+        files = int(input("Files: "))
+        columnes = int(input("Columnes: "))
+
+        for f in range(files):
+            for c in range(columnes):
+                print("*", end=" ")
+            print()
+        ```
+
+        El `print()` buit que hi ha després del bucle interior fa el salt de línia en acabar cada fila.
+
+!!! example "Repàs 5.20. Una piràmide"
+    Demana una altura i dibuixa una piràmide centrada. Amb una altura de 4:
+
+    ```text
+       *
+      ***
+     *****
+    *******
+    ```
+
+    Pista: a la fila `i` (començant per 1) hi ha `altura - i` espais i `2 * i - 1` asteriscs.
+
+    ??? success "Solució"
+        ```python
+        altura = int(input("Altura: "))
+
+        for i in range(1, altura + 1):
+            print(" " * (altura - i) + "*" * (2 * i - 1))
+        ```
+
+!!! example "Repàs 5.21. Els nombres primers fins a 50"
+    Mostra tots els nombres primers entre 2 i 50. Recorda que un nombre és primer si només és divisible entre 1 i ell mateix.
+
+    ??? success "Solució"
+        ```python
+        for n in range(2, 51):
+            es_primer = True
+            for d in range(2, n):
+                if n % d == 0:
+                    es_primer = False
+                    break
+            if es_primer:
+                print(n, end=" ")
+        print()
+        ```
+
+        El `break` atura només el bucle interior: quan es troba un divisor, no cal provar-ne més, i es passa al nombre següent.
+
+!!! example "Repàs 5.22. Fins que surti un 6"
+    Simula el llançament d'un dau fins que surti un 6. Mostra cada tirada i, al final, quantes n'han fet falta. Recorda: `import random` i `random.randint(1, 6)`.
+
+    ??? success "Solució"
+        ```python
+        import random
+
+        tirades = 0
+        dau = 0
+        while dau != 6:
+            dau = random.randint(1, 6)
+            tirades = tirades + 1
+            print("Tirada", tirades, "→", dau)
+
+        print("Han fet falta", tirades, "tirades")
+        ```
+
+        `dau` s'inicialitza amb un valor que no és 6 perquè el bucle faci, com a mínim, una volta. Cada execució dona un resultat diferent.
+
 ---
 
 !!! quote "Font"

@@ -373,6 +373,388 @@ match dia:
 
         La barra inversa `\` al final d'una línia indica que la instrucció continua a la línia següent. També es pot evitar posant tota la condició entre parèntesis.
 
+## 4.8. Exercicis de repàs
+
+Més exercicis per practicar tota la unitat, ordenats de menys a més dificultat. Els dos primers es resolen sense ordinador. Prova cada programa amb diversos valors, sobretot amb els que queden just a la frontera entre dos casos.
+
+!!! example "Repàs 4.1. Segueix el codi"
+    Sense executar-lo, digues què mostra aquest programa quan `x` val 15, quan val 25 i quan val 5.
+
+    ```python
+    if x > 10:
+        print("A")
+    if x > 20:
+        print("B")
+    else:
+        print("C")
+    print("D")
+    ```
+
+    ??? success "Solució"
+        - Amb 15: `A`, `C` i `D`.
+        - Amb 25: `A`, `B` i `D`.
+        - Amb 5: `C` i `D`.
+
+        Són **dos** condicionals independents: l'`else` només pertany al segon `if`. La darrera línia no està sagnada i s'executa sempre.
+
+!!! example "Repàs 4.2. if o elif?"
+    Aquests dos programes semblen iguals. Què mostra cadascun si `nota` val 9?
+
+    ```python
+    # Programa 1                  # Programa 2
+    if nota >= 5:                 if nota >= 5:
+        print("Aprovat")              print("Aprovat")
+    if nota >= 7:                 elif nota >= 7:
+        print("Notable")              print("Notable")
+    if nota >= 9:                 elif nota >= 9:
+        print("Excel·lent")           print("Excel·lent")
+    ```
+
+    ??? success "Solució"
+        El programa 1 mostra `Aprovat`, `Notable` i `Excel·lent`: són tres condicionals independents i es comproven tots.
+
+        El programa 2 només mostra `Aprovat`: en una cadena `if` … `elif` s'executa **només el primer bloc** la condició del qual és vertadera, i la resta ja no es comprova. Per fer-lo bé, s'han d'ordenar les condicions de la més restrictiva a la menys restrictiva: primer `nota >= 9`, després `nota >= 7` i al final `nota >= 5`.
+
+!!! example "Repàs 4.3. Caça d'errors"
+    Aquest programa hauria de dir si un nombre és positiu, però té quatre errors. Troba'ls i corregeix-los.
+
+    ```python
+    n = input("Escriu un nombre: ")
+    if n > 0
+        print("És positiu")
+    else:
+    print("No és positiu")
+    if n = 0:
+        print("De fet, és zero")
+    ```
+
+    ??? success "Solució"
+        ```python
+        n = int(input("Escriu un nombre: "))
+        if n > 0:
+            print("És positiu")
+        else:
+            print("No és positiu")
+        if n == 0:
+            print("De fet, és zero")
+        ```
+
+        1. `input()` retorna un text: s'ha de convertir amb `int()` per poder comparar-lo amb un nombre.
+        2. Falten els dos punts al final de la línia de l'`if`.
+        3. El `print` de l'`else` no està sagnat.
+        4. Per comparar es fa servir `==`; un sol `=` és una assignació.
+
+!!! example "Repàs 4.4. Simplifica"
+    Reescriu aquest programa perquè faci el mateix amb **un sol** `if` … `else`, sense condicionals niades.
+
+    ```python
+    edat = int(input("Edat: "))
+    carnet = input("Tens carnet? (s/n) ")
+
+    if edat >= 18:
+        if carnet == "s":
+            print("Pots conduir")
+        else:
+            print("No pots conduir")
+    else:
+        print("No pots conduir")
+    ```
+
+    ??? success "Solució"
+        ```python
+        edat = int(input("Edat: "))
+        carnet = input("Tens carnet? (s/n) ")
+
+        if edat >= 18 and carnet == "s":
+            print("Pots conduir")
+        else:
+            print("No pots conduir")
+        ```
+
+        Quan dues condicions niades duen al mateix resultat, es poden unir amb `and`. El codi queda més curt i no repeteix el missatge.
+
+!!! example "Repàs 4.5. Aprovat o suspès"
+    Demana una nota i mostra «Aprovat» si és igual o superior a 5 i «Suspès» en cas contrari.
+
+    ??? success "Solució"
+        ```python
+        nota = float(input("Nota: "))
+
+        if nota >= 5:
+            print("Aprovat")
+        else:
+            print("Suspès")
+        ```
+
+!!! example "Repàs 4.6. De menor a major"
+    Demana dos nombres i mostra'ls ordenats de menor a major.
+
+    ??? success "Solució"
+        ```python
+        a = float(input("Primer nombre: "))
+        b = float(input("Segon nombre: "))
+
+        if a <= b:
+            print(a, b)
+        else:
+            print(b, a)
+        ```
+
+!!! example "Repàs 4.7. El major de tres"
+    Demana tres nombres enters i mostra el més gran. Prova'l amb el més gran a cada una de les tres posicions, i també amb nombres repetits.
+
+    ??? success "Solució"
+        ```python
+        a = int(input("Primer nombre: "))
+        b = int(input("Segon nombre: "))
+        c = int(input("Tercer nombre: "))
+
+        if a >= b and a >= c:
+            print("El més gran és", a)
+        elif b >= c:
+            print("El més gran és", b)
+        else:
+            print("El més gran és", c)
+        ```
+
+        Si s'arriba a l'`elif`, ja sabem que `a` no és el més gran; per això n'hi ha prou de comparar `b` amb `c`.
+
+!!! example "Repàs 4.8. Múltiple de 3, de 5 o de tots dos"
+    Demana un nombre enter i digues si és múltiple de 3 i de 5 alhora, només de 3, només de 5 o de cap dels dos.
+
+    ??? success "Solució"
+        ```python
+        n = int(input("Nombre: "))
+
+        if n % 3 == 0 and n % 5 == 0:
+            print("És múltiple de 3 i de 5")
+        elif n % 3 == 0:
+            print("És múltiple de 3")
+        elif n % 5 == 0:
+            print("És múltiple de 5")
+        else:
+            print("No és múltiple ni de 3 ni de 5")
+        ```
+
+        El cas més restrictiu (múltiple de tots dos) ha d'anar el primer. Si es posàs al final, el 15 quedaria atrapat a la branca «múltiple de 3».
+
+!!! example "Repàs 4.9. Franges d'edat"
+    Demana una edat i mostra la franja que li correspon: infant (menys de 12 anys), adolescent (de 12 a 17), adult (de 18 a 64) o sènior (65 o més). Si l'edat és negativa, mostra un missatge d'error.
+
+    ??? success "Solució"
+        ```python
+        edat = int(input("Edat: "))
+
+        if edat < 0:
+            print("L'edat no pot ser negativa")
+        elif edat < 12:
+            print("Infant")
+        elif edat < 18:
+            print("Adolescent")
+        elif edat < 65:
+            print("Adult")
+        else:
+            print("Sènior")
+        ```
+
+        No cal escriure `edat >= 12 and edat < 18`: si el programa arriba al segon `elif`, ja sabem que l'edat no és menor de 12.
+
+!!! example "Repàs 4.10. Descompte segons l'import"
+    Una botiga aplica un descompte segons l'import de la compra: cap descompte si és inferior a 50 €, un 5 % si és de 50 € a 100 € (tots dos inclosos) i un 10 % si supera els 100 €. Demana l'import i mostra el preu final amb dues xifres decimals.
+
+    ??? success "Solució"
+        ```python
+        import_compra = float(input("Import de la compra: "))
+
+        if import_compra < 50:
+            descompte = 0
+        elif import_compra <= 100:
+            descompte = 5
+        else:
+            descompte = 10
+
+        preu_final = import_compra * (1 - descompte / 100)
+        print(f"Descompte: {descompte} %")
+        print(f"Preu final: {preu_final:.2f} €")
+        ```
+
+        El condicional només decideix el **percentatge**; el càlcul i els `print` s'escriuen una sola vegada, després. Prova sempre els valors de les fronteres (50 i 100).
+
+!!! example "Repàs 4.11. Vocal o consonant"
+    Demana una lletra minúscula i digues si és una vocal o una consonant. Suposa que l'usuari escriu una sola lletra sense accent.
+
+    ??? success "Solució"
+        ```python
+        lletra = input("Escriu una lletra minúscula: ")
+
+        if lletra == "a" or lletra == "e" or lletra == "i" or lletra == "o" or lletra == "u":
+            print("És una vocal")
+        else:
+            print("És una consonant")
+        ```
+
+        No es pot escriure `lletra == "a" or "e"`: a cada costat de l'`or` hi ha d'haver una comparació completa. A la unitat 6 veuràs una manera més curta: `lletra in "aeiou"`.
+
+!!! example "Repàs 4.12. Quin triangle és?"
+    Demana les longituds dels tres costats d'un triangle i digues si és equilàter (tres costats iguals), isòsceles (dos costats iguals) o escalè (tots diferents).
+
+    ??? success "Solució"
+        ```python
+        a = float(input("Costat a: "))
+        b = float(input("Costat b: "))
+        c = float(input("Costat c: "))
+
+        if a == b and b == c:
+            print("Equilàter")
+        elif a == b or b == c or a == c:
+            print("Isòsceles")
+        else:
+            print("Escalè")
+        ```
+
+!!! example "Repàs 4.13. Es pot formar un triangle?"
+    Tres segments formen un triangle només si cada un és més curt que la suma dels altres dos. Demana tres longituds i digues si poden formar un triangle.
+
+    ??? success "Solució"
+        ```python
+        a = float(input("Costat a: "))
+        b = float(input("Costat b: "))
+        c = float(input("Costat c: "))
+
+        if a < b + c and b < a + c and c < a + b:
+            print("Poden formar un triangle")
+        else:
+            print("No poden formar un triangle")
+        ```
+
+!!! example "Repàs 4.14. On és el punt?"
+    Demana les coordenades `x` i `y` d'un punt i digues on es troba: a l'origen, sobre l'eix X, sobre l'eix Y o en quin quadrant (primer: `x` i `y` positives; segon: `x` negativa i `y` positiva; tercer: totes dues negatives; quart: `x` positiva i `y` negativa).
+
+    ??? success "Solució"
+        ```python
+        x = float(input("x: "))
+        y = float(input("y: "))
+
+        if x == 0 and y == 0:
+            print("És a l'origen")
+        elif y == 0:
+            print("És sobre l'eix X")
+        elif x == 0:
+            print("És sobre l'eix Y")
+        elif x > 0 and y > 0:
+            print("Primer quadrant")
+        elif x < 0 and y > 0:
+            print("Segon quadrant")
+        elif x < 0 and y < 0:
+            print("Tercer quadrant")
+        else:
+            print("Quart quadrant")
+        ```
+
+!!! example "Repàs 4.15. Els dies del mes"
+    Demana el número d'un mes (de l'1 al 12) i mostra quants de dies té, fent servir `match`. Per al febrer, mostra «28 o 29 dies». Si el número no és vàlid, mostra un missatge d'error.
+
+    ??? success "Solució"
+        ```python
+        mes = int(input("Número del mes: "))
+
+        match mes:
+            case 1 | 3 | 5 | 7 | 8 | 10 | 12:
+                print("31 dies")
+            case 4 | 6 | 9 | 11:
+                print("30 dies")
+            case 2:
+                print("28 o 29 dies")
+            case _:
+                print("Aquest mes no existeix")
+        ```
+
+!!! example "Repàs 4.16. L'entrada del cinema"
+    Un cinema cobra 8 € l'entrada general, 5 € als menors de 12 anys i 6 € als majors de 65. A més, els dimecres tothom té 2 € de descompte. Demana l'edat i el dia de la setmana (en minúscules) i mostra el preu de l'entrada.
+
+    ??? success "Solució"
+        ```python
+        edat = int(input("Edat: "))
+        dia = input("Dia de la setmana: ")
+
+        if edat < 12:
+            preu = 5
+        elif edat > 65:
+            preu = 6
+        else:
+            preu = 8
+
+        if dia == "dimecres":
+            preu = preu - 2
+
+        print(f"Preu de l'entrada: {preu} €")
+        ```
+
+        Hi ha dues decisions independents (la tarifa per edat i el descompte del dia), i per això es resolen amb dos condicionals seguits, no amb un de sol.
+
+!!! example "Repàs 4.17. Hora correcta"
+    Demana una hora i uns minuts. Si no formen una hora vàlida (hores de 0 a 23 i minuts de 0 a 59), mostra «Hora incorrecta». Si és vàlida, digues si és matí (abans de les 12), horabaixa (de les 12 a les 19.59) o vespre.
+
+    ??? success "Solució"
+        ```python
+        hora = int(input("Hora: "))
+        minuts = int(input("Minuts: "))
+
+        if hora < 0 or hora > 23 or minuts < 0 or minuts > 59:
+            print("Hora incorrecta")
+        else:
+            if hora < 12:
+                print("És matí")
+            elif hora < 20:
+                print("És horabaixa")
+            else:
+                print("És vespre")
+        ```
+
+!!! example "Repàs 4.18. El caixer automàtic"
+    Un compte té un saldo de 500 €. Demana quina quantitat es vol retirar. El caixer només dona bitllets, de manera que la quantitat ha de ser positiva i múltiple de 10, i no pot superar el saldo. Mostra el saldo que queda o el motiu pel qual no es pot fer l'operació.
+
+    ??? success "Solució"
+        ```python
+        saldo = 500
+
+        quantitat = int(input("Quantitat a retirar: "))
+
+        if quantitat <= 0:
+            print("La quantitat ha de ser positiva")
+        elif quantitat % 10 != 0:
+            print("La quantitat ha de ser múltiple de 10")
+        elif quantitat > saldo:
+            print("No tens prou saldo")
+        else:
+            saldo = saldo - quantitat
+            print(f"Operació feta. Saldo: {saldo} €")
+        ```
+
+!!! example "Repàs 4.19. L'equació de segon grau"
+    Demana els coeficients `a`, `b` i `c` d'una equació de segon grau (amb `a` diferent de 0) i mostra'n les solucions reals. Recorda que depenen del discriminant, `b² − 4ac`: si és positiu n'hi ha dues, si és zero n'hi ha una i si és negatiu no n'hi ha cap. L'arrel quadrada es pot calcular elevant a 0.5.
+
+    ??? success "Solució"
+        ```python
+        a = float(input("a: "))
+        b = float(input("b: "))
+        c = float(input("c: "))
+
+        discriminant = b ** 2 - 4 * a * c
+
+        if discriminant > 0:
+            x1 = (-b + discriminant ** 0.5) / (2 * a)
+            x2 = (-b - discriminant ** 0.5) / (2 * a)
+            print("Dues solucions:", x1, "i", x2)
+        elif discriminant == 0:
+            x = -b / (2 * a)
+            print("Una solució:", x)
+        else:
+            print("No té solucions reals")
+        ```
+
+        Compte amb els parèntesis de `(2 * a)`: sense ells, es dividiria entre 2 i després es multiplicaria per `a`.
+
 ---
 
 !!! quote "Font"

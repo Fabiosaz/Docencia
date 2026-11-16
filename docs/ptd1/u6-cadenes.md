@@ -423,6 +423,306 @@ El xifratge de Cèsar és **molt insegur**: com que només hi ha 25 claus possib
 
         `i % len(paraula_clau)` fa que, quan s'acaba la paraula clau, es torni a començar per la primera lletra.
 
+## 6.6. Exercicis de repàs
+
+Més exercicis per practicar tota la unitat, ordenats de menys a més dificultat. Els dos primers es resolen sense ordinador. Recorda que els mètodes de les cadenes no les modifiquen: retornen una cadena nova.
+
+!!! example "Repàs 6.1. Índexs i llesques"
+    Amb `s = "Mallorca"`, quin és el resultat de cada expressió? Respon sense executar-les.
+
+    `s[0]` · `s[-1]` · `s[2:5]` · `s[:3]` · `s[5:]` · `s[::2]` · `s[::-1]` · `len(s)`
+
+    ??? success "Solució"
+        `"M"`, `"a"`, `"llo"`, `"Mal"`, `"rca"`, `"Mloc"`, `"acrollaM"` i `8`.
+
+!!! example "Repàs 6.2. Què fan aquests mètodes?"
+    Indica el resultat de cada expressió.
+
+    1. `"  Hola, món  ".strip().upper()`
+    2. `"programació".count("a")`
+    3. `"programació".find("gra")`
+    4. `"programació".find("z")`
+    5. `"un dos tres".split()`
+    6. `"-".join(["2026", "11", "16"])`
+    7. `"Palma de Mallorca".replace("a", "")`
+    8. `"abc123".isdigit()`
+
+    ??? success "Solució"
+        1. `"HOLA, MÓN"`
+        2. `2`
+        3. `3`
+        4. `-1`: la cadena no hi és.
+        5. `["un", "dos", "tres"]`
+        6. `"2026-11-16"`
+        7. `"Plm de Mllorc"`
+        8. `False`: no tots els caràcters són xifres.
+
+!!! example "Repàs 6.3. Caça d'errors"
+    Aquest programa hauria de posar en majúscula la primera lletra d'un nom, però dona error. Explica per què i corregeix-lo sense fer servir `capitalize()` ni `title()`.
+
+    ```python
+    nom = "aina"
+    nom[0] = "A"
+    print(nom)
+    ```
+
+    ??? success "Solució"
+        ```python
+        nom = "aina"
+        nom = nom[0].upper() + nom[1:]
+        print(nom)
+        ```
+
+        Les cadenes són **immutables**: no se'n pot canviar un caràcter. S'ha de construir una cadena nova amb la primera lletra en majúscula i la resta igual, i guardar-la a la mateixa variable.
+
+!!! example "Repàs 6.4. Sense espais"
+    Demana el nom complet d'una persona i mostra quantes lletres té, sense comptar els espais.
+
+    ??? success "Solució"
+        ```python
+        nom = input("Nom complet: ")
+        sense_espais = nom.replace(" ", "")
+        print("Lletres:", len(sense_espais))
+        ```
+
+!!! example "Repàs 6.5. Comptar una lletra"
+    Demana una frase i una lletra, i mostra quantes vegades apareix la lletra a la frase, sense distingir majúscules de minúscules. Fes-ho de dues maneres: amb un bucle i amb el mètode `count()`.
+
+    ??? success "Solució"
+        ```python
+        frase = input("Frase: ").lower()
+        lletra = input("Lletra: ").lower()
+
+        # Amb un bucle
+        vegades = 0
+        for caracter in frase:
+            if caracter == lletra:
+                vegades = vegades + 1
+        print("Amb bucle:", vegades)
+
+        # Amb el mètode
+        print("Amb count():", frase.count(lletra))
+        ```
+
+!!! example "Repàs 6.6. Capgirar amb un bucle"
+    Demana una paraula i mostra-la al revés **sense** fer servir la llesca `[::-1]`: construeix la cadena nova caràcter a caràcter.
+
+    ??? success "Solució"
+        ```python
+        paraula = input("Paraula: ")
+
+        girada = ""
+        for caracter in paraula:
+            girada = caracter + girada
+
+        print(girada)
+        ```
+
+        A cada volta, el caràcter nou es posa **davant** del que ja teníem. Si es posàs darrere (`girada + caracter`), obtindríem la mateixa paraula.
+
+!!! example "Repàs 6.7. Majúscules alternes"
+    Demana una paraula i mostra-la alternant majúscules i minúscules, començant per majúscula: `programa` → `PrOgRaMa`.
+
+    ??? success "Solució"
+        ```python
+        paraula = input("Paraula: ")
+
+        resultat = ""
+        for i in range(len(paraula)):
+            if i % 2 == 0:
+                resultat = resultat + paraula[i].upper()
+            else:
+                resultat = resultat + paraula[i].lower()
+
+        print(resultat)
+        ```
+
+        Aquí cal recórrer els **índexs**, i no directament els caràcters, perquè la decisió depèn de la posició.
+
+!!! example "Repàs 6.8. Comptar paraules"
+    Demana una frase i mostra quantes paraules té.
+
+    ??? success "Solució"
+        ```python
+        frase = input("Frase: ")
+        paraules = frase.split()
+        print("Paraules:", len(paraules))
+        ```
+
+        `split()` sense paràmetres separa pels espais i ignora els espais repetits.
+
+!!! example "Repàs 6.9. La paraula més llarga"
+    Demana una frase i mostra la paraula més llarga i quantes lletres té. Si n'hi ha diverses d'igual de llargues, mostra la primera.
+
+    ??? success "Solució"
+        ```python
+        frase = input("Frase: ")
+
+        mes_llarga = ""
+        for paraula in frase.split():
+            if len(paraula) > len(mes_llarga):
+                mes_llarga = paraula
+
+        print(f"La més llarga és «{mes_llarga}», amb {len(mes_llarga)} lletres")
+        ```
+
+!!! example "Repàs 6.10. Amagar les vocals"
+    Demana una frase i mostra-la substituint totes les vocals (sense accent) per un asterisc.
+
+    ??? success "Solució"
+        ```python
+        frase = input("Frase: ")
+
+        resultat = ""
+        for caracter in frase:
+            if caracter.lower() in "aeiou":
+                resultat = resultat + "*"
+            else:
+                resultat = resultat + caracter
+
+        print(resultat)
+        ```
+
+!!! example "Repàs 6.11. Quantes de cada vocal?"
+    Demana un text i mostra quantes vegades hi apareix cada una de les cinc vocals, sense distingir majúscules de minúscules ni tenir en compte els accents.
+
+    ??? success "Solució"
+        ```python
+        text = input("Text: ").lower()
+
+        for vocal in "aeiou":
+            print(vocal, "→", text.count(vocal))
+        ```
+
+        Es pot recórrer amb `for` qualsevol cadena, també una d'escrita directament al codi.
+
+!!! example "Repàs 6.12. Majúscules, minúscules i xifres"
+    Demana una contrasenya i mostra quantes lletres majúscules, quantes lletres minúscules, quantes xifres i quants altres caràcters té.
+
+    ??? success "Solució"
+        ```python
+        contrasenya = input("Contrasenya: ")
+
+        majuscules = 0
+        minuscules = 0
+        xifres = 0
+        altres = 0
+
+        for caracter in contrasenya:
+            if caracter.isupper():
+                majuscules = majuscules + 1
+            elif caracter.islower():
+                minuscules = minuscules + 1
+            elif caracter.isdigit():
+                xifres = xifres + 1
+            else:
+                altres = altres + 1
+
+        print("Majúscules:", majuscules)
+        print("Minúscules:", minuscules)
+        print("Xifres:", xifres)
+        print("Altres:", altres)
+        ```
+
+!!! example "Repàs 6.13. Nom d'usuari"
+    L'institut crea els noms d'usuari amb la primera lletra del nom seguida dels llinatges, tot en minúscules i sense espais. Demana el nom i els llinatges i mostra el nom d'usuari: `Aina` i `Ferrer Pons` → `aferrerpons`.
+
+    ??? success "Solució"
+        ```python
+        nom = input("Nom: ").strip()
+        llinatges = input("Llinatges: ").strip()
+
+        usuari = nom[0] + llinatges.replace(" ", "")
+        print(usuari.lower())
+        ```
+
+!!! example "Repàs 6.14. L'extensió d'un fitxer"
+    Demana el nom d'un fitxer i mostra'n l'extensió en minúscules. Pensa què passa amb un nom com `foto.vacances.PNG`: l'extensió és el que hi ha després del **darrer** punt.
+
+    ??? success "Solució"
+        ```python
+        fitxer = input("Nom del fitxer: ")
+
+        trossos = fitxer.split(".")
+        extensio = trossos[-1].lower()
+        print("Extensió:", extensio)
+        ```
+
+        `split(".")` retorna una llista amb els trossos, i l'índex `-1` n'agafa el darrer.
+
+!!! example "Repàs 6.15. De l'hora als minuts"
+    Demana una hora amb el format `hh:mm` (per exemple, `07:45`) i mostra quants minuts han passat des de mitjanit.
+
+    ??? success "Solució"
+        ```python
+        hora = input("Hora (hh:mm): ")
+
+        trossos = hora.split(":")
+        minuts = int(trossos[0]) * 60 + int(trossos[1])
+        print("Minuts des de mitjanit:", minuts)
+        ```
+
+!!! example "Repàs 6.16. Un telèfon ben escrit"
+    Demana un número de telèfon, que l'usuari pot escriure amb espais o sense. Elimina'n els espais i comprova que té exactament 9 xifres. Si és correcte, mostra'l amb el format `971 123 456`; si no, mostra un missatge d'error.
+
+    ??? success "Solució"
+        ```python
+        telefon = input("Telèfon: ").replace(" ", "")
+
+        if len(telefon) == 9 and telefon.isdigit():
+            print(telefon[0:3], telefon[3:6], telefon[6:9])
+        else:
+            print("Número incorrecte")
+        ```
+
+!!! example "Repàs 6.17. Espais de més"
+    Demana una frase que pot tenir espais repetits o espais al principi i al final, i mostra-la amb un sol espai entre paraula i paraula.
+
+    ??? success "Solució"
+        ```python
+        frase = input("Frase: ")
+        neta = " ".join(frase.split())
+        print(neta)
+        ```
+
+        `split()` separa les paraules i descarta tots els espais; `join()` les torna a unir amb un sol espai.
+
+!!! example "Repàs 6.18. Censurar una paraula"
+    Demana una frase i una paraula prohibida, i mostra la frase amb la paraula substituïda per tants asteriscs com lletres té.
+
+    ??? success "Solució"
+        ```python
+        frase = input("Frase: ")
+        prohibida = input("Paraula prohibida: ")
+
+        print(frase.replace(prohibida, "*" * len(prohibida)))
+        ```
+
+!!! example "Repàs 6.19. La lletra del DNI"
+    La lletra del DNI es calcula a partir del número: es divideix entre 23 i el residu indica la posició de la lletra dins la cadena `"TRWAGMYFPDXBNJZSQVHLCKE"`. Demana un DNI complet (8 xifres i una lletra) i comprova:
+
+    1. Que té el format correcte.
+    2. Que la lletra és la que correspon al número.
+
+    ??? success "Solució"
+        ```python
+        LLETRES = "TRWAGMYFPDXBNJZSQVHLCKE"
+
+        dni = input("DNI: ").strip().upper()
+
+        if len(dni) != 9 or not dni[:8].isdigit() or not dni[8].isalpha():
+            print("Format incorrecte")
+        else:
+            numero = int(dni[:8])
+            lletra = LLETRES[numero % 23]
+            if dni[8] == lletra:
+                print("DNI correcte")
+            else:
+                print("La lletra no és correcta: hauria de ser", lletra)
+        ```
+
+        El residu de dividir entre 23 és un nombre entre 0 i 22, i la cadena té exactament 23 lletres: el residu es fa servir directament com a índex.
+
 ---
 
 !!! quote "Font"

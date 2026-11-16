@@ -503,6 +503,457 @@ També es poden recórrer només les claus amb `persona.keys()` o només els val
 
         Compara-ho amb la solució del repte 3.2: amb la llista, el programa passa de 17 línies a 7, i per afegir o treure un tipus de moneda només cal canviar la llista.
 
+## 7.5. Exercicis de repàs
+
+Més exercicis per practicar tota la unitat, ordenats de menys a més dificultat. Els dos primers es resolen sense ordinador. En molts d'ells es demana resoldre «a mà», amb bucles, el que Python ja fa amb una funció: és la millor manera d'entendre què passa per dins.
+
+!!! example "Repàs 7.1. Segueix la llista"
+    Escriu com queda la llista després de cada instrucció, sense executar el programa.
+
+    ```python
+    l = [5, 2, 9]
+    l.append(4)
+    l.insert(1, 7)
+    l.remove(9)
+    x = l.pop(0)
+    l[1] = l[1] * 10
+    ```
+
+    Quant val `x` al final?
+
+    ??? success "Solució"
+        ```text
+        [5, 2, 9, 4]
+        [5, 7, 2, 9, 4]
+        [5, 7, 2, 4]
+        [7, 2, 4]
+        [7, 20, 4]
+        ```
+
+        `x` val 5: `pop()` elimina l'element i el retorna.
+
+!!! example "Repàs 7.2. Accés a una taula"
+    Amb aquesta taula, quin és el valor de cada expressió?
+
+    ```python
+    t = [
+        [1, 2, 3],
+        [4, 5, 6],
+        [7, 8, 9],
+        [10, 11, 12],
+    ]
+    ```
+
+    `t[0][0]` · `t[2][1]` · `t[3]` · `t[-1][-1]` · `len(t)` · `len(t[0])` · `t[1][0] + t[0][1]`
+
+    ??? success "Solució"
+        `1`, `8`, `[10, 11, 12]`, `12`, `4` (files), `3` (columnes) i `6`.
+
+!!! example "Repàs 7.3. Caça d'errors"
+    Aquest programa hauria de mostrar tots els elements de la llista, però dona un error `IndexError`. Explica per què, corregeix-lo i escriu-ne també una versió que no necessiti índexs.
+
+    ```python
+    colors = ["vermell", "verd", "blau"]
+    for i in range(1, len(colors) + 1):
+        print(colors[i])
+    ```
+
+    ??? success "Solució"
+        ```python
+        colors = ["vermell", "verd", "blau"]
+
+        # Versió amb índexs
+        for i in range(len(colors)):
+            print(colors[i])
+
+        # Versió sense índexs
+        for color in colors:
+            print(color)
+        ```
+
+        Els índexs d'una llista de 3 elements van del 0 al 2. El `range(1, 4)` original se salta el primer element i, a la darrera volta, demana la posició 3, que no existeix.
+
+!!! example "Repàs 7.4. Suma i mitjana a mà"
+    Donada la llista `notes = [7.5, 4, 9, 6.25, 8]`, calcula'n la suma i la mitjana **sense** fer servir `sum()`. Després comprova el resultat amb `sum()` i `len()`.
+
+    ??? success "Solució"
+        ```python
+        notes = [7.5, 4, 9, 6.25, 8]
+
+        suma = 0
+        for nota in notes:
+            suma = suma + nota
+
+        print("Suma:", suma)
+        print("Mitjana:", suma / len(notes))
+        print("Comprovació:", sum(notes) / len(notes))
+        ```
+
+!!! example "Repàs 7.5. El màxim i on és"
+    Donada la llista `temperatures = [18, 22, 31, 27, 31, 19]`, troba la temperatura més alta i la posició on apareix per primera vegada, **sense** fer servir `max()` ni `index()`.
+
+    ??? success "Solució"
+        ```python
+        temperatures = [18, 22, 31, 27, 31, 19]
+
+        maxim = temperatures[0]
+        posicio = 0
+        for i in range(1, len(temperatures)):
+            if temperatures[i] > maxim:
+                maxim = temperatures[i]
+                posicio = i
+
+        print("Màxim:", maxim)
+        print("Posició:", posicio)
+        ```
+
+        Com que es compara amb `>` i no amb `>=`, quan torna a aparèixer el 31 no se substitueix, i es conserva la primera posició.
+
+!!! example "Repàs 7.6. Quants d'aprovats?"
+    Donada la llista `notes = [3, 7.5, 5, 4.9, 9, 6, 2, 5.5]`, mostra quants d'aprovats i quants de suspesos hi ha, i el percentatge d'aprovats.
+
+    ??? success "Solució"
+        ```python
+        notes = [3, 7.5, 5, 4.9, 9, 6, 2, 5.5]
+
+        aprovats = 0
+        for nota in notes:
+            if nota >= 5:
+                aprovats = aprovats + 1
+
+        suspesos = len(notes) - aprovats
+        print("Aprovats:", aprovats)
+        print("Suspesos:", suspesos)
+        print(f"Percentatge d'aprovats: {aprovats / len(notes) * 100:.1f} %")
+        ```
+
+!!! example "Repàs 7.7. Els quadrats"
+    Crea una llista buida i omple-la, amb un bucle, amb els quadrats dels nombres de l'1 al 10. Mostra la llista.
+
+    ??? success "Solució"
+        ```python
+        quadrats = []
+        for n in range(1, 11):
+            quadrats.append(n ** 2)
+
+        print(quadrats)
+        ```
+
+!!! example "Repàs 7.8. Separar parells i senars"
+    Donada la llista `nombres = [12, 7, 3, 20, 15, 8, 1, 6]`, crea dues llistes noves: una amb els nombres parells i una altra amb els senars. Mostra-les.
+
+    ??? success "Solució"
+        ```python
+        nombres = [12, 7, 3, 20, 15, 8, 1, 6]
+
+        parells = []
+        senars = []
+        for n in nombres:
+            if n % 2 == 0:
+                parells.append(n)
+            else:
+                senars.append(n)
+
+        print("Parells:", parells)
+        print("Senars:", senars)
+        ```
+
+!!! example "Repàs 7.9. Girar una llista a mà"
+    Donada la llista `lletres = ["a", "b", "c", "d"]`, crea una llista nova amb els mateixos elements en ordre invers, **sense** fer servir `reverse()` ni llesques. La llista original no ha de canviar.
+
+    ??? success "Solució"
+        ```python
+        lletres = ["a", "b", "c", "d"]
+
+        girada = []
+        for i in range(len(lletres) - 1, -1, -1):
+            girada.append(lletres[i])
+
+        print(girada)
+        print(lletres)
+        ```
+
+        El `range(len(lletres) - 1, -1, -1)` recorre els índexs del darrer al 0. També es pot recórrer la llista en ordre normal i inserir cada element al principi amb `girada.insert(0, element)`.
+
+!!! example "Repàs 7.10. Sense repetits"
+    Donada la llista `noms = ["Aina", "Biel", "Aina", "Carla", "Biel", "Aina"]`, crea una llista nova sense elements repetits, conservant l'ordre en què apareixen per primera vegada.
+
+    ??? success "Solució"
+        ```python
+        noms = ["Aina", "Biel", "Aina", "Carla", "Biel", "Aina"]
+
+        unics = []
+        for nom in noms:
+            if nom not in unics:
+                unics.append(nom)
+
+        print(unics)
+        ```
+
+!!! example "Repàs 7.11. Totes les posicions"
+    Demana un nombre i mostra totes les posicions on apareix dins la llista `l = [4, 7, 4, 1, 9, 4, 7]`. Si no hi és, mostra un missatge. Recorda que `index()` només troba la primera aparició.
+
+    ??? success "Solució"
+        ```python
+        l = [4, 7, 4, 1, 9, 4, 7]
+
+        cercat = int(input("Nombre que cerques: "))
+
+        posicions = []
+        for i in range(len(l)):
+            if l[i] == cercat:
+                posicions.append(i)
+
+        if len(posicions) > 0:
+            print("Apareix a les posicions", posicions)
+        else:
+            print("No hi és")
+        ```
+
+!!! example "Repàs 7.12. Elements en comú"
+    Dues amigues han fet la llista de les pel·lícules que volen veure. Mostra quines pel·lícules són a totes dues llistes.
+
+    ```python
+    llista1 = ["Up", "Coco", "Brave", "Soul"]
+    llista2 = ["Soul", "Luca", "Up", "Cars"]
+    ```
+
+    ??? success "Solució"
+        ```python
+        llista1 = ["Up", "Coco", "Brave", "Soul"]
+        llista2 = ["Soul", "Luca", "Up", "Cars"]
+
+        comunes = []
+        for pelicula in llista1:
+            if pelicula in llista2:
+                comunes.append(pelicula)
+
+        print(comunes)
+        ```
+
+!!! example "Repàs 7.13. Rotar la llista"
+    Donada la llista `torn = ["Aina", "Biel", "Carla", "Dani"]`, fes que el darrer element passi a ser el primer i que la resta es desplaci una posició: `["Dani", "Aina", "Biel", "Carla"]`.
+
+    ??? success "Solució"
+        ```python
+        torn = ["Aina", "Biel", "Carla", "Dani"]
+
+        darrer = torn.pop()
+        torn.insert(0, darrer)
+
+        print(torn)
+        ```
+
+        `pop()` sense paràmetres elimina i retorna el darrer element.
+
+!!! example "Repàs 7.14. Estadístiques de notes"
+    Llegeix notes del teclat fins que l'usuari escrigui `-1`, i guarda-les en una llista. Després mostra la llista, la nota mitjana, la més alta, la més baixa i quantes notes superen la mitjana.
+
+    ??? success "Solució"
+        ```python
+        notes = []
+
+        nota = float(input("Nota (-1 per acabar): "))
+        while nota != -1:
+            notes.append(nota)
+            nota = float(input("Nota (-1 per acabar): "))
+
+        if len(notes) == 0:
+            print("No has introduït cap nota")
+        else:
+            mitjana = sum(notes) / len(notes)
+
+            per_sobre = 0
+            for n in notes:
+                if n > mitjana:
+                    per_sobre = per_sobre + 1
+
+            print("Notes:", notes)
+            print(f"Mitjana: {mitjana:.2f}")
+            print("Més alta:", max(notes))
+            print("Més baixa:", min(notes))
+            print("Per sobre de la mitjana:", per_sobre)
+        ```
+
+        Aquí la llista és imprescindible: per saber quantes notes superen la mitjana, primer s'ha de calcular la mitjana i després **tornar a recórrer** les notes.
+
+!!! example "Repàs 7.15. Sumes de files i de columnes"
+    Amb la taula de notes següent (cada fila és un alumne i cada columna, una assignatura), mostra la suma de cada fila i la suma de cada columna.
+
+    ```python
+    notes = [
+        [7, 8, 6, 9],
+        [5, 4, 6, 7],
+        [9, 9, 10, 8],
+    ]
+    ```
+
+    ??? success "Solució"
+        ```python
+        notes = [
+            [7, 8, 6, 9],
+            [5, 4, 6, 7],
+            [9, 9, 10, 8],
+        ]
+
+        for f in range(len(notes)):
+            print(f"Suma de la fila {f}: {sum(notes[f])}")
+
+        for c in range(len(notes[0])):
+            suma = 0
+            for f in range(len(notes)):
+                suma = suma + notes[f][c]
+            print(f"Suma de la columna {c}: {suma}")
+        ```
+
+        Una fila ja és una llista, i per això es pot sumar amb `sum()`. Una columna no ho és: s'ha de recórrer fixant la columna i canviant la fila.
+
+!!! example "Repàs 7.16. El màxim d'una taula"
+    Amb la mateixa taula de notes de l'exercici anterior, troba la nota més alta i mostra a quina fila i a quina columna és.
+
+    ??? success "Solució"
+        ```python
+        notes = [
+            [7, 8, 6, 9],
+            [5, 4, 6, 7],
+            [9, 9, 10, 8],
+        ]
+
+        maxim = notes[0][0]
+        fila_max = 0
+        columna_max = 0
+
+        for f in range(len(notes)):
+            for c in range(len(notes[f])):
+                if notes[f][c] > maxim:
+                    maxim = notes[f][c]
+                    fila_max = f
+                    columna_max = c
+
+        print(f"La nota més alta és {maxim}, a la fila {fila_max} i la columna {columna_max}")
+        ```
+
+!!! example "Repàs 7.17. La diagonal"
+    Demana una mida `n` i crea una taula de `n` × `n` plena de zeros, amb uns a la diagonal principal (la que va de dalt a l'esquerra fins a baix a la dreta). Mostra-la fila a fila.
+
+    ??? success "Solució"
+        ```python
+        n = int(input("Mida: "))
+
+        taula = []
+        for f in range(n):
+            fila = []
+            for c in range(n):
+                if f == c:
+                    fila.append(1)
+                else:
+                    fila.append(0)
+            taula.append(fila)
+
+        for fila in taula:
+            print(fila)
+        ```
+
+        Els elements de la diagonal principal són els que tenen el mateix índex de fila que de columna.
+
+!!! example "Repàs 7.18. La taula de multiplicar, en una taula"
+    Construeix amb bucles una taula de 5 × 5 on cada element sigui el producte del número de la seva fila pel de la seva columna, tots dos comptats des de l'1. Mostra-la fila a fila.
+
+    ??? success "Solució"
+        ```python
+        taula = []
+        for f in range(1, 6):
+            fila = []
+            for c in range(1, 6):
+                fila.append(f * c)
+            taula.append(fila)
+
+        for fila in taula:
+            print(fila)
+        ```
+
+!!! example "Repàs 7.19. Enfonsar la flota"
+    En aquest tauler de 4 × 4, una `"V"` indica que hi ha un vaixell i un `"~"`, aigua. Demana una fila i una columna (del 0 al 3) i digues «Tocat!» o «Aigua». Si les coordenades són fora del tauler, mostra un missatge d'error. Al final, mostra quants vaixells hi ha en total al tauler.
+
+    ```python
+    tauler = [
+        ["~", "V", "~", "~"],
+        ["~", "~", "~", "V"],
+        ["V", "~", "~", "~"],
+        ["~", "~", "V", "~"],
+    ]
+    ```
+
+    ??? success "Solució"
+        ```python
+        tauler = [
+            ["~", "V", "~", "~"],
+            ["~", "~", "~", "V"],
+            ["V", "~", "~", "~"],
+            ["~", "~", "V", "~"],
+        ]
+
+        fila = int(input("Fila (0-3): "))
+        columna = int(input("Columna (0-3): "))
+
+        if fila < 0 or fila > 3 or columna < 0 or columna > 3:
+            print("Coordenades fora del tauler")
+        elif tauler[fila][columna] == "V":
+            print("Tocat!")
+        else:
+            print("Aigua")
+
+        vaixells = 0
+        for f in tauler:
+            vaixells = vaixells + f.count("V")
+        print("Vaixells al tauler:", vaixells)
+        ```
+
+        La comprovació de les coordenades ha d'anar **abans** d'accedir al tauler; si no, el programa s'aturaria amb un `IndexError`.
+
+!!! example "Repàs 7.20. Freqüència de paraules (opcional)"
+    Amb un **diccionari**, compta quantes vegades apareix cada paraula a la frase `"el ca i el moix i el ratolí"` i mostra el resultat.
+
+    ??? success "Solució"
+        ```python
+        frase = "el ca i el moix i el ratolí"
+
+        frequencia = {}
+        for paraula in frase.split():
+            if paraula in frequencia:
+                frequencia[paraula] = frequencia[paraula] + 1
+            else:
+                frequencia[paraula] = 1
+
+        for paraula, vegades in frequencia.items():
+            print(f"{paraula}: {vegades}")
+        ```
+
+        Amb un diccionari, l'operador `in` comprova si una **clau** existeix.
+
+!!! example "Repàs 7.21. El preu de la compra (opcional)"
+    Tens un **diccionari** amb el preu de cada producte i una llista amb el que has comprat. Calcula el total de la compra. Si un producte de la llista no és al diccionari, avisa i no el comptis.
+
+    ```python
+    preus = {"pa": 1.2, "llet": 0.95, "ous": 2.4, "formatge": 3.75}
+    compra = ["pa", "ous", "pa", "suc", "formatge"]
+    ```
+
+    ??? success "Solució"
+        ```python
+        preus = {"pa": 1.2, "llet": 0.95, "ous": 2.4, "formatge": 3.75}
+        compra = ["pa", "ous", "pa", "suc", "formatge"]
+
+        total = 0
+        for producte in compra:
+            if producte in preus:
+                total = total + preus[producte]
+            else:
+                print("No sé el preu de:", producte)
+
+        print(f"Total: {total:.2f} €")
+        ```
+
 ---
 
 !!! quote "Font"
