@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 380" role="img" aria-label="Un portàtil amb codi connectat a una placa micro:bit, un robot, un circuit i una base de dades">
+  <defs>
+    <linearGradient id="pantalla" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#16203a"/><stop offset="1" stop-color="#0d1426"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Pistes de circuit que uneixen els elements amb el portàtil -->
+  <g fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1 7">
+    <path d="M118 96 H170 V150 H196" stroke="#2dd4bf"/>
+    <path d="M446 92 H396 V150 H366" stroke="#fbbf24"/>
+    <path d="M112 300 H160 V262 H196" stroke="#60a5fa"/>
+    <path d="M452 296 H400 V262 H366" stroke="#a78bfa"/>
+  </g>
+
+  <!-- Portàtil -->
+  <g>
+    <rect x="186" y="96" width="190" height="130" rx="10" fill="#e2e8f0"/>
+    <rect x="194" y="104" width="174" height="114" rx="5" fill="url(#pantalla)"/>
+    <circle cx="204" cy="113" r="2.5" fill="#f87171"/><circle cx="213" cy="113" r="2.5" fill="#fbbf24"/><circle cx="222" cy="113" r="2.5" fill="#34d399"/>
+    <g stroke-width="5" stroke-linecap="round">
+      <path d="M206 132 h26" stroke="#a78bfa"/><path d="M240 132 h44" stroke="#e2e8f0"/>
+      <path d="M218 148 h18" stroke="#60a5fa"/><path d="M244 148 h52" stroke="#2dd4bf"/><path d="M304 148 h20" stroke="#e2e8f0"/>
+      <path d="M218 164 h34" stroke="#fbbf24"/><path d="M260 164 h24" stroke="#e2e8f0"/>
+      <path d="M206 180 h20" stroke="#a78bfa"/><path d="M234 180 h60" stroke="#60a5fa"/>
+      <path d="M218 196 h46" stroke="#2dd4bf"/><path d="M272 196 h14" stroke="#fbbf24"/>
+    </g>
+    <path d="M160 232 H402 L388 250 Q386 254 380 254 H182 Q176 254 174 250 Z" fill="#cbd5e1"/>
+    <rect x="252" y="236" width="58" height="6" rx="3" fill="#94a3b8"/>
+  </g>
+
+  <!-- micro:bit (Digitalització, verd blau) -->
+  <g>
+    <rect x="34" y="44" width="92" height="88" rx="12" fill="#0f766e"/>
+    <rect x="34" y="118" width="92" height="14" rx="4" fill="#facc15"/>
+    <g fill="#0f766e"><circle cx="48" cy="125" r="3"/><circle cx="64" cy="125" r="3"/><circle cx="80" cy="125" r="3"/><circle cx="96" cy="125" r="3"/><circle cx="112" cy="125" r="3"/></g>
+    <circle cx="46" cy="84" r="6" fill="#134e4a" stroke="#99f6e4" stroke-width="1.5"/>
+    <circle cx="114" cy="84" r="6" fill="#134e4a" stroke="#99f6e4" stroke-width="1.5"/>
+    <!-- matriu de LED 5×5 amb un cor -->
+    <g fill="#115e59">
+      <rect x="60" y="58" width="5" height="7" rx="1.5"/><rect x="87" y="58" width="5" height="7" rx="1.5"/><rect x="96" y="58" width="5" height="7" rx="1.5" opacity="0"/>
+      <rect x="60" y="94" width="5" height="7" rx="1.5"/><rect x="69" y="94" width="5" height="7" rx="1.5"/><rect x="87" y="94" width="5" height="7" rx="1.5"/><rect x="96" y="94" width="5" height="7" rx="1.5"/>
+      <rect x="60" y="85" width="5" height="7" rx="1.5"/><rect x="96" y="85" width="5" height="7" rx="1.5"/>
+      <rect x="78" y="58" width="5" height="7" rx="1.5"/>
+    </g>
+    <g fill="#fca5a5">
+      <rect x="69" y="58" width="5" height="7" rx="1.5"/><rect x="87" y="58" width="5" height="7" rx="1.5"/>
+      <rect x="60" y="67" width="5" height="7" rx="1.5"/><rect x="69" y="67" width="5" height="7" rx="1.5"/><rect x="78" y="67" width="5" height="7" rx="1.5"/><rect x="87" y="67" width="5" height="7" rx="1.5"/><rect x="96" y="67" width="5" height="7" rx="1.5"/>
+      <rect x="60" y="76" width="5" height="7" rx="1.5"/><rect x="69" y="76" width="5" height="7" rx="1.5"/><rect x="78" y="76" width="5" height="7" rx="1.5"/><rect x="87" y="76" width="5" height="7" rx="1.5"/><rect x="96" y="76" width="5" height="7" rx="1.5"/>
+      <rect x="69" y="85" width="5" height="7" rx="1.5"/><rect x="78" y="85" width="5" height="7" rx="1.5"/><rect x="87" y="85" width="5" height="7" rx="1.5"/>
+      <rect x="78" y="94" width="5" height="7" rx="1.5"/>
+    </g>
+  </g>
+
+  <!-- Circuit amb porta lògica (Tecnologia, ambre) -->
+  <g fill="none" stroke="#fbbf24" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M462 62 H490 A28 28 0 0 1 490 118 H462 Z" fill="#78350f"/>
+    <path d="M436 76 H462 M436 104 H462 M518 90 H540"/>
+    <circle cx="434" cy="76" r="4" fill="#fbbf24"/><circle cx="434" cy="104" r="4" fill="#fbbf24"/><circle cx="542" cy="90" r="4" fill="#fbbf24"/>
+    <path d="M470 34 l6 -10 l8 16 l8 -16 l8 16 l6 -10" stroke-width="2.5"/>
+    <path d="M452 34 H470 M512 34 H528" stroke-width="2.5"/>
+  </g>
+
+  <!-- Robot (PTD I, blau) -->
+  <g>
+    <rect x="44" y="270" width="76" height="52" rx="10" fill="#1d4ed8"/>
+    <rect x="52" y="256" width="60" height="22" rx="8" fill="#3b82f6"/>
+    <circle cx="68" cy="267" r="7" fill="#0b1220" stroke="#bfdbfe" stroke-width="2"/><circle cx="96" cy="267" r="7" fill="#0b1220" stroke="#bfdbfe" stroke-width="2"/>
+    <circle cx="68" cy="267" r="2.5" fill="#93c5fd"/><circle cx="96" cy="267" r="2.5" fill="#93c5fd"/>
+    <rect x="62" y="290" width="40" height="18" rx="4" fill="#0b1220"/>
+    <path d="M68 299 h6 M78 299 h10 M92 299 h4" stroke="#60a5fa" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="48" cy="324" r="13" fill="#0b1220" stroke="#93c5fd" stroke-width="3"/><circle cx="116" cy="324" r="13" fill="#0b1220" stroke="#93c5fd" stroke-width="3"/>
+    <circle cx="48" cy="324" r="3" fill="#93c5fd"/><circle cx="116" cy="324" r="3" fill="#93c5fd"/>
+    <path d="M82 256 V244" stroke="#bfdbfe" stroke-width="2.5" stroke-linecap="round"/><circle cx="82" cy="241" r="4" fill="#f87171"/>
+  </g>
+
+  <!-- Base de dades (PTD II, violeta) -->
+  <g stroke="#ddd6fe" stroke-width="2.5">
+    <path d="M452 262 V326 A42 13 0 0 0 536 326 V262" fill="#6d28d9"/>
+    <path d="M452 284 A42 13 0 0 0 536 284 M452 305 A42 13 0 0 0 536 305" fill="none"/>
+    <ellipse cx="494" cy="262" rx="42" ry="13" fill="#8b5cf6"/>
+  </g>
+  <g fill="#ddd6fe"><circle cx="466" cy="290" r="2.5"/><circle cx="466" cy="311" r="2.5"/><circle cx="466" cy="332" r="2.5"/></g>
+
+  <!-- Espurnes decoratives -->
+  <g fill="#e2e8f0" opacity=".55">
+    <circle cx="150" cy="40" r="2"/><circle cx="280" cy="52" r="2.5"/><circle cx="400" cy="210" r="2"/><circle cx="150" cy="210" r="2"/><circle cx="286" cy="320" r="2.5"/><circle cx="330" cy="34" r="1.5"/><circle cx="232" cy="300" r="1.5"/>
+  </g>
+</svg>

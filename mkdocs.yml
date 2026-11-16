@@ -11,7 +11,11 @@ copyright: >
 
 theme:
   name: material
+  custom_dir: overrides
   language: ca
+  font:
+    text: Atkinson Hyperlegible
+    code: JetBrains Mono
   features:
     - navigation.tabs
     - navigation.sections
@@ -24,16 +28,21 @@ theme:
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: indigo
-      accent: teal
+      primary: custom
+      accent: custom
       toggle: {icon: material/weather-night, name: Mode fosc}
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: indigo
-      accent: teal
+      primary: custom
+      accent: custom
       toggle: {icon: material/weather-sunny, name: Mode clar}
   icon:
     logo: material/school
+    admonition:
+      example: material/pencil-ruler
+      success: material/lightbulb-on-outline
+      quote: material/book-open-page-variant-outline
+      tip: material/star-four-points-outline
 
 extra_css:
   - stylesheets/extra.css

@@ -4,11 +4,31 @@ hide:
   - toc
 ---
 
+<div class="hero" markdown>
+<div markdown>
+
 # Docència
 
-Benvinguts i benvingudes. Aquí trobareu els materials de les matèries que impartesc a l'ESO i al Batxillerat.
+Materials de classe de **Fabio Saz** per a l'ESO i el Batxillerat: teoria, exercicis amb solució, pràctiques amb robots i projectes.
 
-<div class="grid cards" markdown>
+<ul class="hero__xips">
+<li><a href="digitalitzacio/" style="--xip:#0f766e">Digitalització</a></li>
+<li><a href="tecnologia/" style="--xip:#b45309">Tecnologia</a></li>
+<li><a href="ptd1/" style="--xip:#1d4ed8">PTD I</a></li>
+<li><a href="ptd2/" style="--xip:#6d28d9">PTD II</a></li>
+</ul>
+
+</div>
+<div markdown>
+
+![Un portàtil amb codi connectat a una placa micro:bit, un robot, un circuit i una base de dades](img/hero.svg){ .sense-fons }
+
+</div>
+</div>
+
+## Matèries
+
+<div class="grid cards materies" markdown>
 
 -   :material-laptop:{ .lg .middle } **Digitalització · 4t ESO**
 

@@ -1,5 +1,178 @@
-/* Vídeos incrustats responsius */
-.video { position: relative; width: 100%; max-width: 720px; aspect-ratio: 16 / 9; margin: 1.2em 0; }
-.video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; border-radius: 6px; }
-/* Imatges amb vora suau */
-.md-typeset img { border-radius: 6px; }
+/* ==========================================================================
+   Identitat visual de la web de docència
+   Tot és CSS estàtic: compatible amb GitHub Pages i sense dependències noves.
+   ========================================================================== */
+
+/* ---------- 1. Un color per a cada matèria ---------- */
+:root {
+  --mat: #26324d;            /* color principal */
+  --mat-clar: #8fa3d6;       /* versió clara, per al mode fosc */
+  --mat-suau: #eaeef6;       /* fons suau */
+  --mat-nom: "";
+  --c-digitalitzacio: #0f766e;
+  --c-tecnologia: #b45309;
+  --c-ptd1: #1d4ed8;
+  --c-ptd2: #6d28d9;
+}
+html[data-materia="digitalitzacio"] { --mat: #0f766e; --mat-clar: #2dd4bf; --mat-suau: #e3f4f1; --mat-nom: "Digitalització · 4t ESO"; }
+html[data-materia="tecnologia"]     { --mat: #b45309; --mat-clar: #fbbf24; --mat-suau: #fcf1df; --mat-nom: "Tecnologia · 4t ESO"; }
+html[data-materia="ptd1"]           { --mat: #1d4ed8; --mat-clar: #7fb0fb; --mat-suau: #e6eefd; --mat-nom: "PTD I · 1r Batxillerat"; }
+html[data-materia="ptd2"]           { --mat: #6d28d9; --mat-clar: #b39dfa; --mat-suau: #efe9fc; --mat-nom: "PTD II · 2n Batxillerat"; }
+html[data-materia="materials"]      { --mat: #475569; --mat-clar: #a5b4c8; --mat-suau: #edf0f4; --mat-nom: "Materials en preparació"; }
+
+html, body[data-md-color-primary="custom"] {
+  --md-primary-fg-color: var(--mat);
+  --md-primary-fg-color--light: var(--mat-clar);
+  --md-primary-fg-color--dark: var(--mat);
+  --md-primary-bg-color: #fff;
+  --md-primary-bg-color--light: #ffffffb3;
+  --md-accent-fg-color: var(--mat);
+  --md-accent-fg-color--transparent: color-mix(in srgb, var(--mat) 10%, transparent);
+  --md-typeset-a-color: var(--mat);
+}
+body[data-md-color-scheme="slate"] {
+  --md-typeset-a-color: var(--mat-clar);
+  --md-accent-fg-color: var(--mat-clar);
+  --mat-suau: color-mix(in srgb, var(--mat) 22%, transparent);
+  --md-default-bg-color: #131926;
+  --md-code-bg-color: #1b2333;
+}
+.md-header { transition: background-color .25s; }
+
+/* ---------- 2. Tipografia i títols ---------- */
+.md-typeset { font-size: .8rem; line-height: 1.7; }
+.md-typeset h1 {
+  font-weight: 700; letter-spacing: -.02em; line-height: 1.15;
+  color: var(--md-default-fg-color); margin-bottom: .9em; padding-bottom: .45em;
+  background: linear-gradient(90deg, var(--md-typeset-a-color) 0 4.5rem, var(--md-default-fg-color--lightest) 4.5rem) bottom / 100% 3px no-repeat;
+}
+.md-typeset h1::before {
+  content: var(--mat-nom); display: block; margin-bottom: .5em;
+  font-size: .62rem; font-weight: 700; letter-spacing: .09em; text-transform: uppercase;
+  color: var(--md-typeset-a-color);
+}
+html[data-materia="inici"] .md-typeset h1::before,
+html[data-materia="sobre"] .md-typeset h1::before { display: none; }
+.md-typeset h2 {
+  font-weight: 700; letter-spacing: -.01em; margin-top: 2.2em;
+  padding-left: .7rem; border-left: 4px solid var(--md-typeset-a-color);
+}
+.md-typeset h3 { font-weight: 700; color: var(--md-typeset-a-color); }
+
+/* ---------- 3. Taules ---------- */
+.md-typeset table:not([class]) {
+  border: 1px solid var(--md-default-fg-color--lightest); border-radius: 10px;
+  box-shadow: none; overflow: hidden; font-size: .72rem;
+}
+.md-typeset table:not([class]) th {
+  background: var(--mat-suau); color: var(--md-default-fg-color);
+  font-weight: 700; border-bottom: 2px solid var(--md-typeset-a-color);
+}
+.md-typeset table:not([class]) tbody tr:nth-child(even) { background: color-mix(in srgb, var(--md-default-fg-color) 3%, transparent); }
+.md-typeset table:not([class]) tbody tr:hover { background: var(--mat-suau); }
+
+/* ---------- 4. Codi ---------- */
+.md-typeset pre > code { border-radius: 10px; }
+.md-typeset .highlight { border-radius: 10px; }
+.md-typeset .highlight span.filename { border-radius: 10px 10px 0 0; font-weight: 700; }
+.md-typeset code { border-radius: 5px; }
+
+/* ---------- 5. Requadres (exercicis, solucions, avisos) ---------- */
+.md-typeset .admonition, .md-typeset details {
+  border-width: 0 0 0 4px; border-radius: 10px; font-size: .74rem;
+  box-shadow: 0 1px 3px #0000001a, 0 0 0 1px var(--md-default-fg-color--lightest);
+}
+.md-typeset .admonition-title, .md-typeset summary { font-weight: 700; }
+/* Exercicis: el requadre més important per a l'alumnat */
+.md-typeset .admonition.example { border-color: var(--md-typeset-a-color); }
+.md-typeset .example > .admonition-title, .md-typeset .example > summary { background: var(--mat-suau); }
+.md-typeset .example > .admonition-title::before, .md-typeset .example > summary::before { background-color: var(--md-typeset-a-color); }
+/* Solucions desplegables */
+.md-typeset details.success { border-color: #16a34a; }
+.md-typeset details.success > summary { background: #16a34a1a; }
+.md-typeset details.success > summary::before { background-color: #16a34a; }
+.md-typeset details.success:not([open]) > summary { color: #15803d; }
+body[data-md-color-scheme="slate"] .md-typeset details.success:not([open]) > summary { color: #4ade80; }
+/* Fonts i atribucions: discretes */
+.md-typeset .admonition.quote { font-size: .68rem; border-color: var(--md-default-fg-color--lighter); }
+
+/* ---------- 6. Imatges, esquemes i vídeos ---------- */
+.md-typeset img { border-radius: 8px; }
+.md-typeset img[src$=".png"], .md-typeset img[src$=".jpg"], .md-typeset img[src$=".webp"] { box-shadow: 0 1px 4px #00000026; }
+/* Els esquemes SVG són de traç fosc: en mode fosc necessiten fons clar */
+body[data-md-color-scheme="slate"] .md-typeset img[src$=".svg"]:not(.sense-fons) { background: #f8fafc; padding: .5rem; }
+.md-typeset figure { margin: 1.4em auto; }
+.md-typeset figcaption { font-size: .68rem; color: var(--md-default-fg-color--light); font-style: normal; max-width: 34rem; }
+.md-typeset figure img { display: block; margin: 0 auto; }
+.md-typeset .mermaid { margin: 1.2em 0; }
+
+.video { position: relative; width: 100%; max-width: 720px; aspect-ratio: 16 / 9; margin: 1.4em 0; }
+.video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; border-radius: 12px; box-shadow: 0 6px 20px #00000033; }
+
+/* ---------- 7. Portada ---------- */
+.hero {
+  display: grid; grid-template-columns: 1.05fr 1fr; gap: 1.5rem; align-items: center;
+  margin: .4rem 0 2rem; padding: 2rem 2.2rem; border-radius: 20px; color: #e8edf7;
+  background:
+    radial-gradient(circle at 85% 15%, #6d28d955, transparent 45%),
+    radial-gradient(circle at 10% 90%, #0f766e66, transparent 45%),
+    linear-gradient(135deg, #1a2540, #0f172a);
+}
+.hero h1 { color: #fff; font-size: 2.1rem; margin: 0 0 .5rem; padding: 0; background: none; }
+.hero p { font-size: .88rem; line-height: 1.6; margin: 0 0 1.1rem; color: #cbd5e1; }
+.hero img { display: block; width: 100%; max-width: 27rem; height: auto; margin: 0 auto; border-radius: 0; }
+.md-typeset .hero__xips { display: flex; flex-wrap: wrap; gap: .45rem; margin: 0; padding: 0; list-style: none; }
+.md-typeset .hero__xips li { margin: 0; list-style: none; }
+.md-typeset .hero__xips a {
+  display: inline-block; padding: .28rem .8rem; border-radius: 99px; font-size: .68rem; font-weight: 700;
+  color: #fff; border: 1.5px solid var(--xip); background: color-mix(in srgb, var(--xip) 45%, transparent);
+  transition: background-color .2s, transform .2s;
+}
+.md-typeset .hero__xips a:hover { background: var(--xip); transform: translateY(-2px); }
+@media (max-width: 720px) {
+  .hero { grid-template-columns: 1fr; padding: 1.4rem 1.2rem; }
+  .hero h1 { font-size: 1.7rem; }
+}
+
+/* ---------- 8. Targetes (portada i índexs de matèria) ---------- */
+.md-typeset .grid.cards > ul > li {
+  border-radius: 14px; border: 1px solid var(--md-default-fg-color--lightest);
+  border-top: 4px solid var(--targeta, var(--md-typeset-a-color));
+  transition: transform .2s, box-shadow .2s, border-color .2s;
+}
+.md-typeset .grid.cards > ul > li:hover {
+  transform: translateY(-3px); box-shadow: 0 10px 24px #0000001f;
+  border-color: var(--targeta, var(--md-typeset-a-color));
+}
+.md-typeset .grid.cards > ul > li > hr { margin: .6em 0; }
+.md-typeset .grid.cards .twemoji.lg { color: var(--targeta, var(--md-typeset-a-color)); }
+/* Cada targeta de la portada, amb el color de la seva matèria */
+.md-typeset .grid.cards.materies > ul > li:nth-child(1) { --targeta: var(--c-digitalitzacio); }
+.md-typeset .grid.cards.materies > ul > li:nth-child(2) { --targeta: var(--c-tecnologia); }
+.md-typeset .grid.cards.materies > ul > li:nth-child(3) { --targeta: var(--c-ptd1); }
+.md-typeset .grid.cards.materies > ul > li:nth-child(4) { --targeta: var(--c-ptd2); }
+body[data-md-color-scheme="slate"] .md-typeset .grid.cards.materies > ul > li:nth-child(1) { --targeta: #2dd4bf; }
+body[data-md-color-scheme="slate"] .md-typeset .grid.cards.materies > ul > li:nth-child(2) { --targeta: #fbbf24; }
+body[data-md-color-scheme="slate"] .md-typeset .grid.cards.materies > ul > li:nth-child(3) { --targeta: #7fb0fb; }
+body[data-md-color-scheme="slate"] .md-typeset .grid.cards.materies > ul > li:nth-child(4) { --targeta: #b39dfa; }
+
+/* Targetes d'unitat: número gran + títol */
+.md-typeset .grid.cards.unitats > ul { grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); }
+.md-typeset .grid.cards.unitats > ul > li { border-top-width: 1px; border-left: 4px solid var(--md-typeset-a-color); padding: .8rem .9rem; position: relative; }
+.md-typeset .grid.cards.unitats > ul > li > p { margin: .25em 0; }
+.md-typeset .grid.cards.unitats > ul > li > p:first-child { display: flex; align-items: center; gap: .5rem; font-size: .66rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--md-typeset-a-color); }
+.md-typeset .grid.cards.unitats > ul > li > p:nth-child(2) { font-size: .86rem; font-weight: 700; line-height: 1.3; }
+.md-typeset .grid.cards.unitats > ul > li > p:nth-child(2) a { color: var(--md-default-fg-color); }
+/* Tota la targeta és clicable */
+.md-typeset .grid.cards.unitats > ul > li > p:nth-child(2) a::after { content: ""; position: absolute; inset: 0; border-radius: 14px; }
+.md-typeset .grid.cards.unitats > ul > li > p:nth-child(3) { font-size: .7rem; color: var(--md-default-fg-color--light); line-height: 1.5; }
+.md-typeset .grid.cards.unitats .twemoji { width: 1.5rem; height: 1.5rem; padding: .28rem; border-radius: 8px; background: var(--mat-suau); box-sizing: content-box; }
+.md-typeset .grid.cards.unitats .twemoji svg { width: 1.5rem; height: 1.5rem; max-height: none; }
+.md-typeset .grid.cards.unitats.pendents > ul > li { opacity: .65; border-left-style: dashed; }
+.md-typeset .grid.cards.unitats.pendents > ul > li:hover { transform: none; box-shadow: none; }
+
+/* ---------- 9. Detalls ---------- */
+.md-typeset blockquote { border-left: 4px solid var(--mat-suau); border-radius: 0 8px 8px 0; background: color-mix(in srgb, var(--mat-suau) 45%, transparent); padding: .5rem .9rem; color: var(--md-default-fg-color); }
+.md-typeset kbd { border-radius: 6px; }
+.md-footer-meta { font-size: .9em; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }

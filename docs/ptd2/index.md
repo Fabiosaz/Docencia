@@ -2,14 +2,60 @@
 
 Aprofundim en la programació amb **Python** i ens endinsam en el tractament de dades.
 
-| Unitat | Títol |
-| --- | --- |
-| 1 | Estratègies de resolució de problemes i recursivitat *(en preparació)* |
-| 2 | Funcions pròpies, bucles imbricats i llibreries *(en preparació)* |
-| 3 | Programació orientada a objectes I *(en preparació)* |
-| 4 | Programació orientada a objectes II *(en preparació)* |
-| 5 | Model entitat-relació i normalització *(en preparació)* |
-| 6 | SQL *(en preparació)* |
-| 7 | Fitxers i formats de dades *(en preparació)* |
-| 8 | Accés a bases de dades des de Python *(en preparació)* |
-| 9 | Aplicacions en entorns simulats *(en preparació)* |
+<div class="grid cards unitats pendents" markdown>
+
+-   :material-sync: Unitat 1 · en preparació
+
+    Estratègies de resolució de problemes i recursivitat
+
+    
+
+-   :material-function-variant: Unitat 2 · en preparació
+
+    Funcions pròpies, bucles imbricats i llibreries
+
+    
+
+-   :material-cube-outline: Unitat 3 · en preparació
+
+    Programació orientada a objectes I
+
+    
+
+-   :material-cube-scan: Unitat 4 · en preparació
+
+    Programació orientada a objectes II
+
+    
+
+-   :material-relation-many-to-many: Unitat 5 · en preparació
+
+    Model entitat-relació i normalització
+
+    
+
+-   :material-database-search-outline: Unitat 6 · en preparació
+
+    SQL
+
+    
+
+-   :material-file-delimited-outline: Unitat 7 · en preparació
+
+    Fitxers i formats de dades
+
+    
+
+-   :material-database-arrow-right-outline: Unitat 8 · en preparació
+
+    Accés a bases de dades des de Python
+
+    
+
+-   :material-application-brackets-outline: Unitat 9 · en preparació
+
+    Aplicacions en entorns simulats
+
+    
+
+</div>

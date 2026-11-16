@@ -40,15 +40,51 @@ El Python que fas servir en aquests entorns s'assembla molt al que programes a V
 
 ## Pràctiques
 
-| Pràctica | Dispositiu | Unitats relacionades |
-| --- | --- | --- |
-| [1. El dau electrònic](microbit-1-dau.md) | micro:bit | 1, 3, 4 i 7 |
-| [2. Detector de dia i nit](microbit-2-dia-nit.md) | micro:bit | 4 i 5 |
-| [3. Esquivar obstacles](mbot2-3-obstacles.md) | mBot2 | 4 i 5 |
-| [4. Seguidor de línia](mbot2-4-seguidor-linia.md) | mBot2 | 4 i 5 |
-| [5. Missatges xifrats per ràdio](microbit-5-missatges-xifrats.md) | Dues micro:bit | 6 i 7 |
-| [6. Registre de temperatures](microbit-6-temperatures.md) | micro:bit | 5 i 7 |
-| [7. El robot gravadora](mbot2-7-gravadora.md) | mBot2 | 5 i 7 |
+<div class="grid cards unitats" markdown>
+
+-   :material-dice-5-outline: Pràctica 1 · micro:bit
+
+    [El dau electrònic](microbit-1-dau.md)
+
+    Relacionada amb les unitats 1, 3, 4 i 7.
+
+-   :material-weather-sunset: Pràctica 2 · micro:bit
+
+    [Detector de dia i nit](microbit-2-dia-nit.md)
+
+    Relacionada amb les unitats 4 i 5.
+
+-   :material-robot-outline: Pràctica 3 · mBot2
+
+    [Esquivar obstacles](mbot2-3-obstacles.md)
+
+    Relacionada amb les unitats 4 i 5.
+
+-   :material-vector-polyline: Pràctica 4 · mBot2
+
+    [Seguidor de línia](mbot2-4-seguidor-linia.md)
+
+    Relacionada amb les unitats 4 i 5.
+
+-   :material-lock-outline: Pràctica 5 · dues micro:bit
+
+    [Missatges xifrats per ràdio](microbit-5-missatges-xifrats.md)
+
+    Relacionada amb les unitats 6 i 7.
+
+-   :material-thermometer: Pràctica 6 · micro:bit
+
+    [Registre de temperatures](microbit-6-temperatures.md)
+
+    Relacionada amb les unitats 5 i 7.
+
+-   :material-record-circle-outline: Pràctica 7 · mBot2
+
+    [El robot gravadora](mbot2-7-gravadora.md)
+
+    Relacionada amb les unitats 5 i 7.
+
+</div>
 
 !!! warning "Codi provat en simulació"
     Les solucions s'han comprovat amb simulacions de les llibreries de la micro:bit i de l'mBot2, no amb els dispositius reals. Si alguna instrucció no funciona a la vostra versió de l'editor, compara-la amb el Python que genera l'editor a partir dels blocs.

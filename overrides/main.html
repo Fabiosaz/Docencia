@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block extrahead %}
+  {{ super() }}
+  {# Marca la matèria de la pàgina perquè el CSS li apliqui el seu color #}
+  {% if page and page.url %}
+    {% set materia = page.url.split("/")[0] %}
+  {% else %}
+    {% set materia = "inici" %}
+  {% endif %}
+  <script>document.documentElement.setAttribute("data-materia", "{{ materia or 'inici' }}");</script>
+{% endblock %}
