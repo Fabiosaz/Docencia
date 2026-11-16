@@ -35,6 +35,11 @@ fruites[1] = "kiwi"
 print(fruites)        # ['poma', 'kiwi', 'cirera']
 ```
 
+<figure markdown="span">
+  ![La llista fruites abans i després de canviar l'element de la posició 1](img/u7-llista.svg){ width="720" }
+  <figcaption>Les llistes són mutables: es pot substituir un element sense crear una llista nova.</figcaption>
+</figure>
+
 !!! example "Exercici 7.1. Accés als elements"
     Amb `l = [3, 8, 1, 9, 4]`, quin és el resultat de `l[0]`, `l[-2]`, `l[1:3]` i `len(l)`? I com queda la llista després d'executar `l[2] = 7`?
 
@@ -296,6 +301,11 @@ notes[1][1] = 5       # modificar un element
 print(len(notes))     # 3: nombre de files
 print(len(notes[0]))  # 4: nombre de columnes
 ```
+
+<figure markdown="span">
+  ![Taula de notes amb l'element de la fila 1 i la columna 2 destacat](img/u7-taula.svg){ width="720" }
+  <figcaption>`notes[1]` és tota la fila 1; `notes[1][2]` és l'element d'aquesta fila que és a la columna 2.</figcaption>
+</figure>
 
 ### 7.2.1. Recórrer una taula
 

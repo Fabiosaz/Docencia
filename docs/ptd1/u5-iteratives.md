@@ -26,6 +26,12 @@ A cada iteració, la variable `numero` pren el valor següent de la seqüència 
 | `range(5, 11, 2)` | Des de 5 fins a 11, de 2 en 2 | 5, 7, 9 |
 | `range(9, 2, -2)` | Des de 9 fins a 2, de 2 en 2 cap enrere | 9, 7, 5, 3 |
 
+
+<figure markdown="span">
+  ![Tres rectes numèriques amb els valors que generen range(5), range(5, 11, 2) i range(9, 2, -2)](img/u5-range.svg){ width="720" }
+  <figcaption>Els valors que genera cada `range()`. El valor final, en vermell, sempre queda fora.</figcaption>
+</figure>
+
 !!! warning "El darrer valor no s'inclou"
     L'error més habitual amb `range()` és oblidar que el valor final no s'inclou. Per recórrer de l'1 al 10, has d'escriure `range(1, 11)`.
 

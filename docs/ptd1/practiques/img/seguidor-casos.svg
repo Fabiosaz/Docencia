@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 332" role="img" aria-label="Quatre situacions del seguidor de línia: si els sensors 3 i 2 veuen la línia, el robot avança recte; si només la veu el 3, gira a l'esquerra; si només la veu el 2, gira a la dreta; si no la veu cap, s'atura">
+<defs>
+<marker id="f_1d4ed8" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9 Z" fill="#1d4ed8"/></marker>
+</defs>
+<rect width="720" height="332" rx="16" fill="#f8fafc"/>
+<text x="360" y="30" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#1e293b" text-anchor="middle" >Què veuen els sensors 3 i 2, i què ha de fer el robot</text>
+<rect x="26" y="50" width="148" height="150" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+<rect x="80" y="50" width="40" height="150" fill="#0f172a" />
+<rect x="44" y="108" width="112" height="30" rx="8" fill="#1e3a8a" stroke="#1e3a8a" stroke-width="1.5" />
+<circle cx="61" cy="123" r="8.5" fill="#64748b" stroke="#0f172a" stroke-width="1.5"/>
+<text x="61" y="127" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="700" fill="#e2e8f0" text-anchor="middle" >4</text>
+<circle cx="87" cy="123" r="8.5" fill="#22c55e" stroke="#0f172a" stroke-width="1.5"/>
+<text x="87" y="127" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="700" fill="#0f172a" text-anchor="middle" >3</text>
+<circle cx="113" cy="123" r="8.5" fill="#22c55e" stroke="#0f172a" stroke-width="1.5"/>
+<text x="113" y="127" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="700" fill="#0f172a" text-anchor="middle" >2</text>
+<circle cx="139" cy="123" r="8.5" fill="#64748b" stroke="#0f172a" stroke-width="1.5"/>
+<text x="139" y="127" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="700" fill="#e2e8f0" text-anchor="middle" >1</text>
+<text x="100" y="222" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#64748b" text-anchor="middle" >Línia · Línia</text>
+<text x="100" y="290" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#1e293b" text-anchor="middle" >Avançar recte</text>
+<line x1="100" y1="270" x2="100" y2="240" stroke="#1d4ed8" stroke-width="3" stroke-linecap="round" marker-end="url(#f_1d4ed8)" />
+<rect x="199" y="50" width="148" height="150" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+<rect x="227" y="50" width="40" height="150" fill="#0f172a" />
+<rect x="217" y="108" width="112" height="30" rx="8" fill="#1e3a8a" stroke="#1e3a8a" stroke-width="1.5" />
+<circle cx="234" cy="123" r="8.5" fill="#64748b" stroke="#0f172a" stroke-width="1.5"/>
+<text x="234" y="127" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="700" fill="#e2e8f0" text-anchor="middle" >4</text>
+<circle cx="260" cy="123" r="8.5" fill="#22c55e" stroke="#0f172a" stroke-width="1.5"/>
+<text x="260" y="127" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="700" fill="#0f172a" text-anchor="middle" >3</text>
+<circle cx="286" cy="123" r="8.5" fill="#f8fafc" stroke="#0f172a" stroke-width="1.5"/>
+<text x="286" y="127" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="700" fill="#0f172a" text-anchor="middle" >2</text>
+<circle cx="312" cy="123" r="8.5" fill="#64748b" stroke="#0f172a" stroke-width="1.5"/>
+<text x="312" y="127" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="700" fill="#e2e8f0" text-anchor="middle" >1</text>
+<text x="273" y="222" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#64748b" text-anchor="middle" >Línia · Blanc</text>
+<text x="273" y="290" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#1e293b" text-anchor="middle" >Girar a l'esquerra</text>
+<path d="M287 270 Q287 246 257 246" stroke="#1d4ed8" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#f_1d4ed8)"/>
+<rect x="372" y="50" width="148" height="150" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+<rect x="452" y="50" width="40" height="150" fill="#0f172a" />
+<rect x="390" y="108" width="112" height="30" rx="8" fill="#1e3a8a" stroke="#1e3a8a" stroke-width="1.5" />
+<circle cx="407" cy="123" r="8.5" fill="#64748b" stroke="#0f172a" stroke-width="1.5"/>
+<text x="407" y="127" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="700" fill="#e2e8f0" text-anchor="middle" >4</text>
+<circle cx="433" cy="123" r="8.5" fill="#f8fafc" stroke="#0f172a" stroke-width="1.5"/>
+<text x="433" y="127" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="700" fill="#0f172a" text-anchor="middle" >3</text>
+<circle cx="459" cy="123" r="8.5" fill="#22c55e" stroke="#0f172a" stroke-width="1.5"/>
+<text x="459" y="127" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="700" fill="#0f172a" text-anchor="middle" >2</text>
+<circle cx="485" cy="123" r="8.5" fill="#64748b" stroke="#0f172a" stroke-width="1.5"/>
+<text x="485" y="127" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="700" fill="#e2e8f0" text-anchor="middle" >1</text>
+<text x="446" y="222" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#64748b" text-anchor="middle" >Blanc · Línia</text>
+<text x="446" y="290" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#1e293b" text-anchor="middle" >Girar a la dreta</text>
+<path d="M432 270 Q432 246 462 246" stroke="#1d4ed8" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#f_1d4ed8)"/>
+<rect x="545" y="50" width="148" height="150" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+<rect x="545" y="50" width="20" height="150" fill="#0f172a" />
+<rect x="563" y="108" width="112" height="30" rx="8" fill="#1e3a8a" stroke="#1e3a8a" stroke-width="1.5" />
+<circle cx="580" cy="123" r="8.5" fill="#64748b" stroke="#0f172a" stroke-width="1.5"/>
+<text x="580" y="127" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="700" fill="#e2e8f0" text-anchor="middle" >4</text>
+<circle cx="606" cy="123" r="8.5" fill="#f8fafc" stroke="#0f172a" stroke-width="1.5"/>
+<text x="606" y="127" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="700" fill="#0f172a" text-anchor="middle" >3</text>
+<circle cx="632" cy="123" r="8.5" fill="#f8fafc" stroke="#0f172a" stroke-width="1.5"/>
+<text x="632" y="127" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="700" fill="#0f172a" text-anchor="middle" >2</text>
+<circle cx="658" cy="123" r="8.5" fill="#64748b" stroke="#0f172a" stroke-width="1.5"/>
+<text x="658" y="127" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="700" fill="#e2e8f0" text-anchor="middle" >1</text>
+<text x="619" y="222" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#64748b" text-anchor="middle" >Blanc · Blanc</text>
+<text x="619" y="290" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#1e293b" text-anchor="middle" >Aturar-se</text>
+<rect x="607" y="244" width="24" height="24" rx="5" fill="#dc2626" stroke="#dc2626" stroke-width="1.5" />
+<text x="360" y="316" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#64748b" text-anchor="middle" >Vista des de dalt, amb el robot avançant cap amunt. En verd, el sensor que detecta la línia.</text>
+</svg>

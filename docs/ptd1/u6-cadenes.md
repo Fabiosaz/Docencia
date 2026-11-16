@@ -94,6 +94,11 @@ print(text[::2])    # Pormcó   (un caràcter sí i un no)
 print(text[::-1])   # óicamargorP (al revés)
 ```
 
+<figure markdown="span">
+  ![La cadena Programació amb els índexs i tres llesques marcades](img/u6-llesques.svg){ width="720" }
+  <figcaption>Tres llesques de `"Programació"`. Cada llesca comença a l'índex `inici` i s'atura just abans de l'índex `fi`.</figcaption>
+</figure>
+
 !!! tip "Girar una cadena"
     `text[::-1]` és la manera més curta de girar una cadena en Python: recorre tota la cadena amb pas -1, és a dir, de darrere cap endavant.
 

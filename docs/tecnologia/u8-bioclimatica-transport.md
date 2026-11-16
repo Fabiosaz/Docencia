@@ -59,6 +59,11 @@ L'**arquitectura bioclimàtica** dissenya els edificis tenint en compte el **cli
 | **Colors** | Els colors **clars** reflecteixen la radiació solar; els foscos l'absorbeixen |
 | **Compacitat** | Un edifici compacte té menys superfície exterior per al mateix volum i, per tant, perd menys calor |
 
+<figure markdown="span">
+  ![Secció d'una casa bioclimàtica amb el recorregut del sol a l'estiu i a l'hivern](img/u8-casa-bioclimatica.svg){ width="720" }
+  <figcaption>El mateix voladís atura el sol alt de l'estiu i deixa entrar el sol baix de l'hivern. Esquema propi.</figcaption>
+</figure>
+
 ### 8.2.1. Lliçons de l'arquitectura tradicional
 
 L'arquitectura bioclimàtica no és cap invent nou. Les cases tradicionals de Mallorca, construïdes quan no hi havia calefacció ni aire condicionat, apliquen moltes d'aquestes estratègies:

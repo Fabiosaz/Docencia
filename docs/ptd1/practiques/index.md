@@ -4,6 +4,18 @@ En aquestes pràctiques aplicaràs el que aprens a les unitats programant dispos
 
 Els dos entorns que farem servir, **MakeCode** per a la micro:bit i **mBlock** per a l'mBot2, permeten programar **amb blocs** o **en Python**, i mostren la correspondència entre les dues maneres. Per això són un bon laboratori: pots entendre la lògica amb blocs i veure com s'escriu el mateix en Python.
 
+## Els dispositius
+
+<figure markdown="span">
+  ![Esquema de la placa micro:bit amb les seves parts](img/microbit.svg){ width="720" }
+  <figcaption>La micro:bit té entrades (botons, sensors) i sortides (pantalla de LED, pins).</figcaption>
+</figure>
+
+<figure markdown="span">
+  ![Esquema del robot mBot2 vist des de dalt amb les seves parts](img/mbot2.svg){ width="720" }
+  <figcaption>L'mBot2: els sensors recullen informació, la CyberPi decideix i els motors actuen. Esquema simplificat, no a escala.</figcaption>
+</figure>
+
 ## Tres nivells per a cada pràctica
 
 Totes les pràctiques tenen el mateix repte per a tothom, però el pots abordar a tres nivells. Tria el que s'ajusti al teu, i intenta pujar-ne un quan et sentis segur.

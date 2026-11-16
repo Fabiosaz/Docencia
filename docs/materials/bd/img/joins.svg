@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 356" role="img" aria-label="Les taules alumnes i grups unides per grup_id. Aina i Dani tenen grup; Joan no en té, i el grup 2BA no té alumnes. JOIN retorna dues files, LEFT JOIN hi afegeix Joan amb NULL i RIGHT JOIN hi afegeix 2BA amb NULL">
+<defs>
+</defs>
+<rect width="720" height="356" rx="16" fill="#f8fafc"/>
+<text x="360" y="30" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#1e293b" text-anchor="middle" >Com combina les files cada tipus de JOIN (exemple reduït)</text>
+<text x="40" y="66" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="13" font-weight="700" fill="#475569" text-anchor="start" >alumnes</text>
+<rect x="40" y="76" width="148" height="26" rx="0" fill="#edf0f4" stroke="#cbd5e1" stroke-width="1" />
+<text x="77.0" y="94" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="11.5" font-weight="700" fill="#475569" text-anchor="middle" >nom</text>
+<text x="151.0" y="94" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="11.5" font-weight="700" fill="#475569" text-anchor="middle" >grup_id</text>
+<rect x="40" y="102" width="148" height="30" rx="0" fill="#fff" stroke="#cbd5e1" stroke-width="1" />
+<text x="77.0" y="122" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="13" font-weight="700" fill="#1e293b" text-anchor="middle" >Aina</text>
+<text x="151.0" y="122" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="13" font-weight="700" fill="#1e293b" text-anchor="middle" >1</text>
+<rect x="40" y="132" width="148" height="30" rx="0" fill="#fff" stroke="#cbd5e1" stroke-width="1" />
+<text x="77.0" y="152" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="13" font-weight="700" fill="#1e293b" text-anchor="middle" >Dani</text>
+<text x="151.0" y="152" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="13" font-weight="700" fill="#1e293b" text-anchor="middle" >2</text>
+<rect x="40" y="162" width="148" height="30" rx="0" fill="#fff" stroke="#cbd5e1" stroke-width="1" />
+<text x="77.0" y="182" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="13" font-weight="700" fill="#1e293b" text-anchor="middle" >Joan</text>
+<text x="151.0" y="182" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="13" font-weight="400" fill="#64748b" text-anchor="middle" >NULL</text>
+<text x="300" y="66" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="13" font-weight="700" fill="#475569" text-anchor="start" >grups</text>
+<rect x="300" y="76" width="148" height="26" rx="0" fill="#edf0f4" stroke="#cbd5e1" stroke-width="1" />
+<text x="337.0" y="94" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="11.5" font-weight="700" fill="#475569" text-anchor="middle" >grup_id</text>
+<text x="411.0" y="94" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="11.5" font-weight="700" fill="#475569" text-anchor="middle" >nom</text>
+<rect x="300" y="102" width="148" height="30" rx="0" fill="#fff" stroke="#cbd5e1" stroke-width="1" />
+<text x="337.0" y="122" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="13" font-weight="700" fill="#1e293b" text-anchor="middle" >1</text>
+<text x="411.0" y="122" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="13" font-weight="700" fill="#1e293b" text-anchor="middle" >1BA</text>
+<rect x="300" y="132" width="148" height="30" rx="0" fill="#fff" stroke="#cbd5e1" stroke-width="1" />
+<text x="337.0" y="152" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="13" font-weight="700" fill="#1e293b" text-anchor="middle" >2</text>
+<text x="411.0" y="152" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="13" font-weight="700" fill="#1e293b" text-anchor="middle" >1BB</text>
+<rect x="300" y="162" width="148" height="30" rx="0" fill="#fff" stroke="#cbd5e1" stroke-width="1" />
+<text x="337.0" y="182" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="13" font-weight="700" fill="#1e293b" text-anchor="middle" >3</text>
+<text x="411.0" y="182" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="13" font-weight="700" fill="#1e293b" text-anchor="middle" >2BA</text>
+<line x1="190" y1="117" x2="298" y2="117" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" />
+<circle cx="190" cy="117" r="4" fill="#16a34a"/><circle cx="298" cy="117" r="4" fill="#16a34a"/>
+<line x1="190" y1="147" x2="298" y2="147" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" />
+<circle cx="190" cy="147" r="4" fill="#16a34a"/><circle cx="298" cy="147" r="4" fill="#16a34a"/>
+<text x="244" y="181" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#d97706" text-anchor="middle" >sense parella</text>
+<circle cx="190" cy="177" r="4" fill="#d97706"/><circle cx="298" cy="177" r="4" fill="#d97706"/>
+<text x="492" y="62" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="13" font-weight="700" fill="#1e293b" text-anchor="start" >alumnes JOIN grups</text>
+<rect x="492" y="74" width="196" height="24" rx="6" fill="#fff" stroke="#16a34a" stroke-width="1.6" />
+<text x="544" y="91" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="12.5" font-weight="700" fill="#1e293b" text-anchor="middle" >Aina</text>
+<text x="638" y="91" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="12.5" font-weight="700" fill="#1e293b" text-anchor="middle" >1BA</text>
+<rect x="492" y="100" width="196" height="24" rx="6" fill="#fff" stroke="#16a34a" stroke-width="1.6" />
+<text x="544" y="117" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="12.5" font-weight="700" fill="#1e293b" text-anchor="middle" >Dani</text>
+<text x="638" y="117" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="12.5" font-weight="700" fill="#1e293b" text-anchor="middle" >1BB</text>
+<text x="492" y="170" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#64748b" text-anchor="start" >Només les files amb parella</text>
+<text x="40" y="232" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="13" font-weight="700" fill="#1e293b" text-anchor="start" >alumnes LEFT JOIN grups</text>
+<rect x="40" y="244" width="196" height="24" rx="6" fill="#fff" stroke="#16a34a" stroke-width="1.6" />
+<text x="92" y="261" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="12.5" font-weight="700" fill="#1e293b" text-anchor="middle" >Aina</text>
+<text x="186" y="261" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="12.5" font-weight="700" fill="#1e293b" text-anchor="middle" >1BA</text>
+<rect x="40" y="270" width="196" height="24" rx="6" fill="#fff" stroke="#16a34a" stroke-width="1.6" />
+<text x="92" y="287" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="12.5" font-weight="700" fill="#1e293b" text-anchor="middle" >Dani</text>
+<text x="186" y="287" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="12.5" font-weight="700" fill="#1e293b" text-anchor="middle" >1BB</text>
+<rect x="40" y="296" width="196" height="24" rx="6" fill="#fff" stroke="#d97706" stroke-width="1.6" />
+<text x="92" y="313" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="12.5" font-weight="700" fill="#1e293b" text-anchor="middle" >Joan</text>
+<text x="186" y="313" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="12.5" font-weight="700" fill="#64748b" text-anchor="middle" >NULL</text>
+<text x="40" y="340" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#64748b" text-anchor="start" >Tots els alumnes, tenguin grup o no</text>
+<text x="280" y="232" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="13" font-weight="700" fill="#1e293b" text-anchor="start" >alumnes RIGHT JOIN grups</text>
+<rect x="280" y="244" width="196" height="24" rx="6" fill="#fff" stroke="#16a34a" stroke-width="1.6" />
+<text x="332" y="261" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="12.5" font-weight="700" fill="#1e293b" text-anchor="middle" >Aina</text>
+<text x="426" y="261" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="12.5" font-weight="700" fill="#1e293b" text-anchor="middle" >1BA</text>
+<rect x="280" y="270" width="196" height="24" rx="6" fill="#fff" stroke="#16a34a" stroke-width="1.6" />
+<text x="332" y="287" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="12.5" font-weight="700" fill="#1e293b" text-anchor="middle" >Dani</text>
+<text x="426" y="287" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="12.5" font-weight="700" fill="#1e293b" text-anchor="middle" >1BB</text>
+<rect x="280" y="296" width="196" height="24" rx="6" fill="#fff" stroke="#d97706" stroke-width="1.6" />
+<text x="332" y="313" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="12.5" font-weight="700" fill="#64748b" text-anchor="middle" >NULL</text>
+<text x="426" y="313" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="12.5" font-weight="700" fill="#1e293b" text-anchor="middle" >2BA</text>
+<text x="280" y="340" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#64748b" text-anchor="start" >Tots els grups, tenguin alumnes o no</text>
+<rect x="506" y="236" width="180" height="92" rx="10" fill="#edf0f4" stroke="none" stroke-width="0" />
+<text x="520" y="258" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="12" font-weight="700" fill="#475569" text-anchor="start" >ON alumnes.grup_id</text>
+<text x="520" y="276" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="12" font-weight="700" fill="#475569" text-anchor="start" >   = grups.grup_id</text>
+<text x="520" y="300" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#64748b" text-anchor="start" >La condició que decideix</text>
+<text x="520" y="316" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#64748b" text-anchor="start" >quines files fan parella</text>
+</svg>

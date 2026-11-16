@@ -62,6 +62,12 @@ es_estudiant = True
 
 Aquí, les variables són `edat`, `nom`, `altura` i `es_estudiant`, i guarden, respectivament, les dades `25`, `"Joan"`, `1.75` i `True`.
 
+
+<figure markdown="span">
+  ![Quatre variables representades com a calaixos amb el seu nom, el valor que guarden i el seu tipus](img/u3-variables.svg){ width="720" }
+  <figcaption>Les quatre variables de l'exemple: el nom és l'etiqueta del calaix, i el tipus depèn del valor que hi guardam.</figcaption>
+</figure>
+
 !!! tip "Com posar nom a les variables"
     - Els noms poden tenir lletres, xifres i el caràcter `_`, però **no poden començar per una xifra** ni contenir espais.
     - Python distingeix majúscules i minúscules: `edat` i `Edat` són variables diferents.

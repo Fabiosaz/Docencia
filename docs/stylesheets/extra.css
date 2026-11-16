@@ -176,3 +176,7 @@ body[data-md-color-scheme="slate"] .md-typeset .grid.cards.materies > ul > li:nt
 .md-typeset kbd { border-radius: 6px; }
 .md-footer-meta { font-size: .9em; }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+/* Figures amb peu */
+.md-typeset figure > p { margin: 0; }
+.md-typeset figure figcaption { margin: .6em auto 0; }

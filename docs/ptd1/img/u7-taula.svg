@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 268" role="img" aria-label="Taula de notes de 3 files i 4 columnes. notes[1][2] és l'element de la fila 1 i la columna 2, que val 6">
+<defs>
+</defs>
+<rect width="720" height="268" rx="16" fill="#f8fafc"/>
+<text x="360" y="32" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#1e293b" text-anchor="middle" >notes[fila][columna]: primer la fila, després la columna</text>
+<rect x="250" y="132" width="312" height="46" rx="0" fill="#e6eefd" stroke="none" stroke-width="0" />
+<rect x="406" y="86" width="78" height="138" rx="0" fill="#e6eefd" stroke="none" stroke-width="0" />
+<text x="234" y="115" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#64748b" text-anchor="end" >fila 0</text>
+<rect x="250" y="86" width="78" height="46" rx="0" fill="none" stroke="#93b4f8" stroke-width="1.5" />
+<text x="289.0" y="116" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="18" font-weight="700" fill="#1e293b" text-anchor="middle" >7</text>
+<rect x="328" y="86" width="78" height="46" rx="0" fill="none" stroke="#93b4f8" stroke-width="1.5" />
+<text x="367.0" y="116" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="18" font-weight="700" fill="#1e293b" text-anchor="middle" >8</text>
+<rect x="406" y="86" width="78" height="46" rx="0" fill="none" stroke="#93b4f8" stroke-width="1.5" />
+<text x="445.0" y="116" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="18" font-weight="700" fill="#1e293b" text-anchor="middle" >6</text>
+<rect x="484" y="86" width="78" height="46" rx="0" fill="none" stroke="#93b4f8" stroke-width="1.5" />
+<text x="523.0" y="116" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="18" font-weight="700" fill="#1e293b" text-anchor="middle" >9</text>
+<text x="234" y="161" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#1d4ed8" text-anchor="end" >fila 1</text>
+<rect x="250" y="132" width="78" height="46" rx="0" fill="none" stroke="#93b4f8" stroke-width="1.5" />
+<text x="289.0" y="162" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="18" font-weight="700" fill="#1e293b" text-anchor="middle" >5</text>
+<rect x="328" y="132" width="78" height="46" rx="0" fill="none" stroke="#93b4f8" stroke-width="1.5" />
+<text x="367.0" y="162" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="18" font-weight="700" fill="#1e293b" text-anchor="middle" >4</text>
+<rect x="406" y="132" width="78" height="46" rx="0" fill="#1d4ed8" stroke="#93b4f8" stroke-width="1.5" />
+<text x="445.0" y="162" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="18" font-weight="700" fill="#fff" text-anchor="middle" >6</text>
+<rect x="484" y="132" width="78" height="46" rx="0" fill="none" stroke="#93b4f8" stroke-width="1.5" />
+<text x="523.0" y="162" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="18" font-weight="700" fill="#1e293b" text-anchor="middle" >7</text>
+<text x="234" y="207" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#64748b" text-anchor="end" >fila 2</text>
+<rect x="250" y="178" width="78" height="46" rx="0" fill="none" stroke="#93b4f8" stroke-width="1.5" />
+<text x="289.0" y="208" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="18" font-weight="700" fill="#1e293b" text-anchor="middle" >9</text>
+<rect x="328" y="178" width="78" height="46" rx="0" fill="none" stroke="#93b4f8" stroke-width="1.5" />
+<text x="367.0" y="208" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="18" font-weight="700" fill="#1e293b" text-anchor="middle" >9</text>
+<rect x="406" y="178" width="78" height="46" rx="0" fill="none" stroke="#93b4f8" stroke-width="1.5" />
+<text x="445.0" y="208" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="18" font-weight="700" fill="#1e293b" text-anchor="middle" >10</text>
+<rect x="484" y="178" width="78" height="46" rx="0" fill="none" stroke="#93b4f8" stroke-width="1.5" />
+<text x="523.0" y="208" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="18" font-weight="700" fill="#1e293b" text-anchor="middle" >8</text>
+<text x="289.0" y="74" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#64748b" text-anchor="middle" >columna 0</text>
+<text x="367.0" y="74" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#64748b" text-anchor="middle" >columna 1</text>
+<text x="445.0" y="74" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#1d4ed8" text-anchor="middle" >columna 2</text>
+<text x="523.0" y="74" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#64748b" text-anchor="middle" >columna 3</text>
+<text x="28" y="118" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="17" font-weight="700" fill="#1d4ed8" text-anchor="start" >notes[1][2]</text>
+<text x="28" y="140" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="15" font-weight="700" fill="#1e293b" text-anchor="start" >→ 6</text>
+<text x="28" y="172" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="14" font-weight="700" fill="#64748b" text-anchor="start" >notes[1]</text>
+<text x="28" y="190" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="13" font-weight="400" fill="#64748b" text-anchor="start" >→ [5, 4, 6, 7]</text>
+<text x="406" y="250" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#64748b" text-anchor="middle" >L'element és on es creuen la fila 1 i la columna 2</text>
+</svg>

@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 280" role="img" aria-label="Esquema de la placa micro:bit: pantalla de 5 per 5 LED al centre, botó A a l'esquerra, botó B a la dreta, logotip tàctil a dalt i pins de connexió 0, 1, 2, 3V i GND a baix">
+<defs>
+<marker id="f_64748b" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9 Z" fill="#64748b"/></marker>
+</defs>
+<rect width="720" height="280" rx="16" fill="#f8fafc"/>
+<text x="360" y="32" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#1e293b" text-anchor="middle" >La placa micro:bit (vista frontal)</text>
+<rect x="250" y="64" width="220" height="190" rx="22" fill="#0f172a" stroke="#0f172a" stroke-width="1.5" />
+<rect x="250" y="220" width="220" height="34" rx="0" fill="#eab308" stroke="#eab308" stroke-width="0" />
+<path d="M250 220 h220" stroke="#0f172a" fill="none" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+<circle cx="274" cy="241" r="9" fill="#0f172a"/>
+<text x="274" y="214" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10" font-weight="700" fill="#fde68a" text-anchor="middle" >0</text>
+<circle cx="318" cy="241" r="9" fill="#0f172a"/>
+<text x="318" y="214" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10" font-weight="700" fill="#fde68a" text-anchor="middle" >1</text>
+<circle cx="360" cy="241" r="9" fill="#0f172a"/>
+<text x="360" y="214" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10" font-weight="700" fill="#fde68a" text-anchor="middle" >2</text>
+<circle cx="402" cy="241" r="9" fill="#0f172a"/>
+<text x="402" y="214" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10" font-weight="700" fill="#fde68a" text-anchor="middle" >3V</text>
+<circle cx="446" cy="241" r="9" fill="#0f172a"/>
+<text x="446" y="214" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10" font-weight="700" fill="#fde68a" text-anchor="middle" >GND</text>
+<rect x="322" y="110" width="8" height="11" rx="2" fill="#334155"/>
+<rect x="339" y="110" width="8" height="11" rx="2" fill="#f87171"/>
+<rect x="356" y="110" width="8" height="11" rx="2" fill="#334155"/>
+<rect x="373" y="110" width="8" height="11" rx="2" fill="#f87171"/>
+<rect x="390" y="110" width="8" height="11" rx="2" fill="#334155"/>
+<rect x="322" y="127" width="8" height="11" rx="2" fill="#f87171"/>
+<rect x="339" y="127" width="8" height="11" rx="2" fill="#f87171"/>
+<rect x="356" y="127" width="8" height="11" rx="2" fill="#f87171"/>
+<rect x="373" y="127" width="8" height="11" rx="2" fill="#f87171"/>
+<rect x="390" y="127" width="8" height="11" rx="2" fill="#f87171"/>
+<rect x="322" y="144" width="8" height="11" rx="2" fill="#f87171"/>
+<rect x="339" y="144" width="8" height="11" rx="2" fill="#f87171"/>
+<rect x="356" y="144" width="8" height="11" rx="2" fill="#f87171"/>
+<rect x="373" y="144" width="8" height="11" rx="2" fill="#f87171"/>
+<rect x="390" y="144" width="8" height="11" rx="2" fill="#f87171"/>
+<rect x="322" y="161" width="8" height="11" rx="2" fill="#334155"/>
+<rect x="339" y="161" width="8" height="11" rx="2" fill="#f87171"/>
+<rect x="356" y="161" width="8" height="11" rx="2" fill="#f87171"/>
+<rect x="373" y="161" width="8" height="11" rx="2" fill="#f87171"/>
+<rect x="390" y="161" width="8" height="11" rx="2" fill="#334155"/>
+<rect x="322" y="178" width="8" height="11" rx="2" fill="#334155"/>
+<rect x="339" y="178" width="8" height="11" rx="2" fill="#334155"/>
+<rect x="356" y="178" width="8" height="11" rx="2" fill="#f87171"/>
+<rect x="373" y="178" width="8" height="11" rx="2" fill="#334155"/>
+<rect x="390" y="178" width="8" height="11" rx="2" fill="#334155"/>
+<rect x="264" y="140" width="32" height="32" rx="5" fill="#cbd5e1" stroke="#94a3b8" stroke-width="1.5" />
+<circle cx="280" cy="156" r="9" fill="#0f172a"/>
+<text x="280" y="190" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#e2e8f0" text-anchor="middle" >A</text>
+<rect x="424" y="140" width="32" height="32" rx="5" fill="#cbd5e1" stroke="#94a3b8" stroke-width="1.5" />
+<circle cx="440" cy="156" r="9" fill="#0f172a"/>
+<text x="440" y="190" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#e2e8f0" text-anchor="middle" >B</text>
+<ellipse cx="360.0" cy="86" rx="20" ry="10" fill="none" stroke="#eab308" stroke-width="3"/>
+<circle cx="352.0" cy="86" r="2.5" fill="#eab308"/><circle cx="368.0" cy="86" r="2.5" fill="#eab308"/>
+<text x="28" y="86" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="700" fill="#1e293b" text-anchor="start" >Logotip tàctil</text>
+<text x="28" y="103" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#64748b" text-anchor="start" >Fa de tercer botó (només V2)</text>
+<line x1="190" y1="84" x2="336.0" y2="86" stroke="#64748b" stroke-width="1.4" stroke-linecap="round" marker-end="url(#f_64748b)" />
+<text x="28" y="150" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="700" fill="#1e293b" text-anchor="start" >Botó A</text>
+<text x="28" y="167" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#64748b" text-anchor="start" >Entrada: es pot prémer</text>
+<line x1="120" y1="150" x2="262" y2="156" stroke="#64748b" stroke-width="1.4" stroke-linecap="round" marker-end="url(#f_64748b)" />
+<text x="28" y="224" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="700" fill="#1e293b" text-anchor="start" >Pins de connexió</text>
+<text x="28" y="241" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#64748b" text-anchor="start" >Per connectar-hi sensors, LED,</text>
+<text x="28" y="258" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#64748b" text-anchor="start" >altaveus… amb pinces de cocodril</text>
+<line x1="176" y1="222" x2="262" y2="238" stroke="#64748b" stroke-width="1.4" stroke-linecap="round" marker-end="url(#f_64748b)" />
+<text x="520" y="96" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="700" fill="#1e293b" text-anchor="start" >Pantalla de 5 × 5 LED</text>
+<text x="520" y="113" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#64748b" text-anchor="start" >Sortida: nombres, text i icones.</text>
+<text x="520" y="130" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#64748b" text-anchor="start" >També mesura la llum ambient</text>
+<line x1="514" y1="100" x2="411" y2="144" stroke="#64748b" stroke-width="1.4" stroke-linecap="round" marker-end="url(#f_64748b)" />
+<text x="520" y="170" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="700" fill="#1e293b" text-anchor="start" >Botó B</text>
+<text x="520" y="187" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#64748b" text-anchor="start" >Entrada: es pot prémer</text>
+<line x1="514" y1="168" x2="458" y2="160" stroke="#64748b" stroke-width="1.4" stroke-linecap="round" marker-end="url(#f_64748b)" />
+<text x="520" y="216" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="700" fill="#1e293b" text-anchor="start" >A dins, sense veure's</text>
+<text x="520" y="233" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#64748b" text-anchor="start" >Acceleròmetre, brúixola,</text>
+<text x="520" y="250" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#64748b" text-anchor="start" >termòmetre i ràdio</text>
+</svg>

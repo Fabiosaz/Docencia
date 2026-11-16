@@ -76,6 +76,19 @@ La resposta són els **compiladors** i els **intèrprets**, programes que fan de
 - Un **intèrpret** tradueix i executa el codi **línia a línia**. Això permet provar el programa ràpidament, encara que l'execució pot ser una mica més lenta. **Python** funciona d'aquesta manera.
 - **Java** combina totes dues idees: el compilador tradueix primer el programa a un llenguatge intermedi anomenat *bytecode*, que no depèn del sistema operatiu, i després la **Màquina Virtual de Java** (JVM) l'executa fent d'intèrpret. Per això un mateix programa Java pot funcionar a Windows, macOS o Linux sense canvis: és **multiplataforma**.
 
+```mermaid
+flowchart LR
+    subgraph C["Llenguatge compilat (C, C++)"]
+        direction LR
+        c1["Codi font"] --> c2["Compilador:<br>tradueix tot el programa"] --> c3["Executable"] --> c4["El processador<br>l'executa"]
+    end
+    subgraph I["Llenguatge interpretat (Python)"]
+        direction LR
+        i1["Codi font"] --> i2["Intèrpret:<br>tradueix una línia"] --> i3["El processador<br>l'executa"]
+        i3 -- "línia següent" --> i2
+    end
+```
+
 | | Compilat | Interpretat |
 | --- | --- | --- |
 | Quan es tradueix | Tot el programa, abans d'executar-lo | Línia a línia, mentre s'executa |

@@ -349,6 +349,11 @@ Ara surten els deu alumnes, i el Joan apareix amb el grup a `NULL`.
 | `A LEFT JOIN B` | Totes les files d'A, i les de B si en tenen | 10 alumnes (el Joan, amb grup `NULL`) |
 | `A RIGHT JOIN B` | Totes les files de B, i les d'A si en tenen | Tots els grups, amb els seus alumnes |
 
+<figure markdown="span">
+  ![Dues taules petites unides amb JOIN, LEFT JOIN i RIGHT JOIN](img/joins.svg){ width="720" }
+  <figcaption>Exemple reduït, amb tres alumnes i tres grups, per veure què afegeix cada tipus de `JOIN`. A la base de dades `institut` hi ha més files.</figcaption>
+</figure>
+
 !!! tip "Trobar el que falta"
     Un ús molt habitual del `LEFT JOIN` és trobar files **sense** parella: alumnes sense notes, grups sense alumnes, llibres que no s'han prestat mai… Es fa un `LEFT JOIN` i es filtren les files on l'altra taula ha quedat a `NULL`:
 

@@ -30,6 +30,11 @@ Pensa què ha de fer el robot en cada situació:
 | Blanc | Línia | La línia s'ha desplaçat cap a la dreta | Girar cap a la dreta |
 | Blanc | Blanc | El robot ha perdut la línia | Aturar-se |
 
+<figure markdown="span">
+  ![Les quatre situacions del seguidor de línia vistes des de dalt](img/seguidor-casos.svg){ width="720" }
+  <figcaption>Els quatre casos de la taula. Els sensors 1 i 4, en gris, no es fan servir en el seguidor bàsic.</figcaption>
+</figure>
+
 Aquesta taula és, en realitat, un **algorisme**: una estructura `if` … `elif` … `else` amb quatre casos.
 
 ## Pas 1. El seguidor bàsic

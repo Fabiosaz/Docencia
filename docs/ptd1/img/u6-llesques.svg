@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 228" role="img" aria-label="La cadena Programació amb els índexs de 0 a 10 i de -11 a -1. text[0:4] és Prog, text[4:8] és rama i text[-3:] és ció">
+<defs>
+</defs>
+<rect width="720" height="228" rx="16" fill="#f8fafc"/>
+<text x="360" y="32" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#1e293b" text-anchor="middle" >Llesques: text[inici:fi] agafa des d'inici fins just abans de fi</text>
+<rect x="63" y="78" width="54" height="50" rx="0" fill="#ffffff" stroke="#93b4f8" stroke-width="1.5" />
+<text x="90.0" y="111" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="24" font-weight="700" fill="#1e293b" text-anchor="middle" >P</text>
+<text x="90.0" y="69" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="13" font-weight="700" fill="#1d4ed8" text-anchor="middle" >0</text>
+<text x="90.0" y="146" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="12" font-weight="400" fill="#64748b" text-anchor="middle" >-11</text>
+<rect x="117" y="78" width="54" height="50" rx="0" fill="#ffffff" stroke="#93b4f8" stroke-width="1.5" />
+<text x="144.0" y="111" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="24" font-weight="700" fill="#1e293b" text-anchor="middle" >r</text>
+<text x="144.0" y="69" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="13" font-weight="700" fill="#1d4ed8" text-anchor="middle" >1</text>
+<text x="144.0" y="146" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="12" font-weight="400" fill="#64748b" text-anchor="middle" >-10</text>
+<rect x="171" y="78" width="54" height="50" rx="0" fill="#ffffff" stroke="#93b4f8" stroke-width="1.5" />
+<text x="198.0" y="111" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="24" font-weight="700" fill="#1e293b" text-anchor="middle" >o</text>
+<text x="198.0" y="69" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="13" font-weight="700" fill="#1d4ed8" text-anchor="middle" >2</text>
+<text x="198.0" y="146" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="12" font-weight="400" fill="#64748b" text-anchor="middle" >-9</text>
+<rect x="225" y="78" width="54" height="50" rx="0" fill="#ffffff" stroke="#93b4f8" stroke-width="1.5" />
+<text x="252.0" y="111" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="24" font-weight="700" fill="#1e293b" text-anchor="middle" >g</text>
+<text x="252.0" y="69" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="13" font-weight="700" fill="#1d4ed8" text-anchor="middle" >3</text>
+<text x="252.0" y="146" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="12" font-weight="400" fill="#64748b" text-anchor="middle" >-8</text>
+<rect x="279" y="78" width="54" height="50" rx="0" fill="#ffffff" stroke="#93b4f8" stroke-width="1.5" />
+<text x="306.0" y="111" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="24" font-weight="700" fill="#1e293b" text-anchor="middle" >r</text>
+<text x="306.0" y="69" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="13" font-weight="700" fill="#1d4ed8" text-anchor="middle" >4</text>
+<text x="306.0" y="146" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="12" font-weight="400" fill="#64748b" text-anchor="middle" >-7</text>
+<rect x="333" y="78" width="54" height="50" rx="0" fill="#ffffff" stroke="#93b4f8" stroke-width="1.5" />
+<text x="360.0" y="111" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="24" font-weight="700" fill="#1e293b" text-anchor="middle" >a</text>
+<text x="360.0" y="69" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="13" font-weight="700" fill="#1d4ed8" text-anchor="middle" >5</text>
+<text x="360.0" y="146" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="12" font-weight="400" fill="#64748b" text-anchor="middle" >-6</text>
+<rect x="387" y="78" width="54" height="50" rx="0" fill="#ffffff" stroke="#93b4f8" stroke-width="1.5" />
+<text x="414.0" y="111" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="24" font-weight="700" fill="#1e293b" text-anchor="middle" >m</text>
+<text x="414.0" y="69" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="13" font-weight="700" fill="#1d4ed8" text-anchor="middle" >6</text>
+<text x="414.0" y="146" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="12" font-weight="400" fill="#64748b" text-anchor="middle" >-5</text>
+<rect x="441" y="78" width="54" height="50" rx="0" fill="#ffffff" stroke="#93b4f8" stroke-width="1.5" />
+<text x="468.0" y="111" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="24" font-weight="700" fill="#1e293b" text-anchor="middle" >a</text>
+<text x="468.0" y="69" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="13" font-weight="700" fill="#1d4ed8" text-anchor="middle" >7</text>
+<text x="468.0" y="146" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="12" font-weight="400" fill="#64748b" text-anchor="middle" >-4</text>
+<rect x="495" y="78" width="54" height="50" rx="0" fill="#ffffff" stroke="#93b4f8" stroke-width="1.5" />
+<text x="522.0" y="111" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="24" font-weight="700" fill="#1e293b" text-anchor="middle" >c</text>
+<text x="522.0" y="69" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="13" font-weight="700" fill="#1d4ed8" text-anchor="middle" >8</text>
+<text x="522.0" y="146" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="12" font-weight="400" fill="#64748b" text-anchor="middle" >-3</text>
+<rect x="549" y="78" width="54" height="50" rx="0" fill="#ffffff" stroke="#93b4f8" stroke-width="1.5" />
+<text x="576.0" y="111" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="24" font-weight="700" fill="#1e293b" text-anchor="middle" >i</text>
+<text x="576.0" y="69" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="13" font-weight="700" fill="#1d4ed8" text-anchor="middle" >9</text>
+<text x="576.0" y="146" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="12" font-weight="400" fill="#64748b" text-anchor="middle" >-2</text>
+<rect x="603" y="78" width="54" height="50" rx="0" fill="#ffffff" stroke="#93b4f8" stroke-width="1.5" />
+<text x="630.0" y="111" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="24" font-weight="700" fill="#1e293b" text-anchor="middle" >ó</text>
+<text x="630.0" y="69" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="13" font-weight="700" fill="#1d4ed8" text-anchor="middle" >10</text>
+<text x="630.0" y="146" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="12" font-weight="400" fill="#64748b" text-anchor="middle" >-1</text>
+<text x="53" y="69" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#1d4ed8" text-anchor="end" >índex</text>
+<text x="53" y="146" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#64748b" text-anchor="end" >negatiu</text>
+<path d="M67 166 v8 H275 v-8" stroke="#1d4ed8" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+<text x="171.0" y="193" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="14" font-weight="700" fill="#1d4ed8" text-anchor="middle" >text[0:4]</text>
+<text x="171.0" y="211" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="13" font-weight="400" fill="#1e293b" text-anchor="middle" >→ "Prog"</text>
+<path d="M283 166 v8 H491 v-8" stroke="#0f766e" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+<text x="387.0" y="193" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="14" font-weight="700" fill="#0f766e" text-anchor="middle" >text[4:8]</text>
+<text x="387.0" y="211" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="13" font-weight="400" fill="#1e293b" text-anchor="middle" >→ "rama"</text>
+<path d="M499 166 v8 H653 v-8" stroke="#b45309" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+<text x="576.0" y="193" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="14" font-weight="700" fill="#b45309" text-anchor="middle" >text[-3:]</text>
+<text x="576.0" y="211" font-family="ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, Menlo, monospace" font-size="13" font-weight="400" fill="#1e293b" text-anchor="middle" >→ "ció"</text>
+</svg>
