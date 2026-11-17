@@ -7,6 +7,10 @@ Un programa que funciona no és necessàriament un bon programa. Pensa en dues p
 
 En aquesta unitat veurem com pensar en totes dues: com escriure codi llegible i ben comentat, com trobar errors amb el depurador, com fer programes de terminal agradables d'usar i com documentar-los.
 
+
+!!! tip "Vídeo recomanat"
+    Curs de Python de MoureDev: [lliçó 14, «Excepcions»](https://youtu.be/Kp4Mvapo5kc?t=32030), per a l'apartat 9.3.4. El vídeo és en castellà.
+
 ## 9.1. Codi llegible
 
 El codi s'escriu una vegada, però es llegeix moltes. Per això la **llegibilitat** és una qualitat fonamental del codi. Compara aquests dos programes, que fan exactament el mateix:
@@ -196,6 +200,128 @@ El depurador no només serveix per trobar errors: també és una manera excel·l
     ??? success "Solució"
         El bucle comença a l'índex 1, de manera que se salta la primera nota (el 6). La suma dona 24 en lloc de 30, i la mitjana 6.0 en lloc de 7.5. S'ha de fer `range(len(notes))` o, millor encara, `for nota in notes:`.
 
+### 9.3.4. Controlar els errors: excepcions
+
+Hi ha errors que no són culpa del programador, sinó de les dades: l'usuari escriu lletres on s'esperava un nombre, un divisor val zero, un fitxer no existeix… Quan passa, Python **llança una excepció**: atura el programa i mostra el missatge d'error. Però el programa pot **capturar** l'excepció i reaccionar-hi, amb l'estructura `try` … `except`:
+
+```python
+try:
+    edat = int(input("Edat: "))
+    print("L'any que ve tendràs", edat + 1, "anys")
+except ValueError:
+    print("Això no és un nombre enter")
+```
+
+- Python executa el bloc `try`. Si tot va bé, se salta el bloc `except`.
+- Si alguna instrucció del `try` provoca un `ValueError`, la resta del `try` ja no s'executa i salta directament al bloc `except`. El programa **no s'atura**.
+
+Es poden capturar diversos tipus d'error, cadascun amb el seu missatge, i afegir-hi dos blocs opcionals:
+
+```python
+try:
+    dividend = int(input("Dividend: "))
+    divisor = int(input("Divisor: "))
+    resultat = dividend / divisor
+except ValueError:
+    print("Has d'escriure nombres enters")
+except ZeroDivisionError:
+    print("No es pot dividir entre zero")
+else:
+    print("Resultat:", resultat)
+finally:
+    print("Operació acabada")
+```
+
+| Bloc | S'executa… |
+| --- | --- |
+| `try` | Sempre: és el codi que pot fallar |
+| `except TipusError` | Només si dins el `try` hi ha hagut un error d'aquest tipus |
+| `else` | Només si **no** hi ha hagut cap error |
+| `finally` | Sempre, hi hagi hagut error o no |
+
+Les excepcions més habituals són les que ja coneixes de l'apartat 9.3.1: `ValueError`, `ZeroDivisionError`, `IndexError`, `KeyError`, `TypeError` i `NameError`.
+
+La combinació més útil és un bucle que torna a demanar la dada fins que és correcta:
+
+```python
+while True:
+    try:
+        nota = float(input("Nota (0-10): "))
+        if 0 <= nota <= 10:
+            break                 # dada correcta: sortim del bucle
+        print("La nota ha de ser entre 0 i 10")
+    except ValueError:
+        print("Escriu un nombre, per exemple 7.5")
+
+print("Nota desada:", nota)
+```
+
+!!! warning "No capturis errors a cegues"
+    Python permet escriure `except:` sense cap tipus d'error, i aleshores ho captura tot, fins i tot els errors de programació com un nom de variable mal escrit. És una mala pràctica: amaga els errors en lloc de solucionar-los. Indica sempre quin tipus d'error esperes.
+
+!!! example "Exercici 9.3. Què mostra?"
+    Sense executar-lo, digues què mostra aquest programa si l'usuari escriu `8`, si escriu `0` i si escriu `vuit`.
+
+    ```python
+    try:
+        n = int(input("Nombre: "))
+        print(100 / n)
+    except ValueError:
+        print("A")
+    except ZeroDivisionError:
+        print("B")
+    else:
+        print("C")
+    finally:
+        print("D")
+    ```
+
+    ??? success "Solució"
+        - Amb `8`: `12.5`, `C` i `D`.
+        - Amb `0`: `B` i `D`. L'error es produeix en dividir, després d'haver llegit el nombre.
+        - Amb `vuit`: `A` i `D`. L'error es produeix en convertir, i la divisió ja no s'executa.
+
+        `D` surt sempre, perquè és al bloc `finally`.
+
+!!! example "Exercici 9.4. Una calculadora que no s'atura"
+    Fes una calculadora que demani dos nombres (poden tenir decimals) i una operació (`+`, `-`, `*` o `/`) i mostri el resultat. El programa no s'ha d'aturar mai amb un error: si un nombre no és vàlid, l'ha de tornar a demanar; si es divideix entre zero o l'operació no existeix, ho ha de dir.
+
+    ??? success "Solució"
+        ```python
+        while True:
+            try:
+                a = float(input("Primer nombre: ").replace(",", "."))
+                break
+            except ValueError:
+                print("No és un nombre vàlid. Exemple: 3.5")
+
+        while True:
+            try:
+                b = float(input("Segon nombre: ").replace(",", "."))
+                break
+            except ValueError:
+                print("No és un nombre vàlid. Exemple: 3.5")
+
+        operacio = input("Operació (+, -, *, /): ")
+
+        try:
+            match operacio:
+                case "+":
+                    print("Resultat:", a + b)
+                case "-":
+                    print("Resultat:", a - b)
+                case "*":
+                    print("Resultat:", a * b)
+                case "/":
+                    print("Resultat:", a / b)
+                case _:
+                    print("Aquesta operació no existeix")
+        except ZeroDivisionError:
+            print("No es pot dividir entre zero")
+        ```
+
+        Els dos bucles de lectura són iguals. A la unitat 10 aprendràs a escriure aquest codi una sola vegada, dins una **funció**, i cridar-la dues vegades.
+
 ## 9.4. Usabilitat i experiència d'usuari
 
 La **usabilitat** és la facilitat amb què una persona pot fer servir un programa per aconseguir el que vol: que n'aprengui a fer-lo servir ràpidament, que el faci servir sense errors i que no s'hi perdi. L'**experiència d'usuari** (UX, de l'anglès *user experience*) és un concepte més ampli: inclou tot el que la persona sent i percep quan fa servir el programa, també si li resulta agradable i útil.
@@ -255,7 +381,7 @@ Fixa't en els detalls:
 - Si l'usuari s'equivoca, el programa **ho diu, explica com fer-ho bé i torna a demanar la dada**, en lloc d'aturar-se.
 - El resultat surt **amb format**: dues xifres decimals i el símbol de l'euro.
 
-!!! info "Per saber-ne més: `try` … `except`"
+!!! info "Recorda: `try` … `except`"
     Validar totes les entrades amb mètodes de cadenes pot ser complicat. Python té una estructura, `try` … `except`, que permet **intentar** una instrucció i, si provoca un error, fer una altra cosa en lloc d'aturar el programa:
 
     ```python
@@ -267,7 +393,7 @@ Fixa't en els detalls:
             print("Escriu un nombre enter, per exemple 16.")
     ```
 
-    La tornarem a trobar a PTD II.
+    La tens explicada a l'apartat 9.3.4.
 
 ### 9.4.3. Presentar la informació amb claredat
 
@@ -292,10 +418,10 @@ Aigua          1.00€
 Croissant      1.80€
 ```
 
-!!! example "Exercici 9.3. Millora la usabilitat"
+!!! example "Exercici 9.5. Millora la usabilitat"
     Tria un dels programes amb menú que has fet (per exemple, la llista de la compra de l'exercici 7.6) i millora'n la usabilitat aplicant els principis de l'apartat 9.4: títol, missatges clars, validació de totes les entrades, confirmació de les accions, demanar confirmació abans d'esborrar i sortida ben formatada. Fes una llista dels canvis que has fet i del principi que aplica cada un.
 
-!!! example "Exercici 9.4. Avaluació d'usabilitat"
+!!! example "Exercici 9.6. Avaluació d'usabilitat"
     Intercanvia el programa de l'exercici anterior amb un company o una companya. Fes-lo servir **sense mirar el codi** i sense que ningú t'expliqui res, i apunta:
 
     1. Les vegades que no has sabut què havies de fer.
@@ -342,7 +468,7 @@ El **manual d'usuari** (o guia d'ús) explica a la persona usuària com fer serv
 - **Ben estructurada**: amb títols, llistes numerades per als passos i un índex si és llarga.
 - **Amb exemples**: un exemple sovint s'entén millor que un paràgraf d'explicació.
 
-!!! example "Exercici 9.5. README i manual d'usuari"
+!!! example "Exercici 9.7. README i manual d'usuari"
     Escriu el `README.md` i un manual d'usuari breu (una o dues pàgines) del programa que has millorat a l'exercici 9.3, seguint les estructures dels apartats 9.5.1 i 9.5.2.
 
 ## 9.6. Exercicis de repàs
@@ -557,4 +683,4 @@ Més exercicis per practicar tota la unitat: llegir i millorar codi, interpretar
 ---
 
 !!! quote "Font"
-    Unitat elaborada en bona part amb material propi, a partir de la base de Lope González Vázquez ([CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ca)). De [«Tema 11. Fundamentos de programación»](https://lopegonzalez.es/eso-y-bachillerato/tic-i-1o-bachillerato/tema-11-fundamentos-de-programacion/) (TIC I) provenen la idea de la depuració com a feina de detectiu, el depurador amb punts de ruptura, l'inspector de variables i els errors intermitents (adaptats de PyCharm a Visual Studio Code) i la importància de la documentació. De [«Tema 1. Introducción a la programación»](https://lopegonzalez.es/eso-y-bachillerato/creacion-digital-y-pensamiento-computacional-1o-bachillerato/tema-1-introduccion-a-la-programacion/) (Creación digital y pensamiento computacional) prové l'explicació dels comentaris. Són propis els apartats 9.1 (llegibilitat), 9.3.1-9.3.2, 9.4 (usabilitat i UX), 9.5 (documentació), els exercicis i les solucions. Els principis de l'apartat 9.4.1 són una selecció adaptada de les deu heurístiques d'usabilitat de Jakob Nielsen.
+    Unitat elaborada en bona part amb material propi, a partir de la base de Lope González Vázquez ([CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ca)). De [«Tema 11. Fundamentos de programación»](https://lopegonzalez.es/eso-y-bachillerato/tic-i-1o-bachillerato/tema-11-fundamentos-de-programacion/) (TIC I) provenen la idea de la depuració com a feina de detectiu, el depurador amb punts de ruptura, l'inspector de variables i els errors intermitents (adaptats de PyCharm a Visual Studio Code) i la importància de la documentació. De [«Tema 1. Introducción a la programación»](https://lopegonzalez.es/eso-y-bachillerato/creacion-digital-y-pensamiento-computacional-1o-bachillerato/tema-1-introduccion-a-la-programacion/) (Creación digital y pensamiento computacional) prové l'explicació dels comentaris. Són propis els apartats 9.1 (llegibilitat), 9.3.4 (excepcions), 9.3.1-9.3.2, 9.4 (usabilitat i UX), 9.5 (documentació), els exercicis i les solucions. Els principis de l'apartat 9.4.1 són una selecció adaptada de les deu heurístiques d'usabilitat de Jakob Nielsen.

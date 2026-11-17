@@ -126,7 +126,7 @@ Programa **per parts**, provant cada part abans de passar a la següent. Un bon 
 
 - Fes la **taula de proves** de l'aplicació, amb casos normals, casos límit i dades incorrectes per a cada opció del menú.
 - Executa totes les proves i completa la taula. Corregeix els errors que trobis i torna a provar.
-- Demana a una altra persona que faci servir l'aplicació **sense mirar el codi** i apunta on s'encalla (com a l'exercici 9.4).
+- Demana a una altra persona que faci servir l'aplicació **sense mirar el codi** i apunta on s'encalla (com a l'exercici 9.6).
 
 ### Fase 5. Documentació
 
@@ -150,7 +150,7 @@ Presenta el projecte a la classe en uns 5 minuts: quin problema resol, una demos
 - [ ] El `README.md` i el manual d'usuari corresponen a la versió que lliuro.
 
 !!! info "I l'any que ve?"
-    A PTD II podràs millorar aquest mateix projecte: organitzar el codi en **funcions** i **classes**, guardar les dades en **fitxers** o en una **base de dades** perquè no es perdin en tancar el programa, i fer-lo funcionar amb dades reals.
+    Si ja has fet les unitats 10 i 11, pots organitzar el codi en **funcions** i en **classes**. A PTD II podràs millorar encara més aquest projecte: guardar les dades en **fitxers** o en una **base de dades** perquè no es perdin en tancar el programa, i fer-lo funcionar amb dades reals.
 
 ---
 
