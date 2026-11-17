@@ -48,7 +48,7 @@ El Python que fas servir en aquests entorns s'assembla molt al que programes a V
 | **Llenguatge** | Python complet | Una versió reduïda de Python: no hi funciona tot, i una variable no pot canviar de tipus | MicroPython, una versió de Python per a dispositius petits |
 
 !!! info "Funcions i `global`"
-    A MakeCode veuràs `def` (la manera de crear una **funció**) i, de vegades, `global`. Les funcions les estudiaràs a PTD II; de moment, pensa que `def` agrupa unes quantes instruccions amb un nom perquè s'executin quan passa l'esdeveniment. `global` indica que, dins aquesta funció, es vol modificar una variable creada fora.
+    A MakeCode veuràs `def` (la manera de crear una **funció**) i, de vegades, `global`. Les funcions les estudiaràs a la [unitat 10](../u10-funcions-moduls.md); mentrestant, pensa que `def` agrupa unes quantes instruccions amb un nom perquè s'executin quan passa l'esdeveniment. `global` indica que, dins aquesta funció, es vol modificar una variable creada fora.
 
 ## Pràctiques
 

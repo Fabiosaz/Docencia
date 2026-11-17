@@ -106,6 +106,8 @@ nav:
       - "Unitat 7. Arrays: llistes i taules": ptd1/u7-arrays.md
       - "Unitat 8. Cicle de vida d'un projecte": ptd1/u8-cicle-de-vida.md
       - "Unitat 9. Usabilitat, llegibilitat del codi i documentació": ptd1/u9-usabilitat-documentacio.md
+      - "Unitat 10. Funcions i mòduls": ptd1/u10-funcions-moduls.md
+      - "Unitat 11. Introducció a les classes": ptd1/u11-classes.md
       - "Projecte final": ptd1/projecte-final.md
       - "Pràctiques amb micro:bit i mBot2":
           - ptd1/practiques/index.md
