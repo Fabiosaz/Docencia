@@ -9,6 +9,10 @@ Per resoldre aquest problema, els llenguatges de programació tenen **estructure
 
     Per a càlcul científic amb grans volums de dades hi ha la biblioteca NumPy, que sí que ofereix arrays de mida i tipus fixos i molt més ràpids. No la farem servir en aquest curs.
 
+
+!!! tip "Vídeo recomanat"
+    Curs de Python de MoureDev: [lliçó 6, «Llistes»](https://youtu.be/Kp4Mvapo5kc?t=10872), [lliçó 7, «Tuples»](https://youtu.be/Kp4Mvapo5kc?t=14711), [lliçó 8, «Conjunts»](https://youtu.be/Kp4Mvapo5kc?t=16335) i [lliçó 9, «Diccionaris»](https://youtu.be/Kp4Mvapo5kc?t=18506). El vídeo és en castellà.
+
 ## 7.1. Llistes: arrays unidimensionals
 
 Una **llista** és una col·lecció **ordenada** i **mutable** d'elements. Ordenada vol dir que cada element té una posició; mutable vol dir que, a diferència de les cadenes, es pot modificar després de crear-la. Les llistes s'escriuen entre claudàtors `[]`, amb els elements separats per comes.
@@ -401,7 +405,11 @@ La idea es pot estendre: una llista de taules és un array tridimensional. Per e
             print(f"Mitjana de l'assignatura {s + 1}: {suma / ALUMNES:.2f}")
         ```
 
-## 7.3. Per saber-ne més: diccionaris
+## 7.3. Altres col·leccions: diccionaris, tuples i conjunts
+
+A més de les llistes, Python té tres col·leccions més que faràs servir molt sovint. Cada una és adequada per a un tipus de dades diferent.
+
+### 7.3.1. Diccionaris
 
 Els arrays accedeixen a les dades per **posició**. De vegades, però, és més natural accedir-hi per **nom**. Per a això, Python té els **diccionaris**: col·leccions de parells **clau-valor**. Cada clau és única i serveix per accedir al valor associat. S'escriuen entre claus `{}`, amb cada clau separada del valor per dos punts.
 
@@ -423,7 +431,7 @@ for clau, valor in persona.items():
 
 També es poden recórrer només les claus amb `persona.keys()` o només els valors amb `persona.values()`. Tornarem a trobar els diccionaris a PTD II, quan treballem amb fitxers JSON.
 
-!!! example "Exercici 7.11. Agenda amb diccionaris (opcional)"
+!!! example "Exercici 7.11. Agenda amb diccionaris"
     Crea un diccionari amb el nom, l'edat i la ciutat d'una persona, demanant aquestes dades a l'usuari. Mostra el diccionari. Després demana una edat nova i actualitza-la; afegeix-hi una adreça electrònica; demana una clau a l'usuari i elimina aquest parell si existeix. Finalment, mostra només els valors del diccionari.
 
     ??? success "Solució"
@@ -448,6 +456,167 @@ També es poden recórrer només les claus amb `persona.keys()` o només els val
         for valor in persona.values():
             print(valor)
         ```
+
+### 7.3.2. Tuples
+
+Una **tupla** és com una llista, però **no es pot modificar** un cop creada: no s'hi poden afegir, treure ni canviar elements. Es diu que és **immutable**, com les cadenes. S'escriu entre parèntesis:
+
+```python
+punt = (3, 5)
+color = (255, 128, 0)
+dies_feiners = ("dilluns", "dimarts", "dimecres", "dijous", "divendres")
+
+print(punt[0])               # 3: s'accedeix per índex, com a les llistes
+print(len(dies_feiners))     # 5
+print(dies_feiners[1:3])     # ('dimarts', 'dimecres'): també admet llesques
+print("dijous" in dies_feiners)  # True
+```
+
+Si s'intenta modificar, Python dona un error:
+
+```python
+punt[0] = 10    # TypeError: 'tuple' object does not support item assignment
+```
+
+Per què voldríem una llista que no es pot canviar?
+
+- **Seguretat**: les dades que no han de canviar (les coordenades d'un lloc, els dies de la setmana, un color) queden protegides contra modificacions per error.
+- **Agrupar dades relacionades** que van juntes, com el nom i l'edat d'una persona, o la fila i la columna d'una casella.
+
+Una de les coses més útils de les tuples és el **desempaquetament**: repartir els elements entre diverses variables en una sola línia.
+
+```python
+punt = (3, 5)
+x, y = punt              # x val 3 i y val 5
+print(f"x = {x}, y = {y}")
+
+# Intercanviar dues variables sense una variable auxiliar
+a = 1
+b = 2
+a, b = b, a
+print(a, b)              # 2 1
+```
+
+Ja havies fet servir tuples sense saber-ho: a l'apartat anterior, `for clau, valor in persona.items()` reparteix cada parella del diccionari entre dues variables.
+
+!!! info "Una tupla d'un sol element"
+    `(5)` no és una tupla, sinó el nombre 5 entre parèntesis. Una tupla d'un sol element necessita una coma: `(5,)`.
+
+Una llista es pot convertir en tupla amb `tuple()`, i una tupla en llista amb `list()`.
+
+!!! example "Exercici 7.12. Coordenades"
+    Guarda en una llista les coordenades `(x, y)` de quatre punts com a tuples: `(0, 0)`, `(3, 4)`, `(-2, 1)` i `(5, -1)`. Recorre la llista desempaquetant cada tupla i mostra, per a cada punt, a quina distància és de l'origen (l'arrel quadrada de x² + y²), amb dues xifres decimals. Al final, mostra el punt més allunyat.
+
+    ??? success "Solució"
+        ```python
+        punts = [(0, 0), (3, 4), (-2, 1), (5, -1)]
+
+        mes_lluny = punts[0]
+        distancia_max = 0
+
+        for x, y in punts:
+            distancia = (x ** 2 + y ** 2) ** 0.5
+            print(f"({x}, {y}) és a {distancia:.2f} de l'origen")
+            if distancia > distancia_max:
+                distancia_max = distancia
+                mes_lluny = (x, y)
+
+        print("El punt més allunyat és", mes_lluny)
+        ```
+
+        ```text
+        (0, 0) és a 0.00 de l'origen
+        (3, 4) és a 5.00 de l'origen
+        (-2, 1) és a 2.24 de l'origen
+        (5, -1) és a 5.10 de l'origen
+        El punt més allunyat és (5, -1)
+        ```
+
+### 7.3.3. Conjunts
+
+Un **conjunt** (*set*) és una col·lecció **sense ordre** i **sense elements repetits**. S'escriu entre claus, com un diccionari, però sense parelles clau-valor:
+
+```python
+colors = {"vermell", "verd", "blau", "verd"}
+print(colors)        # {'blau', 'vermell', 'verd'} (l'ordre pot canviar)
+print(len(colors))   # 3: el "verd" repetit només hi és una vegada
+
+colors.add("groc")       # afegir
+colors.discard("blau")   # treure (si no hi és, no dona error)
+print("verd" in colors)  # True
+```
+
+Com que no tenen ordre, els conjunts **no tenen índexs**: `colors[0]` dona error. Per crear un conjunt buit s'escriu `set()`, perquè `{}` crea un diccionari buit.
+
+La manera més ràpida d'eliminar els repetits d'una llista és convertir-la en conjunt:
+
+```python
+noms = ["Aina", "Biel", "Aina", "Carla", "Biel"]
+diferents = set(noms)
+print(len(diferents))        # 3
+print(sorted(diferents))     # ['Aina', 'Biel', 'Carla']
+```
+
+Els conjunts permeten fer les **operacions de conjunts** de les matemàtiques:
+
+```python
+robotica = {"Aina", "Biel", "Carla", "Dani"}
+escacs = {"Carla", "Elena", "Aina"}
+
+print(robotica | escacs)   # unió: alumnes de robòtica o d'escacs (o de totes dues)
+print(robotica & escacs)   # intersecció: alumnes de totes dues activitats
+print(robotica - escacs)   # diferència: de robòtica, però no d'escacs
+```
+
+| Operació | Símbol | Mètode | Resultat |
+| --- | --- | --- | --- |
+| Unió | `a \| b` | `a.union(b)` | Els elements que són a `a`, a `b` o a tots dos |
+| Intersecció | `a & b` | `a.intersection(b)` | Els elements que són a tots dos |
+| Diferència | `a - b` | `a.difference(b)` | Els elements de `a` que no són a `b` |
+
+!!! example "Exercici 7.13. Activitats extraescolars"
+    Amb els conjunts `robotica = {"Aina", "Biel", "Carla", "Dani"}` i `escacs = {"Carla", "Elena", "Aina"}`, mostra, ordenats alfabèticament:
+
+    1. Quants alumnes diferents fan alguna activitat.
+    2. Quins alumnes fan totes dues activitats.
+    3. Quins només fan robòtica.
+    4. Quins fan només una de les dues activitats.
+
+    ??? success "Solució"
+        ```python
+        robotica = {"Aina", "Biel", "Carla", "Dani"}
+        escacs = {"Carla", "Elena", "Aina"}
+
+        print("Alumnes diferents:", len(robotica | escacs))
+        print("Totes dues:", sorted(robotica & escacs))
+        print("Només robòtica:", sorted(robotica - escacs))
+        print("Només una:", sorted((robotica | escacs) - (robotica & escacs)))
+        ```
+
+        ```text
+        Alumnes diferents: 5
+        Totes dues: ['Aina', 'Carla']
+        Només robòtica: ['Biel', 'Dani']
+        Només una: ['Biel', 'Dani', 'Elena']
+        ```
+
+        Per a la darrera hi ha un operador específic, la **diferència simètrica**: `robotica ^ escacs`.
+
+!!! example "Exercici 7.14. Llista, tupla, conjunt o diccionari?"
+    Quina estructura triaries per guardar cada cosa? Justifica-ho.
+
+    1. Les notes d'un alumne al llarg del curs, en l'ordre en què les treu.
+    2. Les coordenades GPS de l'institut.
+    3. Les paraules diferents que apareixen en un text.
+    4. El telèfon de cada alumne, per cercar-lo pel nom.
+    5. Els noms dels mesos de l'any.
+
+    ??? success "Solució"
+        1. **Llista**: l'ordre importa i se n'hi afegiran més.
+        2. **Tupla**: dues dades que van juntes i no han de canviar.
+        3. **Conjunt**: no vols repetits i l'ordre no importa.
+        4. **Diccionari**: la clau és el nom i el valor, el telèfon.
+        5. **Tupla**: l'ordre importa i no canviaran mai.
 
 ## 7.4. Reptes
 
@@ -911,7 +1080,7 @@ Més exercicis per practicar tota la unitat, ordenats de menys a més dificultat
 
         La comprovació de les coordenades ha d'anar **abans** d'accedir al tauler; si no, el programa s'aturaria amb un `IndexError`.
 
-!!! example "Repàs 7.20. Freqüència de paraules (opcional)"
+!!! example "Repàs 7.20. Freqüència de paraules"
     Amb un **diccionari**, compta quantes vegades apareix cada paraula a la frase `"el ca i el moix i el ratolí"` i mostra el resultat.
 
     ??? success "Solució"
@@ -931,7 +1100,7 @@ Més exercicis per practicar tota la unitat, ordenats de menys a més dificultat
 
         Amb un diccionari, l'operador `in` comprova si una **clau** existeix.
 
-!!! example "Repàs 7.21. El preu de la compra (opcional)"
+!!! example "Repàs 7.21. El preu de la compra"
     Tens un **diccionari** amb el preu de cada producte i una llista amb el que has comprat. Calcula el total de la compra. Si un producte de la llista no és al diccionari, avisa i no el comptis.
 
     ```python
@@ -957,4 +1126,4 @@ Més exercicis per practicar tota la unitat, ordenats de menys a més dificultat
 ---
 
 !!! quote "Font"
-    Unitat elaborada a partir de materials de Lope González Vázquez ([CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ca)): [«Tema 11. Fundamentos de programación»](https://lopegonzalez.es/eso-y-bachillerato/tic-i-1o-bachillerato/tema-11-fundamentos-de-programacion/) (TIC I) i [«Tema 1. Introducción a la programación»](https://lopegonzalez.es/eso-y-bachillerato/creacion-digital-y-pensamiento-computacional-1o-bachillerato/tema-1-introduccion-a-la-programacion/) (Creación digital y pensamiento computacional). De Lope provenen la introducció a les llistes (apartats 7.1.1 i 7.1.3), la de diccionaris (7.3) i els enunciats dels exercicis 7.4 (que n'uneix cinc) i 7.11 (que n'uneix cinc). Canvis: traducció al català i adaptació al currículum de Programació i Tractament de Dades I de les Illes Balears, que demana treballar arrays unidimensionals i multidimensionals. Són propis la presentació dels arrays i la seva relació amb les llistes de Python, la taula d'operacions, els apartats 7.1.4 a 7.1.6 i 7.2 (taules), la resta d'exercicis i reptes i totes les solucions.
+    Unitat elaborada a partir de materials de Lope González Vázquez ([CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ca)): [«Tema 11. Fundamentos de programación»](https://lopegonzalez.es/eso-y-bachillerato/tic-i-1o-bachillerato/tema-11-fundamentos-de-programacion/) (TIC I) i [«Tema 1. Introducción a la programación»](https://lopegonzalez.es/eso-y-bachillerato/creacion-digital-y-pensamiento-computacional-1o-bachillerato/tema-1-introduccion-a-la-programacion/) (Creación digital y pensamiento computacional). De Lope provenen la introducció a les llistes (apartats 7.1.1 i 7.1.3), la de diccionaris (7.3.1) i els enunciats dels exercicis 7.4 (que n'uneix cinc) i 7.11 (que n'uneix cinc). Canvis: traducció al català i adaptació al currículum de Programació i Tractament de Dades I de les Illes Balears, que demana treballar arrays unidimensionals i multidimensionals. Són propis la presentació dels arrays i la seva relació amb les llistes de Python, la taula d'operacions, els apartats 7.1.4 a 7.1.6 7.2 (taules), 7.3.2 (tuples) i 7.3.3 (conjunts), la resta d'exercicis i reptes i totes les solucions.
