@@ -110,6 +110,34 @@ Hi ha moltes eines per fer diagrames de flux. Aquestes són algunes de les més 
 
     **Lliurament**: exporta cada diagrama en format d'imatge i penja'ls a l'aula virtual abans de la data límit.
 
+    ??? success "Solució orientativa dels algorismes 2 i 4"
+        Hi ha moltes solucions correctes. Aquestes en són dues:
+
+        ```mermaid
+        flowchart TD
+            A([Inici]) --> B{Plou?}
+            B -- Sí --> C[Agafar el cotxe]
+            B -- No --> D[/Llegir la distància/]
+            D --> E{Distància < 3 km?}
+            E -- Sí --> F[Anar a peu]
+            E -- No --> G[Agafar la bicicleta]
+            C --> H([Fi])
+            F --> H
+            G --> H
+        ```
+
+        ```mermaid
+        flowchart TD
+            A([Inici]) --> B[/Llegir n/]
+            B --> C{"El residu de n entre 2 és 0?"}
+            C -- Sí --> D[/Escriure 'Parell'/]
+            C -- No --> E[/Escriure 'Senar'/]
+            D --> F([Fi])
+            E --> F
+        ```
+
+        Al primer, la distància només es demana si no plou: si plou, no cal. Al segon, la condició es pot expressar així perquè un nombre és parell quan és divisible entre 2.
+
 ### 1.3.2. Pseudocodi
 
 Els diagrames de flux són molt útils per prendre decisions de disseny i ens acosten una passa més del llenguatge natural al codi de programació. Tot i així, encara en són lluny.
@@ -158,6 +186,31 @@ flowchart TD
 
 !!! example "Exercici 1.2. Del diagrama al pseudocodi"
     Escriu en pseudocodi els cinc algorismes que has representat amb diagrames de flux a l'exercici 1.1.
+
+    ??? success "Solució orientativa dels algorismes 1 i 3"
+        ```text title="Pseudocodi: quina roba em pos?"
+        Inici
+            Llegir temperatura
+            Si temperatura < 15 llavors
+                Escriure "Roba d'hivern"
+            Sinó si temperatura ≤ 25 llavors
+                Escriure "Roba de mitja temporada"
+            Sinó
+                Escriure "Roba d'estiu"
+            FiSi
+        Fi
+        ```
+
+        ```text title="Pseudocodi: total a pagar"
+        Inici
+            Llegir quantitat
+            Llegir preu_unitari
+            total ← quantitat × preu_unitari
+            Escriure total
+        Fi
+        ```
+
+        Fixa't que a la roba només calen dues preguntes per distingir tres casos: si arribam al segon `Sinó si`, ja sabem que la temperatura no és inferior a 15.
 
 ## 1.4. Del pseudocodi al codi
 

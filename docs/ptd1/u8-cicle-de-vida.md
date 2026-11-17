@@ -219,11 +219,64 @@ El control de versions també permet que **diverses persones treballin sobre el 
     | Identifica un *sprint* | |
     | Identifica una *daily* | |
 
+    ??? success "Solució orientativa"
+        | Pregunta | Resposta i justificació |
+        | --- | --- |
+        | Qui és el client? | L'associació de mares i pares, representada per en Toni: és qui encarrega i paga l'aplicació. |
+        | Qui és l'*scrum master*? | La Laura: organitza el pla de feina, explica a l'equip com treballaran i resol els dubtes i els obstacles. |
+        | Qui és el *product owner*? | L'Andrea: recull totes les necessitats, les converteix en una llista de funcionalitats i decideix què es fa a cada cicle. |
+        | Qui és l'usuari? | Les famílies, l'alumnat i el professorat que compraran dessuadores a la botiga. En Toni també la provarà, però en nom del client. |
+        | Qui forma l'equip de desenvolupament? | En Pau i la Sílvia, que programen. |
+        | Què fan servir com a *product backlog*? | El mural de la paret amb totes les funcionalitats. |
+        | Escriu tres històries d'usuari | «Com a comprador, vull registrar-me amb el meu compte de Google per no haver d'omplir cap formulari.» «Com a comprador, vull pagar amb targeta en poques passes per acabar la compra de pressa.» «Com a comprador, vull tornar un producte amb un sol clic per no haver d'escriure a ningú.» |
+        | Identifica un *sprint* | El pla T1: dues setmanes per fer el registre, l'inici de sessió i l'àrea privada. |
+        | Identifica una *daily* | La reunió breu de l'endemà a primera hora, i la del dia en què l'equip incorpora el registre amb Google. |
+
+        La Júlia fa de pont entre el client i l'equip, però en aquest cas és l'Andrea qui gestiona el *backlog*: per això és la *product owner*. Si es justifica bé, es pot acceptar una altra interpretació. Fixa't també que el canvi que demana en Toni a mig *sprint* s'incorpora sense problemes: és l'avantatge principal de les metodologies àgils.
+
 !!! example "Exercici 8.4. Disseny descendent"
     Descompon amb un diagrama en arbre, com el de l'apartat 8.4, un programa que gestioni la biblioteca d'aula: donar d'alta llibres, prestar-los, tornar-los i consultar quins llibres té cada alumne. Arriba fins a un nivell en què cada tasca sigui prou petita per programar-la directament.
 
 !!! example "Exercici 8.5. Taula de proves"
     Fes la taula de proves de l'exercici 4.9 (tarifa del bus). Inclou casos normals, casos límit i dades incorrectes. Executa el programa amb cada cas, completa les columnes «Resultat obtingut» i «Correcte?» i, si trobes algun error, corregeix-lo.
+
+    ??? success "Solució"
+        Amb la solució de l'exercici 4.9:
+
+        | Cas | Entrada | Resultat esperat | Resultat obtingut | Correcte? |
+        | --- | --- | --- | --- | --- |
+        | Normal | 30 | 2,00 € | 2,00 € | Sí |
+        | Límit | 5 | Gratis | 0,00 € | Sí |
+        | Límit | 6 | 1,00 € | 1,00 € | Sí |
+        | Límit | 13 | 1,00 € | 1,00 € | Sí |
+        | Límit | 14 | 2,00 € | 2,00 € | Sí |
+        | Límit | 65 | 2,00 € | 2,00 € | Sí |
+        | Límit | 66 | 1,00 € | 1,00 € | Sí |
+        | Límit | 0 | Gratis | 0,00 € | Sí |
+        | Fora de rang | -3 | Missatge d'error | 0,00 € | **No** |
+        | Fora de rang | 150 | Missatge d'error | 1,00 € | **No** |
+        | Dada incorrecta | abc | Missatge d'error | `ValueError` | **No** |
+
+        Les proves descobreixen que el programa accepta edats impossibles. Una correcció:
+
+        ```python
+        PREU = 2.0
+
+        edat = int(input("Edat del viatger: "))
+
+        if edat < 0 or edat > 120:
+            print("Edat incorrecta")
+        else:
+            if edat < 6:
+                preu = 0
+            elif edat < 14 or edat > 65:
+                preu = PREU / 2
+            else:
+                preu = PREU
+            print(f"El bitllet costa {preu:.2f} €")
+        ```
+
+        Per controlar la dada incorrecta (`abc`) caldria llegir-la com a text i comprovar-la amb `isdigit()`, com veuràs a l'exercici de repàs 9.8 de la unitat 9. L'enunciat de 4.9 diu «majors de 65»: amb 65 anys es paga el preu sencer. Si el que es volia era «a partir de 65», la condició hauria de ser `edat >= 65`; les proves de frontera serveixen precisament per descobrir aquests dubtes.
 
 ## 8.8. Exercicis de repàs
 
