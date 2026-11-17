@@ -603,6 +603,348 @@ L'atribut `name` de cada camp és el nom amb què el servidor rebrà la dada.
 !!! example "Repte 3 (opcional). Publica-la"
     Publica la teva web a Internet amb **GitHub Pages**, el servei gratuït amb què es publica aquesta mateixa web. Necessitaràs un compte de GitHub: crea un repositori, puja-hi els fitxers i activa Pages a la configuració del repositori (**Settings → Pages**). La teva web quedarà publicada a una adreça com `https://el-teu-usuari.github.io/el-teu-repositori/`.
 
+## 13. Exercicis de repàs
+
+Més exercicis per repassar tot el mòdul, ordenats de menys a més dificultat. Comprova sempre el resultat obrint la pàgina al navegador i, si vols, valida-la amb el [validador del W3C](https://validator.w3.org/#validate_by_input).
+
+!!! example "Repàs 1. Quina etiqueta?"
+    Quina etiqueta faries servir per a cada cosa?
+
+    1. El títol principal de la pàgina.
+    2. Un paràgraf.
+    3. Una paraula molt important dins un paràgraf.
+    4. Un enllaç a una altra pàgina.
+    5. Una imatge.
+    6. Una llista de passes que s'han de seguir en ordre.
+    7. Una llista de la compra, sense ordre.
+    8. Un salt de línia dins una adreça postal.
+    9. El text que es mostra a la pestanya del navegador.
+
+    ??? success "Solució"
+        1. `<h1>`. 2. `<p>`. 3. `<strong>`. 4. `<a>`. 5. `<img>`. 6. `<ol>`. 7. `<ul>`. 8. `<br>`. 9. `<title>`, dins el `<head>`.
+
+!!! example "Repàs 2. Etiquetes amb tancament o sense?"
+    Classifica aquestes etiquetes segons si necessiten etiqueta de tancament o no: `<p>`, `<img>`, `<br>`, `<li>`, `<a>`, `<input>`, `<meta>`, `<td>`, `<h2>`.
+
+    ??? success "Solució"
+        - Amb tancament (tenen contingut): `<p>`, `<li>`, `<a>`, `<td>` i `<h2>`.
+        - Sense tancament (elements buits, tota la informació va als atributs): `<img>`, `<br>`, `<input>` i `<meta>`.
+
+!!! example "Repàs 3. Troba els errors"
+    Aquest fragment té cinc errors. Troba'ls i corregeix-los.
+
+    ```html
+    <h1>El meu viatge a Menorca<h1>
+    <p>Vaig visitar <strong>Ciutadella</p></strong>
+    <img src="fotos/naveta.jpg">
+    <a href=https://www.menorca.es>Web oficial</a>
+    <li>Platges</li>
+    <li>Talaiots</li>
+    ```
+
+    ??? success "Solució"
+        ```html
+        <h1>El meu viatge a Menorca</h1>
+        <p>Vaig visitar <strong>Ciutadella</strong></p>
+        <img src="fotos/naveta.jpg" alt="La Naveta des Tudons, a Ciutadella">
+        <a href="https://www.menorca.es">Web oficial</a>
+        <ul>
+            <li>Platges</li>
+            <li>Talaiots</li>
+        </ul>
+        ```
+
+        1. L'`<h1>` no es tancava: faltava la barra de `</h1>`.
+        2. Les etiquetes estaven mal niades: la darrera que s'obre (`<strong>`) és la primera que s'ha de tancar.
+        3. La imatge no tenia text alternatiu (`alt`).
+        4. El valor de l'atribut `href` ha d'anar entre cometes.
+        5. Els `<li>` han d'anar dins una llista (`<ul>` o `<ol>`).
+
+!!! example "Repàs 4. L'estructura mínima"
+    Escriu, de memòria, l'estructura mínima d'un document HTML en català amb el títol «Repàs» i un paràgraf que digui «Hola». Indica per a què serveix cada línia del `<head>`.
+
+    ??? success "Solució"
+        ```html
+        <!DOCTYPE html>
+        <html lang="ca">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Repàs</title>
+        </head>
+        <body>
+            <p>Hola</p>
+        </body>
+        </html>
+        ```
+
+        - `<meta charset="UTF-8">`: perquè els accents i els caràcters especials es vegin bé.
+        - `<meta name="viewport" …>`: perquè la pàgina s'adapti a l'amplada del mòbil.
+        - `<title>`: el text de la pestanya del navegador i el que mostren els cercadors.
+
+!!! example "Repàs 5. Una recepta"
+    Fes la pàgina d'una recepta amb:
+
+    - El nom de la recepta com a títol principal.
+    - Una imatge amb text alternatiu.
+    - Un subtítol «Ingredients» i una llista sense ordre.
+    - Un subtítol «Preparació» i una llista numerada amb les passes.
+    - Un paràgraf final amb un consell, on la paraula més important vagi en negreta.
+
+    ??? success "Solució"
+        ```html
+        <!DOCTYPE html>
+        <html lang="ca">
+        <head>
+            <meta charset="UTF-8">
+            <title>Pa amb oli</title>
+        </head>
+        <body>
+            <h1>Pa amb oli</h1>
+            <img src="img/pa-amb-oli.jpg" alt="Una llesca de pa amb oli i tomàtiga">
+
+            <h2>Ingredients</h2>
+            <ul>
+                <li>Pa moreno</li>
+                <li>Tomàtiga de ramellet</li>
+                <li>Oli d'oliva</li>
+                <li>Sal</li>
+            </ul>
+
+            <h2>Preparació</h2>
+            <ol>
+                <li>Talla el pa a llesques.</li>
+                <li>Frega-hi la tomàtiga.</li>
+                <li>Afegeix-hi l'oli i la sal.</li>
+            </ol>
+
+            <p>Consell: fes servir sempre oli d'oliva <strong>verge extra</strong>.</p>
+        </body>
+        </html>
+        ```
+
+!!! example "Repàs 6. Rutes relatives"
+    Una web té aquesta estructura de carpetes:
+
+    ```text
+    web/
+    ├── index.html
+    ├── img/
+    │   └── logo.png
+    └── pagines/
+        ├── contacte.html
+        └── fotos/
+            └── platja.jpg
+    ```
+
+    Escriu el valor de l'atribut `src` o `href` per a cada cas:
+
+    1. Des d'`index.html`, la imatge `logo.png`.
+    2. Des d'`index.html`, l'enllaç a `contacte.html`.
+    3. Des de `contacte.html`, la imatge `logo.png`.
+    4. Des de `contacte.html`, la imatge `platja.jpg`.
+    5. Des de `contacte.html`, l'enllaç per tornar a `index.html`.
+
+    ??? success "Solució"
+        1. `img/logo.png`
+        2. `pagines/contacte.html`
+        3. `../img/logo.png`: `..` puja a la carpeta `web`, i des d'allà s'entra a `img`.
+        4. `fotos/platja.jpg`
+        5. `../index.html`
+
+!!! example "Repàs 7. Enllaços de tota mena"
+    Escriu el codi de cada enllaç:
+
+    1. Un enllaç a `https://www.caib.es` que s'obri en una pestanya nova.
+    2. Un enllaç a la pàgina `horari.html`, que és a la mateixa carpeta.
+    3. Un enllaç que porti a la secció de la mateixa pàgina que té `id="contacte"`.
+    4. Una imatge `img/logo.png` que, en fer-hi clic, porti a `index.html`.
+
+    ??? success "Solució"
+        ```html
+        <a href="https://www.caib.es" target="_blank">Govern de les Illes Balears</a>
+
+        <a href="horari.html">Horari</a>
+
+        <a href="#contacte">Contacte</a>
+
+        <a href="index.html"><img src="img/logo.png" alt="Inici"></a>
+        ```
+
+        Quan una imatge fa d'enllaç, el seu text alternatiu ha de dir **on porta** l'enllaç, no què es veu.
+
+!!! example "Repàs 8. Una llista niada"
+    Fes aquesta llista amb HTML. Les matèries de cada curs han d'estar en una llista niada dins el `<li>` del curs.
+
+    1. 1r de Batxillerat
+        - Programació i Tractament de Dades I
+        - Tecnologia i Enginyeria I
+    2. 2n de Batxillerat
+        - Programació i Tractament de Dades II
+
+    ??? success "Solució"
+        ```html
+        <ol>
+            <li>1r de Batxillerat
+                <ul>
+                    <li>Programació i Tractament de Dades I</li>
+                    <li>Tecnologia i Enginyeria I</li>
+                </ul>
+            </li>
+            <li>2n de Batxillerat
+                <ul>
+                    <li>Programació i Tractament de Dades II</li>
+                </ul>
+            </li>
+        </ol>
+        ```
+
+        La llista niada va **dins** el `<li>`, abans del `</li>`. Si es posa entre dos `<li>`, el codi no és vàlid.
+
+!!! example "Repàs 9. Una taula de resultats"
+    Fes una taula amb els resultats d'una lliga escolar: una fila de capçalera (Equip, Partits, Punts) i tres equips. Afegeix-hi un títol amb `<caption>`.
+
+    ??? success "Solució"
+        ```html
+        <table>
+            <caption>Lliga escolar de futbol sala</caption>
+            <tr>
+                <th>Equip</th>
+                <th>Partits</th>
+                <th>Punts</th>
+            </tr>
+            <tr>
+                <td>1r A</td>
+                <td>5</td>
+                <td>13</td>
+            </tr>
+            <tr>
+                <td>1r B</td>
+                <td>5</td>
+                <td>9</td>
+            </tr>
+            <tr>
+                <td>2n A</td>
+                <td>5</td>
+                <td>4</td>
+            </tr>
+        </table>
+        ```
+
+        `<caption>` és opcional, però ajuda a entendre la taula i és útil per a les persones que fan servir lectors de pantalla.
+
+!!! example "Repàs 10. Cel·les combinades (amplia)"
+    L'atribut `colspan` fa que una cel·la ocupi diverses columnes, i `rowspan`, diverses files. Fes un fragment d'horari de tres columnes (Hora, Dilluns, Dimarts) en què la fila de l'esbarjo, de 10.45 a 11.15, tengui una sola cel·la «Esbarjo» que ocupi les dues columnes dels dies.
+
+    ??? success "Solució"
+        ```html
+        <table>
+            <tr>
+                <th>Hora</th>
+                <th>Dilluns</th>
+                <th>Dimarts</th>
+            </tr>
+            <tr>
+                <td>9.50</td>
+                <td>PTD I</td>
+                <td>Matemàtiques</td>
+            </tr>
+            <tr>
+                <td>10.45</td>
+                <td colspan="2">Esbarjo</td>
+            </tr>
+        </table>
+        ```
+
+        Una fila amb `colspan="2"` té una cel·la menys: si en tengués tres, la taula quedaria descompensada.
+
+!!! example "Repàs 11. Quin tipus d'`input`?"
+    Quin valor de l'atribut `type` d'`<input>` triaries per a cada dada? Si no coneixes algun tipus, prova'l.
+
+    1. El nom.
+    2. El correu electrònic.
+    3. La contrasenya.
+    4. Acceptar les condicions d'ús.
+    5. Triar una sola opció entre «Matí» i «Horabaixa».
+    6. La data de naixement.
+    7. El nombre d'entrades (de l'1 al 10).
+    8. El botó d'enviar.
+
+    ??? success "Solució"
+        1. `text`. 2. `email`. 3. `password`. 4. `checkbox`. 5. `radio`, amb el **mateix** `name` als dos botons. 6. `date`. 7. `number`, amb els atributs `min="1"` i `max="10"`. 8. `submit`.
+
+        Triar bé el tipus fa que el mòbil mostri el teclat adequat i que el navegador comprovi el format.
+
+!!! example "Repàs 12. Inici de sessió"
+    Fes un formulari d'inici de sessió amb el correu, la contrasenya, una casella «Recorda'm» i un botó «Entra». Cada camp ha de tenir la seva etiqueta `<label>` ben associada.
+
+    ??? success "Solució"
+        ```html
+        <form>
+            <label for="correu">Correu electrònic</label>
+            <input type="email" id="correu" name="correu">
+
+            <label for="contrasenya">Contrasenya</label>
+            <input type="password" id="contrasenya" name="contrasenya">
+
+            <input type="checkbox" id="recorda" name="recorda">
+            <label for="recorda">Recorda'm</label>
+
+            <input type="submit" value="Entra">
+        </form>
+        ```
+
+        L'atribut `for` de cada `<label>` ha de coincidir **exactament** amb l'`id` del camp. Així, en fer clic a l'etiqueta, s'activa el camp.
+
+!!! example "Repàs 13. Una enquesta"
+    Fes un formulari d'enquesta sobre el menjador de l'institut amb:
+
+    - Una pregunta amb tres respostes excloents (Bé, Regular, Malament).
+    - Una llista desplegable per triar el plat preferit entre tres.
+    - Un quadre de text de diverses línies per a suggeriments.
+    - Un botó d'enviar.
+
+    ??? success "Solució"
+        ```html
+        <form>
+            <p>Com valores el menjador?</p>
+            <input type="radio" id="be" name="valoracio" value="be">
+            <label for="be">Bé</label>
+            <input type="radio" id="regular" name="valoracio" value="regular">
+            <label for="regular">Regular</label>
+            <input type="radio" id="malament" name="valoracio" value="malament">
+            <label for="malament">Malament</label>
+
+            <p><label for="plat">Plat preferit</label></p>
+            <select id="plat" name="plat">
+                <option value="arros">Arròs brut</option>
+                <option value="tumbet">Tumbet</option>
+                <option value="sopes">Sopes mallorquines</option>
+            </select>
+
+            <p><label for="suggeriments">Suggeriments</label></p>
+            <textarea id="suggeriments" name="suggeriments" rows="4" cols="40"></textarea>
+
+            <p><input type="submit" value="Envia"></p>
+        </form>
+        ```
+
+        Els tres botons d'opció comparteixen el `name`: és el que fa que, en triar-ne un, es desmarquin els altres.
+
+!!! example "Repàs 14. Bons i mals textos alternatius"
+    Per a una pàgina sobre el Castell de Bellver, valora aquests textos alternatius i proposa'n un de millor quan calgui.
+
+    1. `alt="imatge"`
+    2. `alt="castell_bellver_2026_def.jpg"`
+    3. `alt="El Castell de Bellver vist des del pati circular, amb les seves torres"`
+    4. Una línia decorativa sense cap informació: `alt=""`
+
+    ??? success "Solució"
+        1. Inútil: no diu què es veu. Proposta: `alt="El Castell de Bellver envoltat de pins"`.
+        2. Inútil: és el nom del fitxer.
+        3. Correcte: descriu el que aporta la imatge a la pàgina.
+        4. Correcte: una imatge purament decorativa ha de dur `alt` buit, perquè els lectors de pantalla la ignorin.
+
 ---
 
 !!! quote "Font"

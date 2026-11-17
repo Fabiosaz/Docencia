@@ -743,6 +743,276 @@ Els frameworks permeten fer pàgines d'aspecte professional molt de pressa, per�
 !!! example "Repte 3 (opcional). Prova un framework"
     Refés la pàgina d'inici de la teva web fent servir Tailwind en lloc del teu full d'estil. Després, escriu un paràgraf comparant les dues maneres de treballar: què t'ha resultat més fàcil i què més difícil?
 
+## 10. Exercicis de repàs
+
+Més exercicis per repassar tot el mòdul. Per comprovar-los, enllaça el full d'estils a una pàgina HTML i obre-la al navegador. Les eines de desenvolupador (++f12++) et mostren quines regles s'apliquen a cada element.
+
+!!! example "Repàs 1. Les parts d'una regla"
+    En aquesta regla, indica quin és el selector, quines són les propietats i quins els valors. Quantes declaracions té?
+
+    ```css
+    h2 {
+        color: navy;
+        font-size: 1.5em;
+    }
+    ```
+
+    ??? success "Solució"
+        El selector és `h2`; les propietats, `color` i `font-size`; els valors, `navy` i `1.5em`. Té dues declaracions, cada una acabada en punt i coma.
+
+!!! example "Repàs 2. Troba els errors"
+    Aquest full d'estils té quatre errors. Troba'ls i corregeix-los.
+
+    ```css
+    body {
+        background-color: #f0f0f0
+        font-family: Arial, sans-serif;
+    }
+    .titol {
+        color = red;
+    }
+    #menu
+        padding: 10 px;
+    }
+    ```
+
+    ??? success "Solució"
+        ```css
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        .titol {
+            color: red;
+        }
+        #menu {
+            padding: 10px;
+        }
+        ```
+
+        1. Faltava el punt i coma després de la primera declaració: sense ell, el navegador ignora les dues.
+        2. Les propietats s'escriuen amb dos punts, no amb `=`.
+        3. Faltava la clau d'obertura de `#menu`.
+        4. Entre el nombre i la unitat no hi pot haver espai: `10px`.
+
+!!! example "Repàs 3. Quin selector?"
+    Escriu el selector per a cada cas.
+
+    1. Tots els paràgrafs.
+    2. Els elements que tenen la classe `destacat`.
+    3. L'element amb l'identificador `capcalera`.
+    4. Els enllaços que són dins un element `<nav>`.
+    5. Els paràgrafs que tenen la classe `nota`.
+    6. Els títols `<h1>`, `<h2>` i `<h3>`, amb una sola regla.
+    7. Els enllaços quan s'hi passa el ratolí per damunt.
+    8. Les files parelles d'una taula.
+
+    ??? success "Solució"
+        1. `p`. 2. `.destacat`. 3. `#capcalera`. 4. `nav a`. 5. `p.nota`. 6. `h1, h2, h3`. 7. `a:hover`. 8. `tr:nth-child(even)`.
+
+!!! example "Repàs 4. Quin color guanya?"
+    Amb aquest HTML i aquest CSS, de quin color es veu cada paràgraf? Raona-ho.
+
+    ```html
+    <p>Primer</p>
+    <p class="avis">Segon</p>
+    <p class="avis" id="final">Tercer</p>
+    <p style="color: purple;" class="avis">Quart</p>
+    ```
+
+    ```css
+    #final { color: green; }
+    .avis { color: orange; }
+    p { color: blue; }
+    p { color: gray; }
+    ```
+
+    ??? success "Solució"
+        1. **Gris**: les dues regles `p` tenen la mateixa especificitat, i guanya la darrera.
+        2. **Taronja**: una classe és més específica que una etiqueta.
+        3. **Verd**: un identificador és més específic que una classe, encara que la regla sigui abans.
+        4. **Morat**: l'estil en línia té més prioritat que qualsevol selector del full d'estils.
+
+!!! example "Repàs 5. Unitats"
+    El `body` té una mida de lletra de 16 px. Quina mida té cada element?
+
+    ```css
+    body { font-size: 16px; }
+    .caixa { font-size: 1.5em; }
+    .caixa p { font-size: 0.5em; }
+    .peu { font-size: 0.75rem; }
+    ```
+
+    1. Un `<div class="caixa">`.
+    2. Un `<p>` dins la `.caixa`.
+    3. Un `<p class="peu">` dins la `.caixa`.
+
+    ??? success "Solució"
+        1. 24 px (1,5 × 16).
+        2. 12 px: `em` és relatiu a la mida del **pare**, que és 24 px, i 0,5 × 24 = 12.
+        3. També 12 px, però no per la regla `.peu`. Aquest paràgraf compleix dos selectors: `.peu` (una classe) i `.caixa p` (una classe i una etiqueta). El segon és **més específic** i guanya, de manera que s'aplica `0.5em` (12 px). Si guanyàs `.peu`, també serien 12 px, perquè `rem` es calcula sobre la mida de l'element arrel (`<html>`), normalment 16 px: 0,75 × 16 = 12. Prova de canviar `.peu` a `1rem`: el paràgraf continuarà fent 12 px, i així veuràs quina regla s'aplica de debò.
+
+!!! example "Repàs 6. El model de caixes"
+    Quina amplada total ocupa a la pantalla aquesta caixa? I si li afegim `box-sizing: border-box`?
+
+    ```css
+    .targeta {
+        width: 300px;
+        padding: 20px;
+        border: 5px solid black;
+        margin: 10px;
+    }
+    ```
+
+    ??? success "Solució"
+        Per defecte, `width` és només l'amplada del contingut. L'amplada visible de la caixa és 300 + 2 × 20 + 2 × 5 = **350 px**, i amb els marges ocupa 370 px.
+
+        Amb `box-sizing: border-box`, els 300 px inclouen el contingut, el farciment i la vora: la caixa visible fa **300 px** (el contingut es redueix a 250 px), i amb els marges ocupa 320 px.
+
+!!! example "Repàs 7. Una targeta"
+    Dona estil a aquesta targeta perquè tengui fons blanc, una vora gris d'1 px amb les cantonades arrodonides, 16 px de farciment, una amplada màxima de 320 px centrada a la pàgina i el títol de color blau.
+
+    ```html
+    <div class="targeta">
+        <h2>Robòtica</h2>
+        <p>Dimarts i dijous, de 16 a 17 h.</p>
+    </div>
+    ```
+
+    ??? success "Solució"
+        ```css
+        .targeta {
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 16px;
+            max-width: 320px;
+            margin: 20px auto;
+        }
+        .targeta h2 {
+            color: #1d4ed8;
+            margin-top: 0;
+        }
+        ```
+
+        `margin: 20px auto` posa 20 px a dalt i a baix i reparteix l'espai sobrant als costats, de manera que la caixa queda centrada. Només funciona si la caixa té una amplada definida.
+
+!!! example "Repàs 8. Enllaços amb estat"
+    Fes que els enllaços no estiguin subratllats i siguin de color verd fosc, que se subratllin i canviïn de color quan s'hi passa el ratolí, i que es vegi un contorn clar quan s'hi arriba amb el tabulador.
+
+    ??? success "Solució"
+        ```css
+        a {
+            color: darkgreen;
+            text-decoration: none;
+        }
+        a:hover {
+            color: green;
+            text-decoration: underline;
+        }
+        a:focus {
+            outline: 3px solid orange;
+        }
+        ```
+
+        No eliminis mai el contorn del `:focus` sense posar-n'hi un altre: és l'única manera que té de saber on és qui navega amb el teclat.
+
+!!! example "Repàs 9. Una taula amb ratlles"
+    Dona estil a una taula perquè ocupi tota l'amplada, les vores de les cel·les es fusionin, la capçalera tengui el fons fosc i la lletra blanca, i les files parelles tenguin un fons gris clar.
+
+    ??? success "Solució"
+        ```css
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #334155;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f1f5f9;
+        }
+        ```
+
+!!! example "Repàs 10. Selectors avançats"
+    Amb aquest HTML, quants elements selecciona cada selector?
+
+    ```html
+    <ul id="menu">
+        <li><a href="#">Inici</a></li>
+        <li class="actiu"><a href="#">Matèries</a></li>
+        <li><a href="#">Contacte</a></li>
+    </ul>
+    <p>Text amb un <a href="#">enllaç</a>.</p>
+    ```
+
+    1. `a` 2. `#menu a` 3. `li:first-child` 4. `.actiu a` 5. `ul > li` 6. `li + li` 7. `p a`
+
+    ??? success "Solució"
+        1. 4. 2. 3. 3. 1. 4. 1. 5. 3. 6. 2: cada `li` que va **just després** d'un altre `li`. 7. 1.
+
+        Ho pots comprovar a la consola del navegador amb `document.querySelectorAll("li + li").length`.
+
+!!! example "Repàs 11. Un menú horitzontal"
+    Converteix aquesta llista en un menú horitzontal sense pics, amb els enllaços en forma de botó: fons de color, lletra blanca, farciment i cantonades arrodonides.
+
+    ```html
+    <ul class="menu">
+        <li><a href="index.html">Inici</a></li>
+        <li><a href="materies.html">Matèries</a></li>
+        <li><a href="contacte.html">Contacte</a></li>
+    </ul>
+    ```
+
+    ??? success "Solució"
+        ```css
+        .menu {
+            list-style: none;
+            padding: 0;
+        }
+        .menu li {
+            display: inline-block;
+            margin-right: 6px;
+        }
+        .menu a {
+            display: block;
+            padding: 8px 14px;
+            background-color: #1d4ed8;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+        }
+        .menu a:hover {
+            background-color: #1e3a8a;
+        }
+        ```
+
+        `display: inline-block` posa els `<li>` un al costat de l'altre. `display: block` a l'enllaç fa que el farciment formi part de la zona on es pot fer clic.
+
+!!! example "Repàs 12. Contrast"
+    Fes servir un comprovador de contrast, com el de [WebAIM](https://webaim.org/resources/contrastchecker/), per comprovar aquestes combinacions de text i fons. Quines compleixen el nivell AA per a text normal (contrast mínim de 4,5:1)?
+
+    1. Text `#777777` sobre fons `#ffffff`.
+    2. Text `#595959` sobre fons `#ffffff`.
+    3. Text `#ffffff` sobre fons `#1d4ed8`.
+    4. Text `#ffff00` sobre fons `#ffffff`.
+
+    ??? success "Solució"
+        | Combinació | Contrast | AA text normal |
+        | --- | --- | --- |
+        | `#777777` sobre blanc | 4,48:1 | No, per molt poc |
+        | `#595959` sobre blanc | 7,00:1 | Sí |
+        | Blanc sobre `#1d4ed8` | 6,70:1 | Sí |
+        | `#ffff00` sobre blanc | 1,07:1 | No |
+
+        Un gris que sembla prou fosc pot no arribar al mínim: s'ha de comprovar, no endevinar.
+
 ---
 
 !!! quote "Font"

@@ -599,6 +599,253 @@ Les darreres lliçons del vídeo mostren que el que has après no depèn de MySQ
         - Al préstec no s'indica la data: la posa el `DEFAULT (CURRENT_DATE)` de la taula.
         - `cursor.rowcount` diu quantes files ha modificat l'últim `UPDATE`. Si és 0, el préstec no existia o ja s'havia retornat.
 
+## 9. Exercicis de repàs
+
+Més exercicis per repassar el mòdul. Parteix sempre de les dades originals de [`institut.sql`](fitxers/institut.sql): torna-la a carregar abans de començar i quan acabis. Les solucions s'han provat amb MariaDB i Python.
+
+!!! example "Repàs 1. Per a què serveix?"
+    Relaciona cada necessitat amb l'eina que la resol: vista, procediment, *trigger*, índex o transacció.
+
+    1. Les cerques d'alumnes pels llinatges són lentes, perquè n'hi ha milers.
+    2. Cada vegada que algú esborra una nota, se n'ha de guardar una còpia en una altra taula.
+    3. El personal de secretaria escriu sempre la mateixa consulta de cinc taules.
+    4. Moure un alumne de grup implica tres `UPDATE` que s'han de fer tots o cap.
+    5. Es vol una «funció» que rebi un grup i retorni el seu informe de notes.
+
+    ??? success "Solució"
+        1. Índex. 2. *Trigger* (`AFTER DELETE`). 3. Vista. 4. Transacció. 5. Procediment.
+
+!!! example "Repàs 2. Una vista sense dades personals"
+    Crea la vista `v_alumnes_public`, que mostri només l'identificador, el nom i el nom del grup de cada alumne (sense llinatges, data de naixement ni correu), i fes-la servir per veure els alumnes del grup 1BA.
+
+    ??? success "Solució"
+        ```sql
+        CREATE VIEW v_alumnes_public AS
+        SELECT a.alumne_id, a.nom, g.nom AS grup
+        FROM alumnes a LEFT JOIN grups g ON a.grup_id = g.grup_id;
+        SELECT * FROM v_alumnes_public WHERE grup = '1BA';
+        ```
+
+        Resultat: Aina, Biel i Carla. Una vista així permet donar accés a una part de les dades sense mostrar la informació personal de la taula completa.
+
+!!! example "Repàs 3. Una vista amb agregats"
+    Crea la vista `v_resum_assignatures`, amb el nom de cada assignatura, quantes notes té i la mitjana arrodonida a dos decimals. Després, consulta-la per veure les assignatures amb una mitjana inferior a 7.
+
+    ??? success "Solució"
+        ```sql
+        CREATE VIEW v_resum_assignatures AS
+        SELECT s.nom AS assignatura, COUNT(n.nota) AS notes, ROUND(AVG(n.nota), 2) AS mitjana
+        FROM assignatures s LEFT JOIN notes n ON n.assignatura_id = s.assignatura_id
+        GROUP BY s.assignatura_id, s.nom;
+        SELECT * FROM v_resum_assignatures WHERE mitjana < 7;
+        ```
+
+        Resultat: Matemàtiques I (4 notes, 6,00) i Programació i Tractament de Dades II (2 notes, 6,63). Fixa't que una vista amb `GROUP BY` es filtra amb `WHERE` des de fora, com si fos una taula.
+
+!!! example "Repàs 4. Un procediment amb paràmetre"
+    Crea el procediment `p_alumnes_municipi`, que rebi el nom d'un municipi i mostri el nom i els llinatges dels alumnes que hi viuen, ordenats pels llinatges. Prova'l amb Marratxí.
+
+    ??? success "Solució"
+        ```sql
+        DELIMITER //
+        CREATE PROCEDURE p_alumnes_municipi(IN p_municipi VARCHAR(50))
+        BEGIN
+            SELECT nom, llinatges FROM alumnes WHERE municipi = p_municipi ORDER BY llinatges;
+        END//
+        DELIMITER ;
+        CALL p_alumnes_municipi('Marratxí');
+        ```
+
+        Resultat: Hug Bennàssar Vich i Biel Mas Riera.
+
+!!! example "Repàs 5. Un procediment que valida"
+    Crea el procediment `p_posa_nota`, que rebi un alumne, una assignatura i una nota, i insereixi la nota. Si la nota no és entre 0 i 10, ha de llançar un error amb un missatge en català. Prova'l posant un 6,5 a l'alumne 10 a l'assignatura 1, i després un 11 a l'assignatura 2.
+
+    ??? success "Solució"
+        ```sql
+        DELIMITER //
+        CREATE PROCEDURE p_posa_nota(IN p_alumne INT, IN p_assignatura INT, IN p_nota DECIMAL(4,2))
+        BEGIN
+            IF p_nota < 0 OR p_nota > 10 THEN
+                SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'La nota ha de ser entre 0 i 10';
+            END IF;
+            INSERT INTO notes (alumne_id, assignatura_id, nota) VALUES (p_alumne, p_assignatura, p_nota);
+        END//
+        DELIMITER ;
+        CALL p_posa_nota(10, 1, 6.5);
+        SELECT * FROM notes WHERE alumne_id = 10;
+        ```
+
+        `CALL p_posa_nota(10, 1, 6.5);` insereix la nota; `CALL p_posa_nota(10, 2, 11);` dona l'error «La nota ha de ser entre 0 i 10». La taula ja té un `CHECK` que ho impediria, però així el missatge és més clar per a qui fa servir el procediment.
+
+!!! example "Repàs 6. Un *trigger* que neteja les dades"
+    Crea un *trigger* que, abans d'inserir un alumne, elimini els espais del principi i del final del municipi i, si queda buit, el deixi a `NULL`. Comprova'l inserint un alumne amb el municipi `'  Sóller '` i un altre amb `'   '`.
+
+    ??? success "Solució"
+        ```sql
+        DELIMITER //
+        CREATE TRIGGER tg_municipi_net
+        BEFORE INSERT ON alumnes
+        FOR EACH ROW
+        BEGIN
+            SET NEW.municipi = TRIM(NEW.municipi);
+            IF NEW.municipi = '' THEN
+                SET NEW.municipi = NULL;
+            END IF;
+        END//
+        DELIMITER ;
+        INSERT INTO alumnes (nom, llinatges, municipi, grup_id) VALUES ('Kai', 'Pou Salom', '  Sóller ', 4), ('Lia', 'Riera Vives', '   ', 4);
+        SELECT nom, CONCAT('[', IFNULL(municipi, 'NULL'), ']') AS municipi FROM alumnes WHERE alumne_id > 10;
+        ```
+
+        En un *trigger* `BEFORE`, es pot **modificar** `NEW` abans que la fila es guardi. El primer alumne queda amb `Sóller`, i el segon, amb `NULL`.
+
+!!! example "Repàs 7. Un *trigger* que impedeix una operació"
+    En una revisió d'examen, una nota només pot pujar. Crea un *trigger* que impedeixi qualsevol `UPDATE` que baixi una nota. Comprova'l pujant la nota del Biel a PTD I (alumne 2, assignatura 1) de 4,75 a 5 i després intentant baixar-la a 3.
+
+    ??? success "Solució"
+        ```sql
+        DELIMITER //
+        CREATE TRIGGER tg_no_baixar
+        BEFORE UPDATE ON notes
+        FOR EACH ROW
+        BEGIN
+            IF NEW.nota < OLD.nota THEN
+                SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Una revisió no pot baixar la nota';
+            END IF;
+        END//
+        DELIMITER ;
+        UPDATE notes SET nota = 5 WHERE alumne_id = 2 AND assignatura_id = 1;
+        SELECT nota FROM notes WHERE alumne_id = 2 AND assignatura_id = 1;
+        ```
+
+        El primer `UPDATE` s'accepta. El segon, `UPDATE notes SET nota = 3 WHERE alumne_id = 2 AND assignatura_id = 1;`, dona l'error «Una revisió no pot baixar la nota».
+
+!!! example "Repàs 8. Quins índexs ja hi ha?"
+    Executa `SHOW INDEX FROM notes;`. Quins índexs té la taula, si no n'has creat cap? Per què hi són?
+
+    ??? success "Solució"
+        Hi ha l'índex `PRIMARY`, sobre `alumne_id` i `assignatura_id` (la clau primària composta), i un índex sobre `assignatura_id`, que el gestor ha creat automàticament per a la clau forana. No n'hi cal un altre sobre `alumne_id`, perquè és la primera columna de la clau primària i aquell índex ja serveix per cercar-hi.
+
+!!! example "Repàs 9. Una instrucció és una unitat"
+    Volem pujar un punt totes les notes de l'assignatura 1 amb `UPDATE notes SET nota = nota + 1 WHERE assignatura_id = 1;`.
+
+    1. Prova-ho. Què passa? Quantes notes han canviat?
+    2. Com ho faries perquè cap nota passi de 10?
+
+    ??? success "Solució"
+        1. Dona un error de la restricció `CHECK`: la Carla té un 9,75 i passaria a 10,75. **No canvia cap nota**, ni tan sols les que podien pujar sense problemes. Una sola instrucció ja es comporta com una transacció: o es fa sencera o no es fa.
+        2. Amb la funció `LEAST`, que retorna el valor més petit:
+
+        ```sql
+        UPDATE notes SET nota = LEAST(nota + 1, 10) WHERE assignatura_id = 1;
+        ```
+
+        Ara les notes passen a 5,75, 7,25, 8,50, 9,50 i 10,00.
+
+!!! example "Repàs 10. Detecta la injecció"
+    Quines d'aquestes línies són vulnerables a la injecció d'SQL? Corregeix-les.
+
+    ```python
+    cursor.execute("SELECT * FROM alumnes WHERE nom = '" + nom + "'")
+    cursor.execute("SELECT * FROM alumnes WHERE nom = %s", (nom,))
+    cursor.execute(f"DELETE FROM notes WHERE alumne_id = {id}")
+    cursor.execute("SELECT * FROM alumnes WHERE municipi = '{}'".format(municipi))
+    ```
+
+    ??? success "Solució"
+        Són vulnerables la primera, la tercera i la quarta: totes construeixen la consulta enganxant-hi el text. Només la segona és segura. Correccions:
+
+        ```python
+        cursor.execute("SELECT * FROM alumnes WHERE nom = %s", (nom,))
+        cursor.execute("DELETE FROM notes WHERE alumne_id = %s", (id,))
+        cursor.execute("SELECT * FROM alumnes WHERE municipi = %s", (municipi,))
+        ```
+
+        A més, el `DELETE` necessita `connexio.commit()` perquè el canvi sigui definitiu.
+
+!!! example "Repàs 11. Funcions que consulten"
+    Escriu dues funcions de Python:
+
+    - `alumnes_de(municipi)`, que retorni una llista de tuples amb el nom i els llinatges dels alumnes d'un municipi.
+    - `suspeses_de(alumne_id)`, que retorni el nom de les assignatures que té suspeses un alumne i la nota.
+
+    Prova-les amb Marratxí, Sóller i els alumnes 4 i 1.
+
+    ??? success "Solució"
+        ```python
+        import mysql.connector
+
+        connexio = mysql.connector.connect(host="localhost", user="alumne",
+                                           password="alumne", database="institut")
+        cursor = connexio.cursor()
+
+
+        def alumnes_de(municipi):
+            cursor.execute(
+                "SELECT nom, llinatges FROM alumnes WHERE municipi = %s ORDER BY llinatges",
+                (municipi,),
+            )
+            return cursor.fetchall()
+
+
+        def suspeses_de(alumne_id):
+            cursor.execute(
+                """SELECT s.nom, n.nota
+                   FROM notes n
+                   JOIN assignatures s ON n.assignatura_id = s.assignatura_id
+                   WHERE n.alumne_id = %s AND n.nota < %s""",
+                (alumne_id, 5),
+            )
+            return cursor.fetchall()
+
+
+        print(alumnes_de("Marratxí"))
+        print(alumnes_de("Sóller"))
+        print(suspeses_de(4))
+        print(suspeses_de(1))
+
+        cursor.close()
+        connexio.close()
+        ```
+
+        Resultats: `[('Hug', 'Bennàssar Vich'), ('Biel', 'Mas Riera')]`, una llista buida per a Sóller, `[('Matemàtiques I', Decimal('3.50'))]` i una llista buida per a l'alumne 1. Fins i tot el 5 de la condició es passa com a paràmetre.
+
+!!! example "Repàs 12. Exportar a CSV"
+    Escriu un programa que exporti totes les notes, amb el nom i els llinatges de l'alumne i el nom de l'assignatura, a un fitxer `notes.csv` amb una fila de capçalera. Fes servir el mòdul `csv` de Python. Després, obre el fitxer amb un full de càlcul.
+
+    ??? success "Solució"
+        ```python
+        import csv
+        import mysql.connector
+
+        connexio = mysql.connector.connect(host="localhost", user="alumne",
+                                           password="alumne", database="institut")
+        cursor = connexio.cursor()
+
+        cursor.execute(
+            """SELECT a.nom, a.llinatges, s.nom, n.nota
+               FROM notes n
+               JOIN alumnes a ON n.alumne_id = a.alumne_id
+               JOIN assignatures s ON n.assignatura_id = s.assignatura_id
+               ORDER BY a.llinatges, s.nom"""
+        )
+        files = cursor.fetchall()
+
+        with open("notes.csv", "w", newline="", encoding="utf-8") as fitxer:
+            escriptor = csv.writer(fitxer)
+            escriptor.writerow(["nom", "llinatges", "assignatura", "nota"])
+            for fila in files:
+                escriptor.writerow(fila)
+
+        print(len(files), "notes exportades")
+
+        cursor.close()
+        connexio.close()
+        ```
+
+        Mostra «17 notes exportades». El paràmetre `newline=""` evita que a Windows aparegui una línia en blanc entre fila i fila.
+
 ---
 
 !!! quote "Fonts"
