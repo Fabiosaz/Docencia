@@ -4,6 +4,10 @@ Imagina que has de mostrar a la pantalla els nombres de l'1 al 1.000. Podries es
 
 Cada repetició del bloc d'instruccions d'un bucle s'anomena **iteració**. En Python tenim dos tipus de bucles: `for` i `while`.
 
+
+!!! tip "Vídeo recomanat"
+    Curs de Python de MoureDev: [lliçó 11, «Bucles»](https://youtu.be/Kp4Mvapo5kc?t=23822). El vídeo és en castellà.
+
 ## 5.1. El bucle `for`
 
 El bucle `for` s'utilitza per repetir un bloc de codi **quan sabem exactament quantes vegades el volem repetir**, o quan volem recórrer tots els elements d'una seqüència (una cadena, una llista…).

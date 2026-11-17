@@ -2,6 +2,10 @@
 
 Ja sabem que, perquè un ordinador faci qualsevol tasca, necessita rebre instruccions precises. En aquesta unitat veurem en quins llenguatges s'escriuen aquestes instruccions, com les entén l'ordinador i quines eines utilitzam per programar. Ens centrarem en **Python**, el llenguatge que farem servir durant tot el curs.
 
+
+!!! tip "Vídeo recomanat"
+    Curs de Python de MoureDev: [context](https://youtu.be/Kp4Mvapo5kc?t=244), [lliçó 1, «Configuració»](https://youtu.be/Kp4Mvapo5kc?t=850) i [lliçó 2, «Hola món»](https://youtu.be/Kp4Mvapo5kc?t=1518). El vídeo és en castellà.
+
 ## 2.1. Què és un llenguatge de programació?
 
 Un **llenguatge de programació** és un conjunt de regles i símbols que permet als programadors comunicar-se amb un ordinador.

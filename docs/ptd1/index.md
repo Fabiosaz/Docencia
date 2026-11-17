@@ -7,6 +7,30 @@ Primer contacte amb la programació. Treballarem amb **Python**.
 
     Intenta resoldre cada exercici tot sol i obre la solució només per comprovar-la o quan ja no sàpigues com continuar. Abans de programar, sovint ajuda fer el diagrama de flux o el pseudocodi. **Aprendre a programar no és ràpid ni senzill: s'aconsegueix amb paciència i constància.**
 
+## El curs en vídeo
+
+Les unitats 2 a 7 i 9 a 11 segueixen el [curs de Python des de zero](https://youtu.be/Kp4Mvapo5kc) de Brais Moure (MoureDev), d'unes deu hores. Cada unitat indica, al principi, quines lliçons li corresponen i hi enllaça al minut exacte. Pots mirar el vídeo abans de llegir la unitat, per tenir-ne una primera idea, o després, per repassar-la.
+
+<div class="video">
+<iframe src="https://www.youtube-nocookie.com/embed/Kp4Mvapo5kc" title="Curs de Python des de zero de MoureDev" loading="lazy" allowfullscreen></iframe>
+</div>
+
+| Unitat | Lliçons del vídeo |
+| --- | --- |
+| 2. Llenguatges i entorns | 1 i 2 |
+| 3. Variables i operadors | 3 i 4 |
+| 4. Condicionals | 10 |
+| 5. Bucles | 11 |
+| 6. Cadenes | 5 |
+| 7. Llistes, tuples, conjunts i diccionaris | 6 a 9 |
+| 9. Usabilitat i documentació | 14 (excepcions) |
+| 10. Funcions i mòduls | 12 i 15 |
+| 11. Introducció a les classes | 13 |
+
+L'ordre de les lliçons del vídeo no coincideix del tot amb el de les unitats: per exemple, el vídeo explica les cadenes i les llistes abans que els condicionals. Segueix l'ordre de la web i fes servir cada lliçó quan arribis a la seva unitat. Les unitats 10 i 11 es poden treballar abans que la 8 i la 9, que no en depenen.
+
+## Unitats
+
 <div class="grid cards unitats" markdown>
 
 -   :material-sitemap-outline: Unitat 1
@@ -49,7 +73,7 @@ Primer contacte amb la programació. Treballarem amb **Python**.
 
     [Arrays: llistes i taules](u7-arrays.md)
 
-    Llistes, taules i una introducció als diccionaris.
+    Llistes, taules, diccionaris, tuples i conjunts.
 
 -   :material-chart-timeline-variant: Unitat 8
 
@@ -61,7 +85,19 @@ Primer contacte amb la programació. Treballarem amb **Python**.
 
     [Usabilitat, llegibilitat del codi i documentació](u9-usabilitat-documentacio.md)
 
-    Codi llegible, comentaris, depuració i documentació.
+    Codi llegible, comentaris, depuració, excepcions i documentació.
+
+-   :material-function-variant: Unitat 10
+
+    [Funcions i mòduls](u10-funcions-moduls.md)
+
+    Definir funcions, paràmetres, `return`, àmbit de les variables i mòduls.
+
+-   :material-cube-outline: Unitat 11
+
+    [Introducció a les classes](u11-classes.md)
+
+    Classes, objectes, atributs, mètodes i una primera idea d'herència.
 
 -   :material-rocket-launch-outline: Projecte final
 

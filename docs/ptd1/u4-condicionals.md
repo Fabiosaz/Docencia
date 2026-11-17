@@ -4,6 +4,10 @@ Fins ara, els nostres programes executaven totes les instruccions, una darrere l
 
 Les **estructures de control** ens permeten dirigir el flux d'execució del programa segons unes condicions. És a dir, hi haurà instruccions que s'executaran i d'altres que no. Com es decideix quines s'executen? Depèn de les condicions que escriguem al codi. Hi ha tres grans tipus d'estructures de control: les **condicionals**, que veurem en aquesta unitat, les **iteratives** (bucles) i les **de salt**, que veurem a la unitat 5.
 
+
+!!! tip "Vídeo recomanat"
+    Curs de Python de MoureDev: [lliçó 10, «Condicionals»](https://youtu.be/Kp4Mvapo5kc?t=21442). El vídeo és en castellà.
+
 ## 4.1. La condició: una expressió booleana
 
 Una **condició** és qualsevol expressió que dona com a resultat `True` o `False`. A la unitat 3 ja les hem vistes: són les comparacions (`edat >= 18`, `nota == 10`) i les combinacions amb operadors lògics (`edat >= 18 and te_carnet`).

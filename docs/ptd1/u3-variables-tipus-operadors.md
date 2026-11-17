@@ -2,6 +2,10 @@
 
 Quan escrivim programes, el que feim és **operacions amb dades**. A l'exemple de l'àrea del triangle, les dades eren la base, l'altura i l'àrea, i les operacions, multiplicar, dividir i mostrar el resultat a la pantalla. En aquesta unitat veurem com guarda Python les dades, de quins tipus poden ser, com s'hi opera i com es converteixen d'un tipus a un altre. També veurem com un programa es comunica amb l'usuari.
 
+
+!!! tip "Vídeo recomanat"
+    Curs de Python de MoureDev: [lliçó 3, «Variables»](https://youtu.be/Kp4Mvapo5kc?t=2938) i [lliçó 4, «Operadors»](https://youtu.be/Kp4Mvapo5kc?t=5665). El vídeo és en castellà.
+
 ## 3.1. Tipus de dades
 
 Hi ha molts de tipus de dades. Si treballam amb el pes d'una persona, necessitarem un nombre amb decimals, com 84,25 kg. Si volem comptar quantes persones han anat a un concert, farem servir un nombre enter, perquè no té sentit dir que hi han anat 13.437,6 persones. I si volem treballar amb els noms dels dies de la setmana, necessitam un tipus de dada que manegi text, com "dilluns", "dijous" o "dissabte".

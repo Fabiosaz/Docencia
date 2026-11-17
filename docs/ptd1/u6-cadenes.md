@@ -2,6 +2,10 @@
 
 Una gran part de les dades amb què treballam són text: noms, missatges, contrasenyes, adreces electròniques, codis postals… A la unitat 3 vam veure que en Python el text es guarda en **cadenes de caràcters** (tipus `str`) i que es poden unir amb `+` i repetir amb `*`. En aquesta unitat aprendrem a accedir als caràcters d'una cadena, a extreure'n trossos, a recórrer-la amb bucles i a transformar-la amb els mètodes que ofereix Python. Acabarem programant un sistema de xifratge.
 
+
+!!! tip "Vídeo recomanat"
+    Curs de Python de MoureDev: [lliçó 5, «Cadenes»](https://youtu.be/Kp4Mvapo5kc?t=8643). El vídeo és en castellà.
+
 ## 6.1. Com es guarda una cadena
 
 Una cadena és una **seqüència ordenada de caràcters**. Cada caràcter ocupa una posició, que s'anomena **índex**. El primer caràcter té l'índex **0**, no l'1. També es pot comptar des del final amb índexs negatius: -1 és el darrer caràcter, -2 el penúltim, etc.
